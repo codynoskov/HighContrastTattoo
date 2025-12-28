@@ -61,10 +61,31 @@ export const GET: APIRoute = async ({ request, url }) => {
 
   const clientId = import.meta.env.GITHUB_CLIENT_ID;
   const clientSecret = import.meta.env.GITHUB_CLIENT_SECRET;
-  // Get the base URL from the request headers (more reliable in Cloudflare)
-  const host = request.headers.get('host') || url.host;
-  const protocol = request.headers.get('x-forwarded-proto') || 'https';
-  const baseUrl = `${protocol}://${host}`;
+  
+  // Try multiple methods to get the correct base URL
+  let baseUrl = import.meta.env.PUBLIC_BASE_URL;
+  
+  if (!baseUrl) {
+    // Try from request URL
+    baseUrl = url.origin;
+    
+    // If still localhost, try headers
+    if (baseUrl.includes('localhost')) {
+      const host = request.headers.get('host');
+      const protocol = request.headers.get('x-forwarded-proto') || 
+                       request.headers.get('x-forwarded-scheme') || 
+                       'https';
+      if (host && !host.includes('localhost')) {
+        baseUrl = `${protocol}://${host}`;
+      }
+    }
+    
+    // Final fallback - use production URL if we're not on localhost
+    if (baseUrl.includes('localhost')) {
+      baseUrl = 'https://hct-ana.pages.dev';
+    }
+  }
+  
   const redirectUri = `${baseUrl}/api/callback`;
 
   if (!clientId || !clientSecret) {

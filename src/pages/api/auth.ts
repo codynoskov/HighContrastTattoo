@@ -21,7 +21,29 @@ export const GET: APIRoute = async ({ request, url }) => {
   authUrl.searchParams.set('state', state);
   authUrl.searchParams.set('scope', 'repo');
 
-  // Redirect to GitHub OAuth
-  return Response.redirect(authUrl.toString(), 302);
+  // Return HTML page that redirects to GitHub OAuth
+  // This works better in popup windows than a direct redirect
+  const html = `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to GitHub...</title>
+</head>
+<body>
+  <script>
+    window.location.href = ${JSON.stringify(authUrl.toString())};
+  </script>
+  <p>Redirecting to GitHub...</p>
+</body>
+</html>
+  `;
+
+  return new Response(html, {
+    status: 200,
+    headers: {
+      'Content-Type': 'text/html',
+    },
+  });
 };
 

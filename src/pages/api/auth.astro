@@ -1,5 +1,6 @@
 ---
 // Server-side redirect to GitHub OAuth
+// This endpoint handles the OAuth authentication flow
 const clientId = import.meta.env.GITHUB_CLIENT_ID;
 const baseUrl = import.meta.env.PUBLIC_BASE_URL || Astro.url.origin;
 

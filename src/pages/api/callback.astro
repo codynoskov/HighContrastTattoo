@@ -1,12 +1,16 @@
 ---
 // OAuth callback handler for Decap CMS GitHub authentication
-const code = Astro.url.searchParams.get('code');
-const state = Astro.url.searchParams.get('state');
-const error = Astro.url.searchParams.get('error');
+// Use Astro.request.url instead of Astro.url to get the actual request URL
+const requestUrl = new URL(Astro.request.url);
+const code = requestUrl.searchParams.get('code');
+const state = requestUrl.searchParams.get('state');
+const error = requestUrl.searchParams.get('error');
 
 // Log all query parameters for debugging
-const allParams = Object.fromEntries(Astro.url.searchParams.entries());
+const allParams = Object.fromEntries(requestUrl.searchParams.entries());
 console.log('Callback received with params:', allParams);
+console.log('Request URL:', Astro.request.url);
+console.log('Astro.url:', Astro.url.toString());
 
 const clientId = import.meta.env.GITHUB_CLIENT_ID;
 const clientSecret = import.meta.env.GITHUB_CLIENT_SECRET;
@@ -87,7 +91,8 @@ if (!code) {
   <p>Missing authorization code</p>
   <p>Received parameters:</p>
   <pre>${debugInfo}</pre>
-  <p>Full URL: ${Astro.url.toString()}</p>
+  <p>Request URL: ${Astro.request.url}</p>
+  <p>Astro.url: ${Astro.url.toString()}</p>
   <p>Please try logging in again.</p>
 </body>
 </html>

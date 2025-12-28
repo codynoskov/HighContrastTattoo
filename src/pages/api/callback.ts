@@ -61,7 +61,10 @@ export const GET: APIRoute = async ({ request, url }) => {
 
   const clientId = import.meta.env.GITHUB_CLIENT_ID;
   const clientSecret = import.meta.env.GITHUB_CLIENT_SECRET;
-  const baseUrl = import.meta.env.PUBLIC_BASE_URL || url.origin;
+  // Get the base URL from the request headers (more reliable in Cloudflare)
+  const host = request.headers.get('host') || url.host;
+  const protocol = request.headers.get('x-forwarded-proto') || 'https';
+  const baseUrl = `${protocol}://${host}`;
   const redirectUri = `${baseUrl}/api/callback`;
 
   if (!clientId || !clientSecret) {

@@ -37,7 +37,8 @@ PUBLIC_BASE_URL=http://localhost:4321</code></pre>
     return new Response(errorHtml, { 
       status: 500,
       headers: {
-        'Content-Type': 'text/html',
+        'Content-Type': 'text/html; charset=utf-8',
+        'X-Content-Type-Options': 'nosniff',
       },
     });
   }
@@ -55,29 +56,8 @@ PUBLIC_BASE_URL=http://localhost:4321</code></pre>
   authUrl.searchParams.set('state', state);
   authUrl.searchParams.set('scope', 'repo');
 
-  // Return HTML page that redirects to GitHub OAuth
-  // This works better in popup windows than a direct redirect
-  const html = `
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Redirecting to GitHub...</title>
-</head>
-<body>
-  <script>
-    window.location.href = ${JSON.stringify(authUrl.toString())};
-  </script>
-  <p>Redirecting to GitHub...</p>
-</body>
-</html>
-  `;
-
-  return new Response(html, {
-    status: 200,
-    headers: {
-      'Content-Type': 'text/html',
-    },
-  });
+  // Redirect directly to GitHub OAuth
+  // Decap CMS expects a redirect response
+  return Response.redirect(authUrl.toString(), 302);
 };
 

@@ -1,15 +1,30 @@
 ---
 // OAuth callback handler for Decap CMS GitHub authentication
-// Use Astro.request.url instead of Astro.url to get the actual request URL
-const requestUrl = new URL(Astro.request.url);
-const code = requestUrl.searchParams.get('code');
-const state = requestUrl.searchParams.get('state');
-const error = requestUrl.searchParams.get('error');
+// Get the actual request URL - try multiple methods for Cloudflare compatibility
+let actualUrl: URL;
+try {
+  // First try: Use the request URL directly
+  actualUrl = new URL(Astro.request.url);
+} catch (e) {
+  // Fallback: Construct from headers and Astro.url
+  const host = Astro.request.headers.get('host') || Astro.url.host;
+  const protocol = Astro.request.headers.get('x-forwarded-proto') || 
+                   Astro.request.headers.get('x-forwarded-scheme') || 
+                   'https';
+  const pathWithQuery = Astro.url.pathname + Astro.url.search;
+  actualUrl = new URL(pathWithQuery, `${protocol}://${host}`);
+}
+
+// Now get parameters from the actual URL
+const code = actualUrl.searchParams.get('code');
+const state = actualUrl.searchParams.get('state');
+const error = actualUrl.searchParams.get('error');
 
 // Log all query parameters for debugging
-const allParams = Object.fromEntries(requestUrl.searchParams.entries());
+const allParams = Object.fromEntries(actualUrl.searchParams.entries());
 console.log('Callback received with params:', allParams);
-console.log('Request URL:', Astro.request.url);
+console.log('Actual URL:', actualUrl.toString());
+console.log('Astro.request.url:', Astro.request.url);
 console.log('Astro.url:', Astro.url.toString());
 
 const clientId = import.meta.env.GITHUB_CLIENT_ID;
@@ -91,7 +106,8 @@ if (!code) {
   <p>Missing authorization code</p>
   <p>Received parameters:</p>
   <pre>${debugInfo}</pre>
-  <p>Request URL: ${Astro.request.url}</p>
+  <p>Actual URL: ${actualUrl.toString()}</p>
+  <p>Astro.request.url: ${Astro.request.url}</p>
   <p>Astro.url: ${Astro.url.toString()}</p>
   <p>Please try logging in again.</p>
 </body>

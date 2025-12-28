@@ -2,7 +2,7 @@ backend:
   name: github
   repo: codynoskov/HCT
   branch: main
-  base_url: http://localhost:4321
+  base_url: https://hct-ana.pages.dev
   auth_endpoint: /api/auth
 
 media_folder: "src/assets/images" # Location where files will be stored in the repo

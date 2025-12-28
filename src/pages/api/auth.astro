@@ -2,10 +2,31 @@
 // Server-side redirect to GitHub OAuth
 // This endpoint handles the OAuth authentication flow
 const clientId = import.meta.env.GITHUB_CLIENT_ID;
-// Get the base URL from the request headers (more reliable in Cloudflare)
-const host = Astro.request.headers.get('host') || Astro.url.host;
-const protocol = Astro.request.headers.get('x-forwarded-proto') || 'https';
-const baseUrl = `${protocol}://${host}`;
+
+// Try multiple methods to get the correct base URL
+let baseUrl = import.meta.env.PUBLIC_BASE_URL;
+
+if (!baseUrl) {
+  // Try from request URL
+  const requestUrl = new URL(Astro.request.url);
+  baseUrl = `${requestUrl.protocol}//${requestUrl.host}`;
+  
+  // If still localhost, try headers
+  if (baseUrl.includes('localhost')) {
+    const host = Astro.request.headers.get('host');
+    const protocol = Astro.request.headers.get('x-forwarded-proto') || 
+                     Astro.request.headers.get('x-forwarded-scheme') || 
+                     'https';
+    if (host && !host.includes('localhost')) {
+      baseUrl = `${protocol}://${host}`;
+    }
+  }
+  
+  // Final fallback - use production URL if we're not on localhost
+  if (baseUrl.includes('localhost')) {
+    baseUrl = 'https://hct-ana.pages.dev';
+  }
+}
 
 if (!clientId) {
   return new Response('GITHUB_CLIENT_ID is not configured', { 

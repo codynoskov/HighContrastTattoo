@@ -1,6 +1,10 @@
 import type { APIRoute } from 'astro';
 
 export const GET: APIRoute = async ({ request, url }) => {
+  // Log all query parameters for debugging
+  const allParams = Object.fromEntries(url.searchParams.entries());
+  console.log('Callback received with params:', allParams);
+  
   const code = url.searchParams.get('code');
   const state = url.searchParams.get('state');
   const error = url.searchParams.get('error');
@@ -27,12 +31,16 @@ export const GET: APIRoute = async ({ request, url }) => {
     return new Response(errorHtml, { 
       status: 400,
       headers: {
-        'Content-Type': 'text/html',
+        'Content-Type': 'text/html; charset=utf-8',
+        'Content-Disposition': 'inline',
+        'X-Content-Type-Options': 'nosniff',
       },
     });
   }
 
   if (!code) {
+    // Show debug information about what was received
+    const debugInfo = JSON.stringify(allParams, null, 2);
     const errorHtml = `
 <!DOCTYPE html>
 <html>
@@ -42,11 +50,15 @@ export const GET: APIRoute = async ({ request, url }) => {
   <style>
     body { font-family: sans-serif; padding: 2rem; max-width: 600px; margin: 0 auto; }
     h1 { color: #d32f2f; }
+    pre { background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto; }
   </style>
 </head>
 <body>
   <h1>OAuth Error</h1>
   <p>Missing authorization code</p>
+  <p>Received parameters:</p>
+  <pre>${debugInfo}</pre>
+  <p>Full URL: ${url.toString()}</p>
   <p>Please try logging in again.</p>
 </body>
 </html>
@@ -54,7 +66,9 @@ export const GET: APIRoute = async ({ request, url }) => {
     return new Response(errorHtml, { 
       status: 400,
       headers: {
-        'Content-Type': 'text/html',
+        'Content-Type': 'text/html; charset=utf-8',
+        'Content-Disposition': 'inline',
+        'X-Content-Type-Options': 'nosniff',
       },
     });
   }
@@ -154,7 +168,9 @@ export const GET: APIRoute = async ({ request, url }) => {
       return new Response(errorHtml, { 
         status: 500,
         headers: {
-          'Content-Type': 'text/html',
+          'Content-Type': 'text/html; charset=utf-8',
+          'Content-Disposition': 'inline',
+          'X-Content-Type-Options': 'nosniff',
         },
       });
     }
@@ -183,7 +199,9 @@ export const GET: APIRoute = async ({ request, url }) => {
       return new Response(errorHtml, { 
         status: 400,
         headers: {
-          'Content-Type': 'text/html',
+          'Content-Type': 'text/html; charset=utf-8',
+          'Content-Disposition': 'inline',
+          'X-Content-Type-Options': 'nosniff',
         },
       });
     }
@@ -215,7 +233,9 @@ export const GET: APIRoute = async ({ request, url }) => {
     return new Response(html, {
       status: 200,
       headers: {
-        'Content-Type': 'text/html',
+        'Content-Type': 'text/html; charset=utf-8',
+        'Content-Disposition': 'inline',
+        'X-Content-Type-Options': 'nosniff',
       },
     });
   } catch (error) {
@@ -241,7 +261,9 @@ export const GET: APIRoute = async ({ request, url }) => {
     return new Response(errorHtml, { 
       status: 500,
       headers: {
-        'Content-Type': 'text/html',
+        'Content-Type': 'text/html; charset=utf-8',
+        'Content-Disposition': 'inline',
+        'X-Content-Type-Options': 'nosniff',
       },
     });
   }

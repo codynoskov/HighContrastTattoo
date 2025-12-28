@@ -124,7 +124,9 @@ export const GET: APIRoute = async ({ request, url }) => {
     return new Response(errorHtml, { 
       status: 500,
       headers: {
-        'Content-Type': 'text/html',
+        'Content-Type': 'text/html; charset=utf-8',
+        'Content-Disposition': 'inline',
+        'X-Content-Type-Options': 'nosniff',
       },
     });
   }

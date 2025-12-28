@@ -220,14 +220,30 @@ export const GET: APIRoute = async ({ request, url }) => {
 </head>
 <body>
   <script>
-    // Post the token back to Decap CMS
-    window.opener.postMessage(
-      'authorization:github:success:{"token":"${accessToken}","provider":"github"}',
-      window.location.origin
-    );
-    window.close();
+    (function() {
+      try {
+        // Post the token back to Decap CMS
+        const message = 'authorization:github:success:{"token":"${accessToken}","provider":"github"}';
+        
+        if (window.opener) {
+          window.opener.postMessage(message, window.location.origin);
+          // Give it a moment to process, then close
+          setTimeout(function() {
+            window.close();
+          }, 100);
+        } else {
+          // If no opener, redirect to admin page
+          window.location.href = '/admin/';
+        }
+      } catch (e) {
+        console.error('Error posting message:', e);
+        // Fallback: redirect to admin page
+        window.location.href = '/admin/';
+      }
+    })();
   </script>
-  <p>Authentication successful. You can close this window.</p>
+  <p>Authentication successful. This window should close automatically.</p>
+  <p>If it doesn't close, <a href="/admin/">click here</a> to go to the admin dashboard.</p>
 </body>
 </html>
     `;

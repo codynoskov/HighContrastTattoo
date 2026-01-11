@@ -1,0 +1,192 @@
+media:
+  input: src/assets/images
+  output: /images
+
+content:
+  - name: artists
+    label: Artists
+    path: src/content/artists
+    type: collection
+    fields:
+      - name: name
+        label: Name
+        type: string
+        required: true
+      - name: bio
+        label: Short Bio
+        type: text
+        required: true
+      - name: fullBio
+        label: Full Bio
+        type: text
+      - name: image
+        label: Profile Image
+        type: image
+        required: true
+      - name: instagram
+        label: Instagram Handle
+        type: string
+        required: true
+      - name: tags
+        label: Style Tags
+        type: string
+        list: true
+        required: true
+      - name: bookingHref
+        label: Booking Link
+        type: string
+        required: true
+      - name: galleryImages
+        label: Gallery Images
+        type: object
+        list: true
+        fields:
+          - name: src
+            label: Image
+            type: image
+            required: true
+          - name: alt
+            label: Alt Text
+            type: string
+          - name: tags
+            label: Image Tags
+            type: object
+            list: true
+            fields:
+              - name: text
+                label: Tag Text
+                type: string
+              - name: color
+                label: Tag Color
+                type: select
+                options:
+                  - Primary
+                  - Accent
+                  - Neutral
+      - name: contentBlocks
+        label: Content Sections
+        type: object
+        list: true
+        fields:
+          - name: title
+            label: Section Title
+            type: string
+            required: true
+          - name: paragraphs
+            label: Paragraphs
+            type: text
+            list: true
+            required: true
+          - name: gallery
+            label: Section Gallery
+            type: object
+            list: true
+            fields:
+              - name: src
+                label: Image
+                type: image
+              - name: alt
+                label: Alt Text
+                type: string
+
+  - name: styles
+    label: Tattoo Styles
+    path: src/content/styles
+    type: collection
+    fields:
+      - name: name
+        label: Style Name
+        type: string
+        required: true
+      - name: description
+        label: Description
+        type: text
+        required: true
+      - name: artists
+        label: Artists
+        type: object
+        list: true
+        fields:
+          - name: name
+            label: Artist Name
+            type: string
+            required: true
+          - name: href
+            label: Artist Link
+            type: string
+      - name: bookingHref
+        label: Booking Link
+        type: string
+        required: true
+      - name: galleryImages
+        label: Gallery Images
+        type: object
+        list: true
+        fields:
+          - name: src
+            label: Image
+            type: image
+            required: true
+          - name: alt
+            label: Alt Text
+            type: string
+          - name: tags
+            label: Image Tags
+            type: object
+            list: true
+            fields:
+              - name: text
+                label: Tag Text
+                type: string
+              - name: color
+                label: Tag Color
+                type: select
+                options:
+                  - Primary
+                  - Accent
+                  - Neutral
+      - name: contentBlocks
+        label: Content Sections
+        type: object
+        list: true
+        fields:
+          - name: title
+            label: Section Title
+            type: string
+            required: true
+          - name: paragraphs
+            label: Paragraphs
+            type: text
+            list: true
+            required: true
+          - name: gallery
+            label: Section Gallery
+            type: object
+            list: true
+            fields:
+              - name: src
+                label: Image
+                type: image
+              - name: alt
+                label: Alt Text
+                type: string
+
+  - name: blog
+    label: Blog Posts
+    path: src/content/blog
+    type: collection
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: date
+        label: Publish Date
+        type: date
+        required: true
+      - name: thumbnail
+        label: Featured Image
+        type: image
+      - name: rating
+        label: Rating
+        type: number

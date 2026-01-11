@@ -5,10 +5,11 @@ import Footer from '../../components/Footer.astro';
 import Divider from '../../components/Divider.astro';
 import ArtistPageHeroSection from '../../components/sections/ArtistPageHeroSection.astro';
 import ArtistContentSection from '../../components/sections/ArtistContentSection.astro';
-import { artists, getArtistBySlug, getAllArtistSlugs } from '../../data/artists';
-import type { ArtistData } from '../../data/artists';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 
-export function getStaticPaths() {
+export async function getStaticPaths() {
+  const artists = await getCollection('artists');
   return artists.map((artist) => ({
     params: { slug: artist.slug },
     props: { artist }
@@ -16,28 +17,29 @@ export function getStaticPaths() {
 }
 
 interface Props {
-  artist: ArtistData;
+  artist: CollectionEntry<'artists'>;
 }
 
 const { artist } = Astro.props;
+const artistData = artist.data;
 ---
 
 <Layout>
   <Header />
   <main>
     <ArtistPageHeroSection
-      name={artist.name}
-      bio={artist.bio}
-      fullBio={artist.fullBio}
-      image={artist.image}
-      instagram={artist.instagram}
-      tags={artist.tags}
-      bookingHref={artist.bookingHref}
+      name={artistData.name}
+      bio={artistData.bio}
+      fullBio={artistData.fullBio}
+      image={artistData.image}
+      instagram={artistData.instagram}
+      tags={artistData.tags}
+      bookingHref={artistData.bookingHref}
     />
     
     <ArtistContentSection
-      galleryImages={artist.galleryImages}
-      contentBlocks={artist.contentBlocks}
+      galleryImages={artistData.galleryImages}
+      contentBlocks={artistData.contentBlocks}
       showBackLink={true}
     />
     

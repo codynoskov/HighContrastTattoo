@@ -5,10 +5,11 @@ import Footer from '../../components/Footer.astro';
 import Divider from '../../components/Divider.astro';
 import StylePageHeroSection from '../../components/sections/StylePageHeroSection.astro';
 import StyleContentSection from '../../components/sections/StyleContentSection.astro';
-import { styles, getStyleBySlug, getAllStyleSlugs } from '../../data/styles';
-import type { StyleData } from '../../data/styles';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 
-export function getStaticPaths() {
+export async function getStaticPaths() {
+  const styles = await getCollection('styles');
   return styles.map((style) => ({
     params: { slug: style.slug },
     props: { style }
@@ -16,25 +17,26 @@ export function getStaticPaths() {
 }
 
 interface Props {
-  style: StyleData;
+  style: CollectionEntry<'styles'>;
 }
 
 const { style } = Astro.props;
+const styleData = style.data;
 ---
 
 <Layout>
   <Header />
   <main>
     <StylePageHeroSection
-      name={style.name}
-      description={style.description}
-      artists={style.artists}
-      bookingHref={style.bookingHref}
+      name={styleData.name}
+      description={styleData.description}
+      artists={styleData.artists}
+      bookingHref={styleData.bookingHref}
     />
     
     <StyleContentSection
-      galleryImages={style.galleryImages}
-      contentBlocks={style.contentBlocks}
+      galleryImages={styleData.galleryImages}
+      contentBlocks={styleData.contentBlocks}
       showBackLink={true}
     />
     

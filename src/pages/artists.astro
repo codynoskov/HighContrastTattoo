@@ -5,7 +5,13 @@ import Footer from '../components/Footer.astro';
 import Divider from '../components/Divider.astro';
 import ArtistsHeroSection from '../components/sections/ArtistsHeroSection.astro';
 import ArtistDetailSection from '../components/sections/ArtistDetailSection.astro';
-import { artists } from '../data/artists';
+import { getCollection } from 'astro:content';
+
+const artistEntries = await getCollection('artists');
+const artists = artistEntries.map(entry => ({
+  ...entry.data,
+  slug: entry.slug
+}));
 ---
 
 <Layout>

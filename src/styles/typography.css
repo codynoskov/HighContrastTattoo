@@ -107,7 +107,7 @@ a:hover, .link:hover {
   opacity: 0.8;
 }
 
-a:focus, .link:focus {
+a:focus-visible, .link:focus-visible {
   outline: 2px solid var(--color-primary-600);
   outline-offset: 2px;
 }

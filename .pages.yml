@@ -1,12 +1,10 @@
-media:
-  input: src/assets/images
-  output: /images
+media: src/assets/images
 
 content:
   - name: artists
     label: Artists
-    path: src/content/artists
     type: collection
+    path: src/content/artists
     fields:
       - name: name
         label: Name
@@ -31,7 +29,6 @@ content:
         label: Style Tags
         type: string
         list: true
-        required: true
       - name: bookingHref
         label: Booking Link
         type: string
@@ -43,26 +40,10 @@ content:
         fields:
           - name: src
             label: Image
-            type: image
-            required: true
+            type: string
           - name: alt
             label: Alt Text
             type: string
-          - name: tags
-            label: Image Tags
-            type: object
-            list: true
-            fields:
-              - name: text
-                label: Tag Text
-                type: string
-              - name: color
-                label: Tag Color
-                type: select
-                options:
-                  - Primary
-                  - Accent
-                  - Neutral
       - name: contentBlocks
         label: Content Sections
         type: object
@@ -71,28 +52,15 @@ content:
           - name: title
             label: Section Title
             type: string
-            required: true
           - name: paragraphs
             label: Paragraphs
-            type: text
+            type: string
             list: true
-            required: true
-          - name: gallery
-            label: Section Gallery
-            type: object
-            list: true
-            fields:
-              - name: src
-                label: Image
-                type: image
-              - name: alt
-                label: Alt Text
-                type: string
 
   - name: styles
     label: Tattoo Styles
-    path: src/content/styles
     type: collection
+    path: src/content/styles
     fields:
       - name: name
         label: Style Name
@@ -110,7 +78,6 @@ content:
           - name: name
             label: Artist Name
             type: string
-            required: true
           - name: href
             label: Artist Link
             type: string
@@ -125,26 +92,10 @@ content:
         fields:
           - name: src
             label: Image
-            type: image
-            required: true
+            type: string
           - name: alt
             label: Alt Text
             type: string
-          - name: tags
-            label: Image Tags
-            type: object
-            list: true
-            fields:
-              - name: text
-                label: Tag Text
-                type: string
-              - name: color
-                label: Tag Color
-                type: select
-                options:
-                  - Primary
-                  - Accent
-                  - Neutral
       - name: contentBlocks
         label: Content Sections
         type: object
@@ -153,28 +104,15 @@ content:
           - name: title
             label: Section Title
             type: string
-            required: true
           - name: paragraphs
             label: Paragraphs
-            type: text
+            type: string
             list: true
-            required: true
-          - name: gallery
-            label: Section Gallery
-            type: object
-            list: true
-            fields:
-              - name: src
-                label: Image
-                type: image
-              - name: alt
-                label: Alt Text
-                type: string
 
   - name: blog
     label: Blog Posts
-    path: src/content/blog
     type: collection
+    path: src/content/blog
     fields:
       - name: title
         label: Title
@@ -187,6 +125,6 @@ content:
       - name: thumbnail
         label: Featured Image
         type: image
-      - name: rating
-        label: Rating
-        type: number
+      - name: body
+        label: Content
+        type: rich-text

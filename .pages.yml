@@ -38,9 +38,8 @@ content:
       
       - name: image
         label: Profile Image
-        type: string
+        type: image
         required: true
-        hint: Path to the artist's profile image
       
       - name: instagram
         label: Instagram Handle
@@ -62,8 +61,8 @@ content:
         type: list
         fields:
           - name: src
-            label: Image Path
-            type: string
+            label: Image
+            type: image
           - name: alt
             label: Alt Text
             type: string
@@ -126,8 +125,8 @@ content:
         type: list
         fields:
           - name: src
-            label: Image Path
-            type: string
+            label: Image
+            type: image
           - name: alt
             label: Alt Text
             type: string

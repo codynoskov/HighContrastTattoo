@@ -11,7 +11,7 @@ content:
   # STYLES
   # ============================================
   - name: styles
-    label: Tattoo
+    label: Styles
     type: collection
     path: src/content/styles
     extension: md

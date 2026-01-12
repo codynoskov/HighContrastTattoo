@@ -14,6 +14,8 @@ content:
     extension: md
     create: true
     delete: true
+    identifier: name
+    primary: name
     view:
       fields: [name, order, intro, details, cover]
       primary: name

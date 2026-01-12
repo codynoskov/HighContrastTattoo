@@ -48,7 +48,7 @@ content:
     create: true
     delete: true
     view:
-      fields: [name, photo, intro, styles, details]
+      fields: [name, photo, intro, details]
       primary: name
       displayField: name
     fields:

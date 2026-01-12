@@ -14,12 +14,20 @@ content:
     extension: md
     create: true
     delete: true
+    list:
+      fields:
+        - name
+        - order
+        - intro
+        - details
+        - cover
     fields:
       - name: id
         type: uuid
         options:
           editable: false
           hidden: true
+          list: false
       - name: name
         type: string
         required: true
@@ -42,12 +50,20 @@ content:
     extension: md
     create: true
     delete: true
+    list:
+      fields:
+        - name
+        - photo
+        - intro
+        - styles
+        - details
     fields:
       - name: id
         type: uuid
         options:
           editable: false
           hidden: true
+          list: false
       - name: name
         type: string
         required: true
@@ -76,12 +92,18 @@ content:
     extension: md
     create: true
     delete: true
+    list:
+      fields:
+        - image
+        - styles
+        - artist
     fields:
       - name: id
         type: uuid
         options:
           editable: false
           hidden: true
+          list: false
       - name: image
         label: Image
         type: image

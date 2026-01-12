@@ -28,21 +28,21 @@ export function getSlug(entry: { slug: string; data: { slugOverride?: string; na
 
 /**
  * Find artists that work in a given style.
- * Matches by checking if the style ID is in the artist's styles array
+ * Matches by checking if the style name is in the artist's styles array
  * OR if any of their works are tagged with this style.
  */
 export function getRelatedArtists(
-  styleId: string,
+  styleName: string,
   artists: ArtistEntry[],
   works: WorkEntry[]
 ): Artist[] {
   return artists
     .filter((artist) => {
       // Check if artist has this style in their styles array
-      const hasStyle = artist.data.styles.includes(styleId);
+      const hasStyle = artist.data.styles.includes(styleName);
       // Check if any of their works are tagged with this style
       const hasTaggedWork = works.some(
-        (work) => work.data.artist === artist.data.id && work.data.styles.includes(styleId)
+        (work) => work.data.artist === artist.data.name && work.data.styles.includes(styleName)
       );
       return hasStyle || hasTaggedWork;
     })
@@ -57,18 +57,16 @@ export function getRelatedArtists(
  * Falls back to the style's cover image if no tagged works exist.
  */
 export function getStyleGalleryImages(
-  styleId: string,
+  styleName: string,
   works: WorkEntry[],
   artists: ArtistEntry[],
-  styleName: string,
   fallbackCover?: string
 ): GalleryImage[] {
   const images: GalleryImage[] = [];
-  const artistMap = new Map(artists.map((a) => [a.data.id, a.data.name]));
 
   for (const work of works) {
-    if (work.data.styles.includes(styleId)) {
-      const artistName = artistMap.get(work.data.artist) || 'Unknown Artist';
+    if (work.data.styles.includes(styleName)) {
+      const artistName = work.data.artist;
       images.push({
         src: work.data.image,
         alt: `${styleName} tattoo by ${artistName}`,
@@ -90,24 +88,22 @@ export function getStyleGalleryImages(
 }
 
 /**
- * Resolve style UUIDs to their display names.
- * Returns an array of style names for the given IDs.
+ * Resolve style names (already names, just validate they exist).
+ * Returns an array of style names that exist in the styles collection.
  */
-export function resolveStyleNames(styleIds: string[], styles: StyleEntry[]): string[] {
-  const styleMap = new Map(styles.map((s) => [s.data.id, s.data.name]));
-  return styleIds
-    .map((id) => styleMap.get(id))
-    .filter((name): name is string => name !== undefined);
+export function resolveStyleNames(styleNames: string[], styles: StyleEntry[]): string[] {
+  const validStyleNames = new Set(styles.map((s) => s.data.name));
+  return styleNames.filter((name) => validStyleNames.has(name));
 }
 
 /**
- * Resolve style UUIDs to style objects with name and href.
+ * Resolve style names to style objects with name and href.
  */
-export function resolveStyles(styleIds: string[], styles: StyleEntry[]): Array<{ name: string; href: string }> {
-  const styleMap = new Map(styles.map((s) => [s.data.id, s]));
-  return styleIds
-    .map((id) => {
-      const style = styleMap.get(id);
+export function resolveStyles(styleNames: string[], styles: StyleEntry[]): Array<{ name: string; href: string }> {
+  const styleMap = new Map(styles.map((s) => [s.data.name, s]));
+  return styleNames
+    .map((name) => {
+      const style = styleMap.get(name);
       if (!style) return null;
       return {
         name: style.data.name,
@@ -140,8 +136,8 @@ export function worksToGalleryImages(
 }
 
 /**
- * Get works by artist ID.
+ * Get works by artist name.
  */
-export function getWorksByArtist(artistId: string, works: WorkEntry[]): WorkEntry[] {
-  return works.filter((work) => work.data.artist === artistId);
+export function getWorksByArtist(artistName: string, works: WorkEntry[]): WorkEntry[] {
+  return works.filter((work) => work.data.artist === artistName);
 }

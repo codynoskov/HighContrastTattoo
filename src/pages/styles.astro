@@ -23,8 +23,8 @@ const styles = sortedStyles.map(entry => ({
   name: entry.data.name,
   slug: getSlug(entry),
   intro: entry.data.intro,
-  artists: getRelatedArtists(entry.data.id, artistEntries, works),
-  galleryImages: getStyleGalleryImages(entry.data.id, works, artistEntries, entry.data.name, entry.data.cover),
+  artists: getRelatedArtists(entry.data.name, artistEntries, works),
+  galleryImages: getStyleGalleryImages(entry.data.name, works, artistEntries, entry.data.cover),
 }));
 ---
 

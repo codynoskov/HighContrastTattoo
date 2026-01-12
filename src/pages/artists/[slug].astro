@@ -31,7 +31,7 @@ const artistData = artist.data;
 
 // Compute derived data
 const resolvedStyles = resolveStyles(artistData.styles, styles);
-const artistWorks = getWorksByArtist(artistData.id, works);
+const artistWorks = getWorksByArtist(artistData.name, works);
 const galleryImages = worksToGalleryImages(artistWorks, artistData.name, styles);
 ---
 

@@ -30,8 +30,8 @@ const { style, artists, works } = Astro.props;
 const styleData = style.data;
 
 // Compute derived data
-const relatedArtists = getRelatedArtists(styleData.id, artists, works);
-const galleryImages = getStyleGalleryImages(styleData.id, works, artists, styleData.name, styleData.cover);
+const relatedArtists = getRelatedArtists(styleData.name, artists, works);
+const galleryImages = getStyleGalleryImages(styleData.name, works, artists, styleData.cover);
 ---
 
 <Layout>

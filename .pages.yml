@@ -20,12 +20,6 @@ content:
       primary: name
       displayField: name
     fields:
-      - name: id
-        type: uuid
-        ui:
-          hidden: true
-        options:
-          editable: false
       - name: name
         type: string
         required: true
@@ -54,12 +48,6 @@ content:
       primary: name
       displayField: name
     fields:
-      - name: id
-        type: uuid
-        ui:
-          hidden: true
-        options:
-          editable: false
       - name: name
         type: string
         required: true
@@ -109,17 +97,13 @@ content:
         options:
           collection: styles
           multiple: true
-          value: "{id}"
+          value: "{name}"
           label: "{name}"
-        ui:
-          listLabel: "{name}"
       - name: artist
         label: Artist
         type: reference
         options:
           collection: artists
           multiple: false
-          value: "{id}"
+          value: "{name}"
           label: "{name}"
-        ui:
-          listLabel: "{name}"

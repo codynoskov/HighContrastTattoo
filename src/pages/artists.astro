@@ -13,7 +13,7 @@ const styleEntries = await getCollection('styles');
 const works = await getCollection('works');
 
 const artists = artistEntries.map(entry => {
-  const artistWorks = getWorksByArtist(entry.data.id, works);
+  const artistWorks = getWorksByArtist(entry.data.name, works);
   return {
     name: entry.data.name,
     slug: getSlug(entry),

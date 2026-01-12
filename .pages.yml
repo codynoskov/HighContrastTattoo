@@ -14,20 +14,13 @@ content:
     extension: md
     create: true
     delete: true
-    list:
-      fields:
-        - name
-        - order
-        - intro
-        - details
-        - cover
     fields:
       - name: id
         type: uuid
+        ui:
+          hidden: true
         options:
           editable: false
-          hidden: true
-          list: false
       - name: name
         type: string
         required: true
@@ -50,20 +43,13 @@ content:
     extension: md
     create: true
     delete: true
-    list:
-      fields:
-        - name
-        - photo
-        - intro
-        - styles
-        - details
     fields:
       - name: id
         type: uuid
+        ui:
+          hidden: true
         options:
           editable: false
-          hidden: true
-          list: false
       - name: name
         type: string
         required: true
@@ -92,18 +78,13 @@ content:
     extension: md
     create: true
     delete: true
-    list:
-      fields:
-        - image
-        - styles
-        - artist
     fields:
       - name: id
         type: uuid
+        ui:
+          hidden: true
         options:
           editable: false
-          hidden: true
-          list: false
       - name: image
         label: Image
         type: image
@@ -116,6 +97,8 @@ content:
           multiple: true
           value: "{id}"
           label: "{name}"
+        ui:
+          listLabel: "{name}"
       - name: artist
         label: Artist
         type: reference

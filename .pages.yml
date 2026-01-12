@@ -65,7 +65,7 @@ content:
         options:
           collection: styles
           multiple: true
-          value: "{id}"
+          value: "{name}"
           label: "{name}"
       - name: details
         type: rich-text
@@ -81,12 +81,6 @@ content:
       fields: [image, styles]
       primary: image
     fields:
-      - name: id
-        type: uuid
-        ui:
-          hidden: true
-        options:
-          editable: false
       - name: image
         label: Image
         type: image

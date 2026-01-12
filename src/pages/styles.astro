@@ -6,10 +6,9 @@ import Divider from '../components/Divider.astro';
 import ArtistsHeroSection from '../components/sections/ArtistsHeroSection.astro';
 import StyleDetailSection from '../components/sections/StyleDetailSection.astro';
 import { getCollection } from 'astro:content';
-import { getSlug, getRelatedArtists, getStyleGalleryImages } from '../utils/contentHelpers';
+import { getSlug } from '../utils/contentHelpers';
 
 const styleEntries = await getCollection('styles');
-const artistEntries = await getCollection('artists');
 
 // Sort styles by order if defined
 const sortedStyles = [...styleEntries].sort((a, b) => {
@@ -24,8 +23,6 @@ const styles = sortedStyles.map(entry => {
     name: entry.data.name,
     slug: slug,
     intro: entry.data.intro,
-    artists: getRelatedArtists(slug, artistEntries),
-    galleryImages: getStyleGalleryImages(entry.data.name, entry.data.cover),
   };
 });
 ---
@@ -45,8 +42,6 @@ const styles = sortedStyles.map(entry => {
         <StyleDetailSection
           name={style.name}
           intro={style.intro}
-          artists={style.artists}
-          galleryImages={style.galleryImages}
           exploreHref={`/styles/${style.slug}`}
         />
         {index < styles.length - 1 && <Divider color="light" />}

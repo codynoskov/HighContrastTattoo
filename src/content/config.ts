@@ -9,7 +9,6 @@ export const collections = {
       order: z.number().optional(),
       intro: z.string(),
       details: z.string().optional(),
-      cover: z.string().optional(),
     }),
   }),
 

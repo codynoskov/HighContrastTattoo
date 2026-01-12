@@ -7,30 +7,23 @@ import StylePageHeroSection from '../../components/sections/StylePageHeroSection
 import StyleContentSection from '../../components/sections/StyleContentSection.astro';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import { getSlug, getRelatedArtists, getStyleGalleryImages } from '../../utils/contentHelpers';
+import { getSlug } from '../../utils/contentHelpers';
 
 export async function getStaticPaths() {
   const styles = await getCollection('styles');
-  const artists = await getCollection('artists');
   
   return styles.map((style) => ({
     params: { slug: getSlug(style) },
-    props: { style, artists }
+    props: { style }
   }));
 }
 
 interface Props {
   style: CollectionEntry<'styles'>;
-  artists: CollectionEntry<'artists'>[];
 }
 
-const { style, artists } = Astro.props;
+const { style } = Astro.props;
 const styleData = style.data;
-
-// Compute derived data
-const styleSlug = getSlug(style);
-const relatedArtists = getRelatedArtists(styleSlug, artists);
-const galleryImages = getStyleGalleryImages(styleData.name, styleData.cover);
 ---
 
 <Layout>
@@ -39,14 +32,14 @@ const galleryImages = getStyleGalleryImages(styleData.name, styleData.cover);
     <StylePageHeroSection
       name={styleData.name}
       intro={styleData.intro}
-      artists={relatedArtists}
     />
     
-    <StyleContentSection
-      galleryImages={galleryImages}
-      details={styleData.details}
-      showBackLink={true}
-    />
+    {styleData.details && (
+      <StyleContentSection
+        details={styleData.details}
+        showBackLink={true}
+      />
+    )}
     
     <Divider color="light" />
   </main>

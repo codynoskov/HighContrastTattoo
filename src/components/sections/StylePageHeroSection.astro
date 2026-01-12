@@ -1,23 +1,15 @@
 ---
-import Button from '../Button.astro';
 import Logo from '../Logo.astro';
-
-interface Artist {
-  name: string;
-  href?: string;
-}
 
 interface Props {
   name: string;
   intro: string;
-  artists?: Artist[];
   className?: string;
 }
 
 const {
   name,
   intro,
-  artists = [],
   className = ""
 } = Astro.props;
 ---
@@ -33,27 +25,6 @@ const {
       <div class="style-info">
         <h1 class="style-name">{name}</h1>
         <p class="style-intro">{intro}</p>
-        
-        {artists.length > 0 && (
-          <p class="style-artists">
-            <strong>Artists working in this style:</strong>{" "}
-            <span set:html={artists.map((artist, index) => 
-              `<a href="${artist.href || `/artists/${artist.name.toLowerCase().replace(/\s+/g, '-')}`}" class="style-artist-link">${artist.name}</a>${index < artists.length - 1 ? ', ' : ''}`
-            ).join('')} />
-          </p>
-        )}
-        
-        <div class="style-actions">
-          <Button
-            type="Primary"
-            color="Accent"
-            href="/book"
-            leadingIcon={false}
-            trailingIcon={true}
-          >
-            Book a session
-          </Button>
-        </div>
       </div>
     </div>
   </div>
@@ -124,35 +95,6 @@ const {
     max-width: 640px;
   }
 
-  .style-artists {
-    font: var(--typography-body-md);
-    color: var(--color-primary-900);
-    margin: 0;
-    line-height: var(--line-height-core-800-md);
-  }
-
-  .style-artists strong {
-    font-weight: var(--font-weight-bold);
-  }
-
-  .style-artist-link {
-    color: var(--color-primary-900);
-    text-decoration: underline;
-    text-underline-position: from-font;
-  }
-
-  .style-artist-link:hover {
-    color: var(--color-primary-700);
-  }
-
-  .style-actions {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-core-800-md);
-    align-items: flex-start;
-    padding-top: var(--spacing-core-900-md);
-  }
-
   /* Tablet Layout */
   @media (min-width: 768px) and (max-width: 1023px) {
     .style-name {
@@ -188,11 +130,6 @@ const {
     .style-intro {
       font: var(--typography-body-lg);
       width: 100%;
-    }
-
-    .style-actions {
-      padding-top: var(--spacing-core-900-md);
-      width: auto;
     }
   }
 </style>

@@ -25,45 +25,6 @@ export function getSlug(entry: { slug: string; data: { slugOverride?: string; na
   return entry.data.slugOverride ?? entry.slug;
 }
 
-/**
- * Find artists that work in a given style.
- * Matches by checking if the style slug is in the artist's styles array.
- */
-export function getRelatedArtists(
-  styleSlug: string,
-  artists: ArtistEntry[]
-): Artist[] {
-  return artists
-    .filter((artist) => {
-      // Check if artist has this style in their styles array (stored as slug)
-      return artist.data.styles.includes(styleSlug);
-    })
-    .map((artist) => ({
-      name: artist.data.name,
-      href: `/artists/${getSlug(artist)}`,
-    }));
-}
-
-/**
- * Get gallery images for a style using the style's cover image.
- */
-export function getStyleGalleryImages(
-  styleName: string,
-  fallbackCover?: string
-): GalleryImage[] {
-  const images: GalleryImage[] = [];
-
-  // Use cover image as fallback
-  if (fallbackCover) {
-    images.push({
-      src: fallbackCover,
-      alt: `${styleName} example`,
-      tags: [{ text: styleName, color: 'Primary' }],
-    });
-  }
-
-  return images;
-}
 
 /**
  * Resolve style slugs to their display names.

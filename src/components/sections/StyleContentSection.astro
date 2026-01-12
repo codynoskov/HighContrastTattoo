@@ -25,37 +25,56 @@ const {
   className = ""
 } = Astro.props;
 
-// Parse details markdown into sections separated by ---
-function parseDetails(detailsText: string | undefined) {
-  if (!detailsText) return [];
+// Render markdown to HTML - handles H2 headings and paragraphs
+function renderMarkdown(markdown: string | undefined): string {
+  if (!markdown) return '';
   
-  return detailsText
-    .split(/\n---\n/)
-    .map(section => section.trim())
-    .filter(section => section.length > 0);
+  // Split by double newlines to get paragraphs
+  const paragraphs = markdown
+    .split(/\n\n+/)
+    .map(p => p.trim())
+    .filter(p => p.length > 0);
+  
+  return paragraphs.map(para => {
+    let html = para;
+    
+    // H2 Headers (must be at start of line, ##)
+    if (/^##\s/.test(html)) {
+      html = html.replace(/^##\s(.+)$/gm, '<h2>$1</h2>');
+      // Process any bold text within headers
+      html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+      return html;
+    }
+    
+    // Regular paragraph - process inline markdown
+    // Bold
+    html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    // Italic
+    html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+    // Links
+    html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+    // Line breaks within paragraph
+    html = html.replace(/\n/g, '<br>');
+    
+    return `<p>${html}</p>`;
+  }).join('');
 }
 
-const detailSections = parseDetails(details);
+const detailsHtml = renderMarkdown(details);
 ---
 
 <section class={`style-content-section ${className}`}>
   <div class="container">
-    <!-- Main Gallery -->
+    <!-- Gallery (all images, starting with 3, continuing from 4th) -->
     {galleryImages.length > 0 && (
-      <div class="main-gallery-wrapper">
-        <Gallery images={galleryImages} maxVisible={9} />
+      <div class="gallery-wrapper">
+        <Gallery images={galleryImages} maxVisible={galleryImages.length} />
       </div>
     )}
 
     <!-- Details Content -->
-    {detailSections.length > 0 && (
-      <div class="details-content">
-        {detailSections.map((section) => (
-          <div class="detail-section">
-            <p class="detail-paragraph" set:html={section.replace(/\n/g, '<br>')} />
-          </div>
-        ))}
-      </div>
+    {details && (
+      <div class="details-content" set:html={detailsHtml} />
     )}
 
     <!-- Back Link -->
@@ -94,8 +113,8 @@ const detailSections = parseDetails(details);
     gap: var(--spacing-core-1100-md);
   }
 
-  /* Main Gallery */
-  .main-gallery-wrapper {
+  /* Gallery */
+  .gallery-wrapper {
     width: 100%;
   }
 
@@ -108,18 +127,40 @@ const detailSections = parseDetails(details);
     max-width: 640px;
   }
 
-  .detail-section {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-core-700-md);
-  }
-
-  .detail-paragraph {
+  .details-content :global(p) {
     font: var(--typography-body-md);
     color: var(--color-primary-900);
-    margin: 0;
+    margin: 0 0 var(--spacing-core-700-md) 0;
     font-weight: var(--font-weight-light);
     line-height: var(--line-height-core-800-md);
+  }
+
+  .details-content :global(p:last-child) {
+    margin-bottom: 0;
+  }
+
+  .details-content :global(h2) {
+    font: var(--typography-h2);
+    color: var(--color-primary-900);
+    margin: 0 0 var(--spacing-core-700-md) 0;
+  }
+
+  .details-content :global(strong) {
+    font-weight: var(--font-weight-bold);
+  }
+
+  .details-content :global(em) {
+    font-style: italic;
+  }
+
+  .details-content :global(a) {
+    color: var(--color-primary-900);
+    text-decoration: underline;
+    text-underline-position: from-font;
+  }
+
+  .details-content :global(a:hover) {
+    color: var(--color-primary-700);
   }
 
   /* Back Link */
@@ -148,10 +189,6 @@ const detailSections = parseDetails(details);
 
     .details-content {
       gap: var(--spacing-core-700-md);
-    }
-
-    .detail-paragraph {
-      font: var(--typography-body-md);
     }
 
     .back-link-wrapper {

@@ -1,27 +1,9 @@
 ---
 import Button from '../Button.astro';
-import Gallery from '../Gallery.astro';
-import placeholderImage from '../../assets/images/placeholder.png';
-
-interface GalleryImage {
-  src: string;
-  alt?: string;
-  tags?: Array<{
-    text: string;
-    color?: "Primary" | "Accent" | "Neutral";
-  }>;
-}
-
-interface Artist {
-  name: string;
-  href?: string;
-}
 
 interface Props {
   name: string;
   intro: string;
-  artists?: Artist[];
-  galleryImages?: GalleryImage[];
   exploreHref?: string;
   className?: string;
 }
@@ -29,51 +11,22 @@ interface Props {
 const {
   name,
   intro,
-  artists = [],
-  galleryImages = [],
   exploreHref = `/styles/${name.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and')}`,
   className = ""
 } = Astro.props;
-
-// Generate default gallery images if none provided
-const defaultGalleryImages: GalleryImage[] = Array(6).fill(null).map((_, i) => ({
-  src: placeholderImage.src,
-  alt: `${name} tattoo example ${i + 1}`,
-  tags: [{ text: "Created by Artist", color: "Accent" as const }]
-}));
-
-const displayGalleryImages = galleryImages.length > 0 ? galleryImages : defaultGalleryImages;
 ---
 
 <section class={`style-detail-section ${className}`}>
   <div class="container">
     <div class="style-detail-layout">
-      <!-- Left Column: Text Content -->
+      <!-- Text Content -->
       <div class="style-content-column">
         <div class="style-text-block">
           <h2 class="style-name">{name}</h2>
           <p class="style-intro">{intro}</p>
-          
-          {artists.length > 0 && (
-            <p class="style-artists">
-              <strong>Artists working in this style:</strong>{" "}
-              <span set:html={artists.map((artist, index) => 
-                `<a href="${artist.href || `/artists#${artist.name.toLowerCase().replace(/\s+/g, '-')}`}" class="style-artist-link">${artist.name}</a>${index < artists.length - 1 ? ', ' : ''}`
-              ).join('')} />
-            </p>
-          )}
         </div>
         
         <div class="style-actions">
-          <Button
-            type="Primary"
-            color="Primary"
-            href="/book"
-            leadingIcon={false}
-            trailingIcon={true}
-          >
-            Book a session
-          </Button>
           <Button
             type="Secondary"
             color="Primary"
@@ -85,11 +38,6 @@ const displayGalleryImages = galleryImages.length > 0 ? galleryImages : defaultG
             Explore the style
           </Button>
         </div>
-      </div>
-
-      <!-- Right Column: Gallery -->
-      <div class="style-gallery-column">
-        <Gallery images={displayGalleryImages} maxVisible={6} />
       </div>
     </div>
   </div>
@@ -143,29 +91,6 @@ const displayGalleryImages = galleryImages.length > 0 ? galleryImages : defaultG
     line-height: var(--line-height-core-800-md);
   }
 
-  .style-artists {
-    font: var(--typography-body-md);
-    color: var(--color-primary-900);
-    margin: 0;
-    line-height: var(--line-height-core-800-md);
-    font-weight: var(--font-weight-light);
-  }
-
-  .style-artists strong {
-    font-weight: var(--font-weight-bold);
-  }
-
-  .style-artist-link {
-    color: var(--color-primary-900);
-    text-decoration: underline;
-    text-underline-position: from-font;
-    font-weight: var(--font-weight-light);
-  }
-
-  .style-artist-link:hover {
-    color: var(--color-primary-700);
-  }
-
   .style-actions {
     display: flex;
     flex-wrap: wrap;
@@ -180,16 +105,6 @@ const displayGalleryImages = galleryImages.length > 0 ? galleryImages : defaultG
     padding: var(--spacing-core-600-md) 0;
   }
 
-  /* Right Column: Gallery */
-  .style-gallery-column {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-width: 416px;
-    width: 100%;
-    min-height: 0;
-  }
-
   /* Tablet Layout */
   @media (min-width: 768px) and (max-width: 1023px) {
     .style-detail-layout {
@@ -199,10 +114,6 @@ const displayGalleryImages = galleryImages.length > 0 ? galleryImages : defaultG
     .style-content-column {
       max-width: none;
       min-width: 280px;
-    }
-
-    .style-gallery-column {
-      min-width: 350px;
     }
 
     .style-name {
@@ -224,11 +135,6 @@ const displayGalleryImages = galleryImages.length > 0 ? galleryImages : defaultG
 
     .style-content-column {
       max-width: none;
-      min-width: 0;
-      width: 100%;
-    }
-
-    .style-gallery-column {
       min-width: 0;
       width: 100%;
     }

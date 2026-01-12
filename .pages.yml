@@ -18,7 +18,7 @@ content:
     create: true
     delete: true
     view:
-      fields: [name, instagram]
+      fields: [name]
       sort_by: name
       sort_direction: asc
     fields:
@@ -27,84 +27,34 @@ content:
         type: string
         required: true
       
-      - name: bio
-        label: Short Bio
-        type: text
-        required: true
+      - name: slugOverride
+        label: Slug Override
+        type: string
+        description: Optional custom slug for the URL (defaults to filename)
       
-      - name: fullBio
-        label: Full Bio
-        type: text
-      
-      - name: image
-        label: Profile Image
-        type: image
-        required: true
-      
-      - name: instagram
-        label: Instagram Handle
+      - name: photo
+        label: Photo
         type: string
         required: true
+        description: Path to the artist photo (e.g., /images/artist-placeholder.png)
       
-      - name: tags
-        label: Style Tags
+      - name: intro
+        label: Introduction
+        type: text
+        required: true
+        description: Short introduction text
+      
+      - name: styles
+        label: Styles
         type: string
         list: true
-      
-      - name: bookingHref
-        label: Booking Link
-        type: string
         required: true
+        description: List of style slugs (e.g., linework, blackwork)
       
-      - name: galleryImages
-        label: Gallery Images
-        type: list
-        fields:
-          - name: src
-            label: Image
-            type: image
-          - name: alt
-            label: Alt Text
-            type: string
-          - name: tags
-            label: Styles
-            type: list
-            fields:
-              - name: text
-                label: Style Name
-                type: select
-                options:
-                  - Linework
-                  - Blackwork
-                  - "Floral & Botanic"
-                  - Illustrative
-                  - "Traditional & Old School"
-                  - Cartoon
-                  - Engraving
-                  - "White on Black"
-                  - Fineline
-                  - "Tribal & Neo-Tribal"
-                  - "Classic Black & Grey"
-                  - Featured
-              - name: color
-                label: Tag Color
-                type: select
-                options:
-                  - Primary
-                  - Accent
-                  - Neutral
-      
-      - name: contentBlocks
-        label: Content Sections
-        type: list
-        fields:
-          - name: title
-            label: Section Title
-            type: string
-          - name: paragraphs
-            label: Paragraphs
-            type: string
-            list: true
+      - name: details
+        label: Details
+        type: text
+        description: Optional detailed description (supports markdown)
 
   # ============================================
   # STYLES
@@ -126,74 +76,24 @@ content:
         type: string
         required: true
       
-      - name: description
-        label: Description
+      - name: slugOverride
+        label: Slug Override
+        type: string
+        description: Optional custom slug for the URL (defaults to filename)
+      
+      - name: order
+        label: Order
+        type: number
+        description: Optional numeric order for sorting
+      
+      - name: intro
+        label: Introduction
         type: text
         required: true
+        description: Short introduction text
       
-      - name: artists
-        label: Artists
-        type: list
-        fields:
-          - name: name
-            label: Artist Name
-            type: string
-          - name: href
-            label: Artist Link
-            type: string
-      
-      - name: bookingHref
-        label: Booking Link
-        type: string
-        required: true
-      
-      - name: galleryImages
-        label: Gallery Images
-        type: list
-        fields:
-          - name: src
-            label: Image
-            type: image
-          - name: alt
-            label: Alt Text
-            type: string
-          - name: tags
-            label: Styles
-            type: list
-            fields:
-              - name: text
-                label: Style Name
-                type: select
-                options:
-                  - Linework
-                  - Blackwork
-                  - "Floral & Botanic"
-                  - Illustrative
-                  - "Traditional & Old School"
-                  - Cartoon
-                  - Engraving
-                  - "White on Black"
-                  - Fineline
-                  - "Tribal & Neo-Tribal"
-                  - "Classic Black & Grey"
-                  - Featured
-              - name: color
-                label: Tag Color
-                type: select
-                options:
-                  - Primary
-                  - Accent
-                  - Neutral
-      
-      - name: contentBlocks
-        label: Content Sections
-        type: list
-        fields:
-          - name: title
-            label: Section Title
-            type: string
-          - name: paragraphs
-            label: Paragraphs
-            type: string
-            list: true
+      - name: details
+        label: Details
+        type: text
+        description: Optional detailed description (supports markdown)
 

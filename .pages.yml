@@ -67,12 +67,17 @@ content:
       - name: details
         type: rich-text
       - name: works
+        label: Works Gallery
         type: list
+        options:
+          label: "Work #{_index}"
         fields:
           - name: image
+            label: Image
             type: image
             required: true
           - name: styleTags
+            label: Style Tags
             type: reference
             options:
               collection: styles

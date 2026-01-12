@@ -1,5 +1,6 @@
 ---
 import ArtistImage from '../ArtistImage.astro';
+import Button from '../Button.astro';
 
 interface Props {
   name: string;
@@ -41,6 +42,31 @@ const {
               ).join('')} />
             </p>
           )}
+          
+          <div class="artist-actions">
+            <Button 
+              type="Primary" 
+              color="Primary" 
+              href="/book" 
+              leadingIcon={false} 
+              trailingIcon={true}
+              aria-label="Book a session"
+            >
+              Book A session
+            </Button>
+            {slug && (
+              <Button 
+                type="Secondary" 
+                color="Primary" 
+                href={`/artists/${slug}`}
+                leadingIcon={false} 
+                trailingIcon={true}
+                aria-label={`More about ${name}`}
+              >
+                More about the artist
+              </Button>
+            )}
+          </div>
         </div>
       </div>
 
@@ -59,9 +85,10 @@ const {
 
   .artist-detail-layout {
     display: flex;
-    flex-direction: column;
-    gap: var(--spacing-core-900-md);
+    flex-direction: row;
+    gap: var(--spacing-core-800-md);
     width: 100%;
+    align-items: flex-start;
   }
 
   /* Left Column: Portrait + Info */
@@ -69,7 +96,8 @@ const {
     display: flex;
     flex-wrap: wrap;
     gap: var(--spacing-core-800-md);
-    width: 100%;
+    flex: 0 0 50%;
+    max-width: 640px;
     align-items: flex-start;
   }
 
@@ -86,6 +114,7 @@ const {
     flex: 1;
     min-width: 288px;
     width: 100%;
+    max-width: 100%;
   }
 
   .artist-name {
@@ -122,10 +151,24 @@ const {
     color: var(--color-primary-700);
   }
 
+  .artist-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-core-800-md);
+    padding-top: var(--spacing-core-900-md);
+    width: fit-content;
+    align-items: flex-start;
+  }
+
   /* Tablet Layout */
   @media (min-width: 768px) and (max-width: 1023px) {
+    .artist-detail-layout {
+      flex-direction: column;
+    }
+
     .artist-info-column {
-      max-width: none;
+      flex: 1 1 100%;
+      max-width: 100%;
     }
 
     .artist-name {
@@ -140,13 +183,13 @@ const {
     }
 
     .artist-detail-layout {
-      display: flex;
       flex-direction: column;
-      gap: var(--spacing-core-800-md);
+      gap: var(--spacing-core-900-md);
     }
 
     .artist-info-column {
-      max-width: none;
+      flex: 1 1 100%;
+      max-width: 100%;
       flex-direction: row;
       flex-wrap: wrap;
       gap: var(--spacing-core-700-md);

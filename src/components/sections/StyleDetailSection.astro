@@ -27,13 +27,23 @@ const {
         </div>
         
         <div class="style-actions">
+          <Button 
+            type="Primary" 
+            color="Primary" 
+            href="/book" 
+            leadingIcon={false} 
+            trailingIcon={true}
+            aria-label="Book a session"
+          >
+            Book A session
+          </Button>
           <Button
             type="Secondary"
             color="Primary"
             href={exploreHref}
             leadingIcon={false}
             trailingIcon={true}
-            className="style-explore-link"
+            aria-label={`Explore ${name} style`}
           >
             Explore the style
           </Button>
@@ -55,8 +65,8 @@ const {
 
   .style-detail-layout {
     display: flex;
-    flex-wrap: wrap;
-    gap: var(--spacing-core-900-md);
+    flex-direction: row;
+    gap: var(--spacing-core-800-md);
     width: 100%;
     align-items: flex-start;
   }
@@ -65,7 +75,7 @@ const {
   .style-content-column {
     display: flex;
     flex-direction: column;
-    flex: 1;
+    flex: 0 0 50%;
     min-width: 288px;
     max-width: 640px;
   }
@@ -93,26 +103,23 @@ const {
 
   .style-actions {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: var(--spacing-core-800-md);
-    align-items: center;
+    align-items: flex-start;
     padding-top: var(--spacing-core-900-md);
-    width: 100%;
-  }
-
-  .style-explore-link {
-    height: var(--spacing-core-1000-sm);
-    padding: var(--spacing-core-600-md) 0;
+    width: fit-content;
   }
 
   /* Tablet Layout */
   @media (min-width: 768px) and (max-width: 1023px) {
     .style-detail-layout {
+      flex-direction: column;
       gap: var(--spacing-core-800-md);
     }
 
     .style-content-column {
-      max-width: none;
+      flex: 1 1 100%;
+      max-width: 100%;
       min-width: 280px;
     }
 
@@ -124,17 +131,17 @@ const {
   /* Mobile Layout */
   @media (max-width: 767px) {
     .style-detail-section {
-      padding: var(--spacing-core-1100-md) 0;
+      padding: var(--spacing-core-900-md) 0;
     }
 
     .style-detail-layout {
-      display: flex;
       flex-direction: column;
       gap: var(--spacing-core-900-md);
     }
 
     .style-content-column {
-      max-width: none;
+      flex: 1 1 100%;
+      max-width: 100%;
       min-width: 0;
       width: 100%;
     }
@@ -148,7 +155,7 @@ const {
     }
 
     .style-actions {
-      width: 100%;
+      width: fit-content;
       padding-top: var(--spacing-core-900-md);
     }
   }

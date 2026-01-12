@@ -206,27 +206,20 @@ const isActive = (href: string) => {
     display: flex;
     gap: var(--spacing-core-700-md);
     align-items: center;
-    opacity: 1;
-    visibility: visible;
   }
 
   .header-cta-button {
-    position: absolute;
-    right: 0;
-    opacity: 0;
-    visibility: hidden;
-  }
-
-  /* When hero is scrolled out, show CTA and hide logo */
-  .header[data-hero-scrolled="true"] .header-logo-section {
-    opacity: 0;
-    visibility: hidden;
-  }
-
-  .header[data-hero-scrolled="true"] .header-cta-button {
-    opacity: 1;
-    visibility: visible;
     position: relative;
+  }
+
+  /* When hero is visible, hide CTA (but keep logo visible) */
+  .header[data-hero-scrolled="false"] .header-cta-button {
+    display: none;
+  }
+
+  /* When hero is scrolled out, hide logo (but keep CTA visible) */
+  .header[data-hero-scrolled="true"] .header-logo-section {
+    display: none;
   }
 
   .header-logo-wrapper {

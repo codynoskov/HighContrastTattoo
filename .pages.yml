@@ -80,7 +80,7 @@ content:
     create: true
     delete: true
     view:
-      fields: [image, styles]
+      fields: [image, styles, artist]
       primary: image
     fields:
       - name: image

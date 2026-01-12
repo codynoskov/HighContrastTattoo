@@ -1,6 +1,5 @@
 ---
 import ArtistImage from '../ArtistImage.astro';
-import Button from '../Button.astro';
 import Logo from '../Logo.astro';
 
 interface StyleLink {
@@ -45,18 +44,6 @@ const {
             ).join('')} />
           </p>
         )}
-        
-        <div class="artist-actions">
-          <Button
-            type="Primary"
-            color="Primary"
-            href="/book"
-            leadingIcon={false}
-            trailingIcon={true}
-          >
-            Book a session
-          </Button>
-        </div>
       </div>
 
       <!-- Right Column: Artist Photo -->
@@ -154,14 +141,6 @@ const {
     color: var(--color-primary-700);
   }
 
-  .artist-actions {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-core-800-md);
-    align-items: flex-start;
-    padding-top: var(--spacing-core-900-md);
-  }
-
   /* Right Column: Portrait */
   .artist-portrait {
     display: flex;
@@ -242,11 +221,6 @@ const {
     .artist-intro {
       font: var(--typography-body-lg);
       width: 100%;
-    }
-
-    .artist-actions {
-      padding-top: var(--spacing-core-900-md);
-      width: auto;
     }
   }
 </style>

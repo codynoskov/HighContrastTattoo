@@ -1,31 +1,17 @@
 ---
-import Gallery from '../Gallery.astro';
 import Button from '../Button.astro';
 
-interface GalleryImage {
-  src: string;
-  alt?: string;
-  tags?: Array<{
-    text: string;
-    color?: "Primary" | "Accent" | "Neutral";
-  }>;
-}
-
 interface Props {
-  galleryImages?: GalleryImage[];
   details?: string;
   showBackLink?: boolean;
   className?: string;
 }
 
 const {
-  galleryImages = [],
   details,
   showBackLink = true,
   className = ""
 } = Astro.props;
-
-// Single continuous gallery - all images shown
 
 // Render markdown to HTML - handles H2 headings and paragraphs
 function renderMarkdown(markdown: string | undefined): string {
@@ -67,13 +53,6 @@ const detailsHtml = renderMarkdown(details);
 
 <section class={`artist-content-section ${className}`}>
   <div class="container">
-    <!-- Gallery (all images, starting with 3, continuing from 4th) -->
-    {galleryImages.length > 0 && (
-      <div class="gallery-wrapper">
-        <Gallery images={galleryImages} maxVisible={galleryImages.length} />
-      </div>
-    )}
-
     <!-- Details Content -->
     {details && (
       <div class="details-content" set:html={detailsHtml} />
@@ -113,11 +92,6 @@ const detailsHtml = renderMarkdown(details);
 
   .artist-content-section :global(.container) {
     gap: var(--spacing-core-1100-md);
-  }
-
-  /* Gallery */
-  .gallery-wrapper {
-    width: 100%;
   }
 
   /* Details Content */

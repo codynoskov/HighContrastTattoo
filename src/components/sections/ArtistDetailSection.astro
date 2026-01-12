@@ -1,17 +1,5 @@
 ---
 import ArtistImage from '../ArtistImage.astro';
-import Button from '../Button.astro';
-import Gallery from '../Gallery.astro';
-import placeholderImage from '../../assets/images/placeholder.png';
-
-interface GalleryImage {
-  src: string;
-  alt?: string;
-  tags?: Array<{
-    text: string;
-    color?: "Primary" | "Accent" | "Neutral";
-  }>;
-}
 
 interface Props {
   name: string;
@@ -19,8 +7,6 @@ interface Props {
   intro: string;
   photo?: string;
   styles?: string[];
-  galleryImages?: GalleryImage[];
-  aboutHref?: string;
   className?: string;
 }
 
@@ -30,18 +16,8 @@ const {
   intro,
   photo,
   styles = [],
-  galleryImages = [],
-  aboutHref = slug ? `/artists/${slug}` : `#${name.toLowerCase().replace(/\s+/g, '-')}`,
   className = ""
 } = Astro.props;
-
-// Generate default gallery images if none provided
-const defaultGalleryImages: GalleryImage[] = Array(6).fill(null).map((_, i) => ({
-  src: placeholderImage.src,
-  alt: `${name}'s work ${i + 1}`
-}));
-
-const displayGalleryImages = galleryImages.length > 0 ? galleryImages : defaultGalleryImages;
 ---
 
 <section class={`artist-detail-section ${className}`}>
@@ -65,35 +41,9 @@ const displayGalleryImages = galleryImages.length > 0 ? galleryImages : defaultG
               ).join('')} />
             </p>
           )}
-          
-          <div class="artist-actions">
-            <Button
-              type="Primary"
-              color="Primary"
-              href="/book"
-              leadingIcon={false}
-              trailingIcon={true}
-            >
-              Book a session
-            </Button>
-            <Button
-              type="Secondary"
-              color="Primary"
-              href={aboutHref}
-              leadingIcon={false}
-              trailingIcon={true}
-              className="artist-about-link"
-            >
-              More about the artist
-            </Button>
-          </div>
         </div>
       </div>
 
-      <!-- Right Column: Gallery -->
-      <div class="artist-gallery-column">
-        <Gallery images={displayGalleryImages} maxVisible={6} />
-      </div>
     </div>
   </div>
 </section>
@@ -108,11 +58,10 @@ const displayGalleryImages = galleryImages.length > 0 ? galleryImages : defaultG
   }
 
   .artist-detail-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     gap: var(--spacing-core-900-md);
     width: 100%;
-    align-items: start;
   }
 
   /* Left Column: Portrait + Info */
@@ -173,34 +122,8 @@ const displayGalleryImages = galleryImages.length > 0 ? galleryImages : defaultG
     color: var(--color-primary-700);
   }
 
-  .artist-actions {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-core-800-md);
-    align-items: flex-start;
-    padding-top: var(--spacing-core-900-md);
-    width: 100%;
-  }
-
-  .artist-about-link {
-    height: var(--spacing-core-1000-sm);
-    padding: var(--spacing-core-600-md) 0;
-  }
-
-  /* Right Column: Gallery */
-  .artist-gallery-column {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    min-width: 0;
-  }
-
   /* Tablet Layout */
   @media (min-width: 768px) and (max-width: 1023px) {
-    .artist-detail-layout {
-      grid-template-columns: 1fr 1fr;
-    }
-
     .artist-info-column {
       max-width: none;
     }
@@ -245,15 +168,6 @@ const displayGalleryImages = galleryImages.length > 0 ? galleryImages : defaultG
 
     .artist-intro {
       font: var(--typography-body-md);
-    }
-
-    .artist-actions {
-      width: 100%;
-      padding-top: var(--spacing-core-500-md);
-    }
-
-    .artist-gallery-column {
-      width: 100%;
     }
   }
 </style>

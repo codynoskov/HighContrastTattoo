@@ -4,7 +4,6 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Divider from '../../components/Divider.astro';
 import ArtistPageHeroSection from '../../components/sections/ArtistPageHeroSection.astro';
-import ArtistContentSection from '../../components/sections/ArtistContentSection.astro';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import { getSlug, resolveStyles } from '../../utils/contentHelpers';
@@ -30,7 +29,6 @@ const artistData = artist.data;
 // Compute derived data
 const artistSlug = getSlug(artist);
 const resolvedStyles = resolveStyles(artistData.styles, styles);
-const galleryImages = [];
 ---
 
 <Layout>
@@ -41,12 +39,6 @@ const galleryImages = [];
       intro={artistData.intro}
       photo={artistData.photo}
       styles={resolvedStyles}
-    />
-    
-    <ArtistContentSection
-      galleryImages={galleryImages}
-      details={artistData.details}
-      showBackLink={true}
     />
     
     <Divider color="light" />

@@ -26,12 +26,16 @@ export const collections = {
       intro: z.string(),
       styles: z.array(uuid),
       details: z.string().optional(),
-      works: z.array(
-        z.object({
-          image: z.string(),
-          styleTags: z.array(uuid),
-        })
-      ),
+    }),
+  }),
+
+  works: defineCollection({
+    type: 'content',
+    schema: z.object({
+      id: uuid,
+      image: z.string(),
+      styles: z.array(uuid),
+      artist: uuid,
     }),
   }),
 };

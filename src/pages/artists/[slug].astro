@@ -7,29 +7,32 @@ import ArtistPageHeroSection from '../../components/sections/ArtistPageHeroSecti
 import ArtistContentSection from '../../components/sections/ArtistContentSection.astro';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import { getSlug, resolveStyles, worksToGalleryImages } from '../../utils/contentHelpers';
+import { getSlug, resolveStyles, worksToGalleryImages, getWorksByArtist } from '../../utils/contentHelpers';
 
 export async function getStaticPaths() {
   const artists = await getCollection('artists');
   const styles = await getCollection('styles');
+  const works = await getCollection('works');
   
   return artists.map((artist) => ({
     params: { slug: getSlug(artist) },
-    props: { artist, styles }
+    props: { artist, styles, works }
   }));
 }
 
 interface Props {
   artist: CollectionEntry<'artists'>;
   styles: CollectionEntry<'styles'>[];
+  works: CollectionEntry<'works'>[];
 }
 
-const { artist, styles } = Astro.props;
+const { artist, styles, works } = Astro.props;
 const artistData = artist.data;
 
 // Compute derived data
 const resolvedStyles = resolveStyles(artistData.styles, styles);
-const galleryImages = worksToGalleryImages(artistData.works, artistData.name, styles);
+const artistWorks = getWorksByArtist(artistData.id, works);
+const galleryImages = worksToGalleryImages(artistWorks, artistData.name, styles);
 ---
 
 <Layout>

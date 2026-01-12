@@ -66,21 +66,36 @@ content:
           label: "{name}"
       - name: details
         type: rich-text
-      - name: works
-        label: Works Gallery
-        type: list
+
+  - name: works
+    label: Works
+    type: collection
+    path: src/content/works
+    extension: md
+    create: true
+    delete: true
+    fields:
+      - name: id
+        type: uuid
         options:
-          label: "Work"
-        fields:
-          - name: image
-            label: Image
-            type: image
-            required: true
-          - name: styleTags
-            label: Style Tags
-            type: reference
-            options:
-              collection: styles
-              multiple: true
-              value: "{id}"
-              label: "{name}"
+          editable: false
+      - name: image
+        label: Image
+        type: image
+        required: true
+      - name: styles
+        label: Styles
+        type: reference
+        options:
+          collection: styles
+          multiple: true
+          value: "{id}"
+          label: "{name}"
+      - name: artist
+        label: Artist
+        type: reference
+        options:
+          collection: artists
+          multiple: false
+          value: "{id}"
+          label: "{name}"

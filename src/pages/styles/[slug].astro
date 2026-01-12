@@ -12,24 +12,26 @@ import { getSlug, getRelatedArtists, getStyleGalleryImages } from '../../utils/c
 export async function getStaticPaths() {
   const styles = await getCollection('styles');
   const artists = await getCollection('artists');
+  const works = await getCollection('works');
   
   return styles.map((style) => ({
     params: { slug: getSlug(style) },
-    props: { style, artists }
+    props: { style, artists, works }
   }));
 }
 
 interface Props {
   style: CollectionEntry<'styles'>;
   artists: CollectionEntry<'artists'>[];
+  works: CollectionEntry<'works'>[];
 }
 
-const { style, artists } = Astro.props;
+const { style, artists, works } = Astro.props;
 const styleData = style.data;
 
 // Compute derived data
-const relatedArtists = getRelatedArtists(styleData.id, artists);
-const galleryImages = getStyleGalleryImages(styleData.id, artists, styleData.name, styleData.cover);
+const relatedArtists = getRelatedArtists(styleData.id, artists, works);
+const galleryImages = getStyleGalleryImages(styleData.id, works, artists, styleData.name, styleData.cover);
 ---
 
 <Layout>

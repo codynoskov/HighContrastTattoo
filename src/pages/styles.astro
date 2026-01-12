@@ -10,6 +10,7 @@ import { getSlug, getRelatedArtists, getStyleGalleryImages } from '../utils/cont
 
 const styleEntries = await getCollection('styles');
 const artistEntries = await getCollection('artists');
+const works = await getCollection('works');
 
 // Sort styles by order if defined
 const sortedStyles = [...styleEntries].sort((a, b) => {
@@ -22,8 +23,8 @@ const styles = sortedStyles.map(entry => ({
   name: entry.data.name,
   slug: getSlug(entry),
   intro: entry.data.intro,
-  artists: getRelatedArtists(entry.data.id, artistEntries),
-  galleryImages: getStyleGalleryImages(entry.data.id, artistEntries, entry.data.name, entry.data.cover),
+  artists: getRelatedArtists(entry.data.id, artistEntries, works),
+  galleryImages: getStyleGalleryImages(entry.data.id, works, artistEntries, entry.data.name, entry.data.cover),
 }));
 ---
 

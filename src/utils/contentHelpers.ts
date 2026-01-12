@@ -2,6 +2,7 @@ import type { CollectionEntry } from 'astro:content';
 
 type ArtistEntry = CollectionEntry<'artists'>;
 type StyleEntry = CollectionEntry<'styles'>;
+type WorkEntry = CollectionEntry<'works'>;
 
 export interface GalleryImage {
   src: string;
@@ -30,14 +31,18 @@ export function getSlug(entry: { slug: string; data: { slugOverride?: string; na
  * Matches by checking if the style ID is in the artist's styles array
  * OR if any of their works are tagged with this style.
  */
-export function getRelatedArtists(styleId: string, artists: ArtistEntry[]): Artist[] {
+export function getRelatedArtists(
+  styleId: string,
+  artists: ArtistEntry[],
+  works: WorkEntry[]
+): Artist[] {
   return artists
     .filter((artist) => {
       // Check if artist has this style in their styles array
       const hasStyle = artist.data.styles.includes(styleId);
       // Check if any of their works are tagged with this style
-      const hasTaggedWork = artist.data.works.some((work) =>
-        work.styleTags.includes(styleId)
+      const hasTaggedWork = works.some(
+        (work) => work.data.artist === artist.data.id && work.data.styles.includes(styleId)
       );
       return hasStyle || hasTaggedWork;
     })
@@ -48,26 +53,27 @@ export function getRelatedArtists(styleId: string, artists: ArtistEntry[]): Arti
 }
 
 /**
- * Get gallery images for a style by collecting works from artists that are tagged with this style.
+ * Get gallery images for a style by collecting works that are tagged with this style.
  * Falls back to the style's cover image if no tagged works exist.
  */
 export function getStyleGalleryImages(
   styleId: string,
+  works: WorkEntry[],
   artists: ArtistEntry[],
   styleName: string,
   fallbackCover?: string
 ): GalleryImage[] {
   const images: GalleryImage[] = [];
+  const artistMap = new Map(artists.map((a) => [a.data.id, a.data.name]));
 
-  for (const artist of artists) {
-    for (const work of artist.data.works) {
-      if (work.styleTags.includes(styleId)) {
-        images.push({
-          src: work.image,
-          alt: `${styleName} tattoo by ${artist.data.name}`,
-          tags: [{ text: `By ${artist.data.name}`, color: 'Accent' }],
-        });
-      }
+  for (const work of works) {
+    if (work.data.styles.includes(styleId)) {
+      const artistName = artistMap.get(work.data.artist) || 'Unknown Artist';
+      images.push({
+        src: work.data.image,
+        alt: `${styleName} tattoo by ${artistName}`,
+        tags: [{ text: `By ${artistName}`, color: 'Accent' }],
+      });
     }
   }
 
@@ -112,23 +118,30 @@ export function resolveStyles(styleIds: string[], styles: StyleEntry[]): Array<{
 }
 
 /**
- * Convert artist works to gallery images format.
+ * Convert works collection entries to gallery images format.
  */
 export function worksToGalleryImages(
-  works: Array<{ image: string; styleTags: string[] }>,
+  works: WorkEntry[],
   artistName: string,
   styles: StyleEntry[]
 ): GalleryImage[] {
   return works.map((work) => {
-    const styleNames = resolveStyleNames(work.styleTags, styles);
+    const styleNames = resolveStyleNames(work.data.styles, styles);
     const tags: GalleryImage['tags'] = styleNames.length > 0
       ? styleNames.map((name) => ({ text: name, color: 'Primary' as const }))
       : undefined;
 
     return {
-      src: work.image,
+      src: work.data.image,
       alt: `Tattoo work by ${artistName}`,
       tags,
     };
   });
+}
+
+/**
+ * Get works by artist ID.
+ */
+export function getWorksByArtist(artistId: string, works: WorkEntry[]): WorkEntry[] {
+  return works.filter((work) => work.data.artist === artistId);
 }

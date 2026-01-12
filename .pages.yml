@@ -74,6 +74,8 @@ content:
           multiple: true
           value: "{id}"
           label: "{name}"
+        ui:
+          listLabel: "{name}"
       - name: details
         type: rich-text
 
@@ -106,6 +108,8 @@ content:
           multiple: true
           value: "{id}"
           label: "{name}"
+        ui:
+          listLabel: "{name}"
       - name: artist
         label: Artist
         type: reference
@@ -114,3 +118,5 @@ content:
           multiple: false
           value: "{id}"
           label: "{name}"
+        ui:
+          listLabel: "{name}"

@@ -7,108 +7,6 @@ media:
     categories: [image]
 
 content:
-  # ============================================
-  # ARTISTS
-  # ============================================
-  - name: artists
-    label: Artists
-    type: collection
-    path: src/content/artists
-    extension: md
-    create: true
-    delete: true
-    view:
-      fields: [name, instagram]
-      sort_by: name
-      sort_direction: asc
-    fields:
-      - name: name
-        label: Name
-        type: string
-        required: true
-      
-      - name: bio
-        label: Short Bio
-        type: text
-        required: true
-      
-      - name: fullBio
-        label: Full Bio
-        type: text
-      
-      - name: image
-        label: Profile Image
-        type: image
-        required: true
-      
-      - name: instagram
-        label: Instagram Handle
-        type: string
-        required: true
-      
-      - name: tags
-        label: Style Tags
-        type: string
-        list: true
-      
-      - name: bookingHref
-        label: Booking Link
-        type: string
-        required: true
-      
-      - name: galleryImages
-        label: Gallery Images
-        type: list
-        fields:
-          - name: src
-            label: Image
-            type: image
-          - name: alt
-            label: Alt Text
-            type: string
-          - name: tags
-            label: Styles
-            type: list
-            fields:
-              - name: text
-                label: Style Name
-                type: select
-                options:
-                  - Linework
-                  - Blackwork
-                  - "Floral & Botanic"
-                  - Illustrative
-                  - "Traditional & Old School"
-                  - Cartoon
-                  - Engraving
-                  - "White on Black"
-                  - Fineline
-                  - "Tribal & Neo-Tribal"
-                  - "Classic Black & Grey"
-                  - Featured
-              - name: color
-                label: Tag Color
-                type: select
-                options:
-                  - Primary
-                  - Accent
-                  - Neutral
-      
-      - name: contentBlocks
-        label: Content Sections
-        type: list
-        fields:
-          - name: title
-            label: Section Title
-            type: string
-          - name: paragraphs
-            label: Paragraphs
-            type: string
-            list: true
-
-  # ============================================
-  # STYLES
-  # ============================================
   - name: styles
     label: Tattoo Styles
     type: collection
@@ -116,84 +14,68 @@ content:
     extension: md
     create: true
     delete: true
-    view:
-      fields: [name]
-      sort_by: name
-      sort_direction: asc
     fields:
+      - name: id
+        type: uuid
+        options:
+          editable: false
       - name: name
-        label: Style Name
         type: string
         required: true
-      
-      - name: description
-        label: Description
+      - name: slugOverride
+        type: string
+      - name: order
+        type: number
+      - name: intro
         type: text
         required: true
-      
-      - name: artists
-        label: Artists
-        type: list
-        fields:
-          - name: name
-            label: Artist Name
-            type: string
-          - name: href
-            label: Artist Link
-            type: string
-      
-      - name: bookingHref
-        label: Booking Link
+      - name: details
+        type: rich-text
+      - name: cover
+        type: image
+
+  - name: artists
+    label: Artists
+    type: collection
+    path: src/content/artists
+    extension: md
+    create: true
+    delete: true
+    fields:
+      - name: id
+        type: uuid
+        options:
+          editable: false
+      - name: name
         type: string
         required: true
-      
-      - name: galleryImages
-        label: Gallery Images
+      - name: slugOverride
+        type: string
+      - name: photo
+        type: image
+        required: true
+      - name: intro
+        type: text
+        required: true
+      - name: styles
+        type: reference
+        options:
+          collection: styles
+          multiple: true
+          value: "{id}"
+          label: "{name}"
+      - name: details
+        type: rich-text
+      - name: works
         type: list
         fields:
-          - name: src
-            label: Image
+          - name: image
             type: image
-          - name: alt
-            label: Alt Text
-            type: string
-          - name: tags
-            label: Styles
-            type: list
-            fields:
-              - name: text
-                label: Style Name
-                type: select
-                options:
-                  - Linework
-                  - Blackwork
-                  - "Floral & Botanic"
-                  - Illustrative
-                  - "Traditional & Old School"
-                  - Cartoon
-                  - Engraving
-                  - "White on Black"
-                  - Fineline
-                  - "Tribal & Neo-Tribal"
-                  - "Classic Black & Grey"
-                  - Featured
-              - name: color
-                label: Tag Color
-                type: select
-                options:
-                  - Primary
-                  - Accent
-                  - Neutral
-      
-      - name: contentBlocks
-        label: Content Sections
-        type: list
-        fields:
-          - name: title
-            label: Section Title
-            type: string
-          - name: paragraphs
-            label: Paragraphs
-            type: string
-            list: true
-
+            required: true
+          - name: styleTags
+            type: reference
+            options:
+              collection: styles
+              multiple: true
+              value: "{id}"
+              label: "{name}"

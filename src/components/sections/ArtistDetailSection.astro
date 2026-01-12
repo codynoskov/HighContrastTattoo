@@ -16,12 +16,10 @@ interface GalleryImage {
 interface Props {
   name: string;
   slug?: string;
-  bio: string;
-  image?: string;
-  instagram?: string;
-  tags?: string[];
+  intro: string;
+  photo?: string;
+  styles?: string[];
   galleryImages?: GalleryImage[];
-  bookingHref?: string;
   aboutHref?: string;
   className?: string;
 }
@@ -29,12 +27,10 @@ interface Props {
 const {
   name,
   slug,
-  bio,
-  image,
-  instagram,
-  tags = [],
+  intro,
+  photo,
+  styles = [],
   galleryImages = [],
-  bookingHref = "/book",
   aboutHref = slug ? `/artists/${slug}` : `#${name.toLowerCase().replace(/\s+/g, '-')}`,
   className = ""
 } = Astro.props;
@@ -54,28 +50,19 @@ const displayGalleryImages = galleryImages.length > 0 ? galleryImages : defaultG
       <!-- Left Column: Portrait + Info -->
       <div class="artist-info-column">
         <div class="artist-portrait">
-          <ArtistImage image={image} imageAlt={`${name} - Tattoo Artist`} />
+          <ArtistImage image={photo} imageAlt={`${name} - Tattoo Artist`} />
         </div>
         
         <div class="artist-info">
           <h2 class="artist-name">{name}</h2>
-          <p class="artist-bio">{bio}</p>
+          <p class="artist-intro">{intro}</p>
           
-          {tags.length > 0 && (
+          {styles.length > 0 && (
             <p class="artist-styles">
               <strong>Styles the artist works in:</strong>{" "}
-              <span set:html={tags.map((tag, index) => 
-                `<a href="#" class="artist-style-link">${tag}</a>${index < tags.length - 1 ? ', ' : ''}`
+              <span set:html={styles.map((style, index) => 
+                `<a href="/styles#${style.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and')}" class="artist-style-link">${style}</a>${index < styles.length - 1 ? ', ' : ''}`
               ).join('')} />
-            </p>
-          )}
-          
-          {instagram && (
-            <p class="artist-instagram">
-              <strong>Instagram:</strong>{" "}
-              <a href={`https://instagram.com/${instagram.replace('@', '')}`} target="_blank" rel="noopener noreferrer">
-                @{instagram.replace('@', '')}
-              </a>
             </p>
           )}
           
@@ -83,7 +70,7 @@ const displayGalleryImages = galleryImages.length > 0 ? galleryImages : defaultG
             <Button
               type="Primary"
               color="Primary"
-              href={bookingHref}
+              href="/book"
               leadingIcon={false}
               trailingIcon={true}
             >
@@ -158,7 +145,7 @@ const displayGalleryImages = galleryImages.length > 0 ? galleryImages : defaultG
     margin: 0;
   }
 
-  .artist-bio {
+  .artist-intro {
     font: var(--typography-body-md);
     color: var(--color-primary-900);
     margin: 0;
@@ -183,25 +170,6 @@ const displayGalleryImages = galleryImages.length > 0 ? galleryImages : defaultG
   }
 
   .artist-style-link:hover {
-    color: var(--color-primary-700);
-  }
-
-  .artist-instagram {
-    font: var(--typography-body-md);
-    color: var(--color-primary-900);
-    margin: 0;
-  }
-
-  .artist-instagram strong {
-    font-weight: var(--font-weight-bold);
-  }
-
-  .artist-instagram a {
-    color: var(--color-primary-900);
-    text-decoration: underline;
-  }
-
-  .artist-instagram a:hover {
     color: var(--color-primary-700);
   }
 
@@ -275,7 +243,7 @@ const displayGalleryImages = galleryImages.length > 0 ? galleryImages : defaultG
       font: var(--typography-h3);
     }
 
-    .artist-bio {
+    .artist-intro {
       font: var(--typography-body-md);
     }
 

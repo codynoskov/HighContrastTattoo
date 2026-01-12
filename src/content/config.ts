@@ -1,51 +1,37 @@
 import { defineCollection, z } from 'astro:content';
 
-const galleryImageSchema = z.object({
-  src: z.string(),
-  alt: z.string().optional(),
-  tags: z.array(z.object({
-    text: z.string(),
-    color: z.enum(["Primary", "Accent", "Neutral"]).optional()
-  })).optional()
-});
-
-const contentBlockSchema = z.object({
-  title: z.string(),
-  paragraphs: z.array(z.string()),
-  gallery: z.array(galleryImageSchema).optional()
-});
-
-const artistsCollection = defineCollection({
-  type: 'content',
-  schema: z.object({
-    name: z.string(),
-    bio: z.string(),
-    fullBio: z.string().optional(),
-    image: z.string(),
-    instagram: z.string(),
-    tags: z.array(z.string()),
-    bookingHref: z.string(),
-    galleryImages: z.array(galleryImageSchema),
-    contentBlocks: z.array(contentBlockSchema).optional()
-  })
-});
-
-const stylesCollection = defineCollection({
-  type: 'content',
-  schema: z.object({
-    name: z.string(),
-    description: z.string(),
-    artists: z.array(z.object({
-      name: z.string(),
-      href: z.string().optional()
-    })),
-    galleryImages: z.array(galleryImageSchema),
-    contentBlocks: z.array(contentBlockSchema).optional(),
-    bookingHref: z.string()
-  })
-});
+const uuid = z.string().uuid();
 
 export const collections = {
-  artists: artistsCollection,
-  styles: stylesCollection
+  styles: defineCollection({
+    type: 'content',
+    schema: z.object({
+      id: uuid,
+      name: z.string(),
+      slugOverride: z.string().optional(),
+      order: z.number().optional(),
+      intro: z.string(),
+      details: z.string().optional(),
+      cover: z.string().optional(),
+    }),
+  }),
+
+  artists: defineCollection({
+    type: 'content',
+    schema: z.object({
+      id: uuid,
+      name: z.string(),
+      slugOverride: z.string().optional(),
+      photo: z.string(),
+      intro: z.string(),
+      styles: z.array(uuid),
+      details: z.string().optional(),
+      works: z.array(
+        z.object({
+          image: z.string(),
+          styleTags: z.array(uuid),
+        })
+      ),
+    }),
+  }),
 };

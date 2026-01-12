@@ -6,11 +6,18 @@ import Divider from '../components/Divider.astro';
 import ArtistsHeroSection from '../components/sections/ArtistsHeroSection.astro';
 import ArtistDetailSection from '../components/sections/ArtistDetailSection.astro';
 import { getCollection } from 'astro:content';
+import { getSlug, resolveStyleNames, worksToGalleryImages } from '../utils/contentHelpers';
 
 const artistEntries = await getCollection('artists');
+const styleEntries = await getCollection('styles');
+
 const artists = artistEntries.map(entry => ({
-  ...entry.data,
-  slug: entry.slug
+  name: entry.data.name,
+  slug: getSlug(entry),
+  intro: entry.data.intro,
+  photo: entry.data.photo,
+  styles: resolveStyleNames(entry.data.styles, styleEntries),
+  galleryImages: worksToGalleryImages(entry.data.works, entry.data.name, styleEntries),
 }));
 ---
 
@@ -26,11 +33,10 @@ const artists = artistEntries.map(entry => ({
         <ArtistDetailSection
           name={artist.name}
           slug={artist.slug}
-          bio={artist.bio}
-          image={artist.image}
-          instagram={artist.instagram}
-          tags={artist.tags}
-          bookingHref={artist.bookingHref}
+          intro={artist.intro}
+          photo={artist.photo}
+          styles={artist.styles}
+          galleryImages={artist.galleryImages}
         />
         {index < artists.length - 1 && <Divider color="light" />}
       </>

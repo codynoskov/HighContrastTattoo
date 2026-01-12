@@ -7,21 +7,29 @@ import StylePageHeroSection from '../../components/sections/StylePageHeroSection
 import StyleContentSection from '../../components/sections/StyleContentSection.astro';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
+import { getSlug, getRelatedArtists, getStyleGalleryImages } from '../../utils/contentHelpers';
 
 export async function getStaticPaths() {
   const styles = await getCollection('styles');
+  const artists = await getCollection('artists');
+  
   return styles.map((style) => ({
-    params: { slug: style.slug },
-    props: { style }
+    params: { slug: getSlug(style) },
+    props: { style, artists }
   }));
 }
 
 interface Props {
   style: CollectionEntry<'styles'>;
+  artists: CollectionEntry<'artists'>[];
 }
 
-const { style } = Astro.props;
+const { style, artists } = Astro.props;
 const styleData = style.data;
+
+// Compute derived data
+const relatedArtists = getRelatedArtists(styleData.id, artists);
+const galleryImages = getStyleGalleryImages(styleData.id, artists, styleData.name, styleData.cover);
 ---
 
 <Layout>
@@ -29,14 +37,13 @@ const styleData = style.data;
   <main>
     <StylePageHeroSection
       name={styleData.name}
-      description={styleData.description}
-      artists={styleData.artists}
-      bookingHref={styleData.bookingHref}
+      intro={styleData.intro}
+      artists={relatedArtists}
     />
     
     <StyleContentSection
-      galleryImages={styleData.galleryImages}
-      contentBlocks={styleData.contentBlocks}
+      galleryImages={galleryImages}
+      details={styleData.details}
       showBackLink={true}
     />
     

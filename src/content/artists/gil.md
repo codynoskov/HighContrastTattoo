@@ -1,69 +1,18 @@
 ---
-name: "Gil"
-bio: "Born and raised in Berlin. I do engraving tattoos inspired by medieval woodcuts and copper engravings. I really enjoy doing nature themed tattoos like flowers, animals, medieval stuff and designs out of the soulsborne universe. Every piece I create is a journey into historical artistry, bringing centuries-old techniques into modern skin art."
-fullBio: "Growing up surrounded by Berlin's rich artistic heritage shaped my approach to tattooing. I found my calling in the intricate world of engraving-style tattoos, where every line tells a story and the level of detail creates truly mesmerizing pieces."
-image: "/images/artist-placeholder.png"
-instagram: "gil_engraving"
-tags:
-  - "Linework"
-  - "Floral & Botanic"
-  - "Engraving"
-bookingHref: "/book?artist=gil"
-galleryImages:
-  - src: "/images/placeholder.png"
-    alt: "Gil's tattoo work 1"
-    tags:
-      - text: "Featured"
-        color: "Accent"
-  - src: "/images/placeholder.png"
-    alt: "Gil's tattoo work 2"
-  - src: "/images/placeholder.png"
-    alt: "Gil's tattoo work 3"
-  - src: "/images/placeholder.png"
-    alt: "Gil's tattoo work 4"
-  - src: "/images/placeholder.png"
-    alt: "Gil's tattoo work 5"
-  - src: "/images/placeholder.png"
-    alt: "Gil's tattoo work 6"
-  - src: "/images/placeholder.png"
-    alt: "Gil's tattoo work 7"
-  - src: "/images/placeholder.png"
-    alt: "Gil's tattoo work 8"
-  - src: "/images/placeholder.png"
-    alt: "Gil's tattoo work 9"
-  - src: "/images/placeholder.png"
-    alt: "Gil's tattoo work 10"
-  - src: "/images/placeholder.png"
-    alt: "Gil's tattoo work 11"
-  - src: "/images/placeholder.png"
-    alt: "Gil's tattoo work 12"
-contentBlocks:
-  - title: "Style & Direction"
-    paragraphs:
-      - "My engraving style pays homage to the master printmakers of the medieval and Renaissance periods. Using precise linework and careful shading, I recreate the look of woodcuts and copper engravings directly on skin. The result is tattoos that feel like living pieces of historical art."
-      - "Nature themes dominate my portfolio — botanical illustrations, animal studies, and mythological creatures rendered with meticulous attention to detail. I also love creating pieces inspired by the dark fantasy aesthetic of games like Dark Souls and Bloodborne."
-  - title: "Flash & Custom Work"
-    paragraphs:
-      - "While I do maintain a selection of flash designs, my work leans heavily toward custom pieces. The nature of engraving-style tattoos means each design benefits from being tailored to the specific placement and size we're working with."
-      - "For custom work, I spend significant time researching historical references and developing original artwork. Expect the design process to take several weeks for complex pieces — the results are worth the wait."
-    gallery:
-      - src: "/images/placeholder.png"
-        alt: "Gil Flash 1"
-        tags:
-          - text: "Featured"
-            color: "Accent"
-      - src: "/images/placeholder.png"
-        alt: "Gil Flash 2"
-      - src: "/images/placeholder.png"
-        alt: "Gil Flash 3"
-      - src: "/images/placeholder.png"
-        alt: "Gil Flash 4"
-      - src: "/images/placeholder.png"
-        alt: "Gil Flash 5"
-      - src: "/images/placeholder.png"
-        alt: "Gil Flash 6"
-  - title: "Booking & Sessions"
-    paragraphs:
-      - "Engraving-style tattoos require patience, both from the artist and the client. Sessions may run longer than traditional tattoos due to the detailed linework involved. I recommend breaking larger pieces into multiple sessions for comfort and optimal results."
-      - "To book, reach out with your ideas and preferred placement. Include any reference images that inspire you — whether that's historical engravings, game artwork, or natural subjects you'd like to incorporate."
+id: 1f9c34ee-1d74-4c9f-9c54-3e5bc8f4a3d3
+name: Gil
+photo: /images/artist-placeholder.png
+intro: Engraving-style tattoos inspired by medieval prints.
+styles:
+  - 56b35e71-3f31-44a8-bfa1-d69500cb7ef9
+  - 6269b5a9-db1d-4f74-be0a-0c6eddc9dc19
+works:
+  - image: /images/placeholder.png
+    styleTags: []
+details: |
+  Highly detailed historical-inspired work.
+
+  ---
+
+  Custom-focused process.
 ---

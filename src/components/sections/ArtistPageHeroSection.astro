@@ -3,30 +3,26 @@ import ArtistImage from '../ArtistImage.astro';
 import Button from '../Button.astro';
 import Logo from '../Logo.astro';
 
+interface StyleLink {
+  name: string;
+  href: string;
+}
+
 interface Props {
   name: string;
-  bio: string;
-  fullBio?: string;
-  image?: string;
-  instagram?: string;
-  tags?: string[];
-  bookingHref?: string;
+  intro: string;
+  photo?: string;
+  styles?: StyleLink[];
   className?: string;
 }
 
 const {
   name,
-  bio,
-  fullBio,
-  image,
-  instagram,
-  tags = [],
-  bookingHref = "/book",
+  intro,
+  photo,
+  styles = [],
   className = ""
 } = Astro.props;
-
-// Use fullBio if available, otherwise fall back to bio
-const displayBio = fullBio || bio;
 ---
 
 <section class={`artist-page-hero ${className}`} data-top-section>
@@ -39,22 +35,13 @@ const displayBio = fullBio || bio;
       <!-- Left Column: Artist Info -->
       <div class="artist-info">
         <h1 class="artist-name">{name}</h1>
-        <p class="artist-bio">{displayBio}</p>
+        <p class="artist-intro">{intro}</p>
         
-        {instagram && (
-          <p class="artist-instagram">
-            <strong>Instagram:</strong>{" "}
-            <a href={`https://instagram.com/${instagram.replace('@', '')}`} target="_blank" rel="noopener noreferrer">
-              @{instagram.replace('@', '')}
-            </a>
-          </p>
-        )}
-        
-        {tags.length > 0 && (
+        {styles.length > 0 && (
           <p class="artist-styles">
             <strong>Styles the artist works in:</strong>{" "}
-            <span set:html={tags.map((tag, index) => 
-              `<a href="/styles#${tag.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and')}" class="artist-style-link">${tag}</a>${index < tags.length - 1 ? ', ' : ''}`
+            <span set:html={styles.map((style, index) => 
+              `<a href="${style.href}" class="artist-style-link">${style.name}</a>${index < styles.length - 1 ? ', ' : ''}`
             ).join('')} />
           </p>
         )}
@@ -63,7 +50,7 @@ const displayBio = fullBio || bio;
           <Button
             type="Primary"
             color="Primary"
-            href={bookingHref}
+            href="/book"
             leadingIcon={false}
             trailingIcon={true}
           >
@@ -74,7 +61,7 @@ const displayBio = fullBio || bio;
 
       <!-- Right Column: Artist Photo -->
       <div class="artist-portrait">
-        <ArtistImage image={image} imageAlt={`${name} - Tattoo Artist at High Contrast Tattoo`} className="hero-artist-image" />
+        <ArtistImage image={photo} imageAlt={`${name} - Tattoo Artist at High Contrast Tattoo`} className="hero-artist-image" />
       </div>
     </div>
   </div>
@@ -138,32 +125,12 @@ const displayBio = fullBio || bio;
     margin: 0;
   }
 
-  .artist-bio {
+  .artist-intro {
     font: var(--typography-body-lg);
     color: var(--color-primary-900);
     margin: 0;
     font-weight: var(--font-weight-light);
     max-width: 640px;
-  }
-
-  .artist-instagram {
-    font: var(--typography-body-md);
-    color: var(--color-primary-900);
-    margin: 0;
-  }
-
-  .artist-instagram strong {
-    font-weight: var(--font-weight-bold);
-  }
-
-  .artist-instagram a {
-    color: var(--color-primary-900);
-    text-decoration: underline;
-    text-underline-position: from-font;
-  }
-
-  .artist-instagram a:hover {
-    color: var(--color-primary-700);
   }
 
   .artist-styles {
@@ -272,7 +239,7 @@ const displayBio = fullBio || bio;
       width: 100%;
     }
 
-    .artist-bio {
+    .artist-intro {
       font: var(--typography-body-lg);
       width: 100%;
     }

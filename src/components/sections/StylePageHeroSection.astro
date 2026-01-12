@@ -9,17 +9,15 @@ interface Artist {
 
 interface Props {
   name: string;
-  description: string;
+  intro: string;
   artists?: Artist[];
-  bookingHref?: string;
   className?: string;
 }
 
 const {
   name,
-  description,
+  intro,
   artists = [],
-  bookingHref = "/book",
   className = ""
 } = Astro.props;
 ---
@@ -34,7 +32,7 @@ const {
       <!-- Style Info (no portrait image like Artist page) -->
       <div class="style-info">
         <h1 class="style-name">{name}</h1>
-        <p class="style-description">{description}</p>
+        <p class="style-intro">{intro}</p>
         
         {artists.length > 0 && (
           <p class="style-artists">
@@ -49,7 +47,7 @@ const {
           <Button
             type="Primary"
             color="Accent"
-            href={bookingHref}
+            href="/book"
             leadingIcon={false}
             trailingIcon={true}
           >
@@ -118,7 +116,7 @@ const {
     margin: 0;
   }
 
-  .style-description {
+  .style-intro {
     font: var(--typography-body-lg);
     color: var(--color-primary-900);
     margin: 0;
@@ -187,7 +185,7 @@ const {
       width: 100%;
     }
 
-    .style-description {
+    .style-intro {
       font: var(--typography-body-lg);
       width: 100%;
     }

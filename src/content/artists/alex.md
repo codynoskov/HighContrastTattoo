@@ -1,69 +1,17 @@
 ---
-name: "Alex"
-bio: "I'm a traditional tattoo artist rooted in the hardcore punk scene — vegan, straight edge, and a coffee lover. My work blends classic American traditional with contemporary influences, always aiming for bold lines and vibrant colors that stand the test of time."
-fullBio: "I've been tattooing professionally for over a decade, drawing inspiration from the rich history of American traditional tattooing while adding my own modern twist. Every piece I create is designed to age beautifully, with bold lines and saturated colors that maintain their impact over time. My studio is a judgment-free zone where we can collaborate on bringing your vision to life."
-image: "/images/artist-placeholder.png"
-instagram: "alex_hct"
-tags:
-  - "Linework"
-  - "Traditional & Old School"
-  - "Cartoon"
-bookingHref: "/book?artist=alex"
-galleryImages:
-  - src: "/images/placeholder.png"
-    alt: "Alex's tattoo work 1"
-    tags:
-      - text: "Featured"
-        color: "Accent"
-  - src: "/images/placeholder.png"
-    alt: "Alex's tattoo work 2"
-  - src: "/images/placeholder.png"
-    alt: "Alex's tattoo work 3"
-  - src: "/images/placeholder.png"
-    alt: "Alex's tattoo work 4"
-  - src: "/images/placeholder.png"
-    alt: "Alex's tattoo work 5"
-  - src: "/images/placeholder.png"
-    alt: "Alex's tattoo work 6"
-  - src: "/images/placeholder.png"
-    alt: "Alex's tattoo work 7"
-  - src: "/images/placeholder.png"
-    alt: "Alex's tattoo work 8"
-  - src: "/images/placeholder.png"
-    alt: "Alex's tattoo work 9"
-  - src: "/images/placeholder.png"
-    alt: "Alex's tattoo work 10"
-  - src: "/images/placeholder.png"
-    alt: "Alex's tattoo work 11"
-  - src: "/images/placeholder.png"
-    alt: "Alex's tattoo work 12"
-contentBlocks:
-  - title: "Style & Direction"
-    paragraphs:
-      - "My tattooing philosophy centers on honoring the craft's heritage while pushing creative boundaries. I specialize in American Traditional designs — think bold eagles, classic roses, and iconic flash — but I love adding contemporary elements that make each piece unique to its wearer."
-      - "Whether you're looking for a classic sailor jerry-style anchor or want to put a modern spin on traditional imagery, I'm here to make it happen. Every session begins with a conversation about what the tattoo means to you and how we can make it truly yours."
-  - title: "Flash & Custom Work"
-    paragraphs:
-      - "My flash collection features a curated selection of ready-to-tattoo designs, perfect for walk-ins or anyone looking for something classic. These pieces are pre-designed and priced affordably, making them ideal for your first tattoo or building a cohesive sleeve."
-      - "For custom work, I collaborate closely with clients to develop original designs. Bring me your ideas, reference images, or just a vague concept — I'll sketch multiple options until we find the perfect piece for you."
-    gallery:
-      - src: "/images/placeholder.png"
-        alt: "Alex Flash 1"
-        tags:
-          - text: "Featured"
-            color: "Accent"
-      - src: "/images/placeholder.png"
-        alt: "Alex Flash 2"
-      - src: "/images/placeholder.png"
-        alt: "Alex Flash 3"
-      - src: "/images/placeholder.png"
-        alt: "Alex Flash 4"
-      - src: "/images/placeholder.png"
-        alt: "Alex Flash 5"
-      - src: "/images/placeholder.png"
-        alt: "Alex Flash 6"
-  - title: "Booking & Sessions"
-    paragraphs:
-      - "I work Tuesday through Saturday, with appointments available from 11am to 7pm. For larger pieces requiring multiple sessions, I offer package pricing and priority scheduling. Deposits are required to secure your appointment and go toward your final tattoo cost."
-      - "First-timers welcome! I take pride in creating a comfortable environment for everyone, whether it's your first tattoo or your fiftieth. Reach out through the booking form or DM me on Instagram to start planning your next piece."
+id: b5454f04-dac7-4098-a858-b0afcb05cd2d
+name: Alex
+photo: /images/artist-placeholder.png
+intro: Traditional tattoo artist rooted in punk culture.
+styles:
+  - 56b35e71-3f31-44a8-bfa1-d69500cb7ef9
+works:
+  - image: /images/placeholder.png
+    styleTags: []
+details: |
+  Bold, long-lasting traditional tattoos.
+
+  ---
+
+  Flash and custom work available.
 ---

@@ -106,6 +106,8 @@ content:
         label: Styles
         type: multi-select
         required: true
-        options: styles
+        options:
+          collection: styles
+          label: "{name}"
         description: Select one or more styles that apply to this work
 

@@ -1,7 +1,7 @@
 media:
   - name: images
     label: Images
-    input: src/assets/images
+    input: public/images
     output: /images
     extensions: [jpg, jpeg, png, gif, svg, webp, avif]
     categories: [image]

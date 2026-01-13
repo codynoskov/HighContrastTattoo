@@ -17,10 +17,14 @@ import ValuesSection from '../components/sections/ValuesSection.astro';
 	<Header />
 	<main>
 		<HeroSection 
-			videoSrc="/videos/hero-video.mp4"
 			topRightImage="/images/hero/hero-top-right.png"
 			bottomLeftImage="/images/hero/hero-bottom-left.png"
 		/>
+		<!-- 
+			To enable the hero video, upload to Cloudflare Stream and add:
+			streamVideoId="YOUR_VIDEO_UID"
+			streamCustomerCode="YOUR_CUSTOMER_CODE"
+		-->
 		<ReviewsSection />
 		<Divider />
 		<InstagramPromoSection backgroundImage="/images/stay-tuned-bg.png" />

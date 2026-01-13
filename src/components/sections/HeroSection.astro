@@ -9,6 +9,10 @@ interface Props {
   ctaText?: string;
   ctaHref?: string;
   videoSrc?: string;
+  /** Cloudflare Stream video UID (if using Stream instead of local video) */
+  streamVideoId?: string;
+  /** Cloudflare Stream customer code (found in Stream dashboard) */
+  streamCustomerCode?: string;
   topRightImage?: string;
   bottomLeftImage?: string;
   className?: string;
@@ -20,10 +24,17 @@ const {
   ctaText = "Book a session",
   ctaHref = "/book",
   videoSrc,
+  streamVideoId,
+  streamCustomerCode,
   topRightImage = placeholderImage.src,
   bottomLeftImage = placeholderImage.src,
   className = ""
 } = Astro.props;
+
+// Build Cloudflare Stream URL if stream props are provided
+const streamUrl = streamVideoId && streamCustomerCode 
+  ? `https://customer-${streamCustomerCode}.cloudflarestream.com/${streamVideoId}/iframe?autoplay=true&muted=true&loop=true&controls=false&preload=auto`
+  : null;
 
 // Parse intro text to handle **bold** markdown
 function parseIntroText(text: string) {
@@ -79,7 +90,14 @@ const introParts = parseIntroText(introText);
       <div class="hero-media">
         <!-- Video Container -->
         <div class="hero-video-wrapper">
-          {videoSrc ? (
+          {streamUrl ? (
+            <iframe 
+              src={streamUrl}
+              class="hero-video hero-video-stream"
+              allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+              loading="eager"
+            ></iframe>
+          ) : videoSrc ? (
             <video autoplay muted loop playsinline class="hero-video">
               <source src={videoSrc} type="video/mp4" />
             </video>
@@ -249,6 +267,11 @@ const introParts = parseIntroText(introText);
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  .hero-video-stream {
+    border: none;
+    pointer-events: none; /* Prevent interaction with video controls */
   }
 
   .hero-video-placeholder {

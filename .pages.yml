@@ -72,4 +72,38 @@ content:
         label: Main content
         type: rich-text
         description: Optional detailed description
+  
+  # ============================================
+  # WORKS
+  # ============================================
+  - name: works
+    label: Works
+    type: collection
+    path: src/content/works
+    create: true
+    delete: true
+    view:
+      fields: [image, artist]
+      sort_by: artist
+      sort_direction: asc
+    fields:
+      - name: image
+        label: Tattoo Image
+        type: image
+        required: true
+        description: Image of the tattoo work
+      
+      - name: artist
+        label: Artist
+        type: select
+        required: true
+        options: artists
+        description: Select the artist who created this work
+      
+      - name: styles
+        label: Styles
+        type: multi-select
+        required: true
+        options: styles
+        description: Select one or more styles that apply to this work
 

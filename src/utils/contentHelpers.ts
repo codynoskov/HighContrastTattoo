@@ -59,24 +59,49 @@ export function getSlug(entry: { slug: string; data: { slugOverride?: string; na
   return entry.data.slugOverride ?? entry.slug;
 }
 
+/**
+ * Normalize a style reference to just the slug.
+ * Handles both plain slugs ("linework") and full paths ("src/content/styles/engraving.md").
+ * This is needed because CMS relation widgets sometimes save full paths instead of slugs.
+ */
+export function normalizeStyleSlug(styleRef: string): string {
+  // If it's a path (contains "/" or ends with ".md"), extract the slug
+  if (styleRef.includes('/') || styleRef.endsWith('.md')) {
+    // Extract filename without extension: "src/content/styles/engraving.md" -> "engraving"
+    const filename = styleRef.split('/').pop() || styleRef;
+    return filename.replace(/\.md$/, '');
+  }
+  // Already a plain slug
+  return styleRef;
+}
+
+/**
+ * Normalize an array of style references to slugs.
+ */
+export function normalizeStyleSlugs(styleRefs: string[]): string[] {
+  return styleRefs.map(normalizeStyleSlug);
+}
+
 
 /**
  * Resolve style slugs to their display names.
  * Returns an array of style names for the given slugs.
+ * Handles both plain slugs and full paths from CMS.
  */
 export function resolveStyleNames(styleSlugs: string[], styles: StyleEntry[]): string[] {
   const slugToName = new Map(styles.map((s) => [getSlug(s), s.data.name]));
-  return styleSlugs
+  return normalizeStyleSlugs(styleSlugs)
     .map((slug) => slugToName.get(slug))
     .filter((name): name is string => name !== undefined);
 }
 
 /**
  * Resolve style slugs to style objects with name and href.
+ * Handles both plain slugs and full paths from CMS.
  */
 export function resolveStyles(styleSlugs: string[], styles: StyleEntry[]): Array<{ name: string; href: string }> {
   const styleMap = new Map(styles.map((s) => [getSlug(s), s]));
-  return styleSlugs
+  return normalizeStyleSlugs(styleSlugs)
     .map((slug) => {
       const style = styleMap.get(slug);
       if (!style) return null;
@@ -97,9 +122,12 @@ export function getWorksByArtist(artistSlug: string, works: WorkEntry[]): WorkEn
 
 /**
  * Filter works by style slug.
+ * Handles both plain slugs and full paths from CMS stored in work.data.styles.
  */
 export function getWorksByStyle(styleSlug: string, works: WorkEntry[]): WorkEntry[] {
-  return works.filter((work) => work.data.styles.includes(styleSlug));
+  return works.filter((work) => 
+    normalizeStyleSlugs(work.data.styles).includes(styleSlug)
+  );
 }
 
 /**

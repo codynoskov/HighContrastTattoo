@@ -92,7 +92,7 @@ content:
         type: image
         required: true
         description: Image of the tattoo work
-      
+
       - name: artist
         label: Artist
         type: reference

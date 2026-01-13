@@ -14,7 +14,6 @@ content:
     label: Styles
     type: collection
     path: src/content/styles
-    extension: md
     create: true
     delete: true
     view:
@@ -27,11 +26,6 @@ content:
         type: string
         required: true
       
-      - name: slugOverride
-        label: Slug Override
-        type: string
-        description: Optional custom slug for the URL (defaults to filename)
-      
       - name: order
         label: Order
         type: number
@@ -41,12 +35,12 @@ content:
         label: Introduction
         type: text
         required: true
-        description: Short introduction text
+        description: A short introduction text which will also be used as the description on the Style card
       
       - name: details
         label: Details
         type: text
-        description: Optional detailed description (supports markdown)
+        description: Optional detailed description
   
   # ============================================
   # ARTISTS
@@ -55,11 +49,10 @@ content:
     label: Artists
     type: collection
     path: src/content/artists
-    extension: md
     create: true
     delete: true
     view:
-      fields: [name]
+      fields: [name, photo]
       sort_by: name
       sort_direction: asc
     fields:
@@ -68,32 +61,20 @@ content:
         type: string
         required: true
       
-      - name: slugOverride
-        label: Slug Override
-        type: string
-        description: Optional custom slug for the URL (defaults to filename)
-      
       - name: photo
         label: Photo
-        type: string
-        required: true
-        description: Path to the artist photo (e.g., /images/artist-placeholder.png)
+        type: image
+        required: false
+        description: A Photo of the Artist (optional)
       
       - name: intro
         label: Introduction
         type: text
         required: true
-        description: Short introduction text
+        description: A short introduction text which will also be used as the description on the artist card
       
-      - name: styles
-        label: Styles
-        type: string
-        list: true
-        required: true
-        description: List of style slugs (e.g., linework, blackwork)
-      
-      - name: details
-        label: Details
-        type: text
-        description: Optional detailed description (supports markdown)
+      - name: body
+        label: Main content
+        type: rich-text
+        description: Optional detailed description
 

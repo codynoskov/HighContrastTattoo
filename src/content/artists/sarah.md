@@ -1,7 +1,6 @@
 ---
 name: Sarah
-photo: /images/artist-placeholder.png
+photo: /images/001A4367-Edit.jpg
 intro: Berlin-based beginner artist focusing on blackwork traditional.
-details: Client comfort and transparency first.
 ---
 Flash and small custom pieces.

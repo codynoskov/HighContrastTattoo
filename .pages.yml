@@ -95,10 +95,12 @@ content:
       
       - name: artist
         label: Artist
-        type: select
+        type: reference
         required: true
-        options: artists
-        description: Select the artist who created this work
+        options:
+          collection: Artists
+          multiple: false
+          description: Select the artist who created this work
       
       - name: styles
         label: Styles

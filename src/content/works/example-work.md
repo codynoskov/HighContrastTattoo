@@ -1,8 +1,7 @@
 ---
-image: /images/placeholder.png
+image: /images/IMG_6670.jpg
 artist: src/content/artists/gil.md
 styles:
-  - blackwork
   - linework
   - src/content/styles/illustrative.md
 ---

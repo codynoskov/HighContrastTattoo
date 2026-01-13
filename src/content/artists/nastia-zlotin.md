@@ -1,5 +1,6 @@
 ---
 name: Nastia Zlotin
+slugOverride: nastia-zlotin
 photo: /images/001A3400-Edit.jpg
 intro: Expressive floral work rooted in classical illustration techniques.
 ---

@@ -1,5 +1,6 @@
 ---
 name: Illustrative
+slugOverride: illustrative
 intro: Expressive tattoos rooted in drawing and storytelling.
 details: Sketch-like aesthetics with strong artistic voice.
 ---

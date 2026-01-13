@@ -1,5 +1,6 @@
 ---
 name: Sina Ra
+slugOverride: sina-ra
 photo: /images/artists/ad65c304be183923f208aefea6aeeb3b42860bb2.png
 intro: High-contrast blackwork with intricate linework details.
 ---

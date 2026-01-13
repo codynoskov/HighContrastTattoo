@@ -26,6 +26,12 @@ content:
         type: string
         required: true
       
+      - name: slugOverride
+        label: Slug
+        type: string
+        required: true
+        description: URL-friendly identifier (e.g., "blackwork"). Must match the filename.
+      
       - name: intro
         label: Introduction
         type: text
@@ -55,6 +61,12 @@ content:
         label: Name
         type: string
         required: true
+      
+      - name: slugOverride
+        label: Slug
+        type: string
+        required: true
+        description: URL-friendly identifier (e.g., "john-doe"). Must match the filename.
       
       - name: photo
         label: Photo
@@ -100,6 +112,7 @@ content:
         options:
           collection: artists
           label: "{name}"
+          value: "{slugOverride}"
           multiple: false
       
       - name: styles
@@ -109,6 +122,7 @@ content:
         options:
           collection: styles
           label: "{name}"
+          value: "{slugOverride}"
           multiple: true
         description: Select one or more styles that apply to this work
 

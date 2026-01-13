@@ -111,7 +111,7 @@ content:
     create: true
     delete: true
     view:
-      fields: [image, artist, order]
+      fields: [image, order]
       sort_by: order
       sort_direction: asc
     fields:
@@ -120,16 +120,8 @@ content:
         type: image
         required: true
         description: Image of the tattoo work
-
-      - name: artist
-        label: Artist
-        type: reference
-        required: true
-        options:
-          collection: artists
-          label: "{name}"
-          value: "{slugOverride}"
-          multiple: false
+      
+      # Artist is determined by folder structure (src/content/works/{artist}/)
       
       - name: styles
         label: Styles

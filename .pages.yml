@@ -90,6 +90,12 @@ content:
         required: true
         description: A short introduction text which will also be used as the description on the artist card
       
+      - name: instagram
+        label: Instagram Username
+        type: string
+        required: false
+        description: Instagram username (without the @ symbol, e.g., "arspunx")
+      
       - name: body
         label: Main content
         type: rich-text

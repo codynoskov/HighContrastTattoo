@@ -104,10 +104,11 @@ content:
       
       - name: styles
         label: Styles
-        type: multi-select
+        type: reference
         required: true
         options:
           collection: styles
           label: "{name}"
+          multiple: true
         description: Select one or more styles that apply to this work
 

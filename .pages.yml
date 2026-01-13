@@ -26,11 +26,6 @@ content:
         type: string
         required: true
       
-      - name: order
-        label: Order
-        type: number
-        description: Optional numeric order for sorting
-      
       - name: intro
         label: Introduction
         type: text

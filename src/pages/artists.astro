@@ -7,7 +7,7 @@ import Divider from '../components/Divider.astro';
 import ArtistsHeroSection from '../components/sections/ArtistsHeroSection.astro';
 import ArtistDetailSection from '../components/sections/ArtistDetailSection.astro';
 import { getCollection } from 'astro:content';
-import { getSlug, getWorksByArtist, worksToGalleryImages, resolveStyleNames } from '../utils/contentHelpers';
+import { getSlug, getWorksByArtist, worksToGalleryImages, resolveStyleNames, resolveImagePath } from '../utils/contentHelpers';
 
 const artistEntries = await getCollection('artists');
 const worksEntries = await getCollection('works');
@@ -29,7 +29,7 @@ const artists = artistEntries.map(entry => {
     name: entry.data.name,
     slug: artistSlug,
     intro: entry.data.intro,
-    photo: entry.data.photo,
+    photo: resolveImagePath(entry.data.photo),
     styles: styleNames,
     galleryImages,
   };

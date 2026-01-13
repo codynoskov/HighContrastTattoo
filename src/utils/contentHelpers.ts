@@ -4,6 +4,39 @@ type ArtistEntry = CollectionEntry<'artists'>;
 type StyleEntry = CollectionEntry<'styles'>;
 type WorkEntry = CollectionEntry<'works'>;
 
+/**
+ * Resolve image path for both website and CMS contexts.
+ * - If path is already absolute (http/https), returns as-is
+ * - If path starts with '/', ensures it works correctly
+ * - For CMS previews, can convert to absolute URL if SITE_URL is set
+ */
+export function resolveImagePath(imagePath: string | undefined, useAbsoluteUrl = false): string {
+  if (!imagePath) return '';
+  
+  // If already absolute URL, return as-is
+  if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
+    return imagePath;
+  }
+  
+  // Normalize path to start with '/'
+  const normalizedPath = imagePath.startsWith('/') ? imagePath : `/${imagePath}`;
+  
+  // If absolute URL is requested (e.g., for CMS preview), construct full URL
+  if (useAbsoluteUrl) {
+    // Try to get site URL from Astro config (available at build time)
+    // @ts-ignore - import.meta.env.SITE is available in Astro
+    const siteUrl = import.meta.env.SITE || import.meta.env.PUBLIC_SITE_URL;
+    if (siteUrl) {
+      // Remove trailing slash from siteUrl if present
+      const baseUrl = siteUrl.replace(/\/$/, '');
+      return `${baseUrl}${normalizedPath}`;
+    }
+  }
+  
+  // Return relative path (works for website)
+  return normalizedPath;
+}
+
 export interface GalleryImage {
   src: string;
   alt?: string;
@@ -115,7 +148,7 @@ export function worksToGalleryImages(works: WorkEntry[], options: WorksToGallery
     }
 
     return {
-      src: work.data.image,
+      src: resolveImagePath(work.data.image),
       alt: `Tattoo work`,
       tags,
     };

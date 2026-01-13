@@ -98,9 +98,8 @@ content:
         type: reference
         required: true
         options:
-          collection: Artists
+          collection: artists
           multiple: false
-          description: Select the artist who created this work
       
       - name: styles
         label: Styles

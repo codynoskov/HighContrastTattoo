@@ -1,7 +1,6 @@
 ---
 name: Gil
-photo: /images/artist-placeholder.png
+photo: /images/001A4531-Edit.jpg
 intro: Engraving-style tattoos inspired by medieval prints.
-details: Highly detailed historical-inspired work.
 ---
 Custom-focused process.

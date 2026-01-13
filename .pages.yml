@@ -32,6 +32,11 @@ content:
         required: true
         description: URL-friendly identifier (e.g., "blackwork"). Must match the filename.
       
+      - name: order
+        label: Order
+        type: number
+        description: Optional. Lower numbers appear first. Supports decimals (e.g., 0.75). Items without order are sorted alphabetically.
+      
       - name: intro
         label: Introduction
         type: text
@@ -42,11 +47,6 @@ content:
         label: Details
         type: text
         description: Optional detailed description
-      
-      - name: order
-        label: Order
-        type: number
-        description: Optional. Lower numbers appear first. Supports decimals (e.g., 0.75). Items without order are sorted alphabetically.
   
   # ============================================
   # ARTISTS
@@ -73,6 +73,11 @@ content:
         required: true
         description: URL-friendly identifier (e.g., "john-doe"). Must match the filename.
       
+      - name: order
+        label: Order
+        type: number
+        description: Optional. Lower numbers appear first. Supports decimals (e.g., 0.75). Items without order are sorted alphabetically.
+      
       - name: photo
         label: Photo
         type: image
@@ -84,11 +89,6 @@ content:
         type: text
         required: true
         description: A short introduction text which will also be used as the description on the artist card
-      
-      - name: order
-        label: Order
-        type: number
-        description: Optional. Lower numbers appear first. Supports decimals (e.g., 0.75). Items without order are sorted alphabetically.
       
       - name: body
         label: Main content

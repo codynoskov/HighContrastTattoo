@@ -16,6 +16,7 @@ export const collections = {
       name: z.string(),
       photo: z.string(),
       intro: z.string(),
+      instagram: z.string().optional(),
       order: z.number().optional(),
     }),
   }),

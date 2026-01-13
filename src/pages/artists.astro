@@ -44,6 +44,7 @@ const artists = sortedArtists.map(entry => {
     name: entry.data.name,
     slug: artistSlug,
     intro: entry.data.intro,
+    instagram: entry.data.instagram,
     photo: resolveImagePath(entry.data.photo),
     styles: styleNames,
     galleryImages,
@@ -64,6 +65,7 @@ const artists = sortedArtists.map(entry => {
           name={artist.name}
           slug={artist.slug}
           intro={artist.intro}
+          instagram={artist.instagram}
           photo={artist.photo}
           styles={artist.styles}
           galleryImages={artist.galleryImages}

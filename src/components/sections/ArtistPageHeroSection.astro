@@ -10,6 +10,7 @@ interface StyleLink {
 interface Props {
   name: string;
   intro: string;
+  instagram?: string;
   photo?: string;
   styles?: StyleLink[];
   className?: string;
@@ -18,6 +19,7 @@ interface Props {
 const {
   name,
   intro,
+  instagram,
   photo,
   styles = [],
   className = ""
@@ -35,6 +37,13 @@ const {
       <div class="artist-info">
         <h1 class="artist-name">{name}</h1>
         <p class="artist-intro">{intro}</p>
+        
+        {instagram && (
+          <p class="artist-instagram">
+            <strong>Instagram:</strong>{" "}
+            <a href={`https://instagram.com/${instagram.replace('@', '')}`} target="_blank" rel="noopener noreferrer" class="instagram-link">@{instagram.replace('@', '')}</a>
+          </p>
+        )}
         
         {styles.length > 0 && (
           <p class="artist-styles">
@@ -118,6 +127,27 @@ const {
     margin: 0;
     font-weight: var(--font-weight-light);
     max-width: 640px;
+  }
+
+  .artist-instagram {
+    font: var(--typography-body-md);
+    color: var(--color-primary-900);
+    margin: 0;
+  }
+
+  .artist-instagram strong {
+    font-weight: var(--font-weight-bold);
+  }
+
+  .instagram-link {
+    color: var(--color-primary-900);
+    text-decoration: underline;
+    text-underline-position: from-font;
+    font-weight: var(--font-weight-light);
+  }
+
+  .instagram-link:hover {
+    color: var(--color-primary-700);
   }
 
   .artist-styles {

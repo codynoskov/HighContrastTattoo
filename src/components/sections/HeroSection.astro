@@ -338,7 +338,10 @@ const introParts = parseIntroText(introText);
     }
 
     .hero-container {
-      padding: 0 var(--spacing-core-800-md);
+      width: 100%;
+      padding: 0;
+      box-sizing: border-box;
+      margin: 0;
     }
 
     .hero-logo-decoration {
@@ -380,12 +383,7 @@ const introParts = parseIntroText(introText);
     }
 
     .hero-intro {
-      position: relative;
-      left: calc(-1 * var(--spacing-core-800-md));
-      width: 100vw;
-      padding-left: var(--spacing-core-800-md);
-      padding-right: var(--spacing-core-800-md);
-      box-sizing: border-box;
+      /* No special positioning - stays within content padding per Figma design */
     }
 
     .hero-cta {

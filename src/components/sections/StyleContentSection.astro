@@ -1,6 +1,7 @@
 ---
 import Gallery from '../Gallery.astro';
 import Button from '../Button.astro';
+import Lightbox from '../Lightbox.astro';
 
 interface GalleryImage {
   src: string;
@@ -25,6 +26,9 @@ const {
   className = ""
 } = Astro.props;
 
+// Generate a single shared gallery ID for all images on this page
+const sharedGalleryId = `style-gallery-${Math.random().toString(36).substring(2, 11)}`;
+
 // Split gallery images: first 3 for the top row, rest after body content
 const firstRowImages = galleryImages.slice(0, 3);
 const remainingImages = galleryImages.slice(3);
@@ -35,7 +39,12 @@ const remainingImages = galleryImages.slice(3);
     <!-- First Gallery Row (3 images) -->
     {firstRowImages.length > 0 && (
       <div class="gallery-wrapper first-gallery-row">
-        <Gallery images={firstRowImages} maxVisible={3} />
+        <Gallery 
+          images={firstRowImages} 
+          maxVisible={3} 
+          sharedGalleryId={sharedGalleryId}
+          imageOffset={0}
+        />
       </div>
     )}
 
@@ -49,7 +58,12 @@ const remainingImages = galleryImages.slice(3);
     <!-- Remaining Gallery Images -->
     {remainingImages.length > 0 && (
       <div class="gallery-wrapper remaining-gallery">
-        <Gallery images={remainingImages} maxVisible={remainingImages.length} />
+        <Gallery 
+          images={remainingImages} 
+          maxVisible={remainingImages.length} 
+          sharedGalleryId={sharedGalleryId}
+          imageOffset={firstRowImages.length}
+        />
       </div>
     )}
 
@@ -69,6 +83,11 @@ const remainingImages = galleryImages.slice(3);
       </div>
     )}
   </div>
+  
+  <!-- Single shared lightbox for all images -->
+  {galleryImages.length > 0 && (
+    <Lightbox images={galleryImages} galleryId={sharedGalleryId} />
+  )}
 </section>
 
 <style>

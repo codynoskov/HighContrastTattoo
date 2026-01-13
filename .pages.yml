@@ -100,6 +100,7 @@ content:
         options:
           collection: artists
           label: "{name}"
+          value: "{slug}"
           multiple: false
       
       - name: styles
@@ -109,6 +110,7 @@ content:
         options:
           collection: styles
           label: "{name}"
+          value: "{slug}"
           multiple: true
         description: Select one or more styles that apply to this work
 

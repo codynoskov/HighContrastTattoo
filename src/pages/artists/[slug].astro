@@ -6,29 +6,26 @@ import Divider from '../../components/Divider.astro';
 import ArtistPageHeroSection from '../../components/sections/ArtistPageHeroSection.astro';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import { getSlug, resolveStyles } from '../../utils/contentHelpers';
+import { getSlug } from '../../utils/contentHelpers';
 
 export async function getStaticPaths() {
   const artists = await getCollection('artists');
-  const styles = await getCollection('styles');
   
   return artists.map((artist) => ({
     params: { slug: getSlug(artist) },
-    props: { artist, styles }
+    props: { artist }
   }));
 }
 
 interface Props {
   artist: CollectionEntry<'artists'>;
-  styles: CollectionEntry<'styles'>[];
 }
 
-const { artist, styles } = Astro.props;
+const { artist } = Astro.props;
 const artistData = artist.data;
 
 // Compute derived data
 const artistSlug = getSlug(artist);
-const resolvedStyles = resolveStyles(artistData.styles, styles);
 ---
 
 <Layout>
@@ -38,7 +35,6 @@ const resolvedStyles = resolveStyles(artistData.styles, styles);
       name={artistData.name}
       intro={artistData.intro}
       photo={artistData.photo}
-      styles={resolvedStyles}
     />
     
     <Divider color="light" />

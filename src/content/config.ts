@@ -15,7 +15,6 @@ export const collections = {
       name: z.string(),
       photo: z.string(),
       intro: z.string(),
-      styles: z.array(z.string()),
     }),
   }),
 };

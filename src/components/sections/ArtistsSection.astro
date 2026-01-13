@@ -2,60 +2,45 @@
 import Card from '../Card.astro';
 import Button from '../Button.astro';
 import placeholderImage from '../../assets/images/artist-placeholder.png';
-
-interface ArtistCard {
-  title: string;
-  description: string;
-  image?: string;
-  artistTags?: string[];
-  instagram?: string;
-  href?: string;
-}
+import { getCollection } from 'astro:content';
+import { getSlug, resolveImagePath, resolveStyleNames } from '../../utils/contentHelpers';
 
 interface Props {
   title?: string;
   description?: string;
-  artists?: ArtistCard[];
   ctaText?: string;
   ctaHref?: string;
   className?: string;
 }
 
+// Fetch content collections
+const artistEntries = await getCollection('artists');
+const worksEntries = await getCollection('works');
+const styleEntries = await getCollection('styles');
+
+// Transform artists into card format
+const artistsData = artistEntries.map((entry) => {
+  const slug = getSlug(entry);
+  
+  // Get works by this artist to determine their styles
+  const artistWorks = worksEntries.filter(work => work.data.artist === slug);
+  
+  // Collect all unique styles from artist's works
+  const allStyleSlugs = [...new Set(artistWorks.flatMap(work => work.data.styles))];
+  const styleNames = resolveStyleNames(allStyleSlugs, styleEntries);
+  
+  return {
+    title: entry.data.name,
+    description: entry.data.intro,
+    image: resolveImagePath(entry.data.photo) || placeholderImage.src,
+    artistTags: styleNames,
+    href: `/artists/${slug}`
+  };
+});
+
 const {
-  title = "Meet the artists",
-  description = "Our team of talented artists brings diverse backgrounds and specializations. Each artist has their own unique style while sharing our studio's commitment to excellence.",
-  artists = [
-    {
-      title: "Alex",
-      description: "I'm a traditional tattoo artist rooted in the hardcore punk scene — vegan, straight edge, and a coffee lover.",
-      image: placeholderImage.src,
-      artistTags: ["Linework", "Traditional & Old School", "Cartoon"],
-      href: "/artists/alex"
-    },
-    {
-      title: "Arseniy",
-      description: "Born from hardcore punk — Arseniy has been tattooing since 2013. His Traditional and Old School tattoos are fast, bold, and built to last. You can choose from his collection of ready-made flash designs, or he'll be happy to bring your own idea to life.",
-      image: placeholderImage.src,
-      artistTags: ["Linework", "White on Black", "Traditional & Old School", "Fineline", "Tribal & Neo-Tribal"],
-      instagram: "@arspunx",
-      href: "/artists/arseniy"
-    },
-    {
-      title: "Gil",
-      description: "Born and raised in Berlin. I do engraving tattoos inspired by medieval woodcuts and cooper engravings. I really enjoy doing nature themed tattoos like flowers, animals, medieval stuff and designs out of the soulsborne universe.",
-      image: placeholderImage.src,
-      artistTags: ["Linework", "Floral & Botanic", "Engraving"],
-      href: "/artists/gil"
-    },
-    {
-      title: "Sarah",
-      description: "I'm a beginner artist based in Berlin (born/raised in Castrop-Rauxel ). My tattoo style is kinda blackwork traditional. What matters most to me is that you feel comfortable — not just with your tattoo, but with the whole process around it. If you want to get to know me, my work and my personality: @sarah_rawk.",
-      image: placeholderImage.src,
-      artistTags: ["Linework", "Blackwork", "Traditional & Old School", "Classic Black & Grey"],
-      instagram: "@sarah_rawk_tattoo",
-      href: "/artists/sarah"
-    }
-  ],
+  title = "Meet the Artists",
+  description = "Our team brings years of experience across many tattoo styles. Explore portfolios and find the right artist for your idea.",
   ctaText = "Meet all our Artists",
   ctaHref = "/artists",
   className = ""
@@ -73,9 +58,9 @@ const {
   <div class="carousel-wrapper" style="margin-top: var(--spacing-core-900-md);">
     <div class="carousel">
       <div class="carousel-track">
-        {artists.map((artist, index) => {
+        {artistsData.map((artist, index) => {
           const sizes: ("sm" | "md" | "lg")[] = ["lg", "md", "sm", "lg"];
-          const descriptionSize = sizes[index] || "md";
+          const descriptionSize = sizes[index % sizes.length] || "md";
           return (
             <Card 
               type="Artist"
@@ -85,7 +70,6 @@ const {
               descriptionSize={descriptionSize}
               image={artist.image}
               artistTags={artist.artistTags}
-              instagram={artist.instagram}
               href={artist.href}
             />
           );

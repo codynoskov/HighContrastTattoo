@@ -2,64 +2,55 @@
 import Card from '../Card.astro';
 import Button from '../Button.astro';
 import placeholderImage from '../../assets/images/placeholder.png';
-
-interface StyleCard {
-  title: string;
-  description: string;
-  image?: string;
-  tags?: string[];
-  href?: string;
-}
+import { getCollection } from 'astro:content';
+import { getSlug, getWorksByStyle, resolveImagePath, resolveArtistName } from '../../utils/contentHelpers';
 
 interface Props {
   title?: string;
   description?: string;
-  styles?: StyleCard[];
   ctaText?: string;
   ctaHref?: string;
   className?: string;
 }
 
+// Fetch content collections
+const styleEntries = await getCollection('styles');
+const worksEntries = await getCollection('works');
+const artistEntries = await getCollection('artists');
+
+// Sort styles by order if defined
+const sortedStyles = [...styleEntries].sort((a, b) => {
+  const orderA = (a.data as any).order ?? 999;
+  const orderB = (b.data as any).order ?? 999;
+  return orderA - orderB;
+});
+
+// Transform styles into card format
+const stylesData = sortedStyles.map((entry) => {
+  const slug = getSlug(entry);
+  const styleWorks = getWorksByStyle(slug, worksEntries);
+  
+  // Get the first work image for this style, or use placeholder
+  const firstWork = styleWorks[0];
+  const image = firstWork ? resolveImagePath(firstWork.data.image) : placeholderImage.src;
+  
+  // Get artist names who work in this style
+  const artistNames = [...new Set(styleWorks.map(work => {
+    return resolveArtistName(work.data.artist, artistEntries);
+  }).filter((name): name is string => name !== undefined))];
+  
+  return {
+    title: entry.data.name,
+    description: entry.data.intro,
+    image,
+    tags: artistNames,
+    href: `/styles/${slug}`
+  };
+});
+
 const {
-  title = "Explore the styles",
-  description = "From bold blackwork to delicate fine line, from traditional to contemporary — discover the diverse range of tattoo styles our artists specialize in.",
-  styles = [
-    {
-      title: "Style name",
-      description: "This approach is built around clarity, precision, and visual restraint. Instead of relying on shading or color, the entire composition is carried by line alone. The focus is on structure, balance, and rhythm, resulting in tattoos that feel clean, intentional, and timeless.",
-      image: placeholderImage.src,
-      tags: ["Arseniy", "Sera", "Gil", "Sarah", "Luara", "Dennis", "Bruno", "Ed", "Alex"],
-      href: "/styles/style-name"
-    },
-    {
-      title: "Floral & Botanic",
-      description: "Inspired by nature, this approach translates organic shapes into tattoo designs that work harmoniously with the body. Rather than aiming for realism, the focus is on flow, structure, and balance, allowing natural elements to feel integrated rather than decorative.",
-      image: placeholderImage.src,
-      tags: ["Nastia Zlotin", "Zohar", "Sera", "Gil", "Sina Ra", "Luara", "Dennis", "Bruno", "Ed", "Alex"],
-      href: "/styles/floral-botanic"
-    },
-    {
-      title: "Blackwork",
-      description: "Defined by contrast and discipline, this approach uses only black ink to create strong, graphic tattoos. The absence of color places full emphasis on shape, density, and negative space, resulting in bold and direct visual statements.",
-      image: placeholderImage.src,
-      tags: ["Nastia Zlotin", "Zohar", "Sera", "Gil", "Sina Ra", "Luara", "Dennis", "Bruno", "Ed", "Alex"],
-      href: "/styles/blackwork"
-    },
-    {
-      title: "Neo Traditional",
-      description: "Highlighting clarity and precision, this technique embraces visual simplicity. It steers clear of shading and color, relying entirely on line work. The emphasis is on structure, balance, and rhythm, resulting in tattoos that are clean, deliberate, and timeless.",
-      image: placeholderImage.src,
-      tags: ["Sina Ra", "Sarah", "Skezy", "Dennis", "Bruno", "Ed", "Alex"],
-      href: "/styles/neo-traditional"
-    },
-    {
-      title: "Illustrative",
-      description: "Rooted in drawing and visual storytelling, this approach blends artistic expression with tattoo-specific structure. The result is tattoos that feel expressive and personal while remaining technically sound and long-lasting.",
-      image: placeholderImage.src,
-      tags: ["Sina Ra", "Sarah", "Skezy", "Dennis", "Bruno", "Ed", "Alex"],
-      href: "/styles/illustrative"
-    }
-  ],
+  title = "Explore the Styles",
+  description = "From neo-traditional and blackwork to lettering and geometric designs, our artists cover a wide range of styles.",
   ctaText = "Explore all Styles",
   ctaHref = "/styles",
   className = ""
@@ -77,9 +68,9 @@ const {
   <div class="carousel-wrapper" style="margin-top: var(--spacing-core-900-md);">
     <div class="carousel">
       <div class="carousel-track">
-        {styles.map((style, index) => {
+        {stylesData.map((style, index) => {
           const sizes: ("sm" | "md" | "lg")[] = ["sm", "md", "lg", "md", "sm"];
-          const descriptionSize = sizes[index] || "md";
+          const descriptionSize = sizes[index % sizes.length] || "md";
           return (
             <Card 
               type="Style"

@@ -1,6 +1,5 @@
 ---
 import Gallery from '../Gallery.astro';
-import placeholderImage from '../../assets/images/placeholder.png';
 
 interface GalleryImage {
   src: string;
@@ -19,21 +18,32 @@ interface Props {
   className?: string;
 }
 
+const studioImages: GalleryImage[] = [
+  { src: "/images/studio/001A5548-Edit.jpg", alt: "Studio workspace" },
+  { src: "/images/studio/001A5570-Edit.jpg", alt: "Tattoo station" },
+  { src: "/images/studio/001A5574-Edit.jpg", alt: "Studio interior" },
+  { src: "/images/studio/001A5577-Edit.jpg", alt: "Artist workspace" },
+  { src: "/images/studio/001A5580-Edit.jpg", alt: "Studio details" },
+  { src: "/images/studio/001A5588-Edit.jpg", alt: "Equipment setup" },
+  { src: "/images/studio/001A5590-Edit.jpg", alt: "Studio environment" },
+  { src: "/images/studio/001A5596-Edit.jpg", alt: "Creative space" },
+  { src: "/images/studio/001A5597-Edit.jpg", alt: "Studio atmosphere" },
+  { src: "/images/studio/001A5600-Edit.jpg", alt: "Workstation" },
+  { src: "/images/studio/001A5610-Edit.jpg", alt: "Studio corner" },
+  { src: "/images/studio/001A5615-Edit.jpg", alt: "Interior view" },
+  { src: "/images/studio/001A5620-Edit.jpg", alt: "Studio setup" },
+  { src: "/images/studio/001A5633-Edit.jpg", alt: "Artistic space" },
+  { src: "/images/studio/001A5638-Edit.jpg", alt: "Studio ambiance" },
+  { src: "/images/studio/001A5639-Edit.jpg", alt: "Creative area" },
+  { src: "/images/studio/001A5645-Edit.jpg", alt: "Studio decor" },
+  { src: "/images/studio/001A5654-Edit.jpg", alt: "Studio overview" }
+];
+
 const {
   title = "Inside the studio",
   description = "Step into our creative space in the heart of Friedrichshain. Our studio is designed for comfort and inspiration, where art comes to life on skin.",
-  images = [
-    { src: placeholderImage.src, alt: "Studio interior 1" },
-    { src: placeholderImage.src, alt: "Studio interior 2" },
-    { src: placeholderImage.src, alt: "Studio interior 3" },
-    { src: placeholderImage.src, alt: "Studio interior 4" },
-    { src: placeholderImage.src, alt: "Studio interior 5" },
-    { src: placeholderImage.src, alt: "Studio interior 6" },
-    { src: placeholderImage.src, alt: "Studio interior 7" },
-    { src: placeholderImage.src, alt: "Studio interior 8" },
-    { src: placeholderImage.src, alt: "Studio interior 9" }
-  ],
-  maxVisible = 6,
+  images = studioImages,
+  maxVisible = 9,
   className = ""
 } = Astro.props;
 ---

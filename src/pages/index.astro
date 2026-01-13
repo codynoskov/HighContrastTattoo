@@ -9,24 +9,31 @@ import InstagramPromoSection from '../components/sections/InstagramPromoSection.
 import StudioSection from '../components/sections/StudioSection.astro';
 import WalkInTattoosSection from '../components/sections/WalkInTattoosSection.astro';
 import StylesSection from '../components/sections/StylesSection.astro';
+import ArtistsSection from '../components/sections/ArtistsSection.astro';
 import ValuesSection from '../components/sections/ValuesSection.astro';
 ---
 
 <Layout>
 	<Header />
 	<main>
-		<HeroSection />
+		<HeroSection 
+			videoSrc="/videos/hero-video.mp4"
+			topRightImage="/images/hero/hero-top-right.png"
+			bottomLeftImage="/images/hero/hero-bottom-left.png"
+		/>
 		<ReviewsSection />
 		<Divider />
-		<InstagramPromoSection />
+		<InstagramPromoSection backgroundImage="/images/stay-tuned-bg.png" />
 		<Divider />
 		<StudioSection />
 		<Divider />
-		<WalkInTattoosSection />
+		<WalkInTattoosSection backgroundImage="/images/walk-in-tattoos-bg.png" />
 		<Divider />
 		<StylesSection />
 		<Divider />
 		<ValuesSection />
+		<Divider />
+		<ArtistsSection />
 		<Divider />
 	</main>
 	<Footer />

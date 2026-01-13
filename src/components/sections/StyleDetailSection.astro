@@ -1,10 +1,13 @@
 ---
 import Button from '../Button.astro';
+import Gallery from '../Gallery.astro';
+import type { GalleryImage } from '../../utils/contentHelpers';
 
 interface Props {
   name: string;
   intro: string;
   exploreHref?: string;
+  galleryImages?: GalleryImage[];
   className?: string;
 }
 
@@ -12,6 +15,7 @@ const {
   name,
   intro,
   exploreHref = `/styles/${name.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and')}`,
+  galleryImages = [],
   className = ""
 } = Astro.props;
 ---
@@ -49,6 +53,13 @@ const {
           </Button>
         </div>
       </div>
+
+      <!-- Right Column: Gallery -->
+      {galleryImages.length > 0 && (
+        <div class="style-gallery-column">
+          <Gallery images={galleryImages} maxVisible={6} />
+        </div>
+      )}
     </div>
   </div>
 </section>
@@ -78,6 +89,13 @@ const {
     flex: 0 0 50%;
     min-width: 288px;
     max-width: 640px;
+  }
+
+  /* Right Column: Gallery */
+  .style-gallery-column {
+    flex: 1;
+    min-width: 0;
+    max-width: 50%;
   }
 
   .style-text-block {
@@ -123,6 +141,11 @@ const {
       min-width: 280px;
     }
 
+    .style-gallery-column {
+      max-width: 100%;
+      width: 100%;
+    }
+
     .style-name {
       font: var(--typography-h3);
     }
@@ -143,6 +166,11 @@ const {
       flex: 1 1 100%;
       max-width: 100%;
       min-width: 0;
+      width: 100%;
+    }
+
+    .style-gallery-column {
+      max-width: 100%;
       width: 100%;
     }
 

@@ -1,6 +1,8 @@
 ---
 import ArtistImage from '../ArtistImage.astro';
 import Button from '../Button.astro';
+import Gallery from '../Gallery.astro';
+import type { GalleryImage } from '../../utils/contentHelpers';
 
 interface Props {
   name: string;
@@ -8,6 +10,7 @@ interface Props {
   intro: string;
   photo?: string;
   styles?: string[];
+  galleryImages?: GalleryImage[];
   className?: string;
 }
 
@@ -17,6 +20,7 @@ const {
   intro,
   photo,
   styles = [],
+  galleryImages = [],
   className = ""
 } = Astro.props;
 ---
@@ -70,6 +74,13 @@ const {
         </div>
       </div>
 
+      <!-- Right Column: Gallery -->
+      {galleryImages.length > 0 && (
+        <div class="artist-gallery-column">
+          <Gallery images={galleryImages} maxVisible={6} />
+        </div>
+      )}
+
     </div>
   </div>
 </section>
@@ -99,6 +110,13 @@ const {
     flex: 0 0 50%;
     max-width: 640px;
     align-items: flex-start;
+  }
+
+  /* Right Column: Gallery */
+  .artist-gallery-column {
+    flex: 1;
+    min-width: 0;
+    max-width: 50%;
   }
 
   .artist-portrait {
@@ -171,6 +189,11 @@ const {
       max-width: 100%;
     }
 
+    .artist-gallery-column {
+      max-width: 100%;
+      width: 100%;
+    }
+
     .artist-name {
       font: var(--typography-h3);
     }
@@ -193,6 +216,11 @@ const {
       flex-direction: row;
       flex-wrap: wrap;
       gap: var(--spacing-core-700-md);
+    }
+
+    .artist-gallery-column {
+      max-width: 100%;
+      width: 100%;
     }
 
     .artist-portrait {

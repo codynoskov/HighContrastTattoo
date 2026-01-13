@@ -2,7 +2,8 @@
 import Button from './Button.astro';
 import Icon from './Icon.astro';
 import Logo from './Logo.astro';
-import placeholderImage from '../assets/images/placeholder.png';
+// Map image from Figma design
+const mapImage = '/images/9819f24097bde9fed24a54e99db5e6586c8e883d.png';
 
 interface Props {
   screen?: "Desktop" | "Mobile";
@@ -59,7 +60,7 @@ const { screen = "Desktop", className = "" } = Astro.props;
         </div>
       </div>
       <div class="map-image">
-        <img src={placeholderImage.src} alt="Map of High Contrast Tattoo studio location in Berlin Friedrichshain" class="map-placeholder" />
+        <img src={mapImage} alt="Map of High Contrast Tattoo studio location in Berlin Friedrichshain" class="map-placeholder" />
       </div>
     </div>
   </div>

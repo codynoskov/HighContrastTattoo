@@ -4,28 +4,38 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Divider from '../../components/Divider.astro';
 import ArtistPageHeroSection from '../../components/sections/ArtistPageHeroSection.astro';
+import ArtistContentSection from '../../components/sections/ArtistContentSection.astro';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import { getSlug } from '../../utils/contentHelpers';
+import { getSlug, getWorksByArtist, worksToGalleryImages } from '../../utils/contentHelpers';
 
 export async function getStaticPaths() {
   const artists = await getCollection('artists');
+  const works = await getCollection('works');
+  const styles = await getCollection('styles');
   
   return artists.map((artist) => ({
     params: { slug: getSlug(artist) },
-    props: { artist }
+    props: { artist, works, styles }
   }));
 }
 
 interface Props {
   artist: CollectionEntry<'artists'>;
+  works: CollectionEntry<'works'>[];
+  styles: CollectionEntry<'styles'>[];
 }
 
-const { artist } = Astro.props;
+const { artist, works, styles } = Astro.props;
 const artistData = artist.data;
 
 // Compute derived data
 const artistSlug = getSlug(artist);
+const artistWorks = getWorksByArtist(artistSlug, works);
+const galleryImages = worksToGalleryImages(artistWorks, {
+  context: 'artist',
+  styles,
+});
 ---
 
 <Layout>
@@ -35,6 +45,11 @@ const artistSlug = getSlug(artist);
       name={artistData.name}
       intro={artistData.intro}
       photo={artistData.photo}
+    />
+    
+    <ArtistContentSection
+      galleryImages={galleryImages}
+      showBackLink={true}
     />
     
     <Divider color="light" />

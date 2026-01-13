@@ -1,4 +1,5 @@
 ---
+// Artists listing page with gallery integration
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -6,19 +7,31 @@ import Divider from '../components/Divider.astro';
 import ArtistsHeroSection from '../components/sections/ArtistsHeroSection.astro';
 import ArtistDetailSection from '../components/sections/ArtistDetailSection.astro';
 import { getCollection } from 'astro:content';
-import { getSlug } from '../utils/contentHelpers';
+import { getSlug, getWorksByArtist, worksToGalleryImages, resolveStyleNames } from '../utils/contentHelpers';
 
 const artistEntries = await getCollection('artists');
+const worksEntries = await getCollection('works');
+const stylesEntries = await getCollection('styles');
 
 const artists = artistEntries.map(entry => {
   const artistSlug = getSlug(entry);
+  const artistWorks = getWorksByArtist(artistSlug, worksEntries);
+  const galleryImages = worksToGalleryImages(artistWorks, {
+    context: 'artist',
+    styles: stylesEntries,
+  });
+  
+  // Get unique style slugs from all works and resolve to names
+  const allStyleSlugs = [...new Set(artistWorks.flatMap(w => w.data.styles))];
+  const styleNames = resolveStyleNames(allStyleSlugs, stylesEntries);
+  
   return {
     name: entry.data.name,
     slug: artistSlug,
     intro: entry.data.intro,
     photo: entry.data.photo,
-    styles: [],
-    galleryImages: [],
+    styles: styleNames,
+    galleryImages,
   };
 });
 ---

@@ -2,6 +2,7 @@ import type { CollectionEntry } from 'astro:content';
 
 type ArtistEntry = CollectionEntry<'artists'>;
 type StyleEntry = CollectionEntry<'styles'>;
+type WorkEntry = CollectionEntry<'works'>;
 
 export interface GalleryImage {
   src: string;
@@ -54,3 +55,69 @@ export function resolveStyles(styleSlugs: string[], styles: StyleEntry[]): Array
     .filter((s): s is { name: string; href: string } => s !== null);
 }
 
+/**
+ * Filter works by artist slug.
+ */
+export function getWorksByArtist(artistSlug: string, works: WorkEntry[]): WorkEntry[] {
+  return works.filter((work) => work.data.artist === artistSlug);
+}
+
+/**
+ * Filter works by style slug.
+ */
+export function getWorksByStyle(styleSlug: string, works: WorkEntry[]): WorkEntry[] {
+  return works.filter((work) => work.data.styles.includes(styleSlug));
+}
+
+/**
+ * Resolve artist slug to artist name.
+ */
+export function resolveArtistName(artistSlug: string, artists: ArtistEntry[]): string | undefined {
+  const artist = artists.find((a) => getSlug(a) === artistSlug);
+  return artist?.data.name;
+}
+
+/**
+ * Options for transforming works to gallery images.
+ */
+export interface WorksToGalleryOptions {
+  /** The context determines what tags to show */
+  context: 'artist' | 'style';
+  /** Style entries for resolving style names (used in artist context) */
+  styles?: StyleEntry[];
+  /** Artist entries for resolving artist names (used in style context) */
+  artists?: ArtistEntry[];
+}
+
+/**
+ * Transform works collection entries into gallery images with appropriate tags.
+ * - Artist pages: Show style tags (Primary/teal color)
+ * - Style pages: Show artist tags (Accent/pink color, "Created by [Name]" format)
+ */
+export function worksToGalleryImages(works: WorkEntry[], options: WorksToGalleryOptions): GalleryImage[] {
+  const { context, styles = [], artists = [] } = options;
+
+  return works.map((work) => {
+    const tags: GalleryImage['tags'] = [];
+
+    if (context === 'artist' && styles.length > 0) {
+      // Show style tags for artist pages (Primary color)
+      const styleNames = resolveStyleNames(work.data.styles, styles);
+      styleNames.forEach((styleName) => {
+        tags.push({ text: styleName, color: 'Primary' });
+      });
+    } else if (context === 'style' && artists.length > 0) {
+      // Show artist tags for style pages (Accent color)
+      const artistName = resolveArtistName(work.data.artist, artists);
+      if (artistName) {
+        tags.push({ text: `Created by ${artistName}`, color: 'Accent' });
+      }
+    }
+
+    return {
+      src: work.data.image,
+      alt: `Tattoo work`,
+      tags,
+    };
+  });
+}

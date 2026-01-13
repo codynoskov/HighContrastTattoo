@@ -1,14 +1,18 @@
 ---
 import Button from '../Button.astro';
+import Gallery from '../Gallery.astro';
+import type { GalleryImage } from '../../utils/contentHelpers';
 
 interface Props {
   details?: string;
+  galleryImages?: GalleryImage[];
   showBackLink?: boolean;
   className?: string;
 }
 
 const {
   details,
+  galleryImages = [],
   showBackLink = true,
   className = ""
 } = Astro.props;
@@ -53,6 +57,13 @@ const detailsHtml = renderMarkdown(details);
 
 <section class={`artist-content-section ${className}`}>
   <div class="container">
+    <!-- Gallery -->
+    {galleryImages.length > 0 && (
+      <div class="gallery-wrapper">
+        <Gallery images={galleryImages} maxVisible={galleryImages.length} />
+      </div>
+    )}
+
     <!-- Details Content -->
     {details && (
       <div class="details-content" set:html={detailsHtml} />
@@ -92,6 +103,11 @@ const detailsHtml = renderMarkdown(details);
 
   .artist-content-section :global(.container) {
     gap: var(--spacing-core-1100-md);
+  }
+
+  /* Gallery */
+  .gallery-wrapper {
+    width: 100%;
   }
 
   /* Details Content */

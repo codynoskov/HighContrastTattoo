@@ -17,4 +17,13 @@ export const collections = {
       intro: z.string(),
     }),
   }),
+
+  works: defineCollection({
+    type: 'content',
+    schema: z.object({
+      image: z.string(),
+      artist: z.string(),
+      styles: z.array(z.string()),
+    }),
+  }),
 };

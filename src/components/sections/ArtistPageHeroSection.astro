@@ -1,6 +1,7 @@
 ---
 import ArtistImage from '../ArtistImage.astro';
 import Logo from '../Logo.astro';
+import Button from '../Button.astro';
 
 interface StyleLink {
   name: string;
@@ -35,24 +36,39 @@ const {
     <div class="hero-layout">
       <!-- Left Column: Artist Info -->
       <div class="artist-info">
-        <h1 class="artist-name">{name}</h1>
-        <p class="artist-intro">{intro}</p>
-        
-        {instagram && (
-          <p class="artist-instagram">
-            <strong>Instagram:</strong>{" "}
-            <a href={`https://instagram.com/${instagram.replace('@', '')}`} target="_blank" rel="noopener noreferrer" class="instagram-link">@{instagram.replace('@', '')}</a>
-          </p>
-        )}
-        
-        {styles.length > 0 && (
-          <p class="artist-styles">
-            <strong>Styles the artist works in:</strong>{" "}
-            <span set:html={styles.map((style, index) => 
-              `<a href="${style.href}" class="artist-style-link">${style.name}</a>${index < styles.length - 1 ? ', ' : ''}`
-            ).join('')} />
-          </p>
-        )}
+        <div class="artist-text">
+          <h1 class="artist-name">{name}</h1>
+          <p class="artist-intro">{intro}</p>
+          
+          {instagram && (
+            <p class="artist-instagram">
+              <strong>Instagram:</strong>{" "}
+              <a href={`https://instagram.com/${instagram.replace('@', '')}`} target="_blank" rel="noopener noreferrer" class="instagram-link">@{instagram.replace('@', '')}</a>
+            </p>
+          )}
+          
+          {styles.length > 0 && (
+            <p class="artist-styles">
+              <strong>Styles the artist works in:</strong>{" "}
+              <span set:html={styles.map((style, index) => 
+                `<a href="${style.href}" class="artist-style-link">${style.name}</a>${index < styles.length - 1 ? ', ' : ''}`
+              ).join('')} />
+            </p>
+          )}
+        </div>
+
+        <div class="hero-actions">
+          <Button
+            type="Primary"
+            color="Primary"
+            href="/book"
+            leadingIcon={false}
+            trailingIcon={true}
+            trailingIconName="chevron-right"
+          >
+            Book A session
+          </Button>
+        </div>
       </div>
 
       <!-- Right Column: Artist Photo -->
@@ -113,6 +129,22 @@ const {
     max-width: 640px;
     position: relative;
     z-index: 1;
+  }
+
+  .artist-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-core-700-md);
+    width: 100%;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-core-800-md);
+    align-items: flex-start;
+    padding-top: var(--spacing-core-900-md);
+    width: 100%;
   }
 
   .artist-name {

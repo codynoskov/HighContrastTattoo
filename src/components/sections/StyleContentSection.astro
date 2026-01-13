@@ -13,68 +13,44 @@ interface GalleryImage {
 
 interface Props {
   galleryImages?: GalleryImage[];
-  details?: string;
   showBackLink?: boolean;
+  hasBodyContent?: boolean;
   className?: string;
 }
 
 const {
   galleryImages = [],
-  details,
   showBackLink = true,
+  hasBodyContent = false,
   className = ""
 } = Astro.props;
 
-// Render markdown to HTML - handles H2 headings and paragraphs
-function renderMarkdown(markdown: string | undefined): string {
-  if (!markdown) return '';
-  
-  // Split by double newlines to get paragraphs
-  const paragraphs = markdown
-    .split(/\n\n+/)
-    .map(p => p.trim())
-    .filter(p => p.length > 0);
-  
-  return paragraphs.map(para => {
-    let html = para;
-    
-    // H2 Headers (must be at start of line, ##)
-    if (/^##\s/.test(html)) {
-      html = html.replace(/^##\s(.+)$/gm, '<h2>$1</h2>');
-      // Process any bold text within headers
-      html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-      return html;
-    }
-    
-    // Regular paragraph - process inline markdown
-    // Bold
-    html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-    // Italic
-    html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
-    // Links
-    html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
-    // Line breaks within paragraph
-    html = html.replace(/\n/g, '<br>');
-    
-    return `<p>${html}</p>`;
-  }).join('');
-}
-
-const detailsHtml = renderMarkdown(details);
+// Split gallery images: first 3 for the top row, rest after body content
+const firstRowImages = galleryImages.slice(0, 3);
+const remainingImages = galleryImages.slice(3);
 ---
 
 <section class={`style-content-section ${className}`}>
   <div class="container">
-    <!-- Gallery (all images, starting with 3, continuing from 4th) -->
-    {galleryImages.length > 0 && (
-      <div class="gallery-wrapper">
-        <Gallery images={galleryImages} maxVisible={galleryImages.length} />
+    <!-- First Gallery Row (3 images) -->
+    {firstRowImages.length > 0 && (
+      <div class="gallery-wrapper first-gallery-row">
+        <Gallery images={firstRowImages} maxVisible={3} />
       </div>
     )}
 
-    <!-- Details Content -->
-    {details && (
-      <div class="details-content" set:html={detailsHtml} />
+    <!-- Body Content (rendered markdown from content collection) -->
+    {hasBodyContent && (
+      <div class="body-content">
+        <slot />
+      </div>
+    )}
+
+    <!-- Remaining Gallery Images -->
+    {remainingImages.length > 0 && (
+      <div class="gallery-wrapper remaining-gallery">
+        <Gallery images={remainingImages} maxVisible={remainingImages.length} />
+      </div>
     )}
 
     <!-- Back Link -->
@@ -110,7 +86,7 @@ const detailsHtml = renderMarkdown(details);
   }
 
   .style-content-section :global(.container) {
-    gap: var(--spacing-core-1100-md);
+    gap: 10px;
   }
 
   /* Gallery */
@@ -118,16 +94,18 @@ const detailsHtml = renderMarkdown(details);
     width: 100%;
   }
 
-  /* Details Content */
-  .details-content {
+  /* Body Content (rendered markdown from collection) */
+  .body-content {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-core-900-md);
     width: 100%;
     max-width: 640px;
+    padding: var(--spacing-core-900-md) 0;
+    color: var(--color-primary-900);
   }
 
-  .details-content :global(p) {
+  .body-content :global(p) {
     font: var(--typography-body-md);
     color: var(--color-primary-900);
     margin: 0 0 var(--spacing-core-700-md) 0;
@@ -135,31 +113,35 @@ const detailsHtml = renderMarkdown(details);
     line-height: var(--line-height-core-800-md);
   }
 
-  .details-content :global(p:last-child) {
+  .body-content :global(p:last-child) {
     margin-bottom: 0;
   }
 
-  .details-content :global(h2) {
+  .body-content :global(h2) {
     font: var(--typography-h2);
     color: var(--color-primary-900);
-    margin: 0 0 var(--spacing-core-700-md) 0;
+    margin: var(--spacing-core-900-md) 0 var(--spacing-core-700-md) 0;
   }
 
-  .details-content :global(strong) {
+  .body-content :global(h2:first-child) {
+    margin-top: 0;
+  }
+
+  .body-content :global(strong) {
     font-weight: var(--font-weight-bold);
   }
 
-  .details-content :global(em) {
+  .body-content :global(em) {
     font-style: italic;
   }
 
-  .details-content :global(a) {
+  .body-content :global(a) {
     color: var(--color-primary-900);
     text-decoration: underline;
     text-underline-position: from-font;
   }
 
-  .details-content :global(a:hover) {
+  .body-content :global(a:hover) {
     color: var(--color-primary-700);
   }
 
@@ -169,7 +151,7 @@ const detailsHtml = renderMarkdown(details);
     align-items: center;
     justify-content: flex-start;
     width: 100%;
-    padding-top: var(--spacing-core-700-md);
+    padding-top: var(--spacing-core-900-md);
   }
 
   /* Override the chevron-left icon rotation in the secondary button */
@@ -184,11 +166,12 @@ const detailsHtml = renderMarkdown(details);
     }
 
     .style-content-section :global(.container) {
-      gap: var(--spacing-core-900-md);
+      gap: var(--spacing-core-500-md);
     }
 
-    .details-content {
+    .body-content {
       gap: var(--spacing-core-700-md);
+      padding: var(--spacing-core-700-md) 0;
     }
 
     .back-link-wrapper {

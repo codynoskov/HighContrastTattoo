@@ -29,6 +29,9 @@ interface Props {
 const { style, works, artists } = Astro.props;
 const styleData = style.data;
 
+// Render the markdown body content
+const { Content } = await style.render();
+
 // Get gallery images for this style
 const styleSlug = getSlug(style);
 const styleWorks = getWorksByStyle(styleSlug, works);
@@ -36,6 +39,23 @@ const galleryImages = worksToGalleryImages(styleWorks, {
   context: 'style',
   artists,
 });
+
+// Get unique artists who have works in this style
+const styleArtistSlugs = new Set<string>();
+styleWorks.forEach(work => {
+  styleArtistSlugs.add(work.data.artist);
+});
+
+// Map artist slugs to artist links
+const styleArtists = artists
+  .filter(artist => styleArtistSlugs.has(getSlug(artist)))
+  .map(artist => ({
+    name: artist.data.name,
+    href: `/artists/${getSlug(artist)}`
+  }));
+
+// Check if the style has body content (markdown after frontmatter)
+const hasBodyContent = style.body && style.body.trim().length > 0;
 ---
 
 <Layout>
@@ -44,13 +64,16 @@ const galleryImages = worksToGalleryImages(styleWorks, {
     <StylePageHeroSection
       name={styleData.name}
       intro={styleData.intro}
+      artists={styleArtists}
     />
     
     <StyleContentSection
       galleryImages={galleryImages}
-      details={styleData.details}
       showBackLink={true}
-    />
+      hasBodyContent={hasBodyContent}
+    >
+      {hasBodyContent && <Content />}
+    </StyleContentSection>
     
     <Divider color="light" />
   </main>

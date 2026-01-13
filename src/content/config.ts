@@ -6,6 +6,7 @@ export const collections = {
     schema: z.object({
       name: z.string(),
       intro: z.string(),
+      order: z.number().optional(),
     }),
   }),
 
@@ -15,6 +16,7 @@ export const collections = {
       name: z.string(),
       photo: z.string(),
       intro: z.string(),
+      order: z.number().optional(),
     }),
   }),
 
@@ -24,6 +26,7 @@ export const collections = {
       image: z.string(),
       artist: z.string(),
       styles: z.array(z.string()),
+      order: z.number().optional(),
     }),
   }),
 };

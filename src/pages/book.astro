@@ -10,13 +10,41 @@ import Button from '../components/Button.astro';
 import { getCollection } from 'astro:content';
 
 const styleEntries = await getCollection('styles');
-const styles = styleEntries.map(entry => ({
+// Sort styles by order if defined, otherwise alphabetically
+const sortedStyles = [...styleEntries].sort((a, b) => {
+  // If both have order, sort by order
+  if (a.data.order !== undefined && b.data.order !== undefined) {
+    return a.data.order - b.data.order;
+  }
+  
+  // If only one has order, it comes first
+  if (a.data.order !== undefined) return -1;
+  if (b.data.order !== undefined) return 1;
+  
+  // If neither has order, sort alphabetically by name
+  return a.data.name.localeCompare(b.data.name);
+});
+const styles = sortedStyles.map(entry => ({
   ...entry.data,
   slug: entry.slug
 }));
 
 const artistEntries = await getCollection('artists');
-const artists = artistEntries.map(entry => ({
+// Sort artists by order if defined, otherwise alphabetically
+const sortedArtists = [...artistEntries].sort((a, b) => {
+  // If both have order, sort by order
+  if (a.data.order !== undefined && b.data.order !== undefined) {
+    return a.data.order - b.data.order;
+  }
+  
+  // If only one has order, it comes first
+  if (a.data.order !== undefined) return -1;
+  if (b.data.order !== undefined) return 1;
+  
+  // If neither has order, sort alphabetically by name
+  return a.data.name.localeCompare(b.data.name);
+});
+const artists = sortedArtists.map(entry => ({
   ...entry.data,
   slug: entry.slug
 }));

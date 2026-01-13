@@ -13,7 +13,22 @@ const artistEntries = await getCollection('artists');
 const worksEntries = await getCollection('works');
 const stylesEntries = await getCollection('styles');
 
-const artists = artistEntries.map(entry => {
+// Sort artists by order if defined, otherwise alphabetically
+const sortedArtists = [...artistEntries].sort((a, b) => {
+  // If both have order, sort by order
+  if (a.data.order !== undefined && b.data.order !== undefined) {
+    return a.data.order - b.data.order;
+  }
+  
+  // If only one has order, it comes first
+  if (a.data.order !== undefined) return -1;
+  if (b.data.order !== undefined) return 1;
+  
+  // If neither has order, sort alphabetically by name
+  return a.data.name.localeCompare(b.data.name);
+});
+
+const artists = sortedArtists.map(entry => {
   const artistSlug = getSlug(entry);
   const artistWorks = getWorksByArtist(artistSlug, worksEntries);
   const galleryImages = worksToGalleryImages(artistWorks, {

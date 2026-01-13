@@ -68,22 +68,18 @@ const {
   <div class="carousel-wrapper" style="margin-top: var(--spacing-core-900-md);">
     <div class="carousel">
       <div class="carousel-track">
-        {stylesData.map((style, index) => {
-          const sizes: ("sm" | "md" | "lg")[] = ["sm", "md", "lg", "md", "sm"];
-          const descriptionSize = sizes[index % sizes.length] || "md";
-          return (
-            <Card 
-              type="Style"
-              fillHeight={false}
-              title={style.title}
-              description={style.description}
-              descriptionSize={descriptionSize}
-              image={style.image}
-              tags={style.tags}
-              href={style.href}
-            />
-          );
-        })}
+        {stylesData.map((style) => (
+          <Card 
+            type="Style"
+            fillHeight={false}
+            title={style.title}
+            description={style.description}
+            descriptionSize="lg"
+            image={style.image}
+            tags={style.tags}
+            href={style.href}
+          />
+        ))}
       </div>
     </div>
   </div>

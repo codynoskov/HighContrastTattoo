@@ -1,6 +1,5 @@
 ---
 image: /images/works/arseniy-4.jpg
-artist: arseniy
 styles:
   - linework
   - white-on-black

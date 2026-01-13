@@ -25,7 +25,7 @@ export const collections = {
     type: 'content',
     schema: z.object({
       image: z.string(),
-      artist: z.string(),
+      // artist is derived from folder structure (content/works/{artist}/{work}.md)
       styles: z.array(z.string()),
       order: z.number().optional(),
     }),

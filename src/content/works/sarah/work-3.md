@@ -1,6 +1,5 @@
 ---
 image: /images/works/sarah-3.jpeg
-artist: sarah
 styles:
   - linework
   - blackwork

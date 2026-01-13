@@ -1,6 +1,5 @@
 ---
 image: /images/works/nastia-zlotin-3.jpeg
-artist: nastia-zlotin
 styles:
   - floral-and-botanic
   - neo-traditional

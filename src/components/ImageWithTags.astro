@@ -8,6 +8,7 @@ interface Props {
   tags?: Array<{
     text: string;
     color?: "Primary" | "Accent" | "Neutral";
+    href?: string;
   }>;
   className?: string;
 }
@@ -27,7 +28,7 @@ const {
   {tags.length > 0 && (
     <div class="tags-container">
       {tags.map((tag) => (
-        <Tag color={tag.color || "Accent"}>{tag.text}</Tag>
+        <Tag color={tag.color || "Accent"} href={tag.href}>{tag.text}</Tag>
       ))}
     </div>
   )}

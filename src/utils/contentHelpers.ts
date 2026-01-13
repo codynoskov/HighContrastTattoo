@@ -43,6 +43,7 @@ export interface GalleryImage {
   tags?: Array<{
     text: string;
     color?: 'Primary' | 'Accent' | 'Neutral';
+    href?: string;
   }>;
 }
 
@@ -57,6 +58,15 @@ export interface Artist {
  */
 export function getSlug(entry: { slug: string; data: { slugOverride?: string; name: string } }): string {
   return entry.data.slugOverride ?? entry.slug;
+}
+
+/**
+ * Extract artist slug from a work's slug.
+ * Works are stored as: content/works/{artist}/{work-file}.md
+ * So the slug is: {artist}/{work-name}
+ */
+export function getArtistSlugFromWork(work: WorkEntry): string {
+  return work.slug.split('/')[0];
 }
 
 /**
@@ -115,9 +125,10 @@ export function resolveStyles(styleSlugs: string[], styles: StyleEntry[]): Array
 
 /**
  * Filter works by artist slug.
+ * Artist is derived from the work's folder structure (slug prefix).
  */
 export function getWorksByArtist(artistSlug: string, works: WorkEntry[]): WorkEntry[] {
-  return works.filter((work) => work.data.artist === artistSlug);
+  return works.filter((work) => getArtistSlugFromWork(work) === artistSlug);
 }
 
 /**
@@ -151,9 +162,21 @@ export interface WorksToGalleryOptions {
 }
 
 /**
+ * Resolve artist slug to artist object with name and href.
+ */
+export function resolveArtist(artistSlug: string, artists: ArtistEntry[]): { name: string; href: string } | undefined {
+  const artist = artists.find((a) => getSlug(a) === artistSlug);
+  if (!artist) return undefined;
+  return {
+    name: artist.data.name,
+    href: `/artists/${getSlug(artist)}`,
+  };
+}
+
+/**
  * Transform works collection entries into gallery images with appropriate tags.
- * - Artist pages: Show style tags (Primary/teal color)
- * - Style pages: Show artist tags (Accent/pink color, "Created by [Name]" format)
+ * - Artist pages: Show style tags (Primary/teal color) linking to style pages
+ * - Style pages: Show artist tags (Accent/pink color, "Created by [Name]" format) linking to artist pages
  */
 export function worksToGalleryImages(works: WorkEntry[], options: WorksToGalleryOptions): GalleryImage[] {
   const { context, styles = [], artists = [] } = options;
@@ -162,16 +185,16 @@ export function worksToGalleryImages(works: WorkEntry[], options: WorksToGallery
     const tags: GalleryImage['tags'] = [];
 
     if (context === 'artist' && styles.length > 0) {
-      // Show style tags for artist pages (Primary color)
-      const styleNames = resolveStyleNames(work.data.styles, styles);
-      styleNames.forEach((styleName) => {
-        tags.push({ text: styleName, color: 'Primary' });
+      // Show style tags for artist pages (Primary color) with links to style pages
+      const resolvedStyles = resolveStyles(work.data.styles, styles);
+      resolvedStyles.forEach((style) => {
+        tags.push({ text: style.name, color: 'Primary', href: style.href });
       });
     } else if (context === 'style' && artists.length > 0) {
-      // Show artist tags for style pages (Accent color)
-      const artistName = resolveArtistName(work.data.artist, artists);
-      if (artistName) {
-        tags.push({ text: `Created by ${artistName}`, color: 'Accent' });
+      // Show artist tags for style pages (Accent color) with links to artist pages
+      const resolvedArtist = resolveArtist(getArtistSlugFromWork(work), artists);
+      if (resolvedArtist) {
+        tags.push({ text: `Created by ${resolvedArtist.name}`, color: 'Accent', href: resolvedArtist.href });
       }
     }
 

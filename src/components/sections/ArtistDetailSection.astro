@@ -4,13 +4,18 @@ import Button from '../Button.astro';
 import Gallery from '../Gallery.astro';
 import type { GalleryImage } from '../../utils/contentHelpers';
 
+interface StyleLink {
+  name: string;
+  href: string;
+}
+
 interface Props {
   name: string;
   slug?: string;
   intro: string;
   instagram?: string;
   photo?: string;
-  styles?: string[];
+  styles?: StyleLink[];
   galleryImages?: GalleryImage[];
   className?: string;
 }
@@ -51,7 +56,7 @@ const {
             <p class="artist-styles">
               <strong>Styles the artist works in:</strong>{" "}
               <span set:html={styles.map((style, index) => 
-                `<a href="/styles#${style.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and')}" class="artist-style-link">${style}</a>${index < styles.length - 1 ? ', ' : ''}`
+                `<a href="${style.href}" class="artist-style-link">${style.name}</a>${index < styles.length - 1 ? ', ' : ''}`
               ).join('')} />
             </p>
           )}

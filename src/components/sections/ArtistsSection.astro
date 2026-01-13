@@ -3,7 +3,7 @@ import Card from '../Card.astro';
 import Button from '../Button.astro';
 import placeholderImage from '../../assets/images/artist-placeholder.png';
 import { getCollection } from 'astro:content';
-import { getSlug, resolveImagePath, resolveStyleNames } from '../../utils/contentHelpers';
+import { getSlug, resolveImagePath, resolveStyles, getArtistSlugFromWork } from '../../utils/contentHelpers';
 
 interface Props {
   title?: string;
@@ -23,17 +23,23 @@ const artistsData = artistEntries.map((entry) => {
   const slug = getSlug(entry);
   
   // Get works by this artist to determine their styles
-  const artistWorks = worksEntries.filter(work => work.data.artist === slug);
+  const artistWorks = worksEntries.filter(work => getArtistSlugFromWork(work) === slug);
   
   // Collect all unique styles from artist's works
   const allStyleSlugs = [...new Set(artistWorks.flatMap(work => work.data.styles))];
-  const styleNames = resolveStyleNames(allStyleSlugs, styleEntries);
+  const resolvedStyles = resolveStyles(allStyleSlugs, styleEntries);
+  
+  // Transform to tag format with links
+  const artistTags = resolvedStyles.map(style => ({
+    text: style.name,
+    href: style.href
+  }));
   
   return {
     title: entry.data.name,
     description: entry.data.intro,
     image: resolveImagePath(entry.data.photo) || placeholderImage.src,
-    artistTags: styleNames,
+    artistTags,
     href: `/artists/${slug}`
   };
 });

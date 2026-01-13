@@ -1,6 +1,5 @@
 ---
 image: /images/works/luara-3.jpg
-artist: luara
 styles:
   - floral-and-botanic
   - neo-traditional

@@ -9,6 +9,7 @@ interface LightboxImage {
   tags?: Array<{
     text: string;
     color?: "Primary" | "Accent" | "Neutral";
+    href?: string;
   }>;
 }
 
@@ -50,7 +51,7 @@ const { images = [], galleryId } = Astro.props;
             {image.tags && image.tags.length > 0 && (
               <div class="gallery-lightbox-tags">
                 {image.tags.map((tag) => (
-                  <Tag color={tag.color || "Primary"}>{tag.text}</Tag>
+                  <Tag color={tag.color || "Primary"} href={tag.href}>{tag.text}</Tag>
                 ))}
               </div>
             )}

@@ -10,6 +10,7 @@ interface GalleryImage {
   tags?: Array<{
     text: string;
     color?: "Primary" | "Accent" | "Neutral";
+    href?: string;
   }>;
 }
 
@@ -19,9 +20,10 @@ interface Props {
   maxVisible?: number;
   sharedGalleryId?: string; // ID of shared lightbox (used on artist/style pages)
   imageOffset?: number; // Offset for mapping local indices to global indices
+  mobileColumns?: 1 | 2; // Number of columns on mobile (default: 2)
 }
 
-const { images = [], className = "", maxVisible = 6, sharedGalleryId, imageOffset = 0 } = Astro.props;
+const { images = [], className = "", maxVisible = 6, sharedGalleryId, imageOffset = 0, mobileColumns = 2 } = Astro.props;
 
 // Each gallery instance gets its own unique ID for item selection
 const instanceId = `gallery-${Math.random().toString(36).substring(2, 11)}`;
@@ -34,7 +36,7 @@ const hasMoreImages = images.length > MAX_VISIBLE_IMAGES;
 const allImages = images;
 ---
 
-<div class={`gallery ${className}`} data-gallery-instance-id={instanceId} data-lightbox-gallery-id={lightboxGalleryId} data-image-offset={imageOffset}>
+<div class={`gallery ${className}`} data-gallery-instance-id={instanceId} data-lightbox-gallery-id={lightboxGalleryId} data-image-offset={imageOffset} data-mobile-columns={mobileColumns}>
   <div class="gallery-grid">
     {visibleImages.map((image, index) => (
       <div 
@@ -52,7 +54,7 @@ const allImages = images;
         {image.tags && image.tags.length > 0 && !(index === MAX_VISIBLE_IMAGES - 1 && hasMoreImages) ? (
           <div class="gallery-tags">
             {image.tags.map((tag) => (
-              <Tag color={tag.color || "Primary"}>{tag.text}</Tag>
+              <Tag color={tag.color || "Primary"} href={tag.href}>{tag.text}</Tag>
             ))}
           </div>
         ) : null}
@@ -432,6 +434,11 @@ const allImages = images;
     .gallery-grid {
       grid-template-columns: repeat(2, 1fr);
       grid-auto-rows: 1fr;
+    }
+
+    /* Single column on mobile when specified */
+    .gallery[data-mobile-columns="1"] .gallery-grid {
+      grid-template-columns: 1fr;
     }
 
     .gallery-item {

@@ -1,6 +1,5 @@
 ---
 image: /images/works/bruno-1.jpg
-artist: bruno
 styles:
   - linework
   - blackwork

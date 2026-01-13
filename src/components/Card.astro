@@ -4,6 +4,11 @@ import ArtistImage from "./ArtistImage.astro";
 import Button from "./Button.astro";
 import placeholderImage from "../assets/images/placeholder.png";
 
+interface TagWithLink {
+  text: string;
+  href?: string;
+}
+
 interface Props {
   type?: "Style" | "Artist";
   fillHeight?: boolean;
@@ -12,8 +17,8 @@ interface Props {
   descriptionSize?: "sm" | "md" | "lg";
   image?: string;
   imageAlt?: string;
-  tags?: string[];
-  artistTags?: string[];
+  tags?: string[] | TagWithLink[];
+  artistTags?: string[] | TagWithLink[];
   instagram?: string;
   href?: string;
   className?: string;
@@ -35,7 +40,11 @@ const {
 } = Astro.props;
 
 const isArtist = type === "Artist";
-const displayTags = isArtist ? artistTags : tags;
+const rawDisplayTags = isArtist ? artistTags : tags;
+// Normalize tags to TagWithLink format
+const displayTags: TagWithLink[] = rawDisplayTags.map((tag) => 
+  typeof tag === 'string' ? { text: tag } : tag
+);
 const buttonText = isArtist ? "Meet the artist" : "Explore style";
 const descriptionSizeClass = `card-description-${descriptionSize}`;
 ---
@@ -64,7 +73,7 @@ const descriptionSizeClass = `card-description-${descriptionSize}`;
         {displayTags.length > 0 && (
           <div class="card-tags">
             {displayTags.map((tag) => (
-              <Tag color={isArtist ? "Primary" : "Accent"}>{tag}</Tag>
+              <Tag color={isArtist ? "Primary" : "Accent"} href={tag.href}>{tag.text}</Tag>
             ))}
           </div>
         )}

@@ -1,6 +1,5 @@
 ---
 image: /images/works/sina-ra-4.jpeg
-artist: sina-ra
 styles:
   - floral-and-botanic
   - blackwork

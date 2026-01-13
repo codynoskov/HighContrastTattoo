@@ -3,7 +3,7 @@ import Card from '../Card.astro';
 import Button from '../Button.astro';
 import placeholderImage from '../../assets/images/placeholder.png';
 import { getCollection } from 'astro:content';
-import { getSlug, getWorksByStyle, resolveImagePath, resolveArtistName } from '../../utils/contentHelpers';
+import { getSlug, getWorksByStyle, resolveImagePath, resolveArtistName, getArtistSlugFromWork } from '../../utils/contentHelpers';
 
 interface Props {
   title?: string;
@@ -36,7 +36,7 @@ const stylesData = sortedStyles.map((entry) => {
   
   // Get artist names who work in this style
   const artistNames = [...new Set(styleWorks.map(work => {
-    return resolveArtistName(work.data.artist, artistEntries);
+    return resolveArtistName(getArtistSlugFromWork(work), artistEntries);
   }).filter((name): name is string => name !== undefined))];
   
   return {

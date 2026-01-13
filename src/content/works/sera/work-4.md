@@ -1,6 +1,5 @@
 ---
 image: /images/works/sera-4.jpg
-artist: sera
 styles:
   - linework
   - floral-and-botanic

@@ -2,19 +2,30 @@
 interface Props {
   color?: "Primary" | "Accent" | "Neutral";
   state?: "Default" | "Hover" | "Pressed";
+  href?: string;
   className?: string;
 }
 
 const { 
   color = "Primary", 
   state = "Default",
+  href,
   className = ""
 } = Astro.props;
+
+const stateClasses = `${state === "Hover" ? "tag-hover-state" : ""} ${state === "Pressed" ? "tag-pressed-state" : ""}`;
+const tagClasses = `tag tag-${color} ${stateClasses} ${className}`.trim();
 ---
 
-<span class={`tag tag-${color} ${state === "Hover" ? "tag-hover-state" : ""} ${state === "Pressed" ? "tag-pressed-state" : ""} ${className}`}>
-  <slot />
-</span>
+{href ? (
+  <a href={href} class={tagClasses}>
+    <slot />
+  </a>
+) : (
+  <span class={tagClasses}>
+    <slot />
+  </span>
+)}
 
 <style>
   .tag {
@@ -26,6 +37,7 @@ const {
     white-space: nowrap;
     cursor: pointer;
     transition: background-color 0s ease, color 0s ease;
+    text-decoration: none;
   }
 
   /* Primary - Default */

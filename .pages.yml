@@ -17,8 +17,8 @@ content:
     create: true
     delete: true
     view:
-      fields: [name]
-      sort_by: name
+      fields: [name, order]
+      sort_by: order
       sort_direction: asc
     fields:
       - name: name
@@ -42,6 +42,11 @@ content:
         label: Details
         type: text
         description: Optional detailed description
+      
+      - name: order
+        label: Order
+        type: number
+        description: Optional. Lower numbers appear first. Supports decimals (e.g., 0.75). Items without order are sorted alphabetically.
   
   # ============================================
   # ARTISTS
@@ -53,8 +58,8 @@ content:
     create: true
     delete: true
     view:
-      fields: [name, photo]
-      sort_by: name
+      fields: [name, order, photo]
+      sort_by: order
       sort_direction: asc
     fields:
       - name: name
@@ -80,6 +85,11 @@ content:
         required: true
         description: A short introduction text which will also be used as the description on the artist card
       
+      - name: order
+        label: Order
+        type: number
+        description: Optional. Lower numbers appear first. Supports decimals (e.g., 0.75). Items without order are sorted alphabetically.
+      
       - name: body
         label: Main content
         type: rich-text
@@ -95,8 +105,8 @@ content:
     create: true
     delete: true
     view:
-      fields: [image, artist]
-      sort_by: artist
+      fields: [image, artist, order]
+      sort_by: order
       sort_direction: asc
     fields:
       - name: image
@@ -125,4 +135,9 @@ content:
           value: "{slugOverride}"
           multiple: true
         description: Select one or more styles that apply to this work
+      
+      - name: order
+        label: Order
+        type: number
+        description: Optional. Lower numbers appear first. Supports decimals (e.g., 0.75). Items without order are sorted alphabetically.
 

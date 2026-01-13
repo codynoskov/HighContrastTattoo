@@ -99,6 +99,7 @@ content:
         required: true
         options:
           collection: artists
+          label: "{name}"
           multiple: false
       
       - name: styles

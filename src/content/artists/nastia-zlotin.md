@@ -1,7 +1,8 @@
 ---
 name: Nastia Zlotin
-slugOverride: nastia-zlotin
-photo: /images/001A3400-Edit.jpg
-intro: Expressive floral work rooted in classical illustration techniques.
+photo: /images/artists/nastia-zlotin-avatar.jpg
+intro: Nastia Zlotin has been a tattoo artist for 13 years, specializing in neo-traditional, color pieces, and cover-ups.
+order: 11
 ---
-Custom designs with a focus on botanical and organic forms.
+
+She loves creating bright, feminine, well-balanced designs and helping people transform their old tattoos into something meaningful and beautiful. Her style is colorful, elegant, and carefully designed with attention to every detail.

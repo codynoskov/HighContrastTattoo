@@ -23,8 +23,10 @@ interface Props {
 
 const { images = [], className = "", maxVisible = 6, sharedGalleryId, imageOffset = 0 } = Astro.props;
 
-// Use shared gallery ID if provided, otherwise generate unique ID
-const galleryId = sharedGalleryId || `gallery-${Math.random().toString(36).substring(2, 11)}`;
+// Each gallery instance gets its own unique ID for item selection
+const instanceId = `gallery-${Math.random().toString(36).substring(2, 11)}`;
+// Use shared gallery ID for lightbox if provided, otherwise use instance ID
+const lightboxGalleryId = sharedGalleryId || instanceId;
 
 const MAX_VISIBLE_IMAGES = maxVisible;
 const visibleImages = images.slice(0, MAX_VISIBLE_IMAGES);
@@ -32,13 +34,13 @@ const hasMoreImages = images.length > MAX_VISIBLE_IMAGES;
 const allImages = images;
 ---
 
-<div class={`gallery ${className}`} data-gallery-id={galleryId} data-shared-gallery-id={sharedGalleryId || ''} data-image-offset={imageOffset}>
+<div class={`gallery ${className}`} data-gallery-instance-id={instanceId} data-lightbox-gallery-id={lightboxGalleryId} data-image-offset={imageOffset}>
   <div class="gallery-grid">
     {visibleImages.map((image, index) => (
       <div 
         class={`gallery-item ${index === MAX_VISIBLE_IMAGES - 1 && hasMoreImages ? 'gallery-item-overlay' : ''}`}
         data-image-index={index}
-        data-gallery-id={galleryId}
+        data-gallery-instance-id={instanceId}
       >
         <div class="gallery-image-container">
           <img 
@@ -68,20 +70,40 @@ const allImages = images;
 
   <!-- Only render Lightbox if this is NOT using a shared lightbox -->
   {!sharedGalleryId && (
-    <Lightbox images={allImages} galleryId={galleryId} />
+    <Lightbox images={allImages} galleryId={instanceId} />
   )}
 </div>
 
-<script define:vars={{ galleryId, sharedGalleryId, imageOffset }}>
+<script define:vars={{ instanceId, lightboxGalleryId, imageOffset }}>
   // Gallery lightbox functionality - scoped to this instance
   (function() {
-    const galleryContainer = document.querySelector(`[data-gallery-id="${galleryId}"]`);
+    const galleryContainer = document.querySelector(`[data-gallery-instance-id="${instanceId}"]`);
     if (!galleryContainer) return;
 
-    // Determine which lightbox to use
-    const lightboxId = sharedGalleryId ? `${sharedGalleryId}-lightbox` : `${galleryId}-lightbox`;
-    const lightbox = document.getElementById(lightboxId);
-    if (!lightbox) return;
+    // Use the lightbox gallery ID for the lightbox element
+    const lightboxId = `${lightboxGalleryId}-lightbox`;
+    
+    // Wait for lightbox to be available (especially important for shared lightboxes)
+    let retryCount = 0;
+    const maxRetries = 20; // Maximum 1 second wait (20 * 50ms)
+    function waitForLightbox(callback) {
+      const lightbox = document.getElementById(lightboxId);
+      if (lightbox) {
+        callback(lightbox);
+      } else if (retryCount < maxRetries) {
+        retryCount++;
+        // Retry after a short delay if lightbox doesn't exist yet
+        setTimeout(() => waitForLightbox(callback), 50);
+      } else {
+        console.warn(`Lightbox ${lightboxId} not found after ${maxRetries} retries`);
+      }
+    }
+    
+    waitForLightbox((lightbox) => {
+      initializeGallery(lightbox);
+    });
+    
+    function initializeGallery(lightbox) {
 
     const slides = lightbox.querySelectorAll('.gallery-lightbox-slide');
     const prevButton = lightbox.querySelector('.gallery-lightbox-prev');
@@ -272,35 +294,29 @@ const allImages = images;
       }
     }
 
-    // Gallery item click handlers - scoped to this Gallery instance
-    const galleryItems = galleryContainer.querySelectorAll(`.gallery-item[data-gallery-id="${galleryId}"]`);
+    // Gallery item click handlers - scoped to this Gallery instance only
+    const galleryItems = galleryContainer.querySelectorAll(`.gallery-item[data-gallery-instance-id="${instanceId}"]`);
     galleryItems.forEach((item) => {
       item.addEventListener('click', () => {
         const localIndex = parseInt(item.dataset.imageIndex || '0');
         
-        // If using shared gallery, map local index to global index
-        const globalIndex = sharedGalleryId ? (imageOffset + localIndex) : localIndex;
+        // Map local index to global index using the offset
+        const globalIndex = imageOffset + localIndex;
         
-        // If this is the overlay item (has gallery-item-overlay class), open at the last visible image in the gallery
-        if (item.classList.contains('gallery-item-overlay')) {
-          // For "show all" overlay, open at the first image after the visible ones
-          const overlayIndex = sharedGalleryId ? (imageOffset + localIndex) : localIndex;
-          openLightbox(overlayIndex);
-        } else {
-          openLightbox(globalIndex);
-        }
+        openLightbox(globalIndex);
       });
     });
 
-    // Initialize - hide all slides except first (only if not already initialized)
-    if (!lightbox.dataset.initialized) {
-      slides.forEach((slide, i) => {
-        slide.style.display = i === 0 ? 'flex' : 'none';
-      });
-      setCurrentIndex(0);
-      lightbox.dataset.initialized = 'true';
+      // Initialize - hide all slides except first (only if not already initialized)
+      if (!lightbox.dataset.initialized) {
+        slides.forEach((slide, i) => {
+          slide.style.display = i === 0 ? 'flex' : 'none';
+        });
+        setCurrentIndex(0);
+        lightbox.dataset.initialized = 'true';
+      }
+      updateCounter();
     }
-    updateCounter();
   })();
 </script>
 

@@ -75,12 +75,12 @@ const remainingImages = galleryImages.slice(3);
       </div>
     )}
   </div>
-  
-  <!-- Single shared lightbox for all images -->
-  {galleryImages.length > 0 && (
-    <Lightbox images={galleryImages} galleryId={sharedGalleryId} />
-  )}
 </section>
+
+<!-- Single shared lightbox for all images - rendered outside section to avoid stacking context -->
+{galleryImages.length > 0 && (
+  <Lightbox images={galleryImages} galleryId={sharedGalleryId} />
+)}
 
 <style>
   .artist-content-section {

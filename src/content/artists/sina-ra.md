@@ -1,7 +1,6 @@
 ---
 name: Sina Ra
-slugOverride: sina-ra
-photo: /images/artists/ad65c304be183923f208aefea6aeeb3b42860bb2.png
-intro: High-contrast blackwork with intricate linework details.
+photo: /images/artists/sina-ra-avatar.jpg
+intro: Sina Ra is a Berlin-based tattoo artist specializing in floral and ornamental blackwork. She creates large symmetrical pieces and is also skilled in cover-ups and smaller designs.
+order: 6
 ---
-Detailed engravings and botanical work in pure black.

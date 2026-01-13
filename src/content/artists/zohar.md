@@ -1,7 +1,8 @@
 ---
 name: Zohar
-slugOverride: zohar
-photo: /images/001A3171-Edit.jpg
-intro: Bold, color-saturated tattoos merging floral and illustrative styles.
+photo: /images/artists/zohar-avatar.jpg
+intro: Zohar, also known as Useless Treasures, creates tattoos recognized for their bold, surreal mix of nature, underground culture, and pop art.
+order: 10
 ---
-Vibrant compositions designed to flow with the body.
+
+He focuses on creating original tattoos that flow with the body and look amazing for years to come.

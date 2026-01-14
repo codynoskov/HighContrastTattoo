@@ -1,7 +1,7 @@
 ---
 import Tag from './Tag.astro';
 import Icon from './Icon.astro';
-import placeholderImage from '../assets/images/placeholder.png';
+import imagePlaceholder from '../assets/images/image-placeholder.png';
 
 interface LightboxImage {
   src: string;
@@ -40,8 +40,9 @@ const { images = [], galleryId } = Astro.props;
             data-slide-index={index}
           >
             <img 
-              src={image.src || placeholderImage.src} 
+              src={image.src || imagePlaceholder.src} 
               alt={image.alt || `Gallery image ${index + 1}`}
+              onerror={`this.src='${imagePlaceholder.src}'; this.onerror=null;`}
             />
             <div class="gallery-lightbox-counter">
               <span class="gallery-lightbox-current">{index + 1}</span>

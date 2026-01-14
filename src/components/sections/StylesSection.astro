@@ -1,7 +1,7 @@
 ---
 import Card from '../Card.astro';
 import Button from '../Button.astro';
-import placeholderImage from '../../assets/images/placeholder.png';
+import imagePlaceholder from '../../assets/images/image-placeholder.png';
 import { getCollection } from 'astro:content';
 import { getSlug, getWorksByStyle, resolveImagePath, resolveArtistName, getArtistSlugFromWork } from '../../utils/contentHelpers';
 
@@ -32,7 +32,7 @@ const stylesData = sortedStyles.map((entry) => {
   
   // Get the first work image for this style, or use placeholder
   const firstWork = styleWorks[0];
-  const image = firstWork ? resolveImagePath(firstWork.data.image) : placeholderImage.src;
+  const image = firstWork ? resolveImagePath(firstWork.data.image) : imagePlaceholder.src;
   
   // Get artist names who work in this style
   const artistNames = [...new Set(styleWorks.map(work => {

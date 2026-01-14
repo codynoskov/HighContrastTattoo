@@ -1,6 +1,6 @@
 ---
 import Tag from './Tag.astro';
-import placeholderImage from '../assets/images/placeholder.png';
+import imagePlaceholder from '../assets/images/image-placeholder.png';
 
 interface Props {
   image?: string;
@@ -23,7 +23,11 @@ const {
 
 <div class={`image-with-tags ${className}`}>
   <div class="image-container">
-    <img src={image || placeholderImage.src} alt={imageAlt} />
+    <img 
+      src={image || imagePlaceholder.src} 
+      alt={imageAlt}
+      onerror={`this.src='${imagePlaceholder.src}'; this.onerror=null;`}
+    />
   </div>
   {tags.length > 0 && (
     <div class="tags-container">

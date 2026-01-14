@@ -9,13 +9,12 @@ import Checkbox from '../../../components/Checkbox.astro';
 import ArtistImage from '../../../components/ArtistImage.astro';
 import ImageWithTags from '../../../components/ImageWithTags.astro';
 import Gallery from '../../../components/Gallery.astro';
-import placeholderImage from '../../../assets/images/placeholder.png';
+import imagePlaceholder from '../../../assets/images/image-placeholder.png';
 
-// Figma image URLs from the Gallery design (node-id=531-15401)
-// These images were retrieved from Figma and include both vertical and horizontal orientations
+// Design system uses placeholder images only
 const figmaTattooImages = [
   {
-    src: "http://localhost:3845/assets/a695935b2161253488847dd92a522945d6bb60f9.png",
+    src: imagePlaceholder.src,
     alt: "Tattoo artwork 1 - Linework, Traditional & Old School",
     tags: [
       { text: "Linework", color: "Primary" },
@@ -23,28 +22,28 @@ const figmaTattooImages = [
     ]
   },
   {
-    src: "http://localhost:3845/assets/5446e0225866457211707b2e0a78ed747819a73a.png",
+    src: imagePlaceholder.src,
     alt: "Tattoo artwork 2 - Traditional & Old School",
     tags: [
       { text: "Traditional & Old School", color: "Primary" }
     ]
   },
   {
-    src: "http://localhost:3845/assets/b3633f1001a18109d7f2063f31d2f7fc758af3d5.png",
+    src: imagePlaceholder.src,
     alt: "Tattoo artwork 3 - Linework",
     tags: [
       { text: "Linework", color: "Primary" }
     ]
   },
   {
-    src: "http://localhost:3845/assets/8a2091eef076fccbb30866f50ce61e677fd33636.png",
+    src: imagePlaceholder.src,
     alt: "Tattoo artwork 4 - Traditional & Old School",
     tags: [
       { text: "Traditional & Old School", color: "Primary" }
     ]
   },
   {
-    src: "http://localhost:3845/assets/88c9404fca8fa86dd52e02f8fb919bfca9baaec3.png",
+    src: imagePlaceholder.src,
     alt: "Tattoo artwork 5 - Cartoon, Traditional & Old School",
     tags: [
       { text: "Cartoon", color: "Primary" },
@@ -52,7 +51,7 @@ const figmaTattooImages = [
     ]
   },
   {
-    src: "http://localhost:3845/assets/45443369261732539cb940c00ff9bbfb205ab2b0.png",
+    src: imagePlaceholder.src,
     alt: "Tattoo artwork 6 - Created by Nastia Zlotin",
     tags: [
       { text: "Created by Nastia Zlotin", color: "Accent" }
@@ -63,7 +62,7 @@ const figmaTattooImages = [
 // Additional sample images with different aspect ratios
 const additionalSampleImages = [
   {
-    src: "http://localhost:3845/assets/a695935b2161253488847dd92a522945d6bb60f9.png",
+    src: imagePlaceholder.src,
     alt: "Traditional tattoo - Figure with dagger, rose, and fish",
     tags: [
       { text: "Traditional & Old School", color: "Primary" },
@@ -71,7 +70,7 @@ const additionalSampleImages = [
     ]
   },
   {
-    src: "http://localhost:3845/assets/5446e0225866457211707b2e0a78ed747819a73a.png",
+    src: imagePlaceholder.src,
     alt: "Traditional tattoo - Arched window with flames",
     tags: [
       { text: "Traditional & Old School", color: "Primary" },
@@ -79,7 +78,7 @@ const additionalSampleImages = [
     ]
   },
   {
-    src: "http://localhost:3845/assets/b3633f1001a18109d7f2063f31d2f7fc758af3d5.png",
+    src: imagePlaceholder.src,
     alt: "Japanese-style woman tattoo",
     tags: [
       { text: "Japanese", color: "Primary" },
@@ -87,21 +86,21 @@ const additionalSampleImages = [
     ]
   },
   {
-    src: "http://localhost:3845/assets/8a2091eef076fccbb30866f50ce61e677fd33636.png",
+    src: imagePlaceholder.src,
     alt: "Tattoo artwork 10",
     tags: [
       { text: "Fine Line", color: "Primary" }
     ]
   },
   {
-    src: "http://localhost:3845/assets/88c9404fca8fa86dd52e02f8fb919bfca9baaec3.png",
+    src: imagePlaceholder.src,
     alt: "Tattoo artwork 11",
     tags: [
       { text: "Minimalist", color: "Primary" }
     ]
   },
   {
-    src: "http://localhost:3845/assets/45443369261732539cb940c00ff9bbfb205ab2b0.png",
+    src: imagePlaceholder.src,
     alt: "Tattoo artwork 12",
     tags: [
       { text: "Geometric", color: "Primary" }

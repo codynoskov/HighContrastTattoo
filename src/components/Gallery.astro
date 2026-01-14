@@ -2,7 +2,7 @@
 import Tag from './Tag.astro';
 import Icon from './Icon.astro';
 import Lightbox from './Lightbox.astro';
-import placeholderImage from '../assets/images/placeholder.png';
+import imagePlaceholder from '../assets/images/image-placeholder.png';
 
 interface GalleryImage {
   src: string;
@@ -46,9 +46,10 @@ const allImages = images;
       >
         <div class="gallery-image-container">
           <img 
-            src={image.src || placeholderImage.src} 
+            src={image.src || imagePlaceholder.src} 
             alt={image.alt || `Gallery image ${index + 1}`}
             loading="lazy"
+            onerror={`this.src='${imagePlaceholder.src}'; this.onerror=null;`}
           />
         </div>
         {image.tags && image.tags.length > 0 && !(index === MAX_VISIBLE_IMAGES - 1 && hasMoreImages) ? (

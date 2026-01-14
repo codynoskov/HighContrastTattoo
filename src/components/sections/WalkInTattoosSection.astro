@@ -1,6 +1,6 @@
 ---
 import Button from '../Button.astro';
-import placeholderImage from '../../assets/images/placeholder.png';
+import imagePlaceholder from '../../assets/images/image-placeholder.png';
 
 interface Props {
   title?: string;
@@ -16,7 +16,7 @@ const {
   description = "Walk-ins are available",
   schedule = "Monday–Saturday, 11:30–15:00",
   googleMapsUrl = "https://maps.google.com/?q=High+Contrast+Tattoo,+Schreinerstraße+6,+10247+Berlin,+Germany",
-  backgroundImage = placeholderImage.src,
+  backgroundImage = imagePlaceholder.src,
   className = ""
 } = Astro.props;
 ---

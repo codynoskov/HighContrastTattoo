@@ -1,7 +1,7 @@
 ---
 import Button from '../Button.astro';
 import Logo from '../Logo.astro';
-import placeholderImage from '../../assets/images/placeholder.png';
+import imagePlaceholder from '../../assets/images/image-placeholder.png';
 
 interface Props {
   headline?: string;
@@ -26,8 +26,8 @@ const {
   videoSrc,
   streamVideoId,
   streamCustomerCode,
-  topRightImage = placeholderImage.src,
-  bottomLeftImage = placeholderImage.src,
+  topRightImage = imagePlaceholder.src,
+  bottomLeftImage = imagePlaceholder.src,
   className = ""
 } = Astro.props;
 

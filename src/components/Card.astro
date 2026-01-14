@@ -2,7 +2,7 @@
 import Tag from "./Tag.astro";
 import ArtistImage from "./ArtistImage.astro";
 import Button from "./Button.astro";
-import placeholderImage from "../assets/images/placeholder.png";
+import imagePlaceholder from "../assets/images/image-placeholder.png";
 
 interface TagWithLink {
   text: string;
@@ -53,7 +53,11 @@ const descriptionSizeClass = `card-description-${descriptionSize}`;
   <div class="card-group">
     {!isArtist && (
       <div class="card-header-image">
-        <img src={image || placeholderImage.src} alt={imageAlt} />
+        <img 
+          src={image || imagePlaceholder.src} 
+          alt={imageAlt}
+          onerror={`this.src='${imagePlaceholder.src}'; this.onerror=null;`}
+        />
       </div>
     )}
     {isArtist && (

@@ -36,7 +36,7 @@ const SCAN_DIRECTORIES = [
 
 // Essential files to preserve (never delete)
 const PRESERVE_FILES = [
-  'placeholder.png',
+  'image-placeholder.png',
   'artist-placeholder.png',
   'logo.svg',
   'favicon.svg'

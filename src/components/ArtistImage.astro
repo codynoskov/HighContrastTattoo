@@ -1,5 +1,5 @@
 ---
-import placeholderImage from "../assets/images/placeholder.png";
+import artistPlaceholderImage from "../assets/images/artist-placeholder.png";
 
 interface Props {
   image?: string;
@@ -15,7 +15,11 @@ const {
 ---
 
 <div class={`artist-image-wrapper ${className}`}>
-  <img src={image || placeholderImage.src} alt={imageAlt} />
+  <img 
+    src={image || artistPlaceholderImage.src} 
+    alt={imageAlt}
+    onerror={`this.src='${artistPlaceholderImage.src}'; this.onerror=null;`}
+  />
   <div class="bevel bevel-top-left">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0 0L24 0L0 24Z" fill="var(--color-primary-50)"/>

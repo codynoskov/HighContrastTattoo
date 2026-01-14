@@ -73,7 +73,7 @@ content:
         label: Slug
         type: string
         required: true
-        description: IMPORTANT: This slug must match the folder name where the artist's works are stored. For example, artist "Nastia Zlotin" uses slug "nastia-zlotin" and works go in folder "works/nastia-zlotin/". Use lowercase letters and hyphens (no spaces or capitals). This links works to the artist.
+        description: "IMPORTANT: This slug must match the folder name where the artist's works are stored. For example, artist \"Nastia Zlotin\" uses slug \"nastia-zlotin\" and works go in folder \"works/nastia-zlotin/\". Use lowercase letters and hyphens (no spaces or capitals). This links works to the artist."
       
       - name: order
         label: Order

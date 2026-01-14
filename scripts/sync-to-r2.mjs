@@ -40,6 +40,10 @@ function getContentType(filePath) {
     gif: 'image/gif',
     svg: 'image/svg+xml',
     webp: 'image/webp',
+    mp4: 'video/mp4',
+    webm: 'video/webm',
+    mov: 'video/quicktime',
+    avi: 'video/x-msvideo',
   };
   return types[ext] || 'application/octet-stream';
 }

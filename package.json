@@ -8,12 +8,15 @@
   "scripts": {
     "dev": "astro dev",
     "sync-images": "node scripts/sync-images.mjs",
-    "build": "npm run sync-images && astro build",
+    "sync-to-r2": "node scripts/sync-to-r2.mjs",
+    "build": "npm run sync-images && npm run sync-to-r2 && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.969.0",
     "astro": "^5.16.6",
+    "dotenv": "^17.2.3",
     "pixelarticons": "^1.8.1"
   },
   "devDependencies": {

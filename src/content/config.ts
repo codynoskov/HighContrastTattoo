@@ -13,11 +13,11 @@ export const collections = {
   artists: defineCollection({
     type: 'content',
     schema: z.object({
-      name: z.string(),
-      photo: z.string(),
-      intro: z.string(),
-      instagram: z.string().optional(),
-      order: z.number().optional(),
+      name: z.string().describe('Artist name'),
+      photo: z.string().describe('Photo path'),
+      intro: z.string().describe('Introduction text'),
+      instagram: z.string().optional().describe('Instagram handle'),
+      order: z.number().optional().describe('Display order'),
     }),
   }),
 

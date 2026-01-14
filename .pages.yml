@@ -111,7 +111,7 @@ content:
     create: true
     delete: true
     view:
-      fields: [image, order]
+      fields: [order, image]
       sort_by: order
       sort_direction: asc
     fields:

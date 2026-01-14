@@ -1,14 +1,12 @@
 ---
 name: White on Black
 slugOverride: white-on-black
-intro: Striking inverse tattoos where white ink creates luminous designs against solid black backgrounds.
 order: 6
+intro: Bright, glowing details layered over dark blackwork or blackout.
+details: White on Black tattoos use light ink over existing blackwork or
+  blackout areas. This creates a glowing effect where lines, symbols and
+  patterns appear on a deep black background. Clients who visit us in
+  Berlin-Friedrichshain choose this style when they want something unusual or
+  want to add new details to old black tattoos. It works well for upgrades,
+  special effects and accents in big black projects.
 ---
-
-## Light from Darkness
-
-White on Black tattooing flips the traditional approach on its head. Instead of black lines on skin, these pieces begin with a solid black foundation, then use white and light-colored inks to create designs that seem to glow from within. The effect is dramatic, almost ethereal—like moonlight cutting through shadow.
-
-## A Bold Statement
-
-This style demands commitment and rewards it with impact. The contrast between the deep black base and the bright white details creates pieces that command attention. Whether showcasing delicate lacework patterns, celestial imagery, or bold graphic elements, White on Black tattoos make an unmistakable statement about the wearer's willingness to embrace the unconventional.

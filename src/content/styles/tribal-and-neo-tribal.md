@@ -1,7 +1,7 @@
 ---
 name: Tribal & Neo-Tribal
 slugOverride: tribal-and-neo-tribal
-order: 23
+order: 15
 intro: Powerful black tattoos built from rhythmic, body-following patterns.
 details: Tribal & Neo-Tribal tattoos use big black areas, curves and repeated
   shapes inspired by traditional body markings, but drawn in a modern way.

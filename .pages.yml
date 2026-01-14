@@ -17,7 +17,7 @@ content:
     create: true
     delete: true
     view:
-      fields: [name, order]
+      fields: [order, name]
       sort_by: order
       sort_direction: asc
     fields:
@@ -58,7 +58,7 @@ content:
     create: true
     delete: true
     view:
-      fields: [name, order, photo]
+      fields: [order, photo, name]
       sort_by: order
       sort_direction: asc
     fields:

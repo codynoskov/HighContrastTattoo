@@ -1,14 +1,14 @@
 ---
 name: Calligraphy
 slugOverride: calligraphy
-intro: The art of beautiful writing transformed into tattoo form—expressive letterforms that carry meaning through style.
 order: 17
+intro: Expressive lettering tattoos focused on the art of writing.
+details: "Calligraphy tattoos are all about the style of the letters: hand-drawn
+  scripts, bold strokes and custom fonts. This tattoo style is perfect for
+  names, dates, quotes and single words where the look of the text is as
+  important as the meaning. At our Friedrichshain studio in Berlin, our
+  calligraphy artists pick the right script for the language, length of the
+  phrase and place on the body, from a small word on the wrist to a full
+  calligraphic sleeve. If you want your text tattoo to look like a piece of art,
+  calligraphy is the right direction."
 ---
-
-## Words as Art
-
-Calligraphy tattooing elevates text beyond mere communication. Every letter becomes an opportunity for artistic expression—the weight of a stroke, the flow between characters, the personality conveyed through style. Whether drawn from traditional scripts or contemporary lettering, these tattoos honor the ancient art of beautiful writing.
-
-## Personal Inscriptions
-
-The words we choose to carry on our skin matter, and calligraphy ensures they're presented with the artistry they deserve. A name, a quote, a single word that captures everything—calligraphy tattoos transform language into visual poetry, giving permanent form to the phrases that define us.

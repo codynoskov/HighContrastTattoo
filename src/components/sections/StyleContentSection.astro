@@ -118,6 +118,12 @@ const remainingImages = galleryImages.slice(3);
     color: var(--color-primary-900);
   }
 
+  /* Handle Astro Content component wrapper (article/div) */
+  .body-content :global(> article),
+  .body-content :global(> div) {
+    display: contents;
+  }
+
   .body-content :global(p) {
     font: var(--typography-body-md);
     color: var(--color-primary-900);

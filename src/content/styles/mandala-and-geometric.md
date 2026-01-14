@@ -1,14 +1,13 @@
 ---
 name: Mandala & Geometric
 slugOverride: mandala-and-geometric
-intro: Sacred patterns and mathematical precision—tattoos that explore symmetry, repetition, and universal forms.
 order: 16
+intro: Symmetrical tattoos based on patterns, shapes and precise geometry.
+details: Mandala & Geometric tattoos use symmetry, repeating shapes and clean
+  lines to create balanced designs. These tattoos are great on the chest, back,
+  shoulders, knees and hands, where they can circle around a centre or wrap
+  around joints. Our artists in Berlin-Friedrichshain plan each piece to follow
+  the body so the pattern “sits” well on muscles and bones. If you like
+  mandalas, sacred geometry and decorative patterns without characters, this
+  style is a strong choice.
 ---
-
-## Sacred Geometry
-
-Mandala and Geometric tattooing connects to something fundamental about human perception. These designs tap into patterns that appear throughout nature and across cultures—the spiral of a shell, the symmetry of a flower, the crystalline structure of minerals. There's a reason these shapes feel meaningful: they reflect the mathematical principles underlying reality itself.
-
-## Meditation in Ink
-
-For many, mandala tattoos serve as personal talismans—symbols of wholeness, balance, and the journey inward. The process of receiving one can be meditative, and the finished piece becomes a reminder of centeredness and cosmic connection. Whether purely geometric or incorporating organic elements, these tattoos transform the body into a temple of pattern and meaning.

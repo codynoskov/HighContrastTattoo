@@ -10,7 +10,7 @@
     "sync-images": "node scripts/sync-images.mjs",
     "sync-to-r2": "node scripts/sync-to-r2.mjs",
     "build": "npm run sync-images && astro build && npm run remove-videos-from-dist",
-    "remove-videos-from-dist": "node -e \"const fs = require('fs'); const path = require('path'); const videosDir = path.join('dist', 'images', 'videos'); if (fs.existsSync(videosDir)) { fs.rmSync(videosDir, { recursive: true, force: true }); console.log('Removed videos from dist/'); }\"",
+    "remove-videos-from-dist": "node scripts/remove-videos-from-dist.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },

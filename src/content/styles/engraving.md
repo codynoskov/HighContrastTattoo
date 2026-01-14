@@ -1,14 +1,14 @@
 ---
 name: Engraving
 slugOverride: engraving
-intro: Tattoos inspired by historical printmaking techniques, featuring fine parallel lines and classical aesthetics.
 order: 19
+intro: Vintage inspired tattoos that look like old prints and etchings.
+details: "Engraving is a style that copies the look of old prints: lots of fine
+  lines, cross-hatching and a slightly worn texture. At our Berlin studio, the
+  team takes inspiration from anatomical books, medieval illustrations, old
+  maps, heraldry and classic engraved images. Clients who love history,
+  classical art, medieval symbols and myths often choose this style. Our artists
+  in Friedrichshain turn old drawings and historic engravings into tattoos while
+  keeping the feeling of ink on paper. If you want a rare, vintage looking
+  tattoo with a medieval touch, engraving is a great fit."
 ---
-
-## Etched in Skin
-
-Engraving-style tattooing pays homage to the printmaking techniques that illustrated books and documents for centuries. Using fine parallel lines of varying density to create depth and shadow, these tattoos evoke the aesthetic of woodcuts, copper engravings, and lithographs. The effect is scholarly, classical, and distinctly artistic.
-
-## Historical Resonance
-
-There's an inherent gravitas to Engraving-style work. These tattoos connect to a visual tradition that includes everything from Renaissance anatomical studies to Victorian scientific illustrations to the art of currency and official documents. For those drawn to historical aesthetics, classical imagery, or the beauty of fine linework, Engraving offers a style with genuine depth.

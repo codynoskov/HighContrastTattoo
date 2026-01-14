@@ -176,3 +176,23 @@ content:
         type: rich-text
         required: true
         description: The review content. The text will be displayed on the front page.
+  
+  # ============================================
+  # STUDIO GALLERY
+  # ============================================
+  - name: studio
+    label: Studio Gallery
+    type: collection
+    path: src/content/studio
+    create: false
+    delete: false
+    fields:
+      - name: images
+        label: Studio Images
+        type: image
+        options:
+          multiple: true
+          input: public/images/studio
+          output: /images/studio
+        required: true
+        description: Images for the "Inside the Studio" gallery on the front page. Drag to reorder.

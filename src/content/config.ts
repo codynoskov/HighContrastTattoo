@@ -39,4 +39,11 @@ export const collections = {
       order: z.number().optional(),
     }),
   }),
+
+  studio: defineCollection({
+    type: 'content',
+    schema: z.object({
+      images: z.array(z.string()),
+    }),
+  }),
 };

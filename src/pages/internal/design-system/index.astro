@@ -1,0 +1,118 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import DesignSystemNav from '../../components/DesignSystemNav.astro';
+---
+
+<Layout>
+  <div class="design-system">
+    <header class="design-system-header">
+      <h1>Design System</h1>
+      <p class="body-lg">A comprehensive overview of design tokens, typography, icons, and components</p>
+    </header>
+
+    <DesignSystemNav />
+
+    <main class="design-system-content">
+      <div class="landing-grid">
+        <a href="/internal/design-system/tokens" class="landing-card">
+          <h2>Tokens</h2>
+          <p class="body-md">Colors, spacing, and design tokens used throughout the system</p>
+        </a>
+        <a href="/internal/design-system/typography" class="landing-card">
+          <h2>Typography</h2>
+          <p class="body-md">Font families, headings, body text, and typographic styles</p>
+        </a>
+        <a href="/internal/design-system/icons" class="landing-card">
+          <h2>Icons</h2>
+          <p class="body-md">Complete icon library with search functionality</p>
+        </a>
+        <a href="/internal/design-system/layout" class="landing-card">
+          <h2>Layout</h2>
+          <p class="body-md">Header and footer components for page structure</p>
+        </a>
+        <a href="/internal/design-system/components" class="landing-card">
+          <h2>Components</h2>
+          <p class="body-md">Reusable UI components and their variations</p>
+        </a>
+      </div>
+    </main>
+  </div>
+</Layout>
+
+<style>
+  .design-system {
+    max-width: var(--container-max-width-xlarge);
+    margin: 0 auto;
+    padding: var(--spacing-core-1000-md) var(--spacing-page-padding);
+    overflow: hidden;
+  }
+
+  .design-system-header {
+    margin-bottom: var(--spacing-core-1000-md);
+    text-align: center;
+  }
+
+  .design-system-header h1 {
+    margin-bottom: var(--spacing-core-800-md);
+  }
+
+  .design-system-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-section-large);
+  }
+
+  .landing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-core-800-md);
+  }
+
+  .landing-card {
+    padding: var(--spacing-core-1000-md);
+    border: var(--border-width-divider) solid var(--color-neutral-200);
+    border-radius: 8px;
+    background: var(--color-background);
+    text-decoration: none;
+    color: var(--color-text);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-core-700-md);
+  }
+
+  .landing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-primary-300);
+  }
+
+  .landing-card h2 {
+    margin: 0;
+    color: var(--color-primary-700);
+  }
+
+  .landing-card p {
+    margin: 0;
+    color: var(--color-neutral-600);
+  }
+
+  @media (max-width: 768px) {
+    .design-system {
+      padding: var(--spacing-core-800-md) var(--spacing-core-700-md);
+    }
+
+    .design-system-header {
+      margin-bottom: var(--spacing-core-800-md);
+    }
+
+    .landing-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-core-700-md);
+    }
+
+    .landing-card {
+      padding: var(--spacing-core-800-md);
+    }
+  }
+</style>

@@ -197,4 +197,4 @@ content:
           input: public/images/studio
           output: /images/studio
         required: true
-        description: "These images appear in the \"Inside the Studio\" gallery on the front page. Drag images to change their order — the first image will appear first in the gallery. Click + to add new images, or click × to remove. All images must be stored in the Studio folder."
+        description: "These images appear in the \"Inside the Studio\" gallery on the front page. Drag images to change their order — the first image will appear first in the gallery."

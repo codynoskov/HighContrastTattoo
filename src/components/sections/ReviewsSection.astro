@@ -2,51 +2,35 @@
 import ReviewCard from '../ReviewCard.astro';
 import Button from '../Button.astro';
 import Icon from '../Icon.astro';
-
-interface Review {
-  rating?: number;
-  text: string;
-  author: string;
-}
+import { getCollection } from 'astro:content';
 
 interface Props {
   title?: string;
   subtitle?: string;
-  reviews?: Review[];
   googleMapsUrl?: string;
   className?: string;
 }
 
+// Fetch reviews from content collection
+const reviewEntries = await getCollection('reviews');
+
+// Sort reviews by order if defined
+const sortedReviews = [...reviewEntries].sort((a, b) => {
+  const orderA = a.data.order ?? 999;
+  const orderB = b.data.order ?? 999;
+  return orderA - orderB;
+});
+
+// Transform to ReviewCard format
+const reviews = sortedReviews.map((entry) => ({
+  rating: entry.data.rating ?? 5,
+  text: entry.body,
+  author: entry.data.author,
+}));
+
 const {
   title = "Experiences Shared",
   subtitle = "Trusted by hundreds with **100% positive** reviews",
-  reviews = [
-    {
-      rating: 5,
-      text: "I had an amazing experience tattooing at High Contrast tattoo. I was looking for neo trad color style tattoo artists to finish an old project and Nasztia made all my dreams come true. Always when I look at my arm I have to smile because it looks exactly how I imagined it. Thank you so much for this great art, the project and the great human you are.",
-      author: "Cláudia Romanini"
-    },
-    {
-      rating: 5,
-      text: "I had two sessions with the incredibly talented Nastia, and I couldn't be happier with the beautiful piece she created. A brilliant cover that couldn't have gone better. She also made me feel super comfortable during the whole process.\nThe space is pristine, delightful y decorated and cosy, creating a relaxed and welcoming vibe.\nWorth the travel to visit Nastia and get an astonishing tattoo 🖤",
-      author: "Mai Giménez"
-    },
-    {
-      rating: 5,
-      text: "Top modern, super clean but cozy place.\nHighly professional tattoos!\nVery friendly and open atmosphere. Absolute recommendable!\nThank you very much for your outstanding work Nastia!",
-      author: "Ante Pipovic"
-    },
-    {
-      rating: 5,
-      text: "A tattoo by Nastia is worth every trip to Berlin. The first part of my sleeve is done. The rest will come next year. Thank you Nastia for your creativity and your wonderful ideas and personality. ❤️",
-      author: "Sarah Rißmann"
-    },
-    {
-      rating: 5,
-      text: "This was a super nice experience. The artist useless treasures really took the time to adapt the tattoo for my wishes. Being tattooed was super convenient and fun! Have a look at the result (immediately after finishing) yourself :)\nCan't stop looking at the pictures and looking forward to the healed art 😍 derinetly recommend this cozy studio and the exceptional artists",
-      author: "Steven Knaack"
-    }
-  ],
   googleMapsUrl = "https://maps.google.com/?q=High+Contrast+Tattoo,+Schreinerstraße+6,+10247+Berlin,+Germany",
   className = ""
 } = Astro.props;

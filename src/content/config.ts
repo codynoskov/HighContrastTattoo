@@ -30,4 +30,13 @@ export const collections = {
       order: z.number().optional(),
     }),
   }),
+
+  reviews: defineCollection({
+    type: 'content',
+    schema: z.object({
+      rating: z.number().min(1).max(5).optional().default(5),
+      author: z.string(),
+      order: z.number().optional(),
+    }),
+  }),
 };

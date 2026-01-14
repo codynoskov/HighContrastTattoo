@@ -138,3 +138,41 @@ content:
         label: Order
         type: number
         description: Lower numbers appear first. The first work is used as preview on artist cards.
+  
+  # ============================================
+  # REVIEWS
+  # ============================================
+  - name: reviews
+    label: Reviews
+    type: collection
+    path: src/content/reviews
+    create: true
+    delete: true
+    view:
+      fields: [order, author, rating]
+      sort_by: order
+      sort_direction: asc
+    fields:
+      - name: rating
+        label: Rating
+        type: number
+        required: false
+        default: 5
+        description: Star rating from 1 to 5 (default is 5)
+      
+      - name: author
+        label: Author Name
+        type: string
+        required: true
+        description: Name of the person who wrote the review
+      
+      - name: order
+        label: Order
+        type: number
+        description: Lower numbers appear first. Use decimals (like 1.5) to insert between items.
+      
+      - name: body
+        label: Review Text
+        type: rich-text
+        required: true
+        description: The review content. The text will be displayed on the front page.

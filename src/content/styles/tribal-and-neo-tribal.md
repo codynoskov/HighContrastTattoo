@@ -1,14 +1,14 @@
 ---
 name: Tribal & Neo-Tribal
 slugOverride: tribal-and-neo-tribal
-intro: Bold black patterns inspired by indigenous traditions, reimagined for contemporary expression.
 order: 23
+intro: Powerful black tattoos built from rhythmic, body-following patterns.
+details: Tribal & Neo-Tribal tattoos use big black areas, curves and repeated
+  shapes inspired by traditional body markings, but drawn in a modern way.
+  People choose this style to show strength, movement and energy on the
+  shoulders, chest, back, hips or legs. In our studio in Berlin-Friedrichshain,
+  our artists design each pattern to follow muscles and joints so the tattoo
+  moves with the body and supports its form. If you want a bold black tattoo
+  without detailed pictures, but with a clear and powerful silhouette, Tribal
+  and Neo-Tribal are ideal.
 ---
-
-## Ancient Roots
-
-Tribal tattooing connects to the oldest traditions of marking the body—practices that span from Polynesian islands to Celtic lands, from African tribes to indigenous Americas. These patterns originally served as markers of identity, achievement, protection, and spiritual connection. The bold black designs carried meaning that was both personal and communal, written on the skin for all to read.
-
-## Modern Interpretations
-
-Neo-Tribal takes these ancient visual languages and speaks them with a contemporary accent. While honoring the bold forms and symbolic power of traditional tribal work, modern artists bring new influences—abstract art, graphic design, personal mythology—into the conversation. The result is tattoo work that carries the weight of history while expressing thoroughly modern identities.

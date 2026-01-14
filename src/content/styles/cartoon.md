@@ -1,14 +1,13 @@
 ---
 name: Cartoon
 slugOverride: cartoon
-intro: Playful, colorful tattoos that capture the spirit of animation with bold outlines and expressive characters.
 order: 12
+intro: Playful, humorous tattoos with a bold cartoony feel.
+details: Cartoon tattoos are bright, playful and often exaggerated, inspired by
+  animated movies, TV shows and comic strips. Many of our clients choose this
+  style to show humour, childhood memories or love for pop culture. In our
+  Berlin-Friedrichshain studio, our artists tattoo famous characters, memes and
+  mascots or create new cartoon figures from your ideas. These tattoos work well
+  on the forearm, calf, shoulder and other visible spots if you want something
+  light and fun.
 ---
-
-## The Art of Fun
-
-Cartoon tattooing embraces the joy and expressiveness of animated art. These pieces feature bold, clean outlines, bright colors, and the exaggerated features that make cartoon characters so memorable. From classic animation icons to original creations, cartoon tattoos celebrate the lighter side of life and the power of visual storytelling to bring smiles.
-
-## Nostalgia and Expression
-
-For many, cartoon tattoos are a way to carry cherished childhood memories on their skin—characters that shaped their sense of humor, taught them lessons, or simply made them happy. But the style also lends itself to original work, allowing artists to create playful, expressive pieces that capture personality and bring a sense of whimsy to the art of tattooing.

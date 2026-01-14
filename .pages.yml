@@ -44,10 +44,10 @@ content:
         required: true
         description: Short description shown on style cards and style pages. Keep it to 1-2 sentences.
       
-      - name: details
+      - name: body
         label: Extended Description
-        type: text
-        description: Optional longer description with more details about the style
+        type: rich-text
+        description: Optional longer description with more details about the style. Supports rich text formatting.
   
   # ============================================
   # ARTISTS

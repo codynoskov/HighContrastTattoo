@@ -3,7 +3,7 @@ name: Cartoon
 slugOverride: cartoon
 order: 12
 intro: Playful, humorous tattoos with a bold cartoony feel.
-details: Cartoon tattoos are bright, playful and often exaggerated, inspired by
+
   animated movies, TV shows and comic strips. Many of our clients choose this
   style to show humour, childhood memories or love for pop culture. In our
   Berlin-Friedrichshain studio, our artists tattoo famous characters, memes and
@@ -11,3 +11,5 @@ details: Cartoon tattoos are bright, playful and often exaggerated, inspired by
   on the forearm, calf, shoulder and other visible spots if you want something
   light and fun.
 ---
+
+Cartoon tattoos are bright, playful and often exaggerated, inspired by

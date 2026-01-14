@@ -3,7 +3,7 @@ name: Art Nouveau
 slugOverride: art-nouveau
 order: 7
 intro: Decorative, flowing tattoos inspired by the Art Nouveau era.
-details: Art Nouveau tattoos use smooth curves, decorative borders and stylised
+
   flowers. The style comes from art of the late 19th and early 20th century. In
   our Berlin studio, we often create designs with graceful figures, flowing
   hair, ornate frames and floral elements. These tattoos wrap around the body
@@ -11,3 +11,5 @@ details: Art Nouveau tattoos use smooth curves, decorative borders and stylised
   vintage posters and classic Art Nouveau artwork, this style can be a great
   base for your tattoo.
 ---
+
+Art Nouveau tattoos use smooth curves, decorative borders and stylised

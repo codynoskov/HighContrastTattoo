@@ -46,4 +46,19 @@ export const collections = {
       images: z.array(z.string()),
     }),
   }),
+
+  homepage: defineCollection({
+    type: 'content',
+    schema: z.object({
+      headline: z.string().describe('Hero headline'),
+      introText: z.string().describe('Hero introduction text (supports **bold** markdown)'),
+      ctaText: z.string().optional().describe('Call-to-action button text'),
+      ctaHref: z.string().optional().describe('Call-to-action button link'),
+      videoSrc: z.string().optional().describe('Video URL (R2 or external)'),
+      streamVideoId: z.string().optional().describe('Cloudflare Stream video ID'),
+      streamCustomerCode: z.string().optional().describe('Cloudflare Stream customer code'),
+      topRightImage: z.string().optional().describe('Top right overlay image path'),
+      bottomLeftImage: z.string().optional().describe('Bottom left overlay image path'),
+    }),
+  }),
 };

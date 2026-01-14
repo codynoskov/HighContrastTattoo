@@ -1,14 +1,14 @@
 ---
 name: Heavy Blackwork
 slugOverride: heavy-blackwork
-intro: Bold, saturated black coverage that makes a powerful statement through solid fills and stark contrast.
 order: 20
+intro: Extreme black tattoos with dense coverage and radical contrast.
+details: Heavy Blackwork uses large areas of pure black, blackout sections and
+  big abstract forms. This style is for people who want to fully change part of
+  the body, cover old tattoos or enjoy a very bold, graphic look. In our studio
+  in Berlin-Friedrichshain, our artists plan heavy blackwork projects step by
+  step, deciding which areas will be black and which will stay as skin, and
+  building designs that can wrap an arm, leg or torso. If you like minimalism,
+  strong silhouettes and fearless tattoo ideas, heavy blackwork is one of the
+  most powerful tools.
 ---
-
-## Committed to Black
-
-Heavy Blackwork takes the principles of blackwork tattooing to their maximum expression. These pieces feature extensive areas of solid black ink—sometimes covering entire limbs or sections of the body. The effect is dramatic and uncompromising, creating a striking visual presence that transforms the body into a canvas of pure contrast.
-
-## Beyond Decoration
-
-For many who choose Heavy Blackwork, the style represents more than aesthetics—it's a commitment, a transformation, a reclaiming of the body. These tattoos can serve as armor, as ritual marking, as a statement of identity. The density of black ink creates pieces that will remain bold and powerful for a lifetime.

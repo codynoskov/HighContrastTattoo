@@ -1,14 +1,13 @@
 ---
 name: Floral & Botanic
 slugOverride: floral-and-botanic
-intro: Nature's beauty immortalized in ink—flowers, plants, and botanical elements rendered with artistic sensitivity.
 order: 2
+intro: Elegant tattoos inspired by flowers, plants and natural forms.
+details: "Floral & Botanic tattoos turn flowers, leaves and other plant elements
+  into flowing designs that follow the body. At our studio in
+  Berlin-Friedrichshain, many clients choose this style for soft, romantic or
+  nature-inspired tattoos: branches, blossoms, wildflowers, vines and botanical
+  compositions. We work on small pieces, like a single flower on the wrist, and
+  on large projects on the thigh, ribs, shoulder or spine. If you like natural,
+  elegant tattoos, this style gives you a lot of different ideas."
 ---
-
-## Garden on Skin
-
-Floral and Botanic tattooing celebrates the endless variety and beauty of the plant world. From realistic botanical illustrations that could grace a scientific text to stylized interpretations that capture the essence of a bloom, these tattoos bring nature's artistry to the human form. Each flower carries its own symbolism, its own story, its own beauty.
-
-## Timeless Subjects, Endless Interpretations
-
-Flowers have been tattoo subjects for as long as tattooing has existed, yet the genre continues to evolve. Contemporary botanical tattoos might embrace photorealism, minimalist linework, watercolor effects, or bold traditional styling. The subject matter—roses, peonies, wildflowers, ferns, branches—provides a canvas for virtually any artistic approach.

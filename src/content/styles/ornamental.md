@@ -1,7 +1,7 @@
 ---
 name: Ornamental
 slugOverride: ornamental
-order: 22
+order: 18
 intro: Decorative tattoos that feel like jewellery or architectural detail on
   the skin.
 details: "Ornamental tattoos focus on decorative lines and shapes: filigree,

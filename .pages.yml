@@ -1,9 +1,9 @@
 media:
   - name: images
-    label: Images
+    label: Media
     input: public/images
     output: /images
-    extensions: [jpg, jpeg, png, gif, svg, webp, avif]
+    extensions: [jpg, jpeg, png, gif, svg, webp, avif, mp4]
     categories: [image]
 
 content:
@@ -73,13 +73,7 @@ content:
         label: Slug
         type: string
         required: true
-        description: |
-          IMPORTANT: This slug must match the folder name where the artist's works are stored.
-          
-          • Artist name "Nastia Zlotin" → slug: "nastia-zlotin" → works folder: "works/nastia-zlotin/"
-          • Artist name "Alex" → slug: "alex" → works folder: "works/alex/"
-          
-          Use lowercase letters and hyphens (no spaces or capitals). This links works to the artist.
+        description: IMPORTANT: This slug must match the folder name where the artist's works are stored. For example, artist "Nastia Zlotin" uses slug "nastia-zlotin" and works go in folder "works/nastia-zlotin/". Use lowercase letters and hyphens (no spaces or capitals). This links works to the artist.
       
       - name: order
         label: Display Order

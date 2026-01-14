@@ -17,8 +17,9 @@ const R2_BUCKET_NAME = process.env.R2_BUCKET_NAME;
 const SOURCE_DIR = 'public/images';
 
 if (!R2_ACCOUNT_ID || !R2_ACCESS_KEY_ID || !R2_SECRET_ACCESS_KEY || !R2_BUCKET_NAME) {
-  console.error('Missing R2 credentials. Set R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_BUCKET_NAME');
-  process.exit(1);
+  console.log('R2 credentials not set. Skipping R2 sync.');
+  console.log('To sync images to R2, set R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_BUCKET_NAME');
+  process.exit(0);
 }
 
 const s3Client = new S3Client({

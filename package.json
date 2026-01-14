@@ -3,13 +3,13 @@
   "type": "module",
   "version": "0.0.1",
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.0.0"
   },
   "scripts": {
     "dev": "astro dev",
     "sync-images": "node scripts/sync-images.mjs",
     "sync-to-r2": "node scripts/sync-to-r2.mjs",
-    "build": "npm run sync-images && npm run sync-to-r2 && astro build",
+    "build": "npm run sync-images && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },

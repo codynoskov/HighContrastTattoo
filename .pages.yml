@@ -97,6 +97,17 @@ content:
         type: string
         required: false
         description: Instagram handle without @ symbol (e.g., "arspunx")
+
+      - name: styles
+        label: Styles
+        type: reference
+        required: false
+        options:
+          collection: styles
+          label: "{name}"
+          value: "{slugOverride}"
+          multiple: true
+        description: Select the tattoo styles this artist specializes in. These styles will be displayed on the artist's profile page and listing. Multiple styles can be selected.
       
       - name: body
         label: Full Biography

@@ -19,6 +19,7 @@ interface Props {
   imageAlt?: string;
   tags?: string[] | TagWithLink[];
   artistTags?: string[] | TagWithLink[];
+  artistLinks?: Array<{ name: string; href: string }>;
   instagram?: string;
   href?: string;
   className?: string;
@@ -34,6 +35,7 @@ const {
   imageAlt = "",
   tags = [],
   artistTags = [],
+  artistLinks = [],
   instagram,
   href,
   className = ""
@@ -69,17 +71,26 @@ const descriptionSizeClass = `card-description-${descriptionSize}`;
       <div class="card-content">
         <h3 class="card-title">{title}</h3>
         <p class={`card-description ${descriptionSizeClass}`}>{description}</p>
-        {isArtist && instagram && (
-          <p class="card-instagram">
-            <strong>Instagram:</strong> <a href={`https://instagram.com/${instagram.replace('@', '')}`} target="_blank" rel="noopener noreferrer">@{instagram.replace('@', '')}</a>
+        {!isArtist && artistLinks.length > 0 && (
+          <p class="card-artists">
+            <strong>Artists working in this style:</strong>{" "}
+            <span set:html={artistLinks.map((artist, index) => 
+              `<a href="${artist.href}" class="card-artist-link">${artist.name}</a>${index < artistLinks.length - 1 ? ', ' : ''}`
+            ).join('')} />
           </p>
         )}
-        {displayTags.length > 0 && (
-          <div class="card-tags">
-            {displayTags.map((tag) => (
-              <Tag color={isArtist ? "Primary" : "Accent"} href={tag.href}>{tag.text}</Tag>
-            ))}
-          </div>
+        {isArtist && instagram && (
+          <p class="card-instagram">
+            <strong>Instagram:</strong> <a href={`https://instagram.com/${instagram.replace('@', '')}`} target="_blank" rel="noopener noreferrer" class="card-instagram-link">@{instagram.replace('@', '')}</a>
+          </p>
+        )}
+        {isArtist && displayTags.length > 0 && (
+          <p class="card-styles">
+            <strong>Styles the artist works in:</strong>{" "}
+            <span set:html={displayTags.map((tag, index) => 
+              `<a href="${tag.href || '#'}" class="card-style-link">${tag.text}</a>${index < displayTags.length - 1 ? ', ' : ''}`
+            ).join('')} />
+          </p>
         )}
       </div>
     </div>
@@ -201,7 +212,9 @@ const descriptionSizeClass = `card-description-${descriptionSize}`;
     font: var(--typography-body-lg);
   }
 
-  .card-instagram {
+  .card-artists,
+  .card-instagram,
+  .card-styles {
     font: var(--typography-body-md);
     color: var(--color-primary-900);
     margin: 0;
@@ -210,10 +223,27 @@ const descriptionSizeClass = `card-description-${descriptionSize}`;
     line-height: var(--line-height-core-800-md);
   }
 
-  .card-instagram strong {
+  .card-artists strong,
+  .card-instagram strong,
+  .card-styles strong {
     font-weight: var(--font-weight-bold);
     font-family: var(--font-stack-sans);
     line-height: var(--line-height-core-800-md);
+  }
+
+  .card-artist-link,
+  .card-instagram-link,
+  .card-style-link {
+    color: var(--color-primary-900);
+    text-decoration: underline;
+    text-underline-position: from-font;
+    font-weight: var(--font-weight-light);
+  }
+
+  .card-artist-link:hover,
+  .card-instagram-link:hover,
+  .card-style-link:hover {
+    color: var(--color-primary-700);
   }
 
   .card-tags {

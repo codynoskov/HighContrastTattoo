@@ -330,17 +330,11 @@
   max-width: 640px;
 }
 
-/* Section title - h2 on desktop, h3 on mobile */
+/* Section title - fixed size from Figma variables */
 .section-title {
   font: var(--typography-h2);
   color: var(--color-primary-900);
   margin: 0;
-}
-
-@media (max-width: 767px) {
-  .section-title {
-    font: var(--typography-h3);
-  }
 }
 
 /* Section description - body-lg styling */
@@ -367,12 +361,49 @@
   overflow-x: auto;
   overflow-y: visible;
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
 }
 
-.carousel::-webkit-scrollbar {
-  display: none;
+/* Hide scrollbars on mobile */
+@media (max-width: 767px) {
+  .carousel {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .carousel::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Show visible scrollbars on desktop - always visible when there's overflow */
+@media (min-width: 768px) {
+  .carousel {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-neutral-400) var(--color-neutral-100);
+    /* Force scrollbar to always be visible when there's overflow */
+    overflow-x: scroll;
+  }
+
+  .carousel::-webkit-scrollbar {
+    display: block !important;
+    height: 12px;
+    -webkit-appearance: none;
+  }
+
+  .carousel::-webkit-scrollbar-track {
+    background: var(--color-neutral-100);
+    border-radius: 6px;
+  }
+
+  .carousel::-webkit-scrollbar-thumb {
+    background: var(--color-neutral-400);
+    border-radius: 6px;
+    border: 2px solid var(--color-neutral-100);
+  }
+
+  .carousel::-webkit-scrollbar-thumb:hover {
+    background: var(--color-neutral-500);
+  }
 }
 
 /* Carousel track - flex container for items */

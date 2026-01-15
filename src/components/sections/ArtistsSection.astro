@@ -40,6 +40,7 @@ const artistsData = artistEntries.map((entry) => {
     description: entry.data.intro,
     image: resolveImagePath(entry.data.photo) || placeholderImage.src,
     artistTags,
+    instagram: entry.data.instagram,
     href: `/artists/${slug}`
   };
 });
@@ -73,6 +74,7 @@ const {
             descriptionSize="lg"
             image={artist.image}
             artistTags={artist.artistTags}
+            instagram={artist.instagram}
             href={artist.href}
           />
         ))}

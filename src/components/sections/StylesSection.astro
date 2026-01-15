@@ -3,7 +3,7 @@ import Card from '../Card.astro';
 import Button from '../Button.astro';
 import imagePlaceholder from '../../assets/images/image-placeholder.png';
 import { getCollection } from 'astro:content';
-import { getSlug, getWorksByStyle, resolveImagePath, resolveArtistName, getArtistSlugFromWork } from '../../utils/contentHelpers';
+import { getSlug, getWorksByStyle, resolveImagePath, resolveArtist, getArtistSlugFromWork } from '../../utils/contentHelpers';
 
 interface Props {
   title?: string;
@@ -34,16 +34,17 @@ const stylesData = sortedStyles.map((entry) => {
   const firstWork = styleWorks[0];
   const image = firstWork ? resolveImagePath(firstWork.data.image) : imagePlaceholder.src;
   
-  // Get artist names who work in this style
-  const artistNames = [...new Set(styleWorks.map(work => {
-    return resolveArtistName(getArtistSlugFromWork(work), artistEntries);
-  }).filter((name): name is string => name !== undefined))];
+  // Get artist links who work in this style
+  const artistSlugs = [...new Set(styleWorks.map(work => getArtistSlugFromWork(work)))];
+  const artistLinks = artistSlugs
+    .map(slug => resolveArtist(slug, artistEntries))
+    .filter((artist): artist is { name: string; href: string } => artist !== undefined);
   
   return {
     title: entry.data.name,
     description: entry.data.intro,
     image,
-    tags: artistNames,
+    artistLinks,
     href: `/styles/${slug}`
   };
 });
@@ -76,7 +77,7 @@ const {
             description={style.description}
             descriptionSize="lg"
             image={style.image}
-            tags={style.tags}
+            artistLinks={style.artistLinks}
             href={style.href}
           />
         ))}

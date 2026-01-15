@@ -48,24 +48,6 @@ content:
         label: Extended Description
         type: rich-text
         description: Optional longer description with more details about the style. Supports rich text formatting.
-      
-      - name: featuredImage
-        label: Featured Image
-        type: image
-        required: false
-        description: Optional featured image shown on style cards and style pages. If not provided, a default will be used.
-      
-      - name: accentColor
-        label: Accent Color
-        type: string
-        required: false
-        description: Hex color code for this style's accent color (e.g., "#954059"). Used for visual distinction.
-      
-      - name: icon
-        label: Icon
-        type: image
-        required: false
-        description: Optional icon or symbol representing this style. Should be a small, simple graphic.
   
   # ============================================
   # ARTISTS

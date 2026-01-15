@@ -7,6 +7,7 @@ export const collections = {
       name: z.string(),
       intro: z.string(),
       order: z.number().optional(),
+      cardImage: z.string().optional(),
     }),
   }),
 

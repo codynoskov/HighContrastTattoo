@@ -6,6 +6,10 @@ photo: /images/artists/skezy-avatar.jpg
 intro: Skezy is a heavy blackwork and lettering artist creating abstract,
   freehand designs with a dark, obscure and aggressively graphic aesthetic.
 instagram: skezytattoo
+styles:
+  - heavy-blackwork
+  - blackwork
+  - calligraphy
 ---
 My style is heavy, gooey blackwork and lettering. I like abstract, expressive shapes that don’t try to be polite and will stand out immediately from other tattoos around them. Think big, hellish meat, distorted forms and dark aesthetics rather than clean, “pretty” pictures.
 

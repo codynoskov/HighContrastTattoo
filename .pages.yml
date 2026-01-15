@@ -49,7 +49,7 @@ content:
         type: rich-text
         description: Optional longer description with more details about the style. Supports rich text formatting.
 
-        - name: cardImage
+      - name: cardImage
         label: Card Image
         type: image
         required: false

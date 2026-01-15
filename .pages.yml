@@ -320,13 +320,13 @@ content:
         label: Page Title
         type: string
         required: false
-        description: Header title for the Artists page (default: "Artists")
+        description: "Header title for the Artists page"
       
       - name: description
         label: Page Description
         type: text
         required: false
-        description: Subheader/description text for the Artists page
+        description: "Subheader/description text for the Artists page"
 
   # ============================================
   # STYLES PAGE
@@ -342,13 +342,13 @@ content:
         label: Page Title
         type: string
         required: false
-        description: Header title for the Styles page (default: "Styles")
+        description: "Header title for the Styles page"
       
       - name: description
         label: Page Description
         type: text
         required: false
-        description: Subheader/description text for the Styles page
+        description: "Subheader/description text for the Styles page"
 
   # ============================================
   # STYLES

@@ -305,31 +305,51 @@ content:
         type: string
         required: false
         description: Copyright notice (e.g., © 2026 High Contrast Tattoo)
-      
-      # Page Headers
-      - name: artistsPageTitle
-        label: Artists Page Title
+
+  # ============================================
+  # ARTISTS PAGE
+  # ============================================
+  - name: artistsPage
+    label: Artists Page
+    type: collection
+    path: src/content/artistsPage
+    create: false
+    delete: false
+    fields:
+      - name: title
+        label: Page Title
         type: string
         required: false
         description: Header title for the Artists page (default: "Artists")
       
-      - name: artistsPageDescription
-        label: Artists Page Description
+      - name: description
+        label: Page Description
         type: text
         required: false
         description: Subheader/description text for the Artists page
-      
-      - name: stylesPageTitle
-        label: Styles Page Title
+
+  # ============================================
+  # STYLES PAGE
+  # ============================================
+  - name: stylesPage
+    label: Styles Page
+    type: collection
+    path: src/content/stylesPage
+    create: false
+    delete: false
+    fields:
+      - name: title
+        label: Page Title
         type: string
         required: false
         description: Header title for the Styles page (default: "Styles")
       
-      - name: stylesPageDescription
-        label: Styles Page Description
+      - name: description
+        label: Page Description
         type: text
         required: false
         description: Subheader/description text for the Styles page
+
   # ============================================
   # STYLES
   # ============================================

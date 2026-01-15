@@ -14,6 +14,10 @@ const settingsEntries = await getCollection('settings');
 const settings = settingsEntries[0]?.data || {};
 const footerMapImage = settings.footerMapImage ? resolveImagePath(settings.footerMapImage) : undefined;
 
+// Get artists page content
+const artistsPageEntries = await getCollection('artistsPage');
+const artistsPage = artistsPageEntries[0]?.data || {};
+
 const artistEntries = await getCollection('artists');
 const worksEntries = await getCollection('works');
 const stylesEntries = await getCollection('styles');
@@ -63,8 +67,8 @@ const artists = sortedArtists.map(entry => {
   />
   <main>
     <ArtistsHeroSection 
-      title={settings.artistsPageTitle || "Artists"}
-      description={settings.artistsPageDescription || "Our artists bring distinct styles and a shared focus on precision, creativity, and custom tattoo work, ensuring each piece is crafted with care from concept to final detail."}
+      title={artistsPage.title || "Artists"}
+      description={artistsPage.description || "Our artists bring distinct styles and a shared focus on precision, creativity, and custom tattoo work, ensuring each piece is crafted with care from concept to final detail."}
     />
     
     <Divider color="light" />

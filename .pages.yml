@@ -48,6 +48,12 @@ content:
         label: Extended Description
         type: rich-text
         description: Optional longer description with more details about the style. Supports rich text formatting.
+
+        - name: cardImage
+        label: Card Image
+        type: image
+        required: false
+        description: Optional custom image for the style card on the front page. If not provided, an image from the Works collection will be used instead.
   
   # ============================================
   # ARTISTS

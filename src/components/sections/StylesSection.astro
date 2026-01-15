@@ -25,14 +25,33 @@ const sortedStyles = [...styleEntries].sort((a, b) => {
   return orderA - orderB;
 });
 
+// Track used images to avoid repetition
+const usedImages = new Set<string>();
+
 // Transform styles into card format
 const stylesData = sortedStyles.map((entry) => {
   const slug = getSlug(entry);
   const styleWorks = getWorksByStyle(slug, worksEntries);
   
-  // Get the first work image for this style, or use placeholder
-  const firstWork = styleWorks[0];
-  const image = firstWork ? resolveImagePath(firstWork.data.image) : imagePlaceholder.src;
+  let image = imagePlaceholder.src;
+  
+  // Priority 1: Use cardImage if available
+  if (entry.data.cardImage) {
+    image = resolveImagePath(entry.data.cardImage);
+    usedImages.add(image);
+  } 
+  // Priority 2: Use an unused work image
+  else if (styleWorks.length > 0) {
+    for (const work of styleWorks) {
+      const workImage = resolveImagePath(work.data.image);
+      if (!usedImages.has(workImage)) {
+        image = workImage;
+        usedImages.add(workImage);
+        break;
+      }
+    }
+  }
+  // Priority 3: Use placeholder (already set as default)
   
   // Get artist links who work in this style
   const artistSlugs = [...new Set(styleWorks.map(work => getArtistSlugFromWork(work)))];

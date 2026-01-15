@@ -1,7 +1,7 @@
 ---
 name: Nastia Zlotin
 slugOverride: nastia-zlotin
-order: 11
+order: 1
 photo: /images/artists/nastia-zlotin-avatar.jpg
 intro: Nastia Zlotina is a colour focused neo-traditional and illustrative
   tattoo artist known for feminine, floral work and complex cover ups that turn

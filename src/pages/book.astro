@@ -9,6 +9,10 @@ import Checkbox from '../components/Checkbox.astro';
 import Button from '../components/Button.astro';
 import { getCollection } from 'astro:content';
 
+// Get settings content
+const settingsEntries = await getCollection('settings');
+const settings = settingsEntries[0]?.data || {};
+
 const styleEntries = await getCollection('styles');
 // Sort styles by order if defined, otherwise alphabetically
 const sortedStyles = [...styleEntries].sort((a, b) => {
@@ -51,7 +55,10 @@ const artists = sortedArtists.map(entry => ({
 ---
 
 <Layout>
-  <Header />
+  <Header 
+    studioName={settings.studioName}
+    buttonBookSession={settings.buttonBookSession}
+  />
   <main>
     <ArtistsHeroSection 
       title="Book an appointment"
@@ -207,7 +214,10 @@ const artists = sortedArtists.map(entry => ({
 
     <Divider />
   </main>
-  <Footer />
+  <Footer 
+    studioName={settings.studioName}
+    buttonGoogleMaps={settings.buttonGoogleMaps}
+  />
 </Layout>
 
 <style>

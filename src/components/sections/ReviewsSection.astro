@@ -8,6 +8,7 @@ interface Props {
   title?: string;
   subtitle?: string;
   googleMapsUrl?: string;
+  buttonText?: string;
   className?: string;
 }
 
@@ -32,6 +33,7 @@ const {
   title = "Experiences Shared",
   subtitle = "Trusted by hundreds with **100% positive** reviews",
   googleMapsUrl = "https://maps.google.com/?q=High+Contrast+Tattoo,+Schreinerstraße+6,+10247+Berlin,+Germany",
+  buttonText = "Open in Google Maps",
   className = ""
 } = Astro.props;
 
@@ -98,7 +100,7 @@ const subtitleParts = parseText(subtitle);
         target="_blank"
         rel="noopener noreferrer"
       >
-        Open in Google Maps
+        {buttonText}
       </Button>
     </div>
   </div>

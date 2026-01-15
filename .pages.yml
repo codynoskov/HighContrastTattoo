@@ -8,6 +8,304 @@ media:
 
 content:
   # ============================================
+  # HOMEPAGE
+  # ============================================
+  - name: homepage
+    label: Homepage
+    type: collection
+    path: src/content/homepage
+    create: false
+    delete: false
+    fields:
+      # Hero Section
+      - name: headline
+        label: Hero Headline
+        type: string
+        required: true
+        description: Main headline displayed in the hero section
+      
+      - name: introText
+        label: Hero Introduction
+        type: text
+        required: true
+        description: Introduction text below the headline. Use **text** for bold formatting.
+      
+      - name: ctaText
+        label: Hero Button Text
+        type: string
+        required: false
+        description: Text for the call-to-action button (default "Book a session")
+      
+      - name: ctaHref
+        label: Hero Button Link
+        type: string
+        required: false
+        description: Link for the call-to-action button (default "/book")
+      
+      - name: videoSrc
+        label: Hero Video
+        type: string
+        required: false
+        description: Path to the hero background video
+      
+      - name: topRightImage
+        label: Hero Top Right Image
+        type: image
+        required: false
+        description: Decorative overlay image (top right)
+      
+      - name: bottomLeftImage
+        label: Hero Bottom Left Image
+        type: image
+        required: false
+        description: Decorative overlay image (bottom left)
+      
+      # Reviews Section
+      - name: reviewsTitle
+        label: Reviews Title
+        type: string
+        required: false
+        description: Title for the reviews section
+      
+      - name: reviewsSubtitle
+        label: Reviews Subtitle
+        type: string
+        required: false
+        description: Subtitle for reviews. Use **text** for bold formatting.
+      
+      # Instagram Section
+      - name: instagramTitle
+        label: Instagram Title
+        type: string
+        required: false
+        description: Title for the Instagram promo section
+      
+      - name: instagramHandle
+        label: Instagram Handle
+        type: string
+        required: false
+        description: Instagram handle with @ symbol (e.g., @highcontrasttattoo)
+      
+      - name: instagramUrl
+        label: Instagram URL
+        type: string
+        required: false
+        description: Full URL to Instagram profile
+      
+      - name: instagramBackgroundImage
+        label: Instagram Background
+        type: image
+        required: false
+        description: Background image for the Instagram section
+      
+      # Studio Section
+      - name: studioTitle
+        label: Studio Title
+        type: string
+        required: false
+        description: Title for the studio gallery section
+      
+      - name: studioDescription
+        label: Studio Description
+        type: text
+        required: false
+        description: Description text for the studio section
+      
+      # Walk-In Section
+      - name: walkInTitle
+        label: Walk-In Title
+        type: string
+        required: false
+        description: Title for the walk-in section
+      
+      - name: walkInDescription
+        label: Walk-In Description
+        type: string
+        required: false
+        description: Description for walk-in availability
+      
+      - name: walkInSchedule
+        label: Walk-In Schedule
+        type: string
+        required: false
+        description: Walk-in hours (e.g., Monday–Saturday, 11:30–15:00)
+      
+      - name: walkInBackgroundImage
+        label: Walk-In Background
+        type: image
+        required: false
+        description: Background image for the walk-in section
+      
+      # Styles Section
+      - name: stylesTitle
+        label: Styles Title
+        type: string
+        required: false
+        description: Title for the styles carousel section
+      
+      - name: stylesDescription
+        label: Styles Description
+        type: text
+        required: false
+        description: Description for the styles section
+      
+      - name: stylesCtaText
+        label: Styles Button Text
+        type: string
+        required: false
+        description: Text for the "Explore all Styles" button
+      
+      # Values Section
+      - name: valuesTitle
+        label: Values Title
+        type: string
+        required: false
+        description: Title for the values/approach section
+      
+      - name: valuesDescription
+        label: Values Description
+        type: text
+        required: false
+        description: Description of studio values and approach
+      
+      # Artists Section
+      - name: artistsTitle
+        label: Artists Title
+        type: string
+        required: false
+        description: Title for the artists carousel section
+      
+      - name: artistsDescription
+        label: Artists Description
+        type: text
+        required: false
+        description: Description for the artists section
+      
+      - name: artistsCtaText
+        label: Artists Button Text
+        type: string
+        required: false
+        description: Text for the "Meet all our Artists" button
+      
+      # Footer
+      - name: footerHeadline
+        label: Footer Headline
+        type: string
+        required: false
+        description: Headline in the footer contact section
+      
+      - name: footerDescription
+        label: Footer Description
+        type: text
+        required: false
+        description: Description text in the footer
+      
+      - name: footerMapImage
+        label: Footer Map Image
+        type: image
+        required: false
+        description: Map image shown in the footer
+      
+      - name: footerEmailLabel
+        label: Email Label
+        type: string
+        required: false
+        description: Label for the email contact section
+      
+      - name: footerEmailDescription
+        label: Email Description
+        type: string
+        required: false
+        description: Description under the email label
+      
+      - name: footerPhoneLabel
+        label: Phone Label
+        type: string
+        required: false
+        description: Label for the phone contact section
+      
+      - name: footerPhoneDescription
+        label: Phone Description
+        type: string
+        required: false
+        description: Description under the phone label
+      
+      - name: footerStudioLabel
+        label: Studio Label
+        type: string
+        required: false
+        description: Label for the studio address section
+      
+      - name: footerEmail
+        label: Email Address
+        type: string
+        required: false
+        description: Contact email address
+      
+      - name: footerPhone
+        label: Phone Number
+        type: string
+        required: false
+        description: Contact phone number
+      
+      - name: footerWhatsAppUrl
+        label: WhatsApp URL
+        type: string
+        required: false
+        description: WhatsApp contact link (e.g., https://wa.me/4917672745645)
+      
+      - name: footerAddress
+        label: Studio Address
+        type: string
+        required: false
+        description: Full studio address
+      
+      - name: footerPrivacyNote
+        label: Privacy Note
+        type: string
+        required: false
+        description: Privacy/cookie notice text
+      
+      - name: footerCopyright
+        label: Copyright Text
+        type: string
+        required: false
+        description: Copyright notice (e.g., © 2026 High Contrast Tattoo)
+
+  # ============================================
+  # SETTINGS
+  # ============================================
+  - name: settings
+    label: Site Settings
+    type: collection
+    path: src/content/settings
+    create: false
+    delete: false
+    fields:
+      - name: studioName
+        label: Studio Name
+        type: string
+        required: false
+        description: Studio name displayed in header and footer (default "High Contrast Tattoo")
+      
+      - name: buttonBookSession
+        label: Book Session Button
+        type: string
+        required: false
+        description: Text for the booking button in the header (default "Book a session")
+      
+      - name: buttonGoogleMaps
+        label: Google Maps Button
+        type: string
+        required: false
+        description: Text for Google Maps buttons throughout the site (default "Open in Google Maps")
+      
+      - name: buttonInstagram
+        label: Instagram Button
+        type: string
+        required: false
+        description: Text for Instagram buttons (default "See on Instagram")
+  # ============================================
   # STYLES
   # ============================================
   - name: styles

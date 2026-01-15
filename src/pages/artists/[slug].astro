@@ -27,6 +27,10 @@ interface Props {
 }
 
 const { artist, works, styles } = Astro.props;
+
+// Get settings content
+const settingsEntries = await getCollection('settings');
+const settings = settingsEntries[0]?.data || {};
 const artistData = artist.data;
 
 // Render the markdown body content
@@ -48,7 +52,10 @@ const hasBodyContent = artist.body && artist.body.trim().length > 0;
 ---
 
 <Layout>
-  <Header />
+  <Header 
+    studioName={settings.studioName}
+    buttonBookSession={settings.buttonBookSession}
+  />
   <main>
     <ArtistPageHeroSection
       name={artistData.name}
@@ -68,7 +75,10 @@ const hasBodyContent = artist.body && artist.body.trim().length > 0;
     
     <Divider color="light" />
   </main>
-  <Footer />
+  <Footer 
+    studioName={settings.studioName}
+    buttonGoogleMaps={settings.buttonGoogleMaps}
+  />
 </Layout>
 
 <style>

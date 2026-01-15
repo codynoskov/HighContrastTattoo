@@ -2,65 +2,102 @@
 import Button from './Button.astro';
 import Icon from './Icon.astro';
 import Logo from './Logo.astro';
-// Map image from Figma design
-const mapImage = '/images/9819f24097bde9fed24a54e99db5e6586c8e883d.png';
 
 interface Props {
   screen?: "Desktop" | "Mobile";
   className?: string;
+  // Content props from CMS
+  studioName?: string;
+  headline?: string;
+  description?: string;
+  mapImage?: string;
+  emailLabel?: string;
+  emailDescription?: string;
+  phoneLabel?: string;
+  phoneDescription?: string;
+  studioLabel?: string;
+  email?: string;
+  phone?: string;
+  whatsAppUrl?: string;
+  address?: string;
+  privacyNote?: string;
+  copyright?: string;
+  buttonGoogleMaps?: string;
 }
 
-const { screen = "Desktop", className = "" } = Astro.props;
+const { 
+  screen = "Desktop", 
+  className = "",
+  studioName = "High Contrast Tattoo",
+  headline = "In the heart of Friedrichshain",
+  description = "We're located in Berlin's most vibrant creative neighborhood, where art lives in the streets and studios. Easy to reach, impossible to forget.",
+  mapImage = "/images/footer/map.png",
+  emailLabel = "Email",
+  emailDescription = "Reach out anytime with questions",
+  phoneLabel = "Phone",
+  phoneDescription = "Call or message us directly",
+  studioLabel = "Studio",
+  email = "highcontrasttattoo@gmail.com",
+  phone = "+49 176 72745645",
+  whatsAppUrl = "https://wa.me/4917672745645",
+  address = "Schreinerstraße 6, 10247 Berlin, Germany",
+  privacyNote = "We do not collect any personal data and do not use cookies",
+  copyright = "© 2026 High Contrast Tattoo",
+  buttonGoogleMaps = "Open in Google Maps"
+} = Astro.props;
+
+// Build Google Maps URL from address
+const googleMapsUrl = `https://maps.google.com/?q=${encodeURIComponent(`High Contrast Tattoo, ${address}`)}`;
 ---
 
 <footer class={`footer footer-${screen.toLowerCase()} ${className}`} data-screen={screen}>
   <div class="container">
     <div class="text-block">
-      <h2>In the heart of Friedrichshain</h2>
-      <p class="body-lg">We're located in Berlin's most vibrant creative neighborhood, where art lives in the streets and studios. Easy to reach, impossible to forget.</p>
+      <h2>{headline}</h2>
+      <p class="body-lg">{description}</p>
     </div>
     <div class="map-block">
       <div class="contact-wrapper">
         <div class="contact-content">
           <div class="contact-item">
             <Icon name="mail" size={24} class="icon" />
-            <h6>Email</h6>
-            <p>Reach out anytime with questions</p>
-            <a href="mailto:highcontrasttattoo@gmail.com" class="contact-link">highcontrasttattoo@gmail.com</a>
+            <h6>{emailLabel}</h6>
+            <p>{emailDescription}</p>
+            <a href={`mailto:${email}`} class="contact-link">{email}</a>
           </div>
           <div class="contact-item">
             <Icon name="device-phone" size={24} class="icon" />
-            <h6>Phone</h6>
-            <p>Call or message us directly</p>
+            <h6>{phoneLabel}</h6>
+            <p>{phoneDescription}</p>
             <div class="phone-links">
-              <a href="tel:+4917672745645" class="contact-link">+49 176 72745645</a>
+              <a href={`tel:${phone.replace(/\s/g, '')}`} class="contact-link">{phone}</a>
               <span class="separator">|</span>
-              <a href="https://wa.me/4917672745645" class="contact-link">WhatsApp</a>
+              <a href={whatsAppUrl} class="contact-link">WhatsApp</a>
             </div>
           </div>
           <div class="contact-item">
             <Icon name="home" size={24} class="icon" />
-            <h6>Studio</h6>
-            <p>Schreinerstraße 6, 10247 Berlin, Germany</p>
+            <h6>{studioLabel}</h6>
+            <p>{address}</p>
           </div>
         </div>
         <div class="actions">
           <Button 
             type="Primary" 
             color="Primary" 
-            href="https://maps.google.com/?q=High+Contrast+Tattoo,+Schreinerstraße+6,+10247+Berlin,+Germany" 
+            href={googleMapsUrl} 
             leadingIcon={false} 
             trailingIcon={true}
             trailingIconName="open"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Open in Google Maps
+            {buttonGoogleMaps}
           </Button>
         </div>
       </div>
       <div class="map-image">
-        <img src={mapImage} alt="Map of High Contrast Tattoo studio location in Berlin Friedrichshain" class="map-placeholder" />
+        <img src={mapImage} alt={`Map of ${studioName} studio location`} class="map-placeholder" />
       </div>
     </div>
   </div>
@@ -70,7 +107,7 @@ const { screen = "Desktop", className = "" } = Astro.props;
       <div class="logo-wrapper">
         <Logo class="logo" />
       </div>
-      <span class="logo-text">High Contrast Tattoo</span>
+      <span class="logo-text">{studioName}</span>
     </div>
     <nav class="footer-nav">
       <a href="/studio" class="nav-link">Studio</a>
@@ -80,8 +117,8 @@ const { screen = "Desktop", className = "" } = Astro.props;
       <a href="/privacy" class="nav-link">Privacy note</a>
     </nav>
     <div class="footer-text">
-      <p class="footer-small">We do not collect any personal data and do not use cookies</p>
-      <p class="footer-copyright">© 2026 High Contrast Tattoo</p>
+      <p class="footer-small">{privacyNote}</p>
+      <p class="footer-copyright">{copyright}</p>
     </div>
   </div>
 </footer>

@@ -9,6 +9,10 @@ import ArtistDetailSection from '../components/sections/ArtistDetailSection.astr
 import { getCollection } from 'astro:content';
 import { getSlug, getWorksByArtist, worksToGalleryImages, resolveStyles, resolveImagePath } from '../utils/contentHelpers';
 
+// Get settings content
+const settingsEntries = await getCollection('settings');
+const settings = settingsEntries[0]?.data || {};
+
 const artistEntries = await getCollection('artists');
 const worksEntries = await getCollection('works');
 const stylesEntries = await getCollection('styles');
@@ -52,7 +56,10 @@ const artists = sortedArtists.map(entry => {
 ---
 
 <Layout>
-  <Header />
+  <Header 
+    studioName={settings.studioName}
+    buttonBookSession={settings.buttonBookSession}
+  />
   <main>
     <ArtistsHeroSection />
     
@@ -75,7 +82,10 @@ const artists = sortedArtists.map(entry => {
     
     <Divider color="light" />
   </main>
-  <Footer />
+  <Footer 
+    studioName={settings.studioName}
+    buttonGoogleMaps={settings.buttonGoogleMaps}
+  />
 </Layout>
 
 <style>

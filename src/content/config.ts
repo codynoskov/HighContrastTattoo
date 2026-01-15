@@ -52,6 +52,7 @@ export const collections = {
   homepage: defineCollection({
     type: 'content',
     schema: z.object({
+      // Hero Section
       headline: z.string().describe('Hero headline'),
       introText: z.string().describe('Hero introduction text (supports **bold** markdown)'),
       ctaText: z.string().optional().describe('Call-to-action button text'),
@@ -61,6 +62,66 @@ export const collections = {
       streamCustomerCode: z.string().optional().describe('Cloudflare Stream customer code'),
       topRightImage: z.string().optional().describe('Top right overlay image path'),
       bottomLeftImage: z.string().optional().describe('Bottom left overlay image path'),
+
+      // Reviews Section
+      reviewsTitle: z.string().optional().describe('Reviews section title'),
+      reviewsSubtitle: z.string().optional().describe('Reviews section subtitle (supports **bold** markdown)'),
+
+      // Instagram Section
+      instagramTitle: z.string().optional().describe('Instagram section title'),
+      instagramHandle: z.string().optional().describe('Instagram handle with @'),
+      instagramUrl: z.string().optional().describe('Instagram profile URL'),
+      instagramBackgroundImage: z.string().optional().describe('Instagram section background image'),
+
+      // Studio Section
+      studioTitle: z.string().optional().describe('Studio section title'),
+      studioDescription: z.string().optional().describe('Studio section description'),
+
+      // Walk-In Section
+      walkInTitle: z.string().optional().describe('Walk-in section title'),
+      walkInDescription: z.string().optional().describe('Walk-in section description'),
+      walkInSchedule: z.string().optional().describe('Walk-in schedule text'),
+      walkInBackgroundImage: z.string().optional().describe('Walk-in section background image'),
+
+      // Styles Section
+      stylesTitle: z.string().optional().describe('Styles section title'),
+      stylesDescription: z.string().optional().describe('Styles section description'),
+      stylesCtaText: z.string().optional().describe('Styles CTA button text'),
+
+      // Values Section
+      valuesTitle: z.string().optional().describe('Values section title'),
+      valuesDescription: z.string().optional().describe('Values section description'),
+
+      // Artists Section
+      artistsTitle: z.string().optional().describe('Artists section title'),
+      artistsDescription: z.string().optional().describe('Artists section description'),
+      artistsCtaText: z.string().optional().describe('Artists CTA button text'),
+
+      // Footer
+      footerHeadline: z.string().optional().describe('Footer headline'),
+      footerDescription: z.string().optional().describe('Footer description'),
+      footerMapImage: z.string().optional().describe('Footer map image path'),
+      footerEmailLabel: z.string().optional().describe('Email section label'),
+      footerEmailDescription: z.string().optional().describe('Email section description'),
+      footerPhoneLabel: z.string().optional().describe('Phone section label'),
+      footerPhoneDescription: z.string().optional().describe('Phone section description'),
+      footerStudioLabel: z.string().optional().describe('Studio section label'),
+      footerEmail: z.string().optional().describe('Contact email address'),
+      footerPhone: z.string().optional().describe('Contact phone number'),
+      footerWhatsAppUrl: z.string().optional().describe('WhatsApp URL'),
+      footerAddress: z.string().optional().describe('Studio address'),
+      footerPrivacyNote: z.string().optional().describe('Privacy note text'),
+      footerCopyright: z.string().optional().describe('Copyright text'),
+    }),
+  }),
+
+  settings: defineCollection({
+    type: 'content',
+    schema: z.object({
+      studioName: z.string().optional().describe('Studio name displayed in header/footer'),
+      buttonBookSession: z.string().optional().describe('Book session button text'),
+      buttonGoogleMaps: z.string().optional().describe('Google Maps button text'),
+      buttonInstagram: z.string().optional().describe('Instagram button text'),
     }),
   }),
 };

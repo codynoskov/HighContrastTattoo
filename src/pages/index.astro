@@ -18,14 +18,24 @@ import { resolveImagePath } from '../utils/contentHelpers';
 const homepageEntries = await getCollection('homepage');
 const homepage = homepageEntries[0]?.data || {};
 
+// Get settings content
+const settingsEntries = await getCollection('settings');
+const settings = settingsEntries[0]?.data || {};
+
 // Resolve image and video paths (handles R2 URLs automatically)
 const topRightImage = homepage.topRightImage ? resolveImagePath(homepage.topRightImage) : undefined;
 const bottomLeftImage = homepage.bottomLeftImage ? resolveImagePath(homepage.bottomLeftImage) : undefined;
 const videoSrc = homepage.videoSrc ? resolveImagePath(homepage.videoSrc) : undefined;
+const instagramBgImage = homepage.instagramBackgroundImage ? resolveImagePath(homepage.instagramBackgroundImage) : undefined;
+const walkInBgImage = homepage.walkInBackgroundImage ? resolveImagePath(homepage.walkInBackgroundImage) : undefined;
+const footerMapImage = homepage.footerMapImage ? resolveImagePath(homepage.footerMapImage) : undefined;
 ---
 
 <Layout>
-	<Header />
+	<Header 
+		studioName={settings.studioName}
+		buttonBookSession={settings.buttonBookSession}
+	/>
 	<main>
 		<HeroSection 
 			headline={homepage.headline}
@@ -38,22 +48,69 @@ const videoSrc = homepage.videoSrc ? resolveImagePath(homepage.videoSrc) : undef
 			topRightImage={topRightImage}
 			bottomLeftImage={bottomLeftImage}
 		/>
-		<ReviewsSection />
+		<ReviewsSection 
+			title={homepage.reviewsTitle}
+			subtitle={homepage.reviewsSubtitle}
+			buttonText={settings.buttonGoogleMaps}
+		/>
 		<Divider />
-		<InstagramPromoSection backgroundImage="/images/stay-tuned-bg.png" />
+		<InstagramPromoSection 
+			title={homepage.instagramTitle}
+			instagramHandle={homepage.instagramHandle}
+			instagramUrl={homepage.instagramUrl}
+			backgroundImage={instagramBgImage}
+			buttonText={settings.buttonInstagram}
+		/>
 		<Divider />
-		<StudioSection />
+		<StudioSection 
+			title={homepage.studioTitle}
+			description={homepage.studioDescription}
+		/>
 		<Divider />
-		<WalkInTattoosSection backgroundImage="/images/walk-in-tattoos-bg.png" />
+		<WalkInTattoosSection 
+			title={homepage.walkInTitle}
+			description={homepage.walkInDescription}
+			schedule={homepage.walkInSchedule}
+			backgroundImage={walkInBgImage}
+			buttonText={settings.buttonGoogleMaps}
+		/>
 		<Divider />
-		<StylesSection />
+		<StylesSection 
+			title={homepage.stylesTitle}
+			description={homepage.stylesDescription}
+			ctaText={homepage.stylesCtaText}
+		/>
 		<Divider />
-		<ValuesSection />
+		<ValuesSection 
+			title={homepage.valuesTitle}
+			description={homepage.valuesDescription}
+		/>
 		<Divider />
-		<ArtistsSection />
+		<ArtistsSection 
+			title={homepage.artistsTitle}
+			description={homepage.artistsDescription}
+			ctaText={homepage.artistsCtaText}
+		/>
 		<Divider />
 	</main>
-	<Footer />
+	<Footer 
+		studioName={settings.studioName}
+		headline={homepage.footerHeadline}
+		description={homepage.footerDescription}
+		mapImage={footerMapImage}
+		emailLabel={homepage.footerEmailLabel}
+		emailDescription={homepage.footerEmailDescription}
+		phoneLabel={homepage.footerPhoneLabel}
+		phoneDescription={homepage.footerPhoneDescription}
+		studioLabel={homepage.footerStudioLabel}
+		email={homepage.footerEmail}
+		phone={homepage.footerPhone}
+		whatsAppUrl={homepage.footerWhatsAppUrl}
+		address={homepage.footerAddress}
+		privacyNote={homepage.footerPrivacyNote}
+		copyright={homepage.footerCopyright}
+		buttonGoogleMaps={settings.buttonGoogleMaps}
+	/>
 </Layout>
 
 <style>

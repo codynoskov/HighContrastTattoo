@@ -7,6 +7,7 @@ interface Props {
   instagramHandle?: string;
   instagramUrl?: string;
   backgroundImage?: string;
+  buttonText?: string;
   className?: string;
 }
 
@@ -15,6 +16,7 @@ const {
   instagramHandle = "@highcontrasttattoo",
   instagramUrl = "https://instagram.com/highcontrasttattoo",
   backgroundImage = imagePlaceholder.src,
+  buttonText = "See on Instagram",
   className = ""
 } = Astro.props;
 ---
@@ -50,7 +52,7 @@ const {
           target="_blank"
           rel="noopener noreferrer"
         >
-          See on Instagram
+          {buttonText}
         </Button>
       </div>
     </div>

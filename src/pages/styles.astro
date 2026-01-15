@@ -9,6 +9,10 @@ import StyleDetailSection from '../components/sections/StyleDetailSection.astro'
 import { getCollection } from 'astro:content';
 import { getSlug, getWorksByStyle, worksToGalleryImages } from '../utils/contentHelpers';
 
+// Get settings content
+const settingsEntries = await getCollection('settings');
+const settings = settingsEntries[0]?.data || {};
+
 const styleEntries = await getCollection('styles');
 const worksEntries = await getCollection('works');
 const artistEntries = await getCollection('artists');
@@ -46,7 +50,10 @@ const styles = sortedStyles.map(entry => {
 ---
 
 <Layout>
-  <Header />
+  <Header 
+    studioName={settings.studioName}
+    buttonBookSession={settings.buttonBookSession}
+  />
   <main>
     <ArtistsHeroSection 
       title="Styles"
@@ -69,7 +76,10 @@ const styles = sortedStyles.map(entry => {
     
     <Divider color="light" />
   </main>
-  <Footer />
+  <Footer 
+    studioName={settings.studioName}
+    buttonGoogleMaps={settings.buttonGoogleMaps}
+  />
 </Layout>
 
 <style>

@@ -7,10 +7,18 @@ interface Props {
   screen?: "Desktop" | "Mobile";
   menu?: boolean;
   className?: string;
+  studioName?: string;
+  buttonBookSession?: string;
 }
 
 // Use props for static design system examples, but allow responsive behavior when not specified
-const { screen, menu, className = "" } = Astro.props;
+const { 
+  screen, 
+  menu, 
+  className = "",
+  studioName = "High Contrast Tattoo",
+  buttonBookSession = "Book a session"
+} = Astro.props;
 const isStaticMode = screen !== undefined;
 
 // Get current path to determine active nav item
@@ -58,12 +66,12 @@ const isActive = (href: string) => {
             <div class="header-logo-wrapper">
               <Logo class="header-logo" />
             </div>
-            <span class="header-logo-text">High Contrast Tattoo</span>
+            <span class="header-logo-text">{studioName}</span>
           </div>
           {!isBookPage && (
             <div class="header-cta-button">
               <Button type="Primary" color="Accent" href="/book" leadingIcon={false} trailingIcon={true} aria-label="Book a tattoo session">
-                Book a session
+                {buttonBookSession}
               </Button>
             </div>
           )}

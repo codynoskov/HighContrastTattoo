@@ -8,6 +8,8 @@ intro: Nastia Zlotina is a colour focused neo-traditional and illustrative
   known for feminine, floral work and complex cover ups that turn difficult old
   tattoos into new designs.
 instagram: nastiazlotin
+styles:
+  - floral-and-botanic
 ---
 Hi, I’m Nastia. I own High Contrast Tattoo Berlin together with my husband Ed. I’ve been tattooing for over 13 years, working mainly with neo-traditional and colour tattoos. I enjoy building bright, carefully composed pieces that feel elegant and personal instead of generic. For me, a good tattoo should reflect something real about the person wearing it, their personality, their story, their taste.
 

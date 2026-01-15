@@ -18,6 +18,7 @@ export const collections = {
       intro: z.string().describe('Introduction text'),
       instagram: z.string().optional().describe('Instagram handle'),
       order: z.number().optional().describe('Display order'),
+      styles: z.array(z.string()).optional().describe('Style slugs this artist works in'),
     }),
   }),
 

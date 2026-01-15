@@ -7,7 +7,7 @@ import ArtistPageHeroSection from '../../components/sections/ArtistPageHeroSecti
 import ArtistContentSection from '../../components/sections/ArtistContentSection.astro';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import { getSlug, getWorksByArtist, worksToGalleryImages, resolveImagePath, normalizeStyleSlugs } from '../../utils/contentHelpers';
+import { getSlug, getWorksByArtist, worksToGalleryImages, resolveImagePath, resolveStyles } from '../../utils/contentHelpers';
 
 export async function getStaticPaths() {
   const artists = await getCollection('artists');
@@ -40,19 +40,8 @@ const galleryImages = worksToGalleryImages(artistWorks, {
   styles,
 });
 
-// Get unique styles used by this artist's works
-const artistStyleSlugs = new Set<string>();
-artistWorks.forEach(work => {
-  normalizeStyleSlugs(work.data.styles).forEach(slug => artistStyleSlugs.add(slug));
-});
-
-// Map style slugs to style links
-const artistStyles = styles
-  .filter(style => artistStyleSlugs.has(getSlug(style)))
-  .map(style => ({
-    name: style.data.name,
-    href: `/styles/${getSlug(style)}`
-  }));
+// Resolve artist's manually selected styles to style links
+const artistStyles = resolveStyles(artistData.styles ?? [], styles);
 
 // Check if the artist has body content (markdown after frontmatter)
 const hasBodyContent = artist.body && artist.body.trim().length > 0;

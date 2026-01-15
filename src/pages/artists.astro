@@ -36,9 +36,8 @@ const artists = sortedArtists.map(entry => {
     styles: stylesEntries,
   });
   
-  // Get unique style slugs from all works and resolve to style links
-  const allStyleSlugs = [...new Set(artistWorks.flatMap(w => w.data.styles))];
-  const styles = resolveStyles(allStyleSlugs, stylesEntries);
+  // Resolve artist's manually selected styles to style links
+  const styles = resolveStyles(entry.data.styles ?? [], stylesEntries);
   
   return {
     name: entry.data.name,

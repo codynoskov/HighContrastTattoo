@@ -2,8 +2,6 @@
 # Hero Section
 headline: "Tattoos we design and shape together"
 introText: "**High Contrast Tattoo** is a Berlin-Friedrichshain studio known for combining classic tattoo motifs with contemporary stylistic elements and delivering detailed, high-quality custom work."
-ctaText: "Book a session"
-ctaHref: "/book"
 videoSrc: "/images/videos/HCT_CoverVideo-1080.mp4"
 topRightImage: "/images/hero/hero-top-right.png"
 bottomLeftImage: "/images/hero/hero-bottom-left.png"
@@ -41,20 +39,4 @@ valuesDescription: "At High Contrast Tattoo, we believe in creating more than ju
 artistsTitle: "Meet the Artists"
 artistsDescription: "Our team brings years of experience across many tattoo styles. Explore portfolios and find the right artist for your idea."
 artistsCtaText: "Meet all our Artists"
-
-# Footer
-footerHeadline: "In the heart of Friedrichshain"
-footerDescription: "We're located in Berlin's most vibrant creative neighborhood, where art lives in the streets and studios. Easy to reach, impossible to forget."
-footerMapImage: "/images/footer/map.png"
-footerEmailLabel: "Email"
-footerEmailDescription: "Reach out anytime with questions"
-footerPhoneLabel: "Phone"
-footerPhoneDescription: "Call or message us directly"
-footerStudioLabel: "Studio"
-footerEmail: "highcontrasttattoo@gmail.com"
-footerPhone: "+49 176 72745645"
-footerWhatsAppUrl: "https://wa.me/4917672745645"
-footerAddress: "Schreinerstraße 6, 10247 Berlin, Germany"
-footerPrivacyNote: "We do not collect any personal data and do not use cookies"
-footerCopyright: "© 2026 High Contrast Tattoo"
 ---

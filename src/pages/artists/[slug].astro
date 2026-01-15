@@ -31,6 +31,7 @@ const { artist, works, styles } = Astro.props;
 // Get settings content
 const settingsEntries = await getCollection('settings');
 const settings = settingsEntries[0]?.data || {};
+const footerMapImage = settings.footerMapImage ? resolveImagePath(settings.footerMapImage) : undefined;
 const artistData = artist.data;
 
 // Render the markdown body content
@@ -77,6 +78,20 @@ const hasBodyContent = artist.body && artist.body.trim().length > 0;
   </main>
   <Footer 
     studioName={settings.studioName}
+    headline={settings.footerHeadline}
+    description={settings.footerDescription}
+    mapImage={footerMapImage}
+    emailLabel={settings.footerEmailLabel}
+    emailDescription={settings.footerEmailDescription}
+    phoneLabel={settings.footerPhoneLabel}
+    phoneDescription={settings.footerPhoneDescription}
+    studioLabel={settings.footerStudioLabel}
+    email={settings.footerEmail}
+    phone={settings.footerPhone}
+    whatsAppUrl={settings.footerWhatsAppUrl}
+    address={settings.footerAddress}
+    privacyNote={settings.footerPrivacyNote}
+    copyright={settings.footerCopyright}
     buttonGoogleMaps={settings.buttonGoogleMaps}
   />
 </Layout>

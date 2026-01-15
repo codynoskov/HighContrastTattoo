@@ -7,11 +7,12 @@ import Divider from '../components/Divider.astro';
 import ArtistsHeroSection from '../components/sections/ArtistsHeroSection.astro';
 import StyleDetailSection from '../components/sections/StyleDetailSection.astro';
 import { getCollection } from 'astro:content';
-import { getSlug, getWorksByStyle, worksToGalleryImages } from '../utils/contentHelpers';
+import { getSlug, getWorksByStyle, worksToGalleryImages, resolveImagePath } from '../utils/contentHelpers';
 
 // Get settings content
 const settingsEntries = await getCollection('settings');
 const settings = settingsEntries[0]?.data || {};
+const footerMapImage = settings.footerMapImage ? resolveImagePath(settings.footerMapImage) : undefined;
 
 const styleEntries = await getCollection('styles');
 const worksEntries = await getCollection('works');
@@ -78,6 +79,20 @@ const styles = sortedStyles.map(entry => {
   </main>
   <Footer 
     studioName={settings.studioName}
+    headline={settings.footerHeadline}
+    description={settings.footerDescription}
+    mapImage={footerMapImage}
+    emailLabel={settings.footerEmailLabel}
+    emailDescription={settings.footerEmailDescription}
+    phoneLabel={settings.footerPhoneLabel}
+    phoneDescription={settings.footerPhoneDescription}
+    studioLabel={settings.footerStudioLabel}
+    email={settings.footerEmail}
+    phone={settings.footerPhone}
+    whatsAppUrl={settings.footerWhatsAppUrl}
+    address={settings.footerAddress}
+    privacyNote={settings.footerPrivacyNote}
+    copyright={settings.footerCopyright}
     buttonGoogleMaps={settings.buttonGoogleMaps}
   />
 </Layout>

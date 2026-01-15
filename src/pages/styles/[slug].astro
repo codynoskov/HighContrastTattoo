@@ -33,6 +33,10 @@ const styleData = style.data;
 const settingsEntries = await getCollection('settings');
 const settings = settingsEntries[0]?.data || {};
 
+// Resolve footer map image
+import { resolveImagePath } from '../../utils/contentHelpers';
+const footerMapImage = settings.footerMapImage ? resolveImagePath(settings.footerMapImage) : undefined;
+
 // Render the markdown body content
 const { Content } = await style.render();
 
@@ -86,6 +90,20 @@ const hasBodyContent = style.body && style.body.trim().length > 0;
   </main>
   <Footer 
     studioName={settings.studioName}
+    headline={settings.footerHeadline}
+    description={settings.footerDescription}
+    mapImage={footerMapImage}
+    emailLabel={settings.footerEmailLabel}
+    emailDescription={settings.footerEmailDescription}
+    phoneLabel={settings.footerPhoneLabel}
+    phoneDescription={settings.footerPhoneDescription}
+    studioLabel={settings.footerStudioLabel}
+    email={settings.footerEmail}
+    phone={settings.footerPhone}
+    whatsAppUrl={settings.footerWhatsAppUrl}
+    address={settings.footerAddress}
+    privacyNote={settings.footerPrivacyNote}
+    copyright={settings.footerCopyright}
     buttonGoogleMaps={settings.buttonGoogleMaps}
   />
 </Layout>

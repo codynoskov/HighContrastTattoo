@@ -1,10 +1,17 @@
 media:
   - name: images
-    label: Media
+    label: Images
     input: public/images
     output: /images
-    extensions: [jpg, jpeg, png, gif, svg, webp, avif, mp4]
+    extensions: [jpg, jpeg, png, gif, svg, webp, avif]
     categories: [image]
+  
+  - name: videos
+    label: Videos
+    input: public/images/videos
+    output: /images/videos
+    extensions: [mp4, webm, mov]
+    categories: [video]
 
 content:
   # ============================================
@@ -30,23 +37,14 @@ content:
         required: true
         description: Introduction text below the headline. Use **text** for bold formatting.
       
-      - name: ctaText
-        label: Hero Button Text
-        type: string
-        required: false
-        description: Text for the call-to-action button (default "Book a session")
-      
-      - name: ctaHref
-        label: Hero Button Link
-        type: string
-        required: false
-        description: Link for the call-to-action button (default "/book")
-      
       - name: videoSrc
         label: Hero Video
-        type: string
+        type: image
         required: false
-        description: Path to the hero background video
+        options:
+          input: public/images/videos
+          output: /images/videos
+        description: Background video for the hero section. Upload MP4 files here.
       
       - name: topRightImage
         label: Hero Top Right Image
@@ -186,6 +184,42 @@ content:
         type: string
         required: false
         description: Text for the "Meet all our Artists" button
+
+  # ============================================
+  # SETTINGS
+  # ============================================
+  - name: settings
+    label: Site Settings
+    type: collection
+    path: src/content/settings
+    create: false
+    delete: false
+    fields:
+      # Global
+      - name: studioName
+        label: Studio Name
+        type: string
+        required: false
+        description: Studio name displayed in header and footer (default "High Contrast Tattoo")
+      
+      # Buttons
+      - name: buttonBookSession
+        label: Book Session Button
+        type: string
+        required: false
+        description: Text for the booking button in the header and hero (default "Book a session")
+      
+      - name: buttonGoogleMaps
+        label: Google Maps Button
+        type: string
+        required: false
+        description: Text for Google Maps buttons throughout the site (default "Open in Google Maps")
+      
+      - name: buttonInstagram
+        label: Instagram Button
+        type: string
+        required: false
+        description: Text for Instagram buttons (default "See on Instagram")
       
       # Footer
       - name: footerHeadline
@@ -271,40 +305,6 @@ content:
         type: string
         required: false
         description: Copyright notice (e.g., © 2026 High Contrast Tattoo)
-
-  # ============================================
-  # SETTINGS
-  # ============================================
-  - name: settings
-    label: Site Settings
-    type: collection
-    path: src/content/settings
-    create: false
-    delete: false
-    fields:
-      - name: studioName
-        label: Studio Name
-        type: string
-        required: false
-        description: Studio name displayed in header and footer (default "High Contrast Tattoo")
-      
-      - name: buttonBookSession
-        label: Book Session Button
-        type: string
-        required: false
-        description: Text for the booking button in the header (default "Book a session")
-      
-      - name: buttonGoogleMaps
-        label: Google Maps Button
-        type: string
-        required: false
-        description: Text for Google Maps buttons throughout the site (default "Open in Google Maps")
-      
-      - name: buttonInstagram
-        label: Instagram Button
-        type: string
-        required: false
-        description: Text for Instagram buttons (default "See on Instagram")
   # ============================================
   # STYLES
   # ============================================

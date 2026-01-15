@@ -55,9 +55,7 @@ export const collections = {
       // Hero Section
       headline: z.string().describe('Hero headline'),
       introText: z.string().describe('Hero introduction text (supports **bold** markdown)'),
-      ctaText: z.string().optional().describe('Call-to-action button text'),
-      ctaHref: z.string().optional().describe('Call-to-action button link'),
-      videoSrc: z.string().optional().describe('Video URL (R2 or external)'),
+      videoSrc: z.string().optional().describe('Hero background video'),
       streamVideoId: z.string().optional().describe('Cloudflare Stream video ID'),
       streamCustomerCode: z.string().optional().describe('Cloudflare Stream customer code'),
       topRightImage: z.string().optional().describe('Top right overlay image path'),
@@ -96,7 +94,20 @@ export const collections = {
       artistsTitle: z.string().optional().describe('Artists section title'),
       artistsDescription: z.string().optional().describe('Artists section description'),
       artistsCtaText: z.string().optional().describe('Artists CTA button text'),
+    }),
+  }),
 
+  settings: defineCollection({
+    type: 'content',
+    schema: z.object({
+      // Global
+      studioName: z.string().optional().describe('Studio name displayed in header/footer'),
+      
+      // Buttons
+      buttonBookSession: z.string().optional().describe('Book session button text'),
+      buttonGoogleMaps: z.string().optional().describe('Google Maps button text'),
+      buttonInstagram: z.string().optional().describe('Instagram button text'),
+      
       // Footer
       footerHeadline: z.string().optional().describe('Footer headline'),
       footerDescription: z.string().optional().describe('Footer description'),
@@ -112,16 +123,6 @@ export const collections = {
       footerAddress: z.string().optional().describe('Studio address'),
       footerPrivacyNote: z.string().optional().describe('Privacy note text'),
       footerCopyright: z.string().optional().describe('Copyright text'),
-    }),
-  }),
-
-  settings: defineCollection({
-    type: 'content',
-    schema: z.object({
-      studioName: z.string().optional().describe('Studio name displayed in header/footer'),
-      buttonBookSession: z.string().optional().describe('Book session button text'),
-      buttonGoogleMaps: z.string().optional().describe('Google Maps button text'),
-      buttonInstagram: z.string().optional().describe('Instagram button text'),
     }),
   }),
 };

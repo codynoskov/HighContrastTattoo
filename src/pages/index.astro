@@ -28,7 +28,7 @@ const bottomLeftImage = homepage.bottomLeftImage ? resolveImagePath(homepage.bot
 const videoSrc = homepage.videoSrc ? resolveImagePath(homepage.videoSrc) : undefined;
 const instagramBgImage = homepage.instagramBackgroundImage ? resolveImagePath(homepage.instagramBackgroundImage) : undefined;
 const walkInBgImage = homepage.walkInBackgroundImage ? resolveImagePath(homepage.walkInBackgroundImage) : undefined;
-const footerMapImage = homepage.footerMapImage ? resolveImagePath(homepage.footerMapImage) : undefined;
+const footerMapImage = settings.footerMapImage ? resolveImagePath(settings.footerMapImage) : undefined;
 ---
 
 <Layout>
@@ -40,8 +40,8 @@ const footerMapImage = homepage.footerMapImage ? resolveImagePath(homepage.foote
 		<HeroSection 
 			headline={homepage.headline}
 			introText={homepage.introText}
-			ctaText={homepage.ctaText}
-			ctaHref={homepage.ctaHref}
+			ctaText={settings.buttonBookSession}
+			ctaHref="/book"
 			videoSrc={videoSrc}
 			streamVideoId={homepage.streamVideoId}
 			streamCustomerCode={homepage.streamCustomerCode}
@@ -95,20 +95,20 @@ const footerMapImage = homepage.footerMapImage ? resolveImagePath(homepage.foote
 	</main>
 	<Footer 
 		studioName={settings.studioName}
-		headline={homepage.footerHeadline}
-		description={homepage.footerDescription}
+		headline={settings.footerHeadline}
+		description={settings.footerDescription}
 		mapImage={footerMapImage}
-		emailLabel={homepage.footerEmailLabel}
-		emailDescription={homepage.footerEmailDescription}
-		phoneLabel={homepage.footerPhoneLabel}
-		phoneDescription={homepage.footerPhoneDescription}
-		studioLabel={homepage.footerStudioLabel}
-		email={homepage.footerEmail}
-		phone={homepage.footerPhone}
-		whatsAppUrl={homepage.footerWhatsAppUrl}
-		address={homepage.footerAddress}
-		privacyNote={homepage.footerPrivacyNote}
-		copyright={homepage.footerCopyright}
+		emailLabel={settings.footerEmailLabel}
+		emailDescription={settings.footerEmailDescription}
+		phoneLabel={settings.footerPhoneLabel}
+		phoneDescription={settings.footerPhoneDescription}
+		studioLabel={settings.footerStudioLabel}
+		email={settings.footerEmail}
+		phone={settings.footerPhone}
+		whatsAppUrl={settings.footerWhatsAppUrl}
+		address={settings.footerAddress}
+		privacyNote={settings.footerPrivacyNote}
+		copyright={settings.footerCopyright}
 		buttonGoogleMaps={settings.buttonGoogleMaps}
 	/>
 </Layout>

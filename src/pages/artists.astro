@@ -62,7 +62,10 @@ const artists = sortedArtists.map(entry => {
     buttonBookSession={settings.buttonBookSession}
   />
   <main>
-    <ArtistsHeroSection />
+    <ArtistsHeroSection 
+      title={settings.artistsPageTitle || "Artists"}
+      description={settings.artistsPageDescription || "Our artists bring distinct styles and a shared focus on precision, creativity, and custom tattoo work, ensuring each piece is crafted with care from concept to final detail."}
+    />
     
     <Divider color="light" />
     

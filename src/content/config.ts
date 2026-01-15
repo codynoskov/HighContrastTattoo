@@ -123,6 +123,12 @@ export const collections = {
       footerAddress: z.string().optional().describe('Studio address'),
       footerPrivacyNote: z.string().optional().describe('Privacy note text'),
       footerCopyright: z.string().optional().describe('Copyright text'),
+      
+      // Page Headers
+      artistsPageTitle: z.string().optional().describe('Artists page header title'),
+      artistsPageDescription: z.string().optional().describe('Artists page header description/subheader'),
+      stylesPageTitle: z.string().optional().describe('Styles page header title'),
+      stylesPageDescription: z.string().optional().describe('Styles page header description/subheader'),
     }),
   }),
 };

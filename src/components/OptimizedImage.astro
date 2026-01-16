@@ -1,5 +1,7 @@
 ---
-import { Image } from 'astro:assets';
+// Note: We're using regular img tags instead of Astro's Image component
+// because dynamic remote URLs from R2 require complex configuration.
+// The images still benefit from lazy loading and browser caching.
 
 interface Props {
   src: string;
@@ -15,7 +17,7 @@ interface Props {
 }
 
 const {
-  src,
+  src: rawSrc,
   alt,
   width,
   height,
@@ -27,8 +29,12 @@ const {
   quality = 80,
 } = Astro.props;
 
+// Guard against undefined/empty src
+const src = rawSrc || fallbackSrc || '';
+const hasSrc = src && typeof src === 'string' && src.length > 0;
+
 // Determine if this is a remote URL
-const isRemote = src.startsWith('http://') || src.startsWith('https://');
+const isRemote = hasSrc && (src.startsWith('http://') || src.startsWith('https://'));
 
 // Calculate dimensions if aspectRatio is provided
 let finalWidth = width;
@@ -51,26 +57,34 @@ if (!finalWidth && !finalHeight) {
   }
 }
 
-// For remote images, convert to URL object for Astro's Image component
-// Astro 5's Image component can optimize remote images when properly configured
-const imageSrc = isRemote ? new URL(src) : src;
 ---
 
-{isRemote ? (
-  <Image
-    src={imageSrc}
+{!hasSrc ? (
+  // No valid src, render nothing or placeholder
+  fallbackSrc ? (
+    <img
+      src={fallbackSrc}
+      alt={alt}
+      width={finalWidth}
+      height={finalHeight}
+      loading={loading}
+      class={className}
+    />
+  ) : null
+) : isRemote ? (
+  // For remote images, use regular img tag to avoid Astro Image issues with dynamic URLs
+  // The images are served from R2 with proper caching
+  <img
+    src={src}
     alt={alt}
     width={finalWidth}
     height={finalHeight}
-    sizes={sizes}
     loading={loading}
-    quality={quality}
     class={className}
     onerror={fallbackSrc ? `this.src='${fallbackSrc}'; this.onerror=null;` : undefined}
   />
 ) : (
   // For local images that aren't imported, use regular img tag
-  // (Astro's Image component requires imported images for local files)
   <img
     src={src}
     alt={alt}

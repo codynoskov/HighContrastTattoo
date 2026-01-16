@@ -184,6 +184,31 @@ content:
         type: string
         required: false
         description: Text for the "Meet all our Artists" button
+      
+      # SEO
+      - name: metaTitle
+        label: Meta Title
+        type: string
+        required: false
+        description: Custom page title for search engines (max 60 chars)
+      
+      - name: metaDescription
+        label: Meta Description
+        type: text
+        required: false
+        description: Custom description for search results (max 160 chars)
+      
+      - name: ogImage
+        label: Social Share Image
+        type: image
+        required: false
+        description: Custom image for social sharing (1200x630px recommended)
+      
+      - name: noIndex
+        label: Hide from Search Engines
+        type: boolean
+        required: false
+        description: Enable to prevent this page from appearing in search results
 
   # ============================================
   # SETTINGS
@@ -305,6 +330,43 @@ content:
         type: string
         required: false
         description: Copyright notice (e.g., © 2026 High Contrast Tattoo)
+      
+      # SEO Global Defaults
+      - name: seoSiteName
+        label: Site Name (SEO)
+        type: string
+        required: false
+        description: Site name for social sharing (og:site_name)
+      
+      - name: seoDefaultDescription
+        label: Default Meta Description
+        type: text
+        required: false
+        description: Default description for pages without a custom one (max 160 chars)
+      
+      - name: seoDefaultOgImage
+        label: Default Social Image
+        type: image
+        required: false
+        description: Default image for social sharing (1200x630px recommended)
+      
+      - name: seoGoogleMapsUrl
+        label: Google Maps URL
+        type: string
+        required: false
+        description: Google Maps link for structured data
+      
+      - name: seoInstagramUrl
+        label: Instagram URL
+        type: string
+        required: false
+        description: Full Instagram profile URL for structured data
+      
+      - name: seoSiteUrl
+        label: Site URL
+        type: string
+        required: false
+        description: Full website URL (e.g., https://highcontrasttattoo.com)
 
   # ============================================
   # ARTISTS PAGE
@@ -327,6 +389,31 @@ content:
         type: text
         required: false
         description: "Subheader/description text for the Artists page"
+      
+      # SEO
+      - name: metaTitle
+        label: Meta Title
+        type: string
+        required: false
+        description: Custom page title for search engines (max 60 chars)
+      
+      - name: metaDescription
+        label: Meta Description
+        type: text
+        required: false
+        description: Custom description for search results (max 160 chars)
+      
+      - name: ogImage
+        label: Social Share Image
+        type: image
+        required: false
+        description: Custom image for social sharing (1200x630px recommended)
+      
+      - name: noIndex
+        label: Hide from Search Engines
+        type: boolean
+        required: false
+        description: Enable to prevent this page from appearing in search results
 
   # ============================================
   # STYLES PAGE
@@ -349,6 +436,31 @@ content:
         type: text
         required: false
         description: "Subheader/description text for the Styles page"
+      
+      # SEO
+      - name: metaTitle
+        label: Meta Title
+        type: string
+        required: false
+        description: Custom page title for search engines (max 60 chars)
+      
+      - name: metaDescription
+        label: Meta Description
+        type: text
+        required: false
+        description: Custom description for search results (max 160 chars)
+      
+      - name: ogImage
+        label: Social Share Image
+        type: image
+        required: false
+        description: Custom image for social sharing (1200x630px recommended)
+      
+      - name: noIndex
+        label: Hide from Search Engines
+        type: boolean
+        required: false
+        description: Enable to prevent this page from appearing in search results
 
   # ============================================
   # STYLES
@@ -397,6 +509,31 @@ content:
         type: image
         required: false
         description: Optional custom image for the style card on the front page. If not provided, an image from the Works collection will be used instead.
+      
+      # SEO
+      - name: metaTitle
+        label: Meta Title
+        type: string
+        required: false
+        description: Custom page title for search engines (max 60 chars)
+      
+      - name: metaDescription
+        label: Meta Description
+        type: text
+        required: false
+        description: Custom description for search results (max 160 chars)
+      
+      - name: ogImage
+        label: Social Share Image
+        type: image
+        required: false
+        description: Custom image for social sharing (1200x630px recommended)
+      
+      - name: noIndex
+        label: Hide from Search Engines
+        type: boolean
+        required: false
+        description: Enable to prevent this page from appearing in search results
   
   # ============================================
   # ARTISTS
@@ -462,6 +599,31 @@ content:
         label: Full Biography
         type: rich-text
         description: Optional longer biography with formatting. Shown on the artist's profile page below their gallery.
+      
+      # SEO
+      - name: metaTitle
+        label: Meta Title
+        type: string
+        required: false
+        description: Custom page title for search engines (max 60 chars)
+      
+      - name: metaDescription
+        label: Meta Description
+        type: text
+        required: false
+        description: Custom description for search results (max 160 chars)
+      
+      - name: ogImage
+        label: Social Share Image
+        type: image
+        required: false
+        description: Custom image for social sharing (1200x630px recommended)
+      
+      - name: noIndex
+        label: Hide from Search Engines
+        type: boolean
+        required: false
+        description: Enable to prevent this page from appearing in search results
   
   # ============================================
   # WORKS

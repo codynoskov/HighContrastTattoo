@@ -4,7 +4,7 @@
    FONT LOADING
    ============================================ */
 
-/* Fonts are loaded via <link> tags in Layout.astro for better Safari compatibility */
+/* Fonts are loaded locally via fonts.css for GDPR compliance */
 /* Stack Sans Notch - for headlines and buttons */
 /* Stack Sans Text - for body text and links */
 

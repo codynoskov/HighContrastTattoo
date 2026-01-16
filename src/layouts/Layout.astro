@@ -1,5 +1,6 @@
 ---
 import '../styles/tokens.css';
+import '../styles/fonts.css';
 import '../styles/typography.css';
 ---
 
@@ -11,10 +12,7 @@ import '../styles/typography.css';
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>High Contrast Tattoo</title>
-		<!-- Google Fonts - Load fonts early for Safari compatibility -->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-		<link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Notch:wght@300;400;500;600;700&family=Stack+Sans+Text:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+		<!-- Fonts are now loaded locally for GDPR compliance - no external requests to Google -->
 	</head>
 	<body>
 		<slot />

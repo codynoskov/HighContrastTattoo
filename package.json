@@ -16,6 +16,8 @@
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.969.0",
+    "@fontsource/stack-sans-notch": "^5.1.4",
+    "@fontsource/stack-sans-text": "^5.1.4",
     "astro": "^5.16.6",
     "dotenv": "^17.2.3",
     "pixelarticons": "^1.8.1"

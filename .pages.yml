@@ -42,8 +42,7 @@ content:
         type: image
         required: false
         options:
-          input: public/images/videos
-          output: /images/videos
+          media: videos
         description: Background video for the hero section. Upload MP4 files here.
       
       - name: videoPoster

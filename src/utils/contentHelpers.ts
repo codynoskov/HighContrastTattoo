@@ -47,12 +47,27 @@ export function resolveImagePath(imagePath: string | { src?: string; url?: strin
       return '';
     }
     
+    // Check if object has any keys that look like field descriptions (long text with spaces)
+    // PagesCMS sometimes returns field schema objects instead of values
+    const keys = Object.keys(imagePath);
+    const hasDescriptionLikeKey = keys.some(key => 
+      key.length > 30 || // Long keys are likely descriptions
+      key.includes('shown while') || // Common description phrases
+      key.includes('Recommended') ||
+      key.includes('description') ||
+      key.includes('label')
+    );
+    
+    if (hasDescriptionLikeKey && !imagePath.src && !imagePath.url && !imagePath.path) {
+      // This is a schema/metadata object, not an actual image value
+      return '';
+    }
+    
     // Extract the actual path from CMS image object
     // Common CMS object structures:
     // - { src: "...", alt: "..." }
     // - { url: "..." }
     // - { path: "..." }
-    // - Sometimes CMS returns description/metadata objects - skip those
     pathString = imagePath.src || imagePath.url || imagePath.path || '';
     
     // If the object looks like metadata/description (has description key but no path-like values), skip it

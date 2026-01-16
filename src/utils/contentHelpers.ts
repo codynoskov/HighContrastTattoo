@@ -11,6 +11,15 @@ type WorkEntry = CollectionEntry<'works'>;
 const DEFAULT_R2_BASE_URL = 'https://pub-5fa780a0c82a42df836a1dd9282c562b.r2.dev';
 
 /**
+ * Get R2 URL for favicon files.
+ * Favicons are stored in images/favicons/ in R2.
+ */
+export function getFaviconUrl(filename: string): string {
+  const R2_BASE_URL = import.meta.env.PUBLIC_R2_BASE_URL || DEFAULT_R2_BASE_URL;
+  return `${R2_BASE_URL}/images/favicons/${filename}`;
+}
+
+/**
  * Resolve image path for both website and CMS contexts.
  * - If path is already absolute (http/https), returns as-is
  * - If path starts with '/', ensures it works correctly

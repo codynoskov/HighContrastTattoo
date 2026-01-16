@@ -5,6 +5,7 @@ import '../styles/typography.css';
 import SEO from '../components/SEO.astro';
 import LocalBusinessSchema from '../components/LocalBusinessSchema.astro';
 import { getCollection } from 'astro:content';
+import { getFaviconUrl } from '../utils/contentHelpers';
 
 interface Props {
   title?: string;
@@ -42,7 +43,11 @@ const defaultOgImage = settings.seoDefaultOgImage || '/images/og-default.jpg';
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/x-icon" href={getFaviconUrl('favicon.ico')} />
+		<link rel="icon" type="image/png" sizes="16x16" href={getFaviconUrl('favicon-16x16.png')} />
+		<link rel="icon" type="image/png" sizes="32x32" href={getFaviconUrl('favicon-32x32.png')} />
+		<link rel="apple-touch-icon" sizes="180x180" href={getFaviconUrl('apple-touch-icon.png')} />
+		<link rel="manifest" href="/site.webmanifest" />
 		<meta name="generator" content={Astro.generator} />
 		
 		<!-- SEO Meta Tags -->

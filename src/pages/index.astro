@@ -29,9 +29,19 @@ const videoSrc = homepage.videoSrc ? resolveImagePath(homepage.videoSrc) : undef
 const instagramBgImage = homepage.instagramBackgroundImage ? resolveImagePath(homepage.instagramBackgroundImage) : undefined;
 const walkInBgImage = homepage.walkInBackgroundImage ? resolveImagePath(homepage.walkInBackgroundImage) : undefined;
 const footerMapImage = settings.footerMapImage ? resolveImagePath(settings.footerMapImage) : undefined;
+
+// SEO - Homepage uses custom values or falls back to global defaults
+const seoTitle = homepage.metaTitle || settings.seoSiteName || 'High Contrast Tattoo Berlin';
+const seoDescription = homepage.metaDescription || settings.seoDefaultDescription;
+const seoOgImage = homepage.ogImage || settings.seoDefaultOgImage;
 ---
 
-<Layout>
+<Layout
+	title={seoTitle}
+	description={seoDescription}
+	ogImage={seoOgImage}
+	includeLocalBusiness={true}
+>
 	<Header 
 		studioName={settings.studioName}
 		buttonBookSession={settings.buttonBookSession}

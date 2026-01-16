@@ -64,9 +64,19 @@ const styleArtists = artists
 
 // Check if the style has body content (markdown after frontmatter)
 const hasBodyContent = style.body && style.body.trim().length > 0;
+
+// SEO - Individual style page
+const siteName = settings.seoSiteName || 'High Contrast Tattoo';
+const seoTitle = styleData.metaTitle || `${styleData.name} Tattoos | ${siteName}`;
+const seoDescription = styleData.metaDescription || styleData.intro.slice(0, 155) + (styleData.intro.length > 155 ? '...' : '');
+const seoOgImage = styleData.ogImage || settings.seoDefaultOgImage;
 ---
 
-<Layout>
+<Layout
+  title={seoTitle}
+  description={seoDescription}
+  ogImage={seoOgImage}
+>
   <Header 
     studioName={settings.studioName}
     buttonBookSession={settings.buttonBookSession}

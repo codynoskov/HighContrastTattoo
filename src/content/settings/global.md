@@ -22,4 +22,12 @@ footerWhatsAppUrl: "https://wa.me/4917672745645"
 footerAddress: "Schreinerstraße 6, 10247 Berlin, Germany"
 footerPrivacyNote: "We do not collect any personal data and do not use cookies"
 footerCopyright: "© 2026 High Contrast Tattoo"
+
+# SEO Global Defaults
+seoSiteName: "High Contrast Tattoo Berlin"
+seoDefaultDescription: "Custom tattoo studio in Berlin-Friedrichshain. Neo-traditional, blackwork, floral designs by experienced artists. Book your session today."
+seoDefaultOgImage: "/images/og-hct.png"
+seoGoogleMapsUrl: "https://maps.app.goo.gl/HmkDXBtuHm3nyBRVA"
+seoInstagramUrl: "https://instagram.com/highcontrasttattoo"
+seoSiteUrl: "https://highcontrasttattoo.com"
 ---

@@ -54,9 +54,16 @@ const artists = sortedArtists.map(entry => ({
   ...entry.data,
   slug: entry.slug
 }));
+
+// SEO - Booking page
+const seoTitle = `Book an Appointment | ${settings.seoSiteName || 'High Contrast Tattoo'}`;
+const seoDescription = 'Book a tattoo appointment at High Contrast Tattoo Berlin. Discuss your idea, placement, and details with our experienced artists.';
 ---
 
-<Layout>
+<Layout
+  title={seoTitle}
+  description={seoDescription}
+>
   <Header 
     studioName={settings.studioName}
     buttonBookSession={settings.buttonBookSession}

@@ -1,0 +1,71 @@
+---
+/**
+ * SEO Component
+ * Renders meta tags, Open Graph, and Twitter Card tags for SEO.
+ * Falls back to global defaults from settings if page-specific values aren't provided.
+ */
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article' | 'profile';
+  canonicalUrl?: string;
+  noIndex?: boolean;
+  // Global defaults (passed from settings)
+  siteName?: string;
+  siteUrl?: string;
+  defaultDescription?: string;
+  defaultOgImage?: string;
+}
+
+const {
+  title,
+  description,
+  ogImage,
+  ogType = 'website',
+  canonicalUrl,
+  noIndex = false,
+  siteName = 'High Contrast Tattoo',
+  siteUrl = '',
+  defaultDescription = '',
+  defaultOgImage = '/images/og-default.jpg',
+} = Astro.props;
+
+// Compute final values with fallbacks
+const finalTitle = title || siteName;
+const finalDescription = description || defaultDescription;
+const finalOgImage = ogImage || defaultOgImage;
+
+// Build absolute URLs
+const currentUrl = canonicalUrl || Astro.url.href;
+const absoluteOgImage = finalOgImage.startsWith('http') 
+  ? finalOgImage 
+  : siteUrl 
+    ? `${siteUrl}${finalOgImage}` 
+    : finalOgImage;
+---
+
+<!-- Primary Meta Tags -->
+<title>{finalTitle}</title>
+{finalDescription && <meta name="description" content={finalDescription} />}
+<link rel="canonical" href={currentUrl} />
+{noIndex && <meta name="robots" content="noindex,nofollow" />}
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={ogType} />
+<meta property="og:url" content={currentUrl} />
+<meta property="og:title" content={finalTitle} />
+{finalDescription && <meta property="og:description" content={finalDescription} />}
+<meta property="og:image" content={absoluteOgImage} />
+<meta property="og:site_name" content={siteName} />
+<meta property="og:locale" content="en_US" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={finalTitle} />
+{finalDescription && <meta name="twitter:description" content={finalDescription} />}
+<meta name="twitter:image" content={absoluteOgImage} />
+
+<!-- Additional SEO -->
+<meta name="format-detection" content="telephone=no" />

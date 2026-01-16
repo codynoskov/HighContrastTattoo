@@ -18,6 +18,13 @@ const footerMapImage = settings.footerMapImage ? resolveImagePath(settings.foote
 const stylesPageEntries = await getCollection('stylesPage');
 const stylesPage = stylesPageEntries[0]?.data || {};
 
+// SEO - Styles page
+const pageTitle = stylesPage.title || 'Styles';
+const pageDescription = stylesPage.description || 'An overview of our signature styles, highlighting the approaches, techniques, and visual directions that define our tattoo work.';
+const seoTitle = stylesPage.metaTitle || `${pageTitle} | ${settings.seoSiteName || 'High Contrast Tattoo'}`;
+const seoDescription = stylesPage.metaDescription || pageDescription;
+const seoOgImage = stylesPage.ogImage || settings.seoDefaultOgImage;
+
 const styleEntries = await getCollection('styles');
 const worksEntries = await getCollection('works');
 const artistEntries = await getCollection('artists');
@@ -54,15 +61,19 @@ const styles = sortedStyles.map(entry => {
 });
 ---
 
-<Layout>
+<Layout
+  title={seoTitle}
+  description={seoDescription}
+  ogImage={seoOgImage}
+>
   <Header 
     studioName={settings.studioName}
     buttonBookSession={settings.buttonBookSession}
   />
   <main>
     <ArtistsHeroSection 
-      title={stylesPage.title || "Styles"}
-      description={stylesPage.description || "An overview of our signature styles, highlighting the approaches, techniques, and visual directions that define our tattoo work."}
+      title={pageTitle}
+      description={pageDescription}
     />
     
     <Divider color="light" />

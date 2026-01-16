@@ -2,6 +2,39 @@
 import '../styles/tokens.css';
 import '../styles/fonts.css';
 import '../styles/typography.css';
+import SEO from '../components/SEO.astro';
+import LocalBusinessSchema from '../components/LocalBusinessSchema.astro';
+import { getCollection } from 'astro:content';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article' | 'profile';
+  canonicalUrl?: string;
+  noIndex?: boolean;
+  includeLocalBusiness?: boolean;
+}
+
+const {
+  title,
+  description,
+  ogImage,
+  ogType = 'website',
+  canonicalUrl,
+  noIndex = false,
+  includeLocalBusiness = false,
+} = Astro.props;
+
+// Get global settings for SEO defaults
+const settingsEntries = await getCollection('settings');
+const settings = settingsEntries[0]?.data || {};
+
+// SEO defaults from settings
+const siteName = settings.seoSiteName || settings.studioName || 'High Contrast Tattoo';
+const siteUrl = settings.seoSiteUrl || '';
+const defaultDescription = settings.seoDefaultDescription || '';
+const defaultOgImage = settings.seoDefaultOgImage || '/images/og-default.jpg';
 ---
 
 <!doctype html>
@@ -11,8 +44,36 @@ import '../styles/typography.css';
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>High Contrast Tattoo</title>
-		<!-- Fonts are now loaded locally for GDPR compliance - no external requests to Google -->
+		
+		<!-- SEO Meta Tags -->
+		<SEO
+			title={title}
+			description={description}
+			ogImage={ogImage}
+			ogType={ogType}
+			canonicalUrl={canonicalUrl}
+			noIndex={noIndex}
+			siteName={siteName}
+			siteUrl={siteUrl}
+			defaultDescription={defaultDescription}
+			defaultOgImage={defaultOgImage}
+		/>
+		
+		<!-- Local Business Structured Data (homepage only) -->
+		{includeLocalBusiness && (
+			<LocalBusinessSchema
+				name={settings.studioName || 'High Contrast Tattoo'}
+				address={settings.footerAddress || ''}
+				phone={settings.footerPhone || ''}
+				email={settings.footerEmail || ''}
+				siteUrl={siteUrl}
+				googleMapsUrl={settings.seoGoogleMapsUrl}
+				instagramUrl={settings.seoInstagramUrl}
+				ogImage={defaultOgImage}
+			/>
+		)}
+		
+		<!-- Fonts are loaded locally for GDPR compliance - no external requests -->
 	</head>
 	<body>
 		<slot />

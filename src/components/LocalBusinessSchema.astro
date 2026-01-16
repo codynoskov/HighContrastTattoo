@@ -1,0 +1,83 @@
+---
+/**
+ * LocalBusinessSchema Component
+ * Outputs JSON-LD structured data for Google Maps / Local Pack optimization.
+ * Uses schema.org/TattooParlor type.
+ */
+
+interface Props {
+  name: string;
+  address: string;
+  phone: string;
+  email: string;
+  siteUrl: string;
+  googleMapsUrl?: string;
+  instagramUrl?: string;
+  ogImage?: string;
+}
+
+const {
+  name,
+  address,
+  phone,
+  email,
+  siteUrl,
+  googleMapsUrl,
+  instagramUrl,
+  ogImage = '/images/og-default.jpg',
+} = Astro.props;
+
+// Parse address: "Schreinerstraße 6, 10247 Berlin, Germany"
+const addressParts = address.split(',').map(part => part.trim());
+const streetAddress = addressParts[0] || '';
+const postalAndCity = addressParts[1] || '';
+const country = addressParts[2] || 'Germany';
+
+// Extract postal code and city (e.g., "10247 Berlin")
+const postalMatch = postalAndCity.match(/^(\d+)\s+(.+)$/);
+const postalCode = postalMatch ? postalMatch[1] : '';
+const city = postalMatch ? postalMatch[2] : postalAndCity;
+
+// Build absolute image URL
+const absoluteImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+
+// Build sameAs array for social profiles
+const sameAs: string[] = [];
+if (instagramUrl) sameAs.push(instagramUrl);
+
+// Structured data object
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "TattooParlor",
+  "name": name,
+  "image": absoluteImage,
+  "url": siteUrl,
+  "telephone": phone,
+  "email": email,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": streetAddress,
+    "addressLocality": city,
+    "postalCode": postalCode,
+    "addressCountry": country === "Germany" ? "DE" : country,
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 52.5163,
+    "longitude": 13.4547,
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "11:30",
+      "closes": "19:00",
+    }
+  ],
+  "priceRange": "$$",
+  ...(sameAs.length > 0 && { "sameAs": sameAs }),
+  ...(googleMapsUrl && { "hasMap": googleMapsUrl }),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema, null, 2)} />

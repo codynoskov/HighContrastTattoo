@@ -50,9 +50,20 @@ const artistStyles = resolveStyles(artistData.styles ?? [], styles);
 
 // Check if the artist has body content (markdown after frontmatter)
 const hasBodyContent = artist.body && artist.body.trim().length > 0;
+
+// SEO - Individual artist page
+const siteName = settings.seoSiteName || 'High Contrast Tattoo';
+const seoTitle = artistData.metaTitle || `${artistData.name} | ${siteName}`;
+const seoDescription = artistData.metaDescription || artistData.intro.slice(0, 155) + (artistData.intro.length > 155 ? '...' : '');
+const seoOgImage = artistData.ogImage || resolveImagePath(artistData.photo);
 ---
 
-<Layout>
+<Layout
+  title={seoTitle}
+  description={seoDescription}
+  ogImage={seoOgImage}
+  ogType="profile"
+>
   <Header 
     studioName={settings.studioName}
     buttonBookSession={settings.buttonBookSession}

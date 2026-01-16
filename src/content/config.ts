@@ -1,5 +1,13 @@
 import { defineCollection, z } from 'astro:content';
 
+// Reusable SEO schema for page-level content
+const seoFields = {
+  metaTitle: z.string().max(60).optional().describe('Custom page title for search engines (max 60 chars)'),
+  metaDescription: z.string().max(160).optional().describe('Custom description for search results (max 160 chars)'),
+  ogImage: z.string().optional().describe('Custom social sharing image (1200x630px recommended)'),
+  noIndex: z.boolean().optional().default(false).describe('Hide this page from search engines'),
+};
+
 export const collections = {
   styles: defineCollection({
     type: 'content',
@@ -8,6 +16,8 @@ export const collections = {
       intro: z.string(),
       order: z.number().optional(),
       cardImage: z.string().optional(),
+      // SEO fields
+      ...seoFields,
     }),
   }),
 
@@ -20,6 +30,8 @@ export const collections = {
       instagram: z.string().optional().describe('Instagram handle'),
       order: z.number().optional().describe('Display order'),
       styles: z.array(z.string()).optional().describe('Style slugs this artist works in'),
+      // SEO fields
+      ...seoFields,
     }),
   }),
 
@@ -94,6 +106,9 @@ export const collections = {
       artistsTitle: z.string().optional().describe('Artists section title'),
       artistsDescription: z.string().optional().describe('Artists section description'),
       artistsCtaText: z.string().optional().describe('Artists CTA button text'),
+
+      // SEO fields
+      ...seoFields,
     }),
   }),
 
@@ -123,6 +138,14 @@ export const collections = {
       footerAddress: z.string().optional().describe('Studio address'),
       footerPrivacyNote: z.string().optional().describe('Privacy note text'),
       footerCopyright: z.string().optional().describe('Copyright text'),
+
+      // SEO Global Defaults
+      seoSiteName: z.string().optional().describe('Site name for og:site_name'),
+      seoDefaultDescription: z.string().optional().describe('Default meta description when page has none'),
+      seoDefaultOgImage: z.string().optional().describe('Default social sharing image'),
+      seoGoogleMapsUrl: z.string().optional().describe('Google Maps URL for structured data'),
+      seoInstagramUrl: z.string().optional().describe('Instagram URL for structured data'),
+      seoSiteUrl: z.string().optional().describe('Full site URL (e.g., https://highcontrasttattoo.com)'),
     }),
   }),
 
@@ -131,6 +154,8 @@ export const collections = {
     schema: z.object({
       title: z.string().optional().describe('Artists page header title'),
       description: z.string().optional().describe('Artists page header description/subheader'),
+      // SEO fields
+      ...seoFields,
     }),
   }),
 
@@ -139,6 +164,8 @@ export const collections = {
     schema: z.object({
       title: z.string().optional().describe('Styles page header title'),
       description: z.string().optional().describe('Styles page header description/subheader'),
+      // SEO fields
+      ...seoFields,
     }),
   }),
 };

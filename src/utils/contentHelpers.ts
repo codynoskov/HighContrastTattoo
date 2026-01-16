@@ -12,19 +12,22 @@ const DEFAULT_R2_BASE_URL = 'https://pub-5fa780a0c82a42df836a1dd9282c562b.r2.dev
 
 /**
  * Get URL for favicon files.
- * In development: uses local paths from /images/favicons/
- * In production: uses R2 URLs for GDPR compliance
+ * - Uses R2 URLs if PUBLIC_R2_BASE_URL is explicitly set (for GDPR compliance)
+ * - Otherwise uses local paths from /images/favicons/ (works in dev and production)
  * Favicons are stored in images/favicons/ in both cases
  */
 export function getFaviconUrl(filename: string): string {
-  // In development mode, use local paths so favicons work without R2 sync
-  if (import.meta.env.DEV) {
-    return `/images/favicons/${filename}`;
+  // Only use R2 if PUBLIC_R2_BASE_URL is explicitly set
+  // This allows favicons to work locally and in production until R2 is fully configured
+  const R2_BASE_URL = import.meta.env.PUBLIC_R2_BASE_URL;
+  
+  if (R2_BASE_URL) {
+    // Use R2 URLs when explicitly configured (for GDPR compliance)
+    return `${R2_BASE_URL}/images/favicons/${filename}`;
   }
   
-  // In production, use R2 URLs for GDPR compliance
-  const R2_BASE_URL = import.meta.env.PUBLIC_R2_BASE_URL || DEFAULT_R2_BASE_URL;
-  return `${R2_BASE_URL}/images/favicons/${filename}`;
+  // Fallback to local paths (works in both dev and production builds)
+  return `/images/favicons/${filename}`;
 }
 
 /**

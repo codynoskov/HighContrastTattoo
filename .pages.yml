@@ -12,14 +12,6 @@ media:
     output: /images/videos
     extensions: [mp4, webm, mov]
     categories: [video]
-  
-  # Combined media for fields that accept both images and videos
-  - name: media
-    label: All Media
-    input: public/images
-    output: /images
-    extensions: [jpg, jpeg, png, gif, svg, webp, avif, mp4, webm, mov]
-    categories: [image, video]
 
 content:
   # ============================================
@@ -46,12 +38,10 @@ content:
         description: Introduction text below the headline. Use **text** for bold formatting.
       
       - name: videoSrc
-        label: Hero Video
-        type: image
+        label: Hero Video URL
+        type: string
         required: false
-        options:
-          media: media
-        description: Background video for the hero section. Upload MP4 files here.
+        description: URL path to the hero video (e.g., /images/videos/HCT_CoverVideo-1080.mp4)
       
       - name: videoPoster
         label: Video Poster/Thumbnail

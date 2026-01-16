@@ -12,6 +12,14 @@ media:
     output: /images/videos
     extensions: [mp4, webm, mov]
     categories: [video]
+  
+  # Combined media for fields that accept both images and videos
+  - name: media
+    label: All Media
+    input: public/images
+    output: /images
+    extensions: [jpg, jpeg, png, gif, svg, webp, avif, mp4, webm, mov]
+    categories: [image, video]
 
 content:
   # ============================================
@@ -42,7 +50,7 @@ content:
         type: image
         required: false
         options:
-          media: videos
+          media: media
         description: Background video for the hero section. Upload MP4 files here.
       
       - name: videoPoster

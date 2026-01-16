@@ -50,7 +50,7 @@ content:
         label: Video Poster/Thumbnail
         type: image
         required: false
-        description: Thumbnail image shown while video loads on slow connections. Use a frame from your video or a relevant image. Recommended size: same aspect ratio as video.
+        description: "Thumbnail image shown while video loads on slow connections. Use a frame from your video or a relevant image."
       
       - name: topRightImage
         label: Hero Top Right Image

@@ -20,12 +20,8 @@ export default defineConfig({
     remotePatterns: [
       {
         protocol: 'https',
-        // Allow images from R2 bucket (and any subdomain)
-        hostname: '*.r2.dev',
-      },
-      {
-        protocol: 'https',
-        // Allow images from any domain (useful for CMS previews and other R2 buckets)
+        // Allow images from any domain (useful for CMS previews and R2 buckets)
+        // The specific R2 domain is also listed in domains array above
         hostname: '**',
       },
     ],

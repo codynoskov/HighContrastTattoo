@@ -1,6 +1,7 @@
 ---
 import Tag from './Tag.astro';
 import Icon from './Icon.astro';
+import OptimizedImage from './OptimizedImage.astro';
 import imagePlaceholder from '../assets/images/image-placeholder.png';
 
 interface LightboxImage {
@@ -39,10 +40,15 @@ const { images = [], galleryId } = Astro.props;
             class="gallery-lightbox-slide"
             data-slide-index={index}
           >
-            <img 
-              src={image.src || imagePlaceholder.src} 
+            <OptimizedImage
+              src={image.src || imagePlaceholder.src}
               alt={image.alt || `Gallery image ${index + 1}`}
-              onerror={`this.src='${imagePlaceholder.src}'; this.onerror=null;`}
+              sizes="100vw"
+              loading="lazy"
+              className="lightbox-image"
+              fallbackSrc={imagePlaceholder.src}
+              quality={90}
+              width={1920}
             />
             <div class="gallery-lightbox-counter">
               <span class="gallery-lightbox-current">{index + 1}</span>
@@ -198,7 +204,8 @@ const { images = [], galleryId } = Astro.props;
     position: relative;
   }
 
-  .gallery-lightbox-slide img {
+  .gallery-lightbox-slide :global(img),
+  .gallery-lightbox-slide :global(picture) {
     max-width: 100%;
     max-height: 100%;
     width: auto;

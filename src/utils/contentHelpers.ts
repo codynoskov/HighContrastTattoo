@@ -29,18 +29,50 @@ export function getFaviconUrl(filename: string): string {
 
 /**
  * Resolve image path for both website and CMS contexts.
+ * - Handles both string paths and CMS image objects (e.g., { src: "...", alt: "..." })
  * - If path is already absolute (http/https), returns as-is
  * - If path starts with '/', ensures it works correctly
  * - For CMS previews, can convert to absolute URL if SITE_URL is set
  * - Supports R2 bucket URLs via PUBLIC_R2_BASE_URL
  * - Falls back to default R2 URL for videos/images to ensure PagesCMS preview works
  */
-export function resolveImagePath(imagePath: string | undefined, useAbsoluteUrl = false): string {
+export function resolveImagePath(imagePath: string | { src?: string; url?: string; path?: string; [key: string]: any } | undefined, useAbsoluteUrl = false): string {
   if (!imagePath) return '';
   
+  // Handle CMS image objects (PagesCMS may return objects instead of strings)
+  let pathString: string;
+  if (typeof imagePath === 'object') {
+    // Skip if it's an array
+    if (Array.isArray(imagePath)) {
+      return '';
+    }
+    
+    // Extract the actual path from CMS image object
+    // Common CMS object structures:
+    // - { src: "...", alt: "..." }
+    // - { url: "..." }
+    // - { path: "..." }
+    // - Sometimes CMS returns description/metadata objects - skip those
+    pathString = imagePath.src || imagePath.url || imagePath.path || '';
+    
+    // If the object looks like metadata/description (has description key but no path-like values), skip it
+    if (!pathString && ('description' in imagePath || 'label' in imagePath)) {
+      return '';
+    }
+    
+    if (!pathString || typeof pathString !== 'string') {
+      return '';
+    }
+  } else if (typeof imagePath === 'string') {
+    pathString = imagePath;
+  } else {
+    // Fallback for unexpected types
+    return '';
+  }
+  
   // If already absolute URL, return as-is
-  if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
-    return imagePath;
+  if (pathString.startsWith('http://') || pathString.startsWith('https://')) {
+    return pathString;
   }
   
   // Check if R2 is configured (env var or fallback)
@@ -48,20 +80,20 @@ export function resolveImagePath(imagePath: string | undefined, useAbsoluteUrl =
   
   // Always use R2 for video files (which are stored in /images/videos/)
   // This ensures videos work in both website and PagesCMS preview
-  const isVideoFile = /\.(mp4|webm|mov|avi)$/i.test(imagePath);
+  const isVideoFile = /\.(mp4|webm|mov|avi)$/i.test(pathString);
   
   // If R2 is available or it's a video file, use R2 URL
   if (R2_BASE_URL || isVideoFile) {
     const effectiveR2Url = R2_BASE_URL || DEFAULT_R2_BASE_URL;
     // Remove leading slash if present, then prepend with images/ prefix
-    const cleanPath = imagePath.startsWith('/') ? imagePath.slice(1) : imagePath;
+    const cleanPath = pathString.startsWith('/') ? pathString.slice(1) : pathString;
     // Ensure images/ prefix (your current paths like /images/works/... will become images/works/...)
     const r2Path = cleanPath.startsWith('images/') ? cleanPath : `images/${cleanPath}`;
     return `${effectiveR2Url}/${r2Path}`;
   }
   
   // Normalize path to start with '/' (fallback for local development without R2)
-  const normalizedPath = imagePath.startsWith('/') ? imagePath : `/${imagePath}`;
+  const normalizedPath = pathString.startsWith('/') ? pathString : `/${pathString}`;
   
   // If absolute URL is requested (e.g., for CMS preview), construct full URL
   if (useAbsoluteUrl) {

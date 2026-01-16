@@ -2,6 +2,7 @@
 import Tag from './Tag.astro';
 import Icon from './Icon.astro';
 import Lightbox from './Lightbox.astro';
+import OptimizedImage from './OptimizedImage.astro';
 import imagePlaceholder from '../assets/images/image-placeholder.png';
 
 interface GalleryImage {
@@ -45,11 +46,15 @@ const allImages = images;
         data-gallery-instance-id={instanceId}
       >
         <div class="gallery-image-container">
-          <img 
-            src={image.src || imagePlaceholder.src} 
+          <OptimizedImage
+            src={image.src || imagePlaceholder.src}
             alt={image.alt || `Gallery image ${index + 1}`}
+            aspectRatio={1}
+            sizes="(max-width: 767px) 50vw, 33vw"
             loading="lazy"
-            onerror={`this.src='${imagePlaceholder.src}'; this.onerror=null;`}
+            className="gallery-image"
+            fallbackSrc={imagePlaceholder.src}
+            quality={85}
           />
         </div>
         {image.tags && image.tags.length > 0 && !(index === MAX_VISIBLE_IMAGES - 1 && hasMoreImages) ? (
@@ -359,7 +364,8 @@ const allImages = images;
     min-height: 0;
   }
 
-  .gallery-image-container img {
+  .gallery-image-container :global(img),
+  .gallery-image-container :global(picture) {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -368,7 +374,12 @@ const allImages = images;
     display: block;
   }
 
-  .gallery-item:hover .gallery-image-container img {
+  .gallery-image-container :global(img) {
+    width: 100%;
+    height: 100%;
+  }
+
+  .gallery-item:hover .gallery-image-container :global(img) {
     transform: scale(1.05);
   }
 

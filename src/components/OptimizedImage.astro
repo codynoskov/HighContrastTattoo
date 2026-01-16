@@ -1,0 +1,93 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  aspectRatio?: number; // width / height
+  sizes?: string; // e.g., "(max-width: 768px) 100vw, 50vw"
+  loading?: 'lazy' | 'eager';
+  className?: string;
+  fallbackSrc?: string;
+  quality?: number; // 1-100, default 80
+}
+
+const {
+  src,
+  alt,
+  width,
+  height,
+  aspectRatio,
+  sizes,
+  loading = 'lazy',
+  className = '',
+  fallbackSrc,
+  quality = 80,
+} = Astro.props;
+
+// Determine if this is a remote URL
+const isRemote = src.startsWith('http://') || src.startsWith('https://');
+
+// Calculate dimensions if aspectRatio is provided
+let finalWidth = width;
+let finalHeight = height;
+
+if (aspectRatio && finalWidth && !finalHeight) {
+  finalHeight = Math.round(finalWidth / aspectRatio);
+} else if (aspectRatio && finalHeight && !finalWidth) {
+  finalWidth = Math.round(finalHeight * aspectRatio);
+}
+
+// If no dimensions provided, use default thumbnail size for optimization
+// This ensures images are optimized even when exact dimensions aren't specified
+if (!finalWidth && !finalHeight) {
+  finalWidth = 800; // Default thumbnail width
+  if (aspectRatio) {
+    finalHeight = Math.round(finalWidth / aspectRatio);
+  } else {
+    finalHeight = 800; // Default square if no aspect ratio
+  }
+}
+
+// For remote images, convert to URL object for Astro's Image component
+// Astro 5's Image component can optimize remote images when properly configured
+const imageSrc = isRemote ? new URL(src) : src;
+---
+
+{isRemote ? (
+  <Image
+    src={imageSrc}
+    alt={alt}
+    width={finalWidth}
+    height={finalHeight}
+    sizes={sizes}
+    loading={loading}
+    quality={quality}
+    class={className}
+    onerror={fallbackSrc ? `this.src='${fallbackSrc}'; this.onerror=null;` : undefined}
+  />
+) : (
+  // For local images that aren't imported, use regular img tag
+  // (Astro's Image component requires imported images for local files)
+  <img
+    src={src}
+    alt={alt}
+    width={finalWidth}
+    height={finalHeight}
+    loading={loading}
+    class={className}
+    onerror={fallbackSrc ? `this.src='${fallbackSrc}'; this.onerror=null;` : undefined}
+  />
+)}
+
+<style>
+  :global(.optimized-image) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+</style>

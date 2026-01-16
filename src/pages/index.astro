@@ -22,14 +22,25 @@ const homepage = homepageEntries[0]?.data || {};
 const settingsEntries = await getCollection('settings');
 const settings = settingsEntries[0]?.data || {};
 
-// Resolve image and video paths (handles R2 URLs automatically)
-const topRightImage = homepage.topRightImage ? resolveImagePath(homepage.topRightImage) : undefined;
-const bottomLeftImage = homepage.bottomLeftImage ? resolveImagePath(homepage.bottomLeftImage) : undefined;
-const videoSrc = homepage.videoSrc ? resolveImagePath(homepage.videoSrc) : undefined;
-const videoPoster = homepage.videoPoster ? resolveImagePath(homepage.videoPoster) : undefined;
-const instagramBgImage = homepage.instagramBackgroundImage ? resolveImagePath(homepage.instagramBackgroundImage) : undefined;
-const walkInBgImage = homepage.walkInBackgroundImage ? resolveImagePath(homepage.walkInBackgroundImage) : undefined;
-const footerMapImage = settings.footerMapImage ? resolveImagePath(settings.footerMapImage) : undefined;
+// Helper function to safely resolve image paths (handles both strings and CMS objects)
+function safeResolveImagePath(imagePath: any): string | undefined {
+  if (!imagePath) return undefined;
+  try {
+    return resolveImagePath(imagePath);
+  } catch (error) {
+    console.warn('Failed to resolve image path:', imagePath, error);
+    return undefined;
+  }
+}
+
+// Resolve image and video paths (handles R2 URLs automatically and CMS objects)
+const topRightImage = safeResolveImagePath(homepage.topRightImage);
+const bottomLeftImage = safeResolveImagePath(homepage.bottomLeftImage);
+const videoSrc = safeResolveImagePath(homepage.videoSrc);
+const videoPoster = safeResolveImagePath(homepage.videoPoster);
+const instagramBgImage = safeResolveImagePath(homepage.instagramBackgroundImage);
+const walkInBgImage = safeResolveImagePath(homepage.walkInBackgroundImage);
+const footerMapImage = safeResolveImagePath(settings.footerMapImage);
 
 // SEO - Homepage uses custom values or falls back to global defaults
 const seoTitle = homepage.metaTitle || settings.seoSiteName || 'High Contrast Tattoo Berlin';

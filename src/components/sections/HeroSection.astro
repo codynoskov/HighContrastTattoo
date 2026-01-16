@@ -1,6 +1,7 @@
 ---
 import Button from '../Button.astro';
 import Logo from '../Logo.astro';
+import OptimizedImage from '../OptimizedImage.astro';
 import imagePlaceholder from '../../assets/images/image-placeholder.png';
 
 interface Props {
@@ -119,12 +120,28 @@ const introParts = parseIntroText(introText);
 
         <!-- Overlay Images -->
         <div class="hero-images-overlay">
-          <div class="hero-image hero-image-top-right">
-            <img src={topRightImage} alt="Tattoo artwork" loading="eager" />
-          </div>
-          <div class="hero-image hero-image-bottom-left">
-            <img src={bottomLeftImage} alt="Studio interior" loading="eager" />
-          </div>
+          {topRightImage && (
+            <div class="hero-image hero-image-top-right">
+              <OptimizedImage
+                src={topRightImage}
+                alt="Tattoo artwork"
+                loading="eager"
+                sizes="(max-width: 1023px) 33vw, 25vw"
+                quality={85}
+              />
+            </div>
+          )}
+          {bottomLeftImage && (
+            <div class="hero-image hero-image-bottom-left">
+              <OptimizedImage
+                src={bottomLeftImage}
+                alt="Studio interior"
+                loading="eager"
+                sizes="(max-width: 1023px) 33vw, 25vw"
+                quality={85}
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -327,13 +344,19 @@ const introParts = parseIntroText(introText);
     pointer-events: auto;
   }
 
-  .hero-image img {
+  .hero-image :global(img),
+  .hero-image :global(picture) {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
+  }
+
+  .hero-image :global(img) {
+    width: 100%;
+    height: 100%;
   }
 
   /* Top-right image: rows 1-2, cols 5-6 */

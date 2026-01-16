@@ -1,4 +1,5 @@
 ---
+import OptimizedImage from './OptimizedImage.astro';
 import artistPlaceholderImage from "../assets/images/artist-placeholder.png";
 
 interface Props {
@@ -15,10 +16,15 @@ const {
 ---
 
 <div class={`artist-image-wrapper ${className}`}>
-  <img 
-    src={image || artistPlaceholderImage.src} 
+  <OptimizedImage
+    src={image || artistPlaceholderImage.src}
     alt={imageAlt}
-    onerror={`this.src='${artistPlaceholderImage.src}'; this.onerror=null;`}
+    aspectRatio={2/3}
+    sizes="(max-width: 767px) 100vw, 400px"
+    loading="lazy"
+    className="artist-image"
+    fallbackSrc={artistPlaceholderImage.src}
+    quality={85}
   />
   <div class="bevel bevel-top-left">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -41,12 +47,18 @@ const {
     flex-shrink: 0;
   }
 
-  .artist-image-wrapper img {
+  .artist-image-wrapper :global(img),
+  .artist-image-wrapper :global(picture) {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: 50% 50%;
     pointer-events: none;
+  }
+
+  .artist-image-wrapper :global(img) {
+    width: 100%;
+    height: 100%;
   }
 
   .bevel {

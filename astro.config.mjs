@@ -13,17 +13,9 @@ export default defineConfig({
   image: {
     // Enable remote image optimization
     // This allows optimizing images from external sources like R2
+    // List all allowed domains explicitly (wildcards are not supported)
     domains: [
-      // Allow R2 bucket domain
       'pub-5fa780a0c82a42df836a1dd9282c562b.r2.dev',
-    ],
-    remotePatterns: [
-      {
-        protocol: 'https',
-        // Allow images from any domain (useful for CMS previews and R2 buckets)
-        // The specific R2 domain is also listed in domains array above
-        hostname: '**',
-      },
     ],
     // Service configuration - Sharp is the default image optimizer
     service: {

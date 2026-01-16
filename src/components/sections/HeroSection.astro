@@ -9,6 +9,8 @@ interface Props {
   ctaText?: string;
   ctaHref?: string;
   videoSrc?: string;
+  /** Video poster/thumbnail image shown while video loads */
+  videoPoster?: string;
   /** Cloudflare Stream video UID (if using Stream instead of local video) */
   streamVideoId?: string;
   /** Cloudflare Stream customer code (found in Stream dashboard) */
@@ -24,6 +26,7 @@ const {
   ctaText = "Book a session",
   ctaHref = "/book",
   videoSrc,
+  videoPoster,
   streamVideoId,
   streamCustomerCode,
   topRightImage = imagePlaceholder.src,
@@ -98,7 +101,15 @@ const introParts = parseIntroText(introText);
               loading="eager"
             ></iframe>
           ) : videoSrc ? (
-            <video autoplay muted loop playsinline class="hero-video">
+            <video 
+              autoplay 
+              muted 
+              loop 
+              playsinline 
+              preload="metadata"
+              class="hero-video"
+              poster={videoPoster}
+            >
               <source src={videoSrc} type="video/mp4" />
             </video>
           ) : (
@@ -267,6 +278,22 @@ const introParts = parseIntroText(introText);
     width: 100%;
     height: 100%;
     object-fit: cover;
+    background-color: var(--color-neutral-300);
+  }
+
+  /* Show poster while video loads */
+  .hero-video:not([poster]) {
+    /* If no poster, show a subtle loading state */
+    background: linear-gradient(
+      135deg,
+      var(--color-neutral-300) 0%,
+      var(--color-neutral-400) 100%
+    );
+  }
+
+  /* Loading state for slow connections */
+  .hero-video.loading {
+    opacity: 0.8;
   }
 
   .hero-video-stream {

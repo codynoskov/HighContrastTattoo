@@ -11,10 +11,18 @@ type WorkEntry = CollectionEntry<'works'>;
 const DEFAULT_R2_BASE_URL = 'https://pub-5fa780a0c82a42df836a1dd9282c562b.r2.dev';
 
 /**
- * Get R2 URL for favicon files.
- * Favicons are stored in images/favicons/ in R2.
+ * Get URL for favicon files.
+ * In development: uses local paths from /images/favicons/
+ * In production: uses R2 URLs for GDPR compliance
+ * Favicons are stored in images/favicons/ in both cases
  */
 export function getFaviconUrl(filename: string): string {
+  // In development mode, use local paths so favicons work without R2 sync
+  if (import.meta.env.DEV) {
+    return `/images/favicons/${filename}`;
+  }
+  
+  // In production, use R2 URLs for GDPR compliance
   const R2_BASE_URL = import.meta.env.PUBLIC_R2_BASE_URL || DEFAULT_R2_BASE_URL;
   return `${R2_BASE_URL}/images/favicons/${filename}`;
 }

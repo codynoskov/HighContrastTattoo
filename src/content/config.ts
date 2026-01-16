@@ -68,6 +68,7 @@ export const collections = {
       headline: z.string().describe('Hero headline'),
       introText: z.string().describe('Hero introduction text (supports **bold** markdown)'),
       videoSrc: z.string().optional().describe('Hero background video'),
+      videoPoster: z.string().optional().describe('Video poster/thumbnail image (shown while video loads on slow connections)'),
       streamVideoId: z.string().optional().describe('Cloudflare Stream video ID'),
       streamCustomerCode: z.string().optional().describe('Cloudflare Stream customer code'),
       topRightImage: z.string().optional().describe('Top right overlay image path'),

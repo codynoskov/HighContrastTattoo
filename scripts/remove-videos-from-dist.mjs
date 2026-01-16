@@ -1,18 +1,24 @@
 #!/usr/bin/env node
 /**
- * Remove videos from dist/ directory after build
- * Videos are served from R2, not needed in Pages deployment
+ * Replace large video files with lightweight placeholders in dist/ directory
+ * This allows PagesCMS to see videos while keeping deployment size small
+ * Videos are served from R2, but placeholders are needed for CMS access
  * This fixes Cloudflare Pages 25MB file size limit
  */
 
-import { rmSync, existsSync } from 'fs';
-import { join } from 'path';
+import { execSync } from 'child_process';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-const videosDir = join('dist', 'images', 'videos');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-if (existsSync(videosDir)) {
-  rmSync(videosDir, { recursive: true, force: true });
-  console.log('✓ Removed videos from dist/ (videos are served from R2)');
-} else {
-  console.log('No videos directory found in dist/');
+// Run the placeholder creation script instead of removing videos
+const placeholderScript = join(__dirname, 'create-video-placeholders.mjs');
+
+try {
+  execSync(`node "${placeholderScript}"`, { stdio: 'inherit' });
+} catch (error) {
+  console.error('Error creating video placeholders:', error.message);
+  process.exit(1);
 }

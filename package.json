@@ -9,8 +9,10 @@
     "dev": "astro dev",
     "sync-images": "node scripts/sync-images.mjs",
     "sync-to-r2": "node scripts/sync-to-r2.mjs",
-    "build": "npm run sync-images && astro build && npm run remove-videos-from-dist",
+    "sync-from-r2": "node scripts/sync-from-r2.mjs",
+    "build": "npm run sync-images && astro build && npm run create-video-placeholders",
     "remove-videos-from-dist": "node scripts/remove-videos-from-dist.mjs",
+    "create-video-placeholders": "node scripts/create-video-placeholders.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },

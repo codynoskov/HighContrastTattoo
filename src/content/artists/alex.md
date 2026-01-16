@@ -3,11 +3,18 @@ name: Alex
 slugOverride: alex
 order: 11
 photo: /images/artists/alex-avatar.jpg
-intro: Alex is a traditional tattoo artist rooted in the hardcore punk scene —
-  vegan, straight edge, and a coffee lover.
+intro: Alex is a traditional tattoo artist from the hardcore punk scene.
+  Specializing in cartoon-inspired bold designs and clean linework with a
+  direct, no-frills feel.
 instagram: hotstuffconan
 styles:
   - traditional-and-old-school
   - cartoon
+  - linework
+noIndex: false
 ---
-Alex is a traditional tattoo artist with deep roots in the hardcore punk scene, working out of our studio in Berlin-Friedrichshain. His flash and customs are mostly smaller, patch-like pieces — bold cartoon-style tattoos with strong outlines, simple shapes and clear expressions that sit perfectly as little “badges” on the skin — but he’s just as comfortable scaling that look up into larger projects when the idea calls for it. Vegan and straight edge, he brings a focused, no-frills attitude to his sessions, making sure every design feels intentional, sits well on the body and still carries that raw, punk-driven character.
+My name is Alex. I'm a traditional tattoo artist, rooted in the hardcore punk scene, vegan, straight edge, DIY, PMA. That ethos is a foundation of my identity. I like tattoos that are bright and bold, built on strong linework and solid packing so they read well and keep that look over time.  
+  
+I mainly work in the traditional style, using classic old school shapes as a base for more personal motifs that inspire me, like music, cartoons, and video games. Most of my pieces are palm sized and designed to feel like patches on the skin: bold contours, simple shapes, and readable designs. Flash style tattoos, little bangers, and patchwork layouts are what I enjoy most, but we can also grow that look into bigger projects if you want to fill an arm or leg step by step.  
+  
+Whether it’s a classic motif or a cartoon idea, I keep the process simple: we talk it through, adjust the design to your body, and then focus on clean execution without unnecessary extras.

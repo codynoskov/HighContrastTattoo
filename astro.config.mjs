@@ -21,7 +21,7 @@ export default defineConfig({
       {
         protocol: 'https',
         // Allow images from R2 bucket (and any subdomain)
-        hostname: '**.r2.dev',
+        hostname: '*.r2.dev',
       },
       {
         protocol: 'https',

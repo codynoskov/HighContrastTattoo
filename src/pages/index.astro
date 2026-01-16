@@ -42,10 +42,26 @@ const instagramBgImage = safeResolveImagePath(homepage.instagramBackgroundImage)
 const walkInBgImage = safeResolveImagePath(homepage.walkInBackgroundImage);
 const footerMapImage = safeResolveImagePath(settings.footerMapImage);
 
+// Helper to safely get string values (filters out CMS metadata objects)
+function safeString(value: any): string | undefined {
+  if (!value) return undefined;
+  if (typeof value === 'string') return value;
+  // If it's an object, it might be CMS metadata - return undefined
+  if (typeof value === 'object') {
+    // Check for common image object patterns
+    if (value.src) return String(value.src);
+    if (value.url) return String(value.url);
+    if (value.path) return String(value.path);
+    // Otherwise it's metadata, skip it
+    return undefined;
+  }
+  return String(value);
+}
+
 // SEO - Homepage uses custom values or falls back to global defaults
-const seoTitle = homepage.metaTitle || settings.seoSiteName || 'High Contrast Tattoo Berlin';
-const seoDescription = homepage.metaDescription || settings.seoDefaultDescription;
-const seoOgImage = homepage.ogImage || settings.seoDefaultOgImage;
+const seoTitle = safeString(homepage.metaTitle) || safeString(settings.seoSiteName) || 'High Contrast Tattoo Berlin';
+const seoDescription = safeString(homepage.metaDescription) || safeString(settings.seoDefaultDescription);
+const seoOgImage = safeResolveImagePath(homepage.ogImage) || safeResolveImagePath(settings.seoDefaultOgImage);
 ---
 
 <Layout
@@ -55,84 +71,84 @@ const seoOgImage = homepage.ogImage || settings.seoDefaultOgImage;
 	includeLocalBusiness={true}
 >
 	<Header 
-		studioName={settings.studioName}
-		buttonBookSession={settings.buttonBookSession}
+		studioName={safeString(settings.studioName)}
+		buttonBookSession={safeString(settings.buttonBookSession)}
 	/>
 	<main>
 		<HeroSection 
-			headline={homepage.headline}
-			introText={homepage.introText}
-			ctaText={settings.buttonBookSession}
+			headline={safeString(homepage.headline)}
+			introText={safeString(homepage.introText)}
+			ctaText={safeString(settings.buttonBookSession)}
 			ctaHref="/book"
 			videoSrc={videoSrc}
 			videoPoster={videoPoster}
-			streamVideoId={homepage.streamVideoId}
-			streamCustomerCode={homepage.streamCustomerCode}
+			streamVideoId={safeString(homepage.streamVideoId)}
+			streamCustomerCode={safeString(homepage.streamCustomerCode)}
 			topRightImage={topRightImage}
 			bottomLeftImage={bottomLeftImage}
 		/>
 		<ReviewsSection 
-			title={homepage.reviewsTitle}
-			subtitle={homepage.reviewsSubtitle}
-			buttonText={settings.buttonGoogleMaps}
+			title={safeString(homepage.reviewsTitle)}
+			subtitle={safeString(homepage.reviewsSubtitle)}
+			buttonText={safeString(settings.buttonGoogleMaps)}
 		/>
 		<Divider />
 		<InstagramPromoSection 
-			title={homepage.instagramTitle}
-			instagramHandle={homepage.instagramHandle}
-			instagramUrl={homepage.instagramUrl}
+			title={safeString(homepage.instagramTitle)}
+			instagramHandle={safeString(homepage.instagramHandle)}
+			instagramUrl={safeString(homepage.instagramUrl)}
 			backgroundImage={instagramBgImage}
-			buttonText={settings.buttonInstagram}
+			buttonText={safeString(settings.buttonInstagram)}
 		/>
 		<Divider />
 		<StudioSection 
-			title={homepage.studioTitle}
-			description={homepage.studioDescription}
+			title={safeString(homepage.studioTitle)}
+			description={safeString(homepage.studioDescription)}
 		/>
 		<Divider />
 		<WalkInTattoosSection 
-			title={homepage.walkInTitle}
-			description={homepage.walkInDescription}
-			schedule={homepage.walkInSchedule}
+			title={safeString(homepage.walkInTitle)}
+			description={safeString(homepage.walkInDescription)}
+			schedule={safeString(homepage.walkInSchedule)}
 			backgroundImage={walkInBgImage}
-			buttonText={settings.buttonGoogleMaps}
+			buttonText={safeString(settings.buttonGoogleMaps)}
 		/>
 		<Divider />
 		<StylesSection 
-			title={homepage.stylesTitle}
-			description={homepage.stylesDescription}
-			ctaText={homepage.stylesCtaText}
+			title={safeString(homepage.stylesTitle)}
+			description={safeString(homepage.stylesDescription)}
+			ctaText={safeString(homepage.stylesCtaText)}
 		/>
 		<Divider />
 		<ValuesSection 
-			title={homepage.valuesTitle}
-			description={homepage.valuesDescription}
+			title={safeString(homepage.valuesTitle)}
+			description={safeString(homepage.valuesDescription)}
 		/>
 		<Divider />
 		<ArtistsSection 
-			title={homepage.artistsTitle}
-			description={homepage.artistsDescription}
-			ctaText={homepage.artistsCtaText}
+			title={safeString(homepage.artistsTitle)}
+			description={safeString(homepage.artistsDescription)}
+			ctaText={safeString(homepage.artistsCtaText)}
 		/>
 		<Divider />
 	</main>
 	<Footer 
-		studioName={settings.studioName}
-		headline={settings.footerHeadline}
-		description={settings.footerDescription}
+		studioName={safeString(settings.studioName)}
+		headline={safeString(settings.footerHeadline)}
+		description={safeString(settings.footerDescription)}
 		mapImage={footerMapImage}
-		emailLabel={settings.footerEmailLabel}
-		emailDescription={settings.footerEmailDescription}
-		phoneLabel={settings.footerPhoneLabel}
-		phoneDescription={settings.footerPhoneDescription}
-		studioLabel={settings.footerStudioLabel}
-		email={settings.footerEmail}
-		phone={settings.footerPhone}
-		whatsAppUrl={settings.footerWhatsAppUrl}
-		address={settings.footerAddress}
-		privacyNote={settings.footerPrivacyNote}
-		copyright={settings.footerCopyright}
-		buttonGoogleMaps={settings.buttonGoogleMaps}
+		emailLabel={safeString(settings.footerEmailLabel)}
+		emailDescription={safeString(settings.footerEmailDescription)}
+		phoneLabel={safeString(settings.footerPhoneLabel)}
+		phoneDescription={safeString(settings.footerPhoneDescription)}
+		studioLabel={safeString(settings.footerStudioLabel)}
+		email={safeString(settings.footerEmail)}
+		phone={safeString(settings.footerPhone)}
+		whatsAppUrl={safeString(settings.footerWhatsAppUrl)}
+		address={safeString(settings.footerAddress)}
+		privacyNote={safeString(settings.footerPrivacyNote)}
+		copyright={safeString(settings.footerCopyright)}
+		buttonGoogleMaps={safeString(settings.buttonGoogleMaps)}
 	/>
 </Layout>
 

@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import Divider from '../components/Divider.astro';
+import ArtistsHeroSection from '../components/sections/ArtistsHeroSection.astro';
 import { getCollection } from 'astro:content';
 import { resolveImagePath } from '../utils/contentHelpers';
 
@@ -18,13 +18,13 @@ const seoDescription = 'Imprint and legal notice.';
 <Layout title={seoTitle} description={seoDescription}>
   <Header studioName={settings.studioName} buttonBookSession={settings.buttonBookSession} />
   <main>
+    <ArtistsHeroSection 
+      title="Imprint"
+      description="Information according to § 5 TMG"
+    />
+    
     <section class="section section--basic">
       <div class="container">
-        <div class="section-text-block">
-          <h1 class="section-title">Imprint</h1>
-          <h2 class="legal-subtitle">Information according to § 5 TMG</h2>
-        </div>
-
         <div class="legal-content">
           <h3>Responsible Service Provider</h3>
           <p>
@@ -57,7 +57,6 @@ const seoDescription = 'Imprint and legal notice.';
         </div>
       </div>
     </section>
-    <Divider color="light" />
   </main>
   <Footer
     studioName={settings.studioName}
@@ -82,7 +81,6 @@ const seoDescription = 'Imprint and legal notice.';
 <style>
   main {
     width: 100%;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -92,9 +90,9 @@ const seoDescription = 'Imprint and legal notice.';
   }
 
   .section {
-    min-height: 100vh;
     justify-content: flex-start;
     align-items: center;
+    width: 100%;
   }
 
   .section .container {
@@ -102,6 +100,7 @@ const seoDescription = 'Imprint and legal notice.';
     width: 100%;
     max-width: var(--spacing-core-1900-md);
     margin: 0 auto;
+    padding: 0 var(--spacing-core-800-md) var(--spacing-core-1100-md);
   }
 
   .legal-content {
@@ -111,11 +110,5 @@ const seoDescription = 'Imprint and legal notice.';
 
   .legal-content h3 {
     margin-top: var(--spacing-core-900-md);
-  }
-
-  .legal-subtitle {
-    font: var(--typography-body-lg);
-    color: var(--color-primary-600);
-    margin: 0;
   }
 </style>

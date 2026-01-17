@@ -90,6 +90,17 @@ const {
     <div class="section-text-block">
       <h2 class="section-title">{title}</h2>
       <p class="section-description">{description}</p>
+      <div class="section-action" style="margin-top: var(--spacing-core-600-md);">
+        <Button 
+          type="Secondary" 
+          color="Primary"
+          href={ctaHref}
+          leadingIcon={false}
+          trailingIcon={true}
+        >
+          {ctaText}
+        </Button>
+      </div>
     </div>
   </div>
   
@@ -109,20 +120,6 @@ const {
           />
         ))}
       </div>
-    </div>
-  </div>
-  
-  <div class="container">
-    <div class="section-action">
-      <Button 
-        type="Primary" 
-        color="Primary"
-        href={ctaHref}
-        leadingIcon={false}
-        trailingIcon={true}
-      >
-        {ctaText}
-      </Button>
     </div>
   </div>
 </section>

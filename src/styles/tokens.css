@@ -375,33 +375,46 @@
   }
 }
 
-/* Show visible scrollbars on desktop - always visible when there's overflow */
+/* Show visible scrollbars on desktop - transparent by default, visible on hover */
 @media (min-width: 768px) {
   .carousel {
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-neutral-400) var(--color-neutral-100);
-    /* Force scrollbar to always be visible when there's overflow */
     overflow-x: scroll;
+    /* Always show scrollbar but make it transparent - prevents layout shift */
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
   }
 
+  /* Webkit: Always show scrollbar but transparent by default */
   .carousel::-webkit-scrollbar {
-    display: block !important;
     height: 12px;
     -webkit-appearance: none;
   }
 
   .carousel::-webkit-scrollbar-track {
-    background: var(--color-neutral-100);
+    background: transparent;
     border-radius: 6px;
   }
 
   .carousel::-webkit-scrollbar-thumb {
-    background: var(--color-neutral-400);
+    background: transparent;
     border-radius: 6px;
+  }
+
+  /* Show scrollbar colors on hover */
+  .carousel:hover {
+    scrollbar-color: var(--color-neutral-400) var(--color-neutral-100);
+  }
+
+  .carousel:hover::-webkit-scrollbar-track {
+    background: var(--color-neutral-100);
+  }
+
+  .carousel:hover::-webkit-scrollbar-thumb {
+    background: var(--color-neutral-400);
     border: 2px solid var(--color-neutral-100);
   }
 
-  .carousel::-webkit-scrollbar-thumb:hover {
+  .carousel:hover::-webkit-scrollbar-thumb:hover {
     background: var(--color-neutral-500);
   }
 }

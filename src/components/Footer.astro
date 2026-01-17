@@ -117,7 +117,6 @@ const isActive = (href: string) => {
       </div>
     </div>
   </div>
-  <div class={`footer-divider footer-divider-${screen.toLowerCase()}`}></div>
   <div class="container">
     <div class="logo-section">
       <div class="logo-wrapper">
@@ -129,7 +128,7 @@ const isActive = (href: string) => {
       <a href="/studio" class={`nav-link ${isActive('/studio') ? 'nav-link--active' : ''}`}>Studio</a>
       <a href="/artists" class={`nav-link ${isActive('/artists') ? 'nav-link--active' : ''}`}>Artists</a>
       <a href="/styles" class={`nav-link ${isActive('/styles') ? 'nav-link--active' : ''}`}>Styles</a>
-      <a href="/impressum" class={`nav-link ${isActive('/impressum') ? 'nav-link--active' : ''}`}>Impressum</a>
+      <a href="/impressum" class={`nav-link ${isActive('/impressum') ? 'nav-link--active' : ''}`}>Imprint</a>
       <a href="/privacy" class={`nav-link ${isActive('/privacy') ? 'nav-link--active' : ''}`}>Privacy note</a>
     </nav>
     <div class="footer-text">
@@ -147,6 +146,7 @@ const isActive = (href: string) => {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border-top: 1px solid var(--color-neutral-200);
   }
 
   /* Desktop Footer */
@@ -274,19 +274,6 @@ const isActive = (href: string) => {
     object-position: center;
   }
 
-  .footer-divider {
-    height: 1px;
-    width: 100%;
-  }
-
-  .footer-divider-desktop {
-    background-color: var(--color-neutral-200);
-  }
-
-  .footer-divider-mobile {
-    background-color: var(--color-neutral-300);
-  }
-
   .footer .container:last-of-type {
     gap: var(--spacing-core-800-md);
   }
@@ -355,6 +342,10 @@ const isActive = (href: string) => {
   }
 
   @media (max-width: 768px) {
+    .footer {
+      border-top-color: var(--color-neutral-300);
+    }
+
     .map-block {
       flex-direction: column;
     }

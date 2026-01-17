@@ -56,18 +56,22 @@ const isActive = (href: string) => {
           </span>
           <span class="menu-text">Menu</span>
         </button>
+        <div class="header-logo-section">
+          <div class="header-logo-wrapper">
+            <Logo class="header-logo" />
+          </div>
+          <div class="header-logo-text-wrapper">
+            <span class="header-logo-text-line">HIGH</span>
+            <span class="header-logo-text-line">CONTRAST</span>
+            <span class="header-logo-text-line">TATTOO</span>
+          </div>
+        </div>
         <div class="nav-items">
           <a href="/" class={`nav-link ${isActive('/studio') ? 'nav-link--active' : ''}`}>Studio</a>
           <a href="/artists" class={`nav-link ${isActive('/artists') ? 'nav-link--active' : ''}`}>Artists</a>
           <a href="/styles" class={`nav-link ${isActive('/styles') ? 'nav-link--active' : ''}`}>Styles</a>
         </div>
         <div class="nav-buttons">
-          <div class="header-logo-section">
-            <div class="header-logo-wrapper">
-              <Logo class="header-logo" />
-            </div>
-            <span class="header-logo-text">{studioName}</span>
-          </div>
           {!isBookPage && (
             <div class="header-cta-button">
               <Button type="Primary" color="Accent" href="/book" leadingIcon={false} trailingIcon={true} aria-label="Book a tattoo session">
@@ -84,6 +88,13 @@ const isActive = (href: string) => {
     <a href="/" class={`nav-link nav-menu-link ${isActive('/studio') ? 'nav-link--active' : ''}`}>Studio</a>
     <a href="/artists" class={`nav-link nav-menu-link ${isActive('/artists') ? 'nav-link--active' : ''}`}>Artists</a>
     <a href="/styles" class={`nav-link nav-menu-link ${isActive('/styles') ? 'nav-link--active' : ''}`}>Styles</a>
+    {!isBookPage && (
+      <div class="nav-menu-cta">
+        <Button type="Primary" color="Accent" href="/book" leadingIcon={false} trailingIcon={true} aria-label="Book a tattoo session">
+          {buttonBookSession}
+        </Button>
+      </div>
+    )}
   </div>
 </header>
 
@@ -126,6 +137,7 @@ const isActive = (href: string) => {
     display: flex;
     gap: var(--spacing-core-900-md);
     align-items: center;
+    justify-content: center;
     flex: 1;
   }
 
@@ -212,7 +224,7 @@ const isActive = (href: string) => {
 
   .header-logo-section {
     display: flex;
-    gap: var(--spacing-core-700-md);
+    gap: var(--spacing-core-500-md);
     align-items: center;
   }
 
@@ -220,14 +232,14 @@ const isActive = (href: string) => {
     position: relative;
   }
 
-  /* When hero is visible, hide CTA (but keep logo visible) */
-  .header[data-hero-scrolled="false"] .header-cta-button {
-    display: none;
+  /* On desktop, always show both logo and CTA - no scroll-based hiding */
+  /* Ensure logo and CTA have similar widths for balanced centering on desktop */
+  .header-logo-section {
+    min-width: 140px;
   }
 
-  /* When hero is scrolled out, hide logo (but keep CTA visible) */
-  .header[data-hero-scrolled="true"] .header-logo-section {
-    display: none;
+  .nav-buttons {
+    min-width: 140px;
   }
 
   .header-logo-wrapper {
@@ -244,9 +256,23 @@ const isActive = (href: string) => {
     display: block;
   }
 
-  .header-logo-text {
-    font: var(--typography-body-lg);
+  .header-logo-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 0;
+  }
+
+  .header-logo-text-line {
+    font-family: var(--font-stack-sans);
+    font-size: 12px;
+    font-weight: var(--font-weight-bold);
+    line-height: 12px;
+    letter-spacing: 0.72px;
+    text-transform: uppercase;
     color: var(--color-primary-900);
+    display: block;
+    white-space: nowrap;
   }
 
   .nav-menu {
@@ -319,6 +345,49 @@ const isActive = (href: string) => {
     }
 
     /* Divider is always visible on mobile (both open and closed states) */
+
+    /* On mobile, reorder elements: logo section left, menu button right */
+    .header:not([data-static-mode="true"]) .nav-container,
+    .header[data-static-mode="true"][data-screen="Mobile"] .nav-container {
+      justify-content: space-between;
+    }
+
+    .header:not([data-static-mode="true"]) .header-logo-section,
+    .header[data-static-mode="true"][data-screen="Mobile"] .header-logo-section {
+      order: 1;
+      min-width: 0;
+    }
+
+    .header:not([data-static-mode="true"]) .menu-button,
+    .header[data-static-mode="true"][data-screen="Mobile"] .menu-button {
+      order: 2;
+      /* Swap icon and text order: text left, icon right */
+      flex-direction: row-reverse;
+    }
+
+    /* Hide header CTA on mobile - it's now in the dropdown menu */
+    .header:not([data-static-mode="true"]) .nav-buttons,
+    .header[data-static-mode="true"][data-screen="Mobile"] .nav-buttons {
+      display: none;
+    }
+
+    /* Style for CTA in dropdown menu - centered */
+    .nav-menu-cta {
+      margin-top: var(--spacing-core-600-md);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    .nav-menu-cta :global(a),
+    .nav-menu-cta :global(.button) {
+      display: inline-flex !important;
+      width: auto !important;
+      min-width: auto;
+      max-width: none;
+      justify-content: center;
+    }
   }
 </style>
 

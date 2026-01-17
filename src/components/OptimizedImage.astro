@@ -108,17 +108,17 @@ if (isImageMetadata && !finalWidth && !finalHeight) {
     style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
   />
 ) : isRemoteUrl ? (
-  /* Remote URL with dimensions - Astro optimization via configured domains */
-  <Image
+  /* Remote URL - serve directly from CDN without build-time processing */
+  /* This avoids build timeouts when fetching many remote images */
+  <img
     src={rawSrc as string}
     alt={alt}
-    width={finalWidth!}
-    height={finalHeight!}
-    quality={quality}
+    width={finalWidth}
+    height={finalHeight}
     loading={loading}
     class={className}
-    format="webp"
     style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
+    onerror={fallbackSrc ? `this.src='${fallbackSrc}'; this.onerror=null;` : undefined}
   />
 ) : isLocalPath ? (
   /* Local path from public/ - serve as-is (can't optimize without import) */

@@ -47,19 +47,19 @@ content:
         label: Video Poster/Thumbnail
         type: image
         required: false
-        description: "Thumbnail image shown while video loads on slow connections. Use a frame from your video or a relevant image."
+        description: "Thumbnail image shown while video loads on slow connections. Use a frame from your video or a relevant image. Compress at tinypng.com before uploading (max 500KB recommended)."
       
       - name: topRightImage
         label: Hero Top Right Image
         type: image
         required: false
-        description: Decorative overlay image (top right)
+        description: Decorative overlay image (top right). Compress at tinypng.com before uploading (max 500KB recommended).
       
       - name: bottomLeftImage
         label: Hero Bottom Left Image
         type: image
         required: false
-        description: Decorative overlay image (bottom left)
+        description: Decorative overlay image (bottom left). Compress at tinypng.com before uploading (max 500KB recommended).
       
       # Reviews Section
       - name: reviewsTitle
@@ -97,7 +97,7 @@ content:
         label: Instagram Background
         type: image
         required: false
-        description: Background image for the Instagram section
+        description: Background image for the Instagram section. Compress at tinypng.com before uploading (max 500KB recommended).
       
       # Studio Section
       - name: studioTitle
@@ -135,7 +135,7 @@ content:
         label: Walk-In Background
         type: image
         required: false
-        description: Background image for the walk-in section
+        description: Background image for the walk-in section. Compress at tinypng.com before uploading (max 500KB recommended).
       
       # Styles Section
       - name: stylesTitle
@@ -205,7 +205,7 @@ content:
         label: Social Share Image
         type: image
         required: false
-        description: Custom image for social sharing (1200x630px recommended)
+        description: Custom image for social sharing (1200x630px recommended). Compress at tinypng.com before uploading (max 500KB recommended).
       
       - name: noIndex
         label: Hide from Search Engines
@@ -266,7 +266,7 @@ content:
         label: Footer Map Image
         type: image
         required: false
-        description: Map image shown in the footer
+        description: Map image shown in the footer. Compress at tinypng.com before uploading (max 500KB recommended).
       
       - name: footerEmailLabel
         label: Email Label
@@ -351,7 +351,7 @@ content:
         label: Default Social Image
         type: image
         required: false
-        description: Default image for social sharing (1200x630px recommended)
+        description: Default image for social sharing (1200x630px recommended). Compress at tinypng.com before uploading (max 500KB recommended).
       
       - name: seoGoogleMapsUrl
         label: Google Maps URL
@@ -410,7 +410,7 @@ content:
         label: Social Share Image
         type: image
         required: false
-        description: Custom image for social sharing (1200x630px recommended)
+        description: Custom image for social sharing (1200x630px recommended). Compress at tinypng.com before uploading (max 500KB recommended).
       
       - name: noIndex
         label: Hide from Search Engines
@@ -457,7 +457,7 @@ content:
         label: Social Share Image
         type: image
         required: false
-        description: Custom image for social sharing (1200x630px recommended)
+        description: Custom image for social sharing (1200x630px recommended). Compress at tinypng.com before uploading (max 500KB recommended).
       
       - name: noIndex
         label: Hide from Search Engines
@@ -511,7 +511,7 @@ content:
         label: Card Image
         type: image
         required: false
-        description: Optional custom image for the style card on the front page. If not provided, an image from the Works collection will be used instead.
+        description: Optional custom image for the style card on the front page. If not provided, an image from the Works collection will be used instead. Compress at tinypng.com before uploading (max 500KB recommended).
       
       # SEO
       - name: metaTitle
@@ -530,7 +530,7 @@ content:
         label: Social Share Image
         type: image
         required: false
-        description: Custom image for social sharing (1200x630px recommended)
+        description: Custom image for social sharing (1200x630px recommended). Compress at tinypng.com before uploading (max 500KB recommended).
       
       - name: noIndex
         label: Hide from Search Engines
@@ -573,7 +573,7 @@ content:
         label: Profile Photo
         type: image
         required: false
-        description: Portrait photo shown on artist cards and profile pages
+        description: Portrait photo shown on artist cards and profile pages. Compress at tinypng.com before uploading (max 500KB recommended).
       
       - name: intro
         label: Short Bio
@@ -620,7 +620,7 @@ content:
         label: Social Share Image
         type: image
         required: false
-        description: Custom image for social sharing (1200x630px recommended)
+        description: Custom image for social sharing (1200x630px recommended). Compress at tinypng.com before uploading (max 500KB recommended).
       
       - name: noIndex
         label: Hide from Search Engines
@@ -646,7 +646,7 @@ content:
         label: Tattoo Image
         type: image
         required: true
-        description: Photo of the finished tattoo work
+        description: Photo of the finished tattoo work. Compress at tinypng.com before uploading (max 500KB recommended).
       
       - name: styles
         label: Styles
@@ -722,4 +722,4 @@ content:
           input: public/images/studio
           output: /images/studio
         required: true
-        description: "These images appear in the \"Inside the Studio\" gallery on the front page. Drag images to change their order — the first image will appear first in the gallery."
+        description: "These images appear in the \"Inside the Studio\" gallery on the front page. Drag images to change their order — the first image will appear first in the gallery. Compress at tinypng.com before uploading (max 500KB recommended)."

@@ -93,14 +93,14 @@ export function resolveImagePath(imagePath: string | { src?: string; url?: strin
     return pathString;
   }
   
-  // Check if R2 is configured (env var or fallback)
-  const R2_BASE_URL = import.meta.env.PUBLIC_R2_BASE_URL || DEFAULT_R2_BASE_URL;
+  // Check if R2 is explicitly configured via env var
+  const R2_BASE_URL = import.meta.env.PUBLIC_R2_BASE_URL;
   
   // Always use R2 for video files (which are stored in /images/videos/)
   // This ensures videos work in both website and PagesCMS preview
   const isVideoFile = /\.(mp4|webm|mov|avi)$/i.test(pathString);
   
-  // If R2 is available or it's a video file, use R2 URL
+  // Use R2 URL if explicitly configured, or use fallback only for video files
   if (R2_BASE_URL || isVideoFile) {
     const effectiveR2Url = R2_BASE_URL || DEFAULT_R2_BASE_URL;
     // Remove leading slash if present, then prepend with images/ prefix

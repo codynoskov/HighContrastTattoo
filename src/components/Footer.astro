@@ -2,6 +2,7 @@
 import Button from './Button.astro';
 import Icon from './Icon.astro';
 import Logo from './Logo.astro';
+import OptimizedImage from './OptimizedImage.astro';
 
 interface Props {
   screen?: "Desktop" | "Mobile";
@@ -113,7 +114,13 @@ const isActive = (href: string) => {
         </div>
       </div>
       <div class="map-image">
-        <img src={mapImage} alt={`Map of ${studioName} studio location`} class="map-placeholder" />
+        <OptimizedImage
+          src={mapImage}
+          alt={`Map of ${studioName} studio location`}
+          className="map-placeholder"
+          loading="lazy"
+          quality={85}
+        />
       </div>
     </div>
   </div>
@@ -265,7 +272,8 @@ const isActive = (href: string) => {
     position: relative;
   }
 
-  .map-placeholder {
+  .map-image :global(img),
+  .map-image :global(picture) {
     position: absolute;
     inset: 0;
     width: 100%;

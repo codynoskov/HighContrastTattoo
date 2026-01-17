@@ -1,5 +1,6 @@
 ---
 import Button from '../Button.astro';
+import OptimizedImage from '../OptimizedImage.astro';
 import imagePlaceholder from '../../assets/images/image-placeholder.png';
 
 interface Props {
@@ -24,11 +25,13 @@ const {
 <section class={`section banner-section ${className}`}>
   <div class="banner-background" aria-hidden="true">
     <div class="banner-bg-fallback"></div>
-    <img 
+    <OptimizedImage 
       src={backgroundImage} 
       alt="" 
-      class="banner-bg-image"
+      className="banner-bg-image"
       loading="lazy"
+      quality={80}
+      fallbackSrc={imagePlaceholder.src}
     />
   </div>
   <div class="banner-overlay"></div>

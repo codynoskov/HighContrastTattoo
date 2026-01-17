@@ -1,10 +1,17 @@
 ---
-// Note: We're using regular img tags instead of Astro's Image component
-// because dynamic remote URLs from R2 require complex configuration.
-// The images still benefit from lazy loading and browser caching.
+/**
+ * OptimizedImage - Uses Astro's built-in Image component for optimization
+ * 
+ * Supports three image source types:
+ * 1. Remote URLs (http/https) - Optimized via configured domains in astro.config.mjs
+ * 2. Imported images (ImageMetadata) - Full build-time optimization with srcset
+ * 3. Local paths (/images/...) - Served as-is from public folder (fallback)
+ */
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 
 interface Props {
-  src: string;
+  src: string | ImageMetadata;
   alt: string;
   width?: number;
   height?: number;
@@ -29,12 +36,11 @@ const {
   quality = 80,
 } = Astro.props;
 
-// Guard against undefined/empty src
-const src = rawSrc || fallbackSrc || '';
-const hasSrc = src && typeof src === 'string' && src.length > 0;
-
-// Determine if this is a remote URL
-const isRemote = hasSrc && (src.startsWith('http://') || src.startsWith('https://'));
+// Determine the type of image source
+const isImageMetadata = typeof rawSrc === 'object' && rawSrc !== null && 'src' in rawSrc;
+const isRemoteUrl = typeof rawSrc === 'string' && (rawSrc.startsWith('http://') || rawSrc.startsWith('https://'));
+const isLocalPath = typeof rawSrc === 'string' && rawSrc.startsWith('/');
+const hasSrc = rawSrc && (isImageMetadata || (typeof rawSrc === 'string' && rawSrc.length > 0));
 
 // Calculate dimensions if aspectRatio is provided
 let finalWidth = width;
@@ -46,21 +52,38 @@ if (aspectRatio && finalWidth && !finalHeight) {
   finalWidth = Math.round(finalHeight * aspectRatio);
 }
 
-// If no dimensions provided, use default thumbnail size for optimization
-// This ensures images are optimized even when exact dimensions aren't specified
-if (!finalWidth && !finalHeight) {
-  finalWidth = 800; // Default thumbnail width
-  if (aspectRatio) {
+// For remote images, we need BOTH dimensions for Astro's Image component
+// If we have aspectRatio, we can calculate the missing dimension
+if (aspectRatio) {
+  if (finalWidth && !finalHeight) {
     finalHeight = Math.round(finalWidth / aspectRatio);
-  } else {
-    finalHeight = 800; // Default square if no aspect ratio
+  } else if (finalHeight && !finalWidth) {
+    finalWidth = Math.round(finalHeight * aspectRatio);
+  } else if (!finalWidth && !finalHeight) {
+    // Default dimensions when neither is provided
+    finalWidth = 800;
+    finalHeight = Math.round(finalWidth / aspectRatio);
   }
 }
 
+// For remote images without dimensions, use sensible defaults instead of inferSize
+// inferSize can cause issues with very large images and is slower
+if (isRemoteUrl && (!finalWidth || !finalHeight)) {
+  // Default to a reasonable size for remote images
+  if (!finalWidth) finalWidth = 800;
+  if (!finalHeight) finalHeight = 800; // Square as fallback
+}
+
+// For imported images, get dimensions from metadata if not specified
+if (isImageMetadata && !finalWidth && !finalHeight) {
+  const metadata = rawSrc as ImageMetadata;
+  finalWidth = metadata.width;
+  finalHeight = metadata.height;
+}
 ---
 
 {!hasSrc ? (
-  // No valid src, render nothing or placeholder
+  /* No valid src - render fallback or nothing */
   fallbackSrc ? (
     <img
       src={fallbackSrc}
@@ -71,11 +94,36 @@ if (!finalWidth && !finalHeight) {
       class={className}
     />
   ) : null
-) : isRemote ? (
-  // For remote images, use regular img tag to avoid Astro Image issues with dynamic URLs
-  // The images are served from R2 with proper caching
+) : isImageMetadata ? (
+  /* Imported image - full Astro optimization with WebP/AVIF and srcset */
+  <Image
+    src={rawSrc as ImageMetadata}
+    alt={alt}
+    width={finalWidth}
+    height={finalHeight}
+    quality={quality}
+    loading={loading}
+    class={className}
+    format="webp"
+    style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
+  />
+) : isRemoteUrl ? (
+  /* Remote URL with dimensions - Astro optimization via configured domains */
+  <Image
+    src={rawSrc as string}
+    alt={alt}
+    width={finalWidth!}
+    height={finalHeight!}
+    quality={quality}
+    loading={loading}
+    class={className}
+    format="webp"
+    style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
+  />
+) : isLocalPath ? (
+  /* Local path from public/ - serve as-is (can't optimize without import) */
   <img
-    src={src}
+    src={rawSrc as string}
     alt={alt}
     width={finalWidth}
     height={finalHeight}
@@ -84,9 +132,9 @@ if (!finalWidth && !finalHeight) {
     onerror={fallbackSrc ? `this.src='${fallbackSrc}'; this.onerror=null;` : undefined}
   />
 ) : (
-  // For local images that aren't imported, use regular img tag
+  /* Fallback for any other string src */
   <img
-    src={src}
+    src={rawSrc as string}
     alt={alt}
     width={finalWidth}
     height={finalHeight}

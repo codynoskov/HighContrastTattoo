@@ -1,0 +1,207 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Divider from '../components/Divider.astro';
+import { getCollection } from 'astro:content';
+import { resolveImagePath } from '../utils/contentHelpers';
+
+// Get settings content
+const settingsEntries = await getCollection('settings');
+const settings = settingsEntries[0]?.data || {};
+const footerMapImage = settings.footerMapImage ? resolveImagePath(settings.footerMapImage) : undefined;
+
+const seoTitle = `Privacy Policy | ${settings.seoSiteName || settings.studioName || 'High Contrast Tattoo'}`;
+const seoDescription = 'Privacy policy and data protection information.';
+---
+
+<Layout title={seoTitle} description={seoDescription}>
+  <Header studioName={settings.studioName} buttonBookSession={settings.buttonBookSession} />
+  <main>
+    <section class="section section--basic">
+      <div class="container">
+        <div class="section-text-block">
+          <h1 class="section-title">Privacy Policy</h1>
+          <h2 class="legal-subtitle">Information on the processing of personal data according to GDPR.</h2>
+        </div>
+
+        <div class="legal-content">
+          <h3>1. Controller</h3>
+          <p>
+            <strong>Eduard Zlotin</strong><br />
+            Schreinerstrasse 6, 10247 Berlin, Germany<br />
+            <strong>Email:</strong> <a href="mailto:highcontrasttattoo@gmail.com">highcontrasttattoo@gmail.com</a>
+          </p>
+
+          <h3>2. Principles</h3>
+          <ul>
+            <li><strong>We do not use cookies.</strong></li>
+            <li>
+              We process personal data in particular when you contact us or submit an inquiry for
+              appointment scheduling.
+            </li>
+          </ul>
+
+          <h3>3. Hosting (Cloudflare Pages)</h3>
+          <p>
+            This website is provided via <strong>Cloudflare Pages</strong>. With each access to the website, technically
+            necessary data is processed to deliver the content and ensure security (e.g.,
+            IP address, date and time, accessed page/URL, referrer URL, user agent/browser information).
+          </p>
+          <p>
+            <strong>Purpose:</strong> Delivery of the website, stability and security (e.g., defense against attacks).<br />
+            <strong>Legal basis:</strong> <strong>Art. 6 para. 1 lit. f GDPR</strong> (legitimate interest).<br />
+            <strong>Storage duration:</strong> according to the hoster's specifications/log retention, as required.
+          </p>
+
+          <h3>4. Media Delivery (Cloudflare R2)</h3>
+          <p>
+            Images and videos may be delivered via <strong>Cloudflare R2</strong>. When accessing these media files, technical
+            connection data is processed (in particular IP address, timestamp, requested file/URL and user agent) to
+            provide the content.
+          </p>
+          <p>
+            <strong>Purpose:</strong> Performant and reliable provision of media content.<br />
+            <strong>Legal basis:</strong> <strong>Art. 6 para. 1 lit. f GDPR</strong> (legitimate interest).
+          </p>
+
+          <h3>5. Video Embeddings (Cloudflare Stream, optional)</h3>
+          <p>
+            If we embed videos via <strong>Cloudflare Stream</strong> using an iframe, a connection to Cloudflare Stream is established when loading the embedded player. Technical data (e.g., IP address, timestamp,
+            user agent) is processed to deliver the video.
+          </p>
+
+          <h3>6. Appointment/Contact Inquiries (Booking Form)</h3>
+          <p>
+            When you contact us via the booking form, we process the data you enter to answer your
+            inquiry and, if applicable, take pre-contractual measures (appointment coordination).
+          </p>
+          <p>
+            <strong>Data categories</strong> (depending on input): Name, email address, optional phone number/city, tattoo details
+            (e.g., style, preferred artist, placement, size, description) as well as age confirmation (18+).
+          </p>
+          <p>
+            <strong>Legal basis:</strong> <strong>Art. 6 para. 1 lit. b GDPR</strong> (performance of pre-contractual measures/communication for
+            appointment scheduling).<br />
+            <strong>Recipient/Processor:</strong> <strong>Brevo</strong> (email delivery to forward your inquiry).<br />
+            <strong>Storage duration:</strong> as long as required for processing the inquiry and within the scope of legal retention obligations.
+          </p>
+          <p>
+            <strong>Note:</strong> We do not use the form for newsletters/marketing. You will only receive emails in connection
+            with your inquiry.
+          </p>
+
+          <h3>7. Statistics (PostHog Cloud, EU, cookieless)</h3>
+          <p>
+            We use <strong>PostHog Cloud (EU region)</strong> for purely statistical analysis of the use of this website
+            (e.g., page views). PostHog is configured so that <strong>no cookies or local storage technologies</strong>
+            are set/read for recognition.
+          </p>
+          <p>
+            <strong>Processed data</strong> (typically): accessed pages/URLs, referrer, technical device/browser data,
+            timestamps and an IP address within the scope of technical provision. We do not track you
+            across sites (<strong>no cross-site tracking</strong>).
+          </p>
+          <p>
+            <strong>Purpose:</strong> Understanding usage, improving the website (reach measurement).<br />
+            <strong>Legal basis:</strong> <strong>Art. 6 para. 1 lit. f GDPR</strong> (legitimate interest).<br />
+            <strong>Objection:</strong> You can object to the processing at any time by sending us an email at
+            <a href="mailto:highcontrasttattoo@gmail.com">highcontrasttattoo@gmail.com</a>.
+          </p>
+
+          <h3>8. External Links (Instagram, WhatsApp, Google Maps)</h3>
+          <p>
+            On our website you will find links to external providers (e.g., <strong>Instagram</strong>, <strong>WhatsApp</strong>, <strong>Google Maps</strong>). When you
+            click on such a link, you leave our website. From that point on, the respective
+            provider processes personal data on its own responsibility (e.g., IP address, possibly cookies/tracking technologies).
+          </p>
+
+          <h3>9. Your Rights</h3>
+          <p>
+            In accordance with the <strong>GDPR</strong>, you have, among others, the right to:
+          </p>
+          <ul>
+            <li><strong>Access</strong> (Art. 15)</li>
+            <li><strong>Rectification</strong> (Art. 16)</li>
+            <li><strong>Erasure</strong> (Art. 17)</li>
+            <li><strong>Restriction</strong> (Art. 18)</li>
+            <li><strong>Data portability</strong> (Art. 20)</li>
+            <li><strong>Objection</strong> (Art. 21)</li>
+          </ul>
+          <p>
+            To exercise your rights, please contact us by email.
+          </p>
+          <p>
+            You also have the right to lodge a complaint with a supervisory authority. The competent authority is in particular the
+            <strong>Berlin Commissioner for Data Protection and Freedom of Information (BlnBDI)</strong>.
+          </p>
+
+          <h3>10. Security</h3>
+          <p>
+            We use <strong>transport encryption (TLS/HTTPS)</strong> to protect your data during transmission.
+          </p>
+        </div>
+      </div>
+    </section>
+    <Divider color="light" />
+  </main>
+  <Footer
+    studioName={settings.studioName}
+    headline={settings.footerHeadline}
+    description={settings.footerDescription}
+    mapImage={footerMapImage}
+    emailLabel={settings.footerEmailLabel}
+    emailDescription={settings.footerEmailDescription}
+    phoneLabel={settings.footerPhoneLabel}
+    phoneDescription={settings.footerPhoneDescription}
+    studioLabel={settings.footerStudioLabel}
+    email={settings.footerEmail}
+    phone={settings.footerPhone}
+    whatsAppUrl={settings.footerWhatsAppUrl}
+    address={settings.footerAddress}
+    privacyNote={settings.footerPrivacyNote}
+    copyright={settings.footerCopyright}
+    buttonGoogleMaps={settings.buttonGoogleMaps}
+  />
+</Layout>
+
+<style>
+  main {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: visible;
+    overflow-y: visible;
+    padding-top: 72px; /* Account for fixed header height */
+  }
+
+  .section {
+    min-height: 100vh;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .section .container {
+    align-items: flex-start;
+    width: 100%;
+    max-width: var(--spacing-core-1900-md);
+    margin: 0 auto;
+  }
+
+  .legal-content {
+    width: 100%;
+    max-width: 800px;
+  }
+
+  .legal-content h3 {
+    margin-top: var(--spacing-core-900-md);
+  }
+
+  .legal-subtitle {
+    font: var(--typography-body-lg);
+    color: var(--color-primary-600);
+    margin: 0;
+  }
+</style>

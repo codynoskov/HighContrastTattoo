@@ -41,13 +41,29 @@ const {
   phone = "+49 176 72745645",
   whatsAppUrl = "https://wa.me/4917672745645",
   address = "Schreinerstraße 6, 10247 Berlin, Germany",
-  privacyNote = "We do not collect any personal data and do not use cookies",
+  privacyNote = "No cookies. We only process personal data when you contact us. Details in our Privacy Policy.",
   copyright = "© 2026 High Contrast Tattoo",
   buttonGoogleMaps = "Open in Google Maps"
 } = Astro.props;
 
 // Build Google Maps URL from address
 const googleMapsUrl = `https://maps.google.com/?q=${encodeURIComponent(`High Contrast Tattoo, ${address}`)}`;
+
+// Get current path to determine active nav item
+const currentPath = Astro.url.pathname;
+
+// Check if a nav link is active (homepage "/" maps to "/studio")
+// Note: Template pages (/artists/[slug] and /styles/[slug]) should not mark nav links as active
+const isActive = (href: string) => {
+  if (href === '/studio' && (currentPath === '/' || currentPath === '/studio')) {
+    return true;
+  }
+  // For /artists and /styles, only match exact paths, not template pages
+  if (href === '/artists' || href === '/styles') {
+    return currentPath === href;
+  }
+  return currentPath === href || currentPath.startsWith(href + '/');
+};
 ---
 
 <footer class={`footer footer-${screen.toLowerCase()} ${className}`} data-screen={screen}>
@@ -110,11 +126,11 @@ const googleMapsUrl = `https://maps.google.com/?q=${encodeURIComponent(`High Con
       <span class="logo-text">{studioName}</span>
     </div>
     <nav class="footer-nav">
-      <a href="/studio" class="nav-link">Studio</a>
-      <a href="/artists" class="nav-link">Artists</a>
-      <a href="/styles" class="nav-link">Styles</a>
-      <a href="/impressum" class="nav-link">Impressum</a>
-      <a href="/privacy" class="nav-link">Privacy note</a>
+      <a href="/studio" class={`nav-link ${isActive('/studio') ? 'nav-link--active' : ''}`}>Studio</a>
+      <a href="/artists" class={`nav-link ${isActive('/artists') ? 'nav-link--active' : ''}`}>Artists</a>
+      <a href="/styles" class={`nav-link ${isActive('/styles') ? 'nav-link--active' : ''}`}>Styles</a>
+      <a href="/impressum" class={`nav-link ${isActive('/impressum') ? 'nav-link--active' : ''}`}>Impressum</a>
+      <a href="/privacy" class={`nav-link ${isActive('/privacy') ? 'nav-link--active' : ''}`}>Privacy note</a>
     </nav>
     <div class="footer-text">
       <p class="footer-small">{privacyNote}</p>

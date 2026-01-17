@@ -18,11 +18,19 @@ const styleEntries = await getCollection('styles');
 const worksEntries = await getCollection('works');
 const artistEntries = await getCollection('artists');
 
-// Sort styles by order if defined
+// Sort styles by order if defined, otherwise alphabetically
 const sortedStyles = [...styleEntries].sort((a, b) => {
-  const orderA = (a.data as any).order ?? 999;
-  const orderB = (b.data as any).order ?? 999;
-  return orderA - orderB;
+  // If both have order, sort by order
+  if (a.data.order !== undefined && b.data.order !== undefined) {
+    return a.data.order - b.data.order;
+  }
+  
+  // If only one has order, it comes first
+  if (a.data.order !== undefined) return -1;
+  if (b.data.order !== undefined) return 1;
+  
+  // If neither has order, sort alphabetically by name
+  return a.data.name.localeCompare(b.data.name);
 });
 
 // Track used images to avoid repetition
@@ -94,7 +102,7 @@ const {
             fillHeight={false}
             title={style.title}
             description={style.description}
-            descriptionSize="lg"
+            descriptionSize="md"
             image={style.image}
             artistLinks={style.artistLinks}
             href={style.href}

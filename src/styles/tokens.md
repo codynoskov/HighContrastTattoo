@@ -5,12 +5,12 @@ This document provides an overview of the design tokens used in the High Contras
 ## Color Tokens
 
 ### Primary Colors
-- `--color-primary-50` through `--color-primary-950`: Teal/green primary color palette
-- Main primary color: `--color-primary-600` (#506a6a)
+- `--color-primary-50` through `--color-primary-950`: Olive/green primary color palette
+- Main primary color: `--color-primary-600` (#29301d)
 
 ### Accent Colors  
-- `--color-accent-50` through `--color-accent-950`: Pink/magenta accent color palette
-- Main accent color: `--color-accent-600` (#954059)
+- `--color-accent-50` through `--color-accent-950`: Magenta/pink accent color palette
+- Main accent color: `--color-accent-600` (#BA1E4B)
 
 ### Neutral Colors
 - `--color-neutral-0` through `--color-neutral-1000`: Grayscale palette

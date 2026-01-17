@@ -18,8 +18,23 @@ const artistEntries = await getCollection('artists');
 const worksEntries = await getCollection('works');
 const styleEntries = await getCollection('styles');
 
+// Sort artists by order if defined, otherwise alphabetically
+const sortedArtists = [...artistEntries].sort((a, b) => {
+  // If both have order, sort by order
+  if (a.data.order !== undefined && b.data.order !== undefined) {
+    return a.data.order - b.data.order;
+  }
+  
+  // If only one has order, it comes first
+  if (a.data.order !== undefined) return -1;
+  if (b.data.order !== undefined) return 1;
+  
+  // If neither has order, sort alphabetically by name
+  return a.data.name.localeCompare(b.data.name);
+});
+
 // Transform artists into card format
-const artistsData = artistEntries.map((entry) => {
+const artistsData = sortedArtists.map((entry) => {
   const slug = getSlug(entry);
   
   // Get works by this artist to determine their styles
@@ -71,7 +86,7 @@ const {
             fillHeight={false}
             title={artist.title}
             description={artist.description}
-            descriptionSize="lg"
+            descriptionSize="md"
             image={artist.image}
             artistTags={artist.artistTags}
             instagram={artist.instagram}

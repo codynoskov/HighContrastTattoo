@@ -143,6 +143,16 @@ const subtitleParts = parseText(subtitle);
   }
 
   @media (min-width: 768px) {
+    .section--reviews .carousel {
+      overflow-x: visible;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .section--reviews .carousel::-webkit-scrollbar {
+      display: none;
+    }
+
     .section--reviews .carousel-track {
       justify-content: center;
       flex-wrap: wrap;

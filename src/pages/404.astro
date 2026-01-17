@@ -1,0 +1,190 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+	title="404 - Page Not Found | High Contrast Tattoo"
+	description="The page you're looking for doesn't exist. Return to our studio homepage to explore our artists and tattoo styles."
+	noIndex={true}
+>
+	<main>
+		<section class="error-section">
+			<div class="error-content">
+				<div class="error-number">
+					<span class="error-digit">4</span>
+					<div class="error-decorator"></div>
+					<span class="error-digit">4</span>
+				</div>
+				<h1 class="error-title">Page Not Found</h1>
+				<p class="error-description">
+					The page you're looking for doesn't exist. It might have been moved or deleted.
+				</p>
+				<div class="error-links">
+					<a href="/" class="error-link">Studio</a>
+					<span class="error-separator">•</span>
+					<a href="/artists" class="error-link">Artists</a>
+					<span class="error-separator">•</span>
+					<a href="/styles" class="error-link">Styles</a>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	main {
+		width: 100%;
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		overflow-x: visible;
+		overflow-y: visible;
+		padding: var(--spacing-core-800-md);
+		box-sizing: border-box;
+	}
+
+	.error-section {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		flex: 1;
+		min-height: 0;
+	}
+
+	.error-content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: var(--spacing-core-900-md);
+		max-width: 640px;
+		width: 100%;
+		margin: auto;
+	}
+
+	.error-number {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: var(--spacing-core-700-md);
+	}
+
+	.error-digit {
+		font: var(--typography-h1);
+		color: var(--color-primary-900);
+	}
+
+	.error-decorator {
+		width: 60px;
+		height: 60px;
+		border: 3px solid var(--color-accent-600);
+		border-radius: 50%;
+		position: relative;
+		animation: pulse 2s ease-in-out infinite;
+	}
+
+	.error-decorator::before {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 24px;
+		height: 24px;
+		background-color: var(--color-accent-600);
+		border-radius: 50%;
+	}
+
+	@keyframes pulse {
+		0%, 100% {
+			opacity: 1;
+			transform: scale(1);
+		}
+		50% {
+			opacity: 0.8;
+			transform: scale(1.05);
+		}
+	}
+
+	.error-title {
+		font: var(--typography-h2);
+		color: var(--color-primary-900);
+		margin: 0;
+		text-align: center;
+	}
+
+	.error-description {
+		font: var(--typography-body-lg);
+		color: var(--color-primary-600);
+		margin: 0;
+		text-align: center;
+		max-width: 480px;
+	}
+
+	.error-links {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: var(--spacing-core-700-md);
+		flex-wrap: wrap;
+	}
+
+	.error-link {
+		font: var(--typography-link);
+		color: var(--color-primary-600);
+		text-decoration: none;
+		text-transform: uppercase;
+		letter-spacing: var(--typography-link-letter-spacing);
+		transition: color 0.2s ease;
+	}
+
+	.error-link:hover {
+		color: var(--color-primary-900);
+		text-decoration: underline;
+	}
+
+	.error-separator {
+		font: var(--typography-body-md);
+		color: var(--color-primary-400);
+	}
+
+	@media (max-width: 767px) {
+		main {
+			padding: var(--spacing-core-700-md);
+		}
+
+		.error-content {
+			gap: var(--spacing-core-800-md);
+		}
+
+		.error-number {
+			gap: var(--spacing-core-600-md);
+		}
+
+		.error-digit {
+			font: var(--typography-h2);
+		}
+
+		.error-decorator {
+			width: 48px;
+			height: 48px;
+		}
+
+		.error-decorator::before {
+			width: 18px;
+			height: 18px;
+		}
+
+		.error-title {
+			font: var(--typography-h3);
+		}
+
+		.error-links {
+			gap: var(--spacing-core-600-md);
+		}
+	}
+</style>

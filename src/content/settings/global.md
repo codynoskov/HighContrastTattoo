@@ -20,7 +20,7 @@ footerEmail: "highcontrasttattoo@gmail.com"
 footerPhone: "+49 176 72745645"
 footerWhatsAppUrl: "https://wa.me/4917672745645"
 footerAddress: "Schreinerstraße 6, 10247 Berlin, Germany"
-footerPrivacyNote: "We do not collect any personal data and do not use cookies"
+footerPrivacyNote: "No cookies. We only process personal data when you contact us. Details in our Privacy Policy."
 footerCopyright: "© 2026 High Contrast Tattoo"
 
 # SEO Global Defaults

@@ -83,8 +83,7 @@ content:
         type: image
         required: false
         options:
-          input: src/assets/images/hero
-          output: /images/hero
+          media: hero
         description: "Thumbnail image shown while video loads on slow connections. Use a frame from your video or a relevant image. Compress at tinypng.com before uploading (max 500KB recommended)."
       
       - name: topRightImage
@@ -92,8 +91,7 @@ content:
         type: image
         required: false
         options:
-          input: src/assets/images/hero
-          output: /images/hero
+          media: hero
         description: Decorative overlay image (top right). Compress at tinypng.com before uploading (max 500KB recommended).
       
       - name: bottomLeftImage
@@ -101,8 +99,7 @@ content:
         type: image
         required: false
         options:
-          input: src/assets/images/hero
-          output: /images/hero
+          media: hero
         description: Decorative overlay image (bottom left). Compress at tinypng.com before uploading (max 500KB recommended).
       
       # Reviews Section
@@ -142,8 +139,7 @@ content:
         type: image
         required: false
         options:
-          input: src/assets/images/homepage
-          output: /images/homepage
+          media: homepage
         description: Background image for the Instagram section. Compress at tinypng.com before uploading (max 500KB recommended).
       
       # Studio Section
@@ -183,8 +179,7 @@ content:
         type: image
         required: false
         options:
-          input: src/assets/images/homepage
-          output: /images/homepage
+          media: homepage
         description: Background image for the walk-in section. Compress at tinypng.com before uploading (max 500KB recommended).
       
       # Styles Section
@@ -317,8 +312,7 @@ content:
         type: image
         required: false
         options:
-          input: src/assets/images/footer
-          output: /images/footer
+          media: footer
         description: Map image shown in the footer. Compress at tinypng.com before uploading (max 500KB recommended).
       
       - name: footerEmailLabel
@@ -627,8 +621,7 @@ content:
         type: image
         required: false
         options:
-          input: src/assets/images/artists
-          output: /images/artists
+          media: artists
         description: Portrait photo shown on artist cards and profile pages. Compress at tinypng.com before uploading (max 500KB recommended).
       
       - name: intro
@@ -703,8 +696,7 @@ content:
         type: image
         required: true
         options:
-          input: src/assets/images/works
-          output: /images/works
+          media: works
         description: Photo of the finished tattoo work. Compress at tinypng.com before uploading (max 500KB recommended).
       
       - name: styles
@@ -778,7 +770,6 @@ content:
         type: image
         options:
           multiple: true
-          input: src/assets/images/studio
-          output: /images/studio
+          media: studio
         required: true
         description: "These images appear in the \"Inside the Studio\" gallery on the front page. Drag images to change their order — the first image will appear first in the gallery. Compress at tinypng.com before uploading (max 500KB recommended)."

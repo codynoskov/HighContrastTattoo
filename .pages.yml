@@ -12,6 +12,41 @@ media:
     output: /images/works
     extensions: [jpg, jpeg, png, webp]
     categories: [image]
+  
+  - name: artists
+    label: Artist Photos
+    input: src/assets/images/artists
+    output: /images/artists
+    extensions: [jpg, jpeg, png, webp]
+    categories: [image]
+  
+  - name: hero
+    label: Hero Images
+    input: src/assets/images/hero
+    output: /images/hero
+    extensions: [jpg, jpeg, png, webp]
+    categories: [image]
+  
+  - name: homepage
+    label: Homepage Backgrounds
+    input: src/assets/images/homepage
+    output: /images/homepage
+    extensions: [jpg, jpeg, png, webp]
+    categories: [image]
+  
+  - name: footer
+    label: Footer Images
+    input: src/assets/images/footer
+    output: /images/footer
+    extensions: [jpg, jpeg, png, webp]
+    categories: [image]
+  
+  - name: studio
+    label: Studio Gallery
+    input: src/assets/images/studio
+    output: /images/studio
+    extensions: [jpg, jpeg, png, webp]
+    categories: [image]
 
 content:
   # ============================================
@@ -47,18 +82,27 @@ content:
         label: Video Poster/Thumbnail
         type: image
         required: false
+        options:
+          input: src/assets/images/hero
+          output: /images/hero
         description: "Thumbnail image shown while video loads on slow connections. Use a frame from your video or a relevant image. Compress at tinypng.com before uploading (max 500KB recommended)."
       
       - name: topRightImage
         label: Hero Top Right Image
         type: image
         required: false
+        options:
+          input: src/assets/images/hero
+          output: /images/hero
         description: Decorative overlay image (top right). Compress at tinypng.com before uploading (max 500KB recommended).
       
       - name: bottomLeftImage
         label: Hero Bottom Left Image
         type: image
         required: false
+        options:
+          input: src/assets/images/hero
+          output: /images/hero
         description: Decorative overlay image (bottom left). Compress at tinypng.com before uploading (max 500KB recommended).
       
       # Reviews Section
@@ -97,6 +141,9 @@ content:
         label: Instagram Background
         type: image
         required: false
+        options:
+          input: src/assets/images/homepage
+          output: /images/homepage
         description: Background image for the Instagram section. Compress at tinypng.com before uploading (max 500KB recommended).
       
       # Studio Section
@@ -135,6 +182,9 @@ content:
         label: Walk-In Background
         type: image
         required: false
+        options:
+          input: src/assets/images/homepage
+          output: /images/homepage
         description: Background image for the walk-in section. Compress at tinypng.com before uploading (max 500KB recommended).
       
       # Styles Section
@@ -266,6 +316,9 @@ content:
         label: Footer Map Image
         type: image
         required: false
+        options:
+          input: src/assets/images/footer
+          output: /images/footer
         description: Map image shown in the footer. Compress at tinypng.com before uploading (max 500KB recommended).
       
       - name: footerEmailLabel
@@ -573,6 +626,9 @@ content:
         label: Profile Photo
         type: image
         required: false
+        options:
+          input: src/assets/images/artists
+          output: /images/artists
         description: Portrait photo shown on artist cards and profile pages. Compress at tinypng.com before uploading (max 500KB recommended).
       
       - name: intro
@@ -646,6 +702,9 @@ content:
         label: Tattoo Image
         type: image
         required: true
+        options:
+          input: src/assets/images/works
+          output: /images/works
         description: Photo of the finished tattoo work. Compress at tinypng.com before uploading (max 500KB recommended).
       
       - name: styles

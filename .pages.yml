@@ -5,6 +5,13 @@ media:
     output: /images
     extensions: [jpg, jpeg, png, gif, svg, webp, avif]
     categories: [image]
+  
+  - name: works
+    label: Works Images
+    input: src/assets/images/works
+    output: /images/works
+    extensions: [jpg, jpeg, png, webp]
+    categories: [image]
 
 content:
   # ============================================

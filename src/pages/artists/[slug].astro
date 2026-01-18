@@ -7,7 +7,7 @@ import ArtistPageHeroSection from '../../components/sections/ArtistPageHeroSecti
 import ArtistContentSection from '../../components/sections/ArtistContentSection.astro';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import { getSlug, getWorksByArtist, worksToGalleryImages, resolveImagePath, resolveStyles } from '../../utils/contentHelpers';
+import { getSlug, getWorksByArtist, worksToGalleryImages, resolveImagePath, resolveImage, resolveStyles } from '../../utils/contentHelpers';
 
 export async function getStaticPaths() {
   const artists = await getCollection('artists');
@@ -73,7 +73,7 @@ const seoOgImage = artistData.ogImage || resolveImagePath(artistData.photo);
       name={artistData.name}
       intro={artistData.intro}
       instagram={artistData.instagram}
-      photo={resolveImagePath(artistData.photo)}
+      photo={resolveImage(artistData.photo)}
       styles={artistStyles}
     />
     

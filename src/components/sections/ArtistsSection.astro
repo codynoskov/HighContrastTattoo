@@ -3,7 +3,8 @@ import Card from '../Card.astro';
 import Button from '../Button.astro';
 import placeholderImage from '../../assets/images/artist-placeholder.png';
 import { getCollection } from 'astro:content';
-import { getSlug, resolveImagePath, resolveStyles, getArtistSlugFromWork } from '../../utils/contentHelpers';
+import { getSlug, resolveImage, resolveStyles, getArtistSlugFromWork } from '../../utils/contentHelpers';
+import type { ImageMetadata } from 'astro';
 
 interface Props {
   title?: string;
@@ -50,10 +51,13 @@ const artistsData = sortedArtists.map((entry) => {
     href: style.href
   }));
   
+  // Resolve the artist photo - returns ImageMetadata if available, string otherwise
+  const resolvedPhoto = entry.data.photo ? resolveImage(entry.data.photo) : placeholderImage;
+  
   return {
     title: entry.data.name,
     description: entry.data.intro,
-    image: resolveImagePath(entry.data.photo) || placeholderImage.src,
+    image: resolvedPhoto,
     artistTags,
     instagram: entry.data.instagram,
     href: `/artists/${slug}`

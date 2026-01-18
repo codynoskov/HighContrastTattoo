@@ -1,7 +1,7 @@
 media:
   - name: images
     label: Images
-    input: public/images
+    input: src/assets/images
     output: /images
     extensions: [jpg, jpeg, png, gif, svg, webp, avif]
     categories: [image]
@@ -719,7 +719,7 @@ content:
         type: image
         options:
           multiple: true
-          input: public/images/studio
+          input: src/assets/images/studio
           output: /images/studio
         required: true
         description: "These images appear in the \"Inside the Studio\" gallery on the front page. Drag images to change their order — the first image will appear first in the gallery. Compress at tinypng.com before uploading (max 500KB recommended)."

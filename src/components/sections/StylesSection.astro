@@ -3,7 +3,8 @@ import Card from '../Card.astro';
 import Button from '../Button.astro';
 import imagePlaceholder from '../../assets/images/image-placeholder.png';
 import { getCollection } from 'astro:content';
-import { getSlug, getWorksByStyle, resolveImagePath, resolveArtist, getArtistSlugFromWork } from '../../utils/contentHelpers';
+import { getSlug, getWorksByStyle, resolveImage, resolveArtist, getArtistSlugFromWork } from '../../utils/contentHelpers';
+import type { ImageMetadata } from 'astro';
 
 interface Props {
   title?: string;
@@ -33,28 +34,35 @@ const sortedStyles = [...styleEntries].sort((a, b) => {
   return a.data.name.localeCompare(b.data.name);
 });
 
-// Track used images to avoid repetition
-const usedImages = new Set<string>();
+// Track used images to avoid repetition (using string keys for comparison)
+const usedImageKeys = new Set<string>();
+
+// Helper to get a unique key for an image (works for both ImageMetadata and string)
+function getImageKey(img: ImageMetadata | string): string {
+  if (typeof img === 'string') return img;
+  return img.src;
+}
 
 // Transform styles into card format
 const stylesData = sortedStyles.map((entry) => {
   const slug = getSlug(entry);
   const styleWorks = getWorksByStyle(slug, worksEntries);
   
-  let image = imagePlaceholder.src;
+  let image: ImageMetadata | string = imagePlaceholder;
   
   // Priority 1: Use cardImage if available
   if (entry.data.cardImage) {
-    image = resolveImagePath(entry.data.cardImage);
-    usedImages.add(image);
+    image = resolveImage(entry.data.cardImage);
+    usedImageKeys.add(getImageKey(image));
   } 
   // Priority 2: Use an unused work image
   else if (styleWorks.length > 0) {
     for (const work of styleWorks) {
-      const workImage = resolveImagePath(work.data.image);
-      if (!usedImages.has(workImage)) {
+      const workImage = resolveImage(work.data.image);
+      const key = getImageKey(workImage);
+      if (!usedImageKeys.has(key)) {
         image = workImage;
-        usedImages.add(workImage);
+        usedImageKeys.add(key);
         break;
       }
     }

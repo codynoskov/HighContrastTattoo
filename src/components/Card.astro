@@ -17,7 +17,7 @@ interface Props {
   title?: string;
   description?: string;
   descriptionSize?: "sm" | "md" | "lg";
-  image?: string;
+  image?: string | ImageMetadata;
   imageAlt?: string;
   tags?: string[] | TagWithLink[];
   artistTags?: string[] | TagWithLink[];
@@ -55,13 +55,14 @@ const descriptionSizeClass = `card-description-${descriptionSize}`;
 // Get optimized image URL for background-image
 let backgroundImageUrl = '';
 if (!isArtist) {
-  const imageSrc = image || imagePlaceholder.src;
+  const imageSrc = image || imagePlaceholder;
   const isRemoteUrl = typeof imageSrc === 'string' && (imageSrc.startsWith('http://') || imageSrc.startsWith('https://'));
   const isImageMetadata = typeof imageSrc === 'object' && imageSrc !== null && 'src' in imageSrc;
+  const isLocalPath = typeof imageSrc === 'string' && imageSrc.startsWith('/');
   
   try {
     if (isImageMetadata) {
-      // For imported images (ImageMetadata)
+      // For imported images (ImageMetadata) - full Astro optimization
       const optimized = await getImage({
         src: imageSrc as ImageMetadata,
         width: 416,
@@ -73,13 +74,30 @@ if (!isArtist) {
     } else if (isRemoteUrl) {
       // For remote URLs (R2 images) - serve directly from CDN without build-time processing
       backgroundImageUrl = imageSrc as string;
+    } else if (isLocalPath) {
+      // For local paths from public/ - serve as-is (fallback during migration)
+      backgroundImageUrl = imageSrc as string;
     } else {
-      // For local paths or fallback
-      backgroundImageUrl = typeof imagePlaceholder.src === 'string' ? imagePlaceholder.src : imagePlaceholder.src.toString();
+      // Fallback to placeholder
+      const optimized = await getImage({
+        src: imagePlaceholder,
+        width: 416,
+        height: 312,
+        quality: 85,
+        format: 'webp'
+      });
+      backgroundImageUrl = optimized.src.toString();
     }
   } catch (error) {
     // Fallback to placeholder if optimization fails
-    backgroundImageUrl = typeof imagePlaceholder.src === 'string' ? imagePlaceholder.src : imagePlaceholder.src.toString();
+    const optimized = await getImage({
+      src: imagePlaceholder,
+      width: 416,
+      height: 312,
+      quality: 85,
+      format: 'webp'
+    });
+    backgroundImageUrl = optimized.src.toString();
   }
 }
 ---

@@ -1,4 +1,9 @@
 import type { CollectionEntry } from 'astro:content';
+import type { ImageMetadata } from 'astro';
+import { getImageMetadata, isVideoPath } from './imageResolver';
+
+// Re-export for convenience
+export { isVideoPath } from './imageResolver';
 
 type ArtistEntry = CollectionEntry<'artists'>;
 type StyleEntry = CollectionEntry<'styles'>;
@@ -129,8 +134,85 @@ export function resolveImagePath(imagePath: string | { src?: string; url?: strin
   return normalizedPath;
 }
 
+/**
+ * Resolve an image path to either ImageMetadata (for optimized images) or a URL string.
+ * 
+ * This is the NEW preferred method for images that should be optimized by Astro.
+ * - For images in src/assets/images: Returns ImageMetadata for full Astro optimization
+ * - For videos: Returns R2 URL string (videos can't be optimized)
+ * - For remote URLs: Returns the URL as-is
+ * - For fallback: Returns the path string (served from public/)
+ * 
+ * @param imagePath - The image path from CMS or content (string or CMS object)
+ * @returns ImageMetadata for optimizable images, string URL otherwise
+ */
+export function resolveImage(
+  imagePath: string | { src?: string; url?: string; path?: string; [key: string]: any } | undefined
+): ImageMetadata | string {
+  if (!imagePath) return '';
+
+  // Handle CMS image objects (same logic as resolveImagePath)
+  let pathString: string;
+  if (typeof imagePath === 'object') {
+    if (Array.isArray(imagePath)) {
+      return '';
+    }
+    
+    // Check for field description objects
+    const keys = Object.keys(imagePath);
+    const hasDescriptionLikeKey = keys.some(key => 
+      key.length > 30 ||
+      key.includes('shown while') ||
+      key.includes('Recommended') ||
+      key.includes('description') ||
+      key.includes('label')
+    );
+    
+    if (hasDescriptionLikeKey && !imagePath.src && !imagePath.url && !imagePath.path) {
+      return '';
+    }
+    
+    pathString = imagePath.src || imagePath.url || imagePath.path || '';
+    
+    if (!pathString && ('description' in imagePath || 'label' in imagePath)) {
+      return '';
+    }
+    
+    if (!pathString || typeof pathString !== 'string') {
+      return '';
+    }
+  } else if (typeof imagePath === 'string') {
+    pathString = imagePath;
+  } else {
+    return '';
+  }
+
+  // If already absolute URL, return as-is (can't optimize remote images at build time)
+  if (pathString.startsWith('http://') || pathString.startsWith('https://')) {
+    return pathString;
+  }
+
+  // Videos always go through R2, return URL string
+  if (isVideoPath(pathString)) {
+    const R2_BASE_URL = import.meta.env.PUBLIC_R2_BASE_URL || DEFAULT_R2_BASE_URL;
+    const cleanPath = pathString.startsWith('/') ? pathString.slice(1) : pathString;
+    const r2Path = cleanPath.startsWith('images/') ? cleanPath : `images/${cleanPath}`;
+    return `${R2_BASE_URL}/${r2Path}`;
+  }
+
+  // Try to get ImageMetadata for optimization
+  const metadata = getImageMetadata(pathString);
+  if (metadata) {
+    return metadata;
+  }
+
+  // Fallback: return string path (will be served from public/ without optimization)
+  // This allows gradual migration - images not yet moved still work
+  return pathString.startsWith('/') ? pathString : `/${pathString}`;
+}
+
 export interface GalleryImage {
-  src: string;
+  src: ImageMetadata | string;
   alt?: string;
   tags?: Array<{
     text: string;
@@ -291,7 +373,7 @@ export function worksToGalleryImages(works: WorkEntry[], options: WorksToGallery
     }
 
     return {
-      src: resolveImagePath(work.data.image),
+      src: resolveImage(work.data.image),
       alt: `Tattoo work`,
       tags,
     };

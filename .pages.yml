@@ -5,13 +5,6 @@ media:
     output: /images
     extensions: [jpg, jpeg, png, gif, svg, webp, avif]
     categories: [image]
-  
-  - name: videos
-    label: Videos
-    input: public/images/videos
-    output: /images/videos
-    extensions: [mp4, webm, mov]
-    categories: [video]
 
 content:
   # ============================================
@@ -41,7 +34,7 @@ content:
         label: Hero Video URL
         type: string
         required: false
-        description: URL path to the hero video (e.g., /images/videos/HCT_CoverVideo-1080.mp4)
+        description: "Full R2 URL for the hero video. To add or change: 1) Go to Cloudflare Dashboard → R2 → hct-media bucket, 2) Upload your video (MP4, max 50MB recommended), 3) Copy the public URL and paste it here. Example: https://pub-5fa780a0c82a42df836a1dd9282c562b.r2.dev/videos/HCT_CoverVideo.mp4"
       
       - name: videoPoster
         label: Video Poster/Thumbnail

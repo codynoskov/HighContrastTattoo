@@ -65,8 +65,8 @@ if (!isArtist) {
       // For imported images (ImageMetadata) - full Astro optimization
       const optimized = await getImage({
         src: imageSrc as ImageMetadata,
-        width: 416,
-        height: 312,
+        width: 364,
+        height: 273,
         quality: 85,
         format: 'webp'
       });
@@ -81,8 +81,8 @@ if (!isArtist) {
       // Fallback to placeholder
       const optimized = await getImage({
         src: imagePlaceholder,
-        width: 416,
-        height: 312,
+        width: 364,
+        height: 273,
         quality: 85,
         format: 'webp'
       });
@@ -92,8 +92,8 @@ if (!isArtist) {
     // Fallback to placeholder if optimization fails
     const optimized = await getImage({
       src: imagePlaceholder,
-      width: 416,
-      height: 312,
+      width: 364,
+      height: 273,
       quality: 85,
       format: 'webp'
     });
@@ -169,7 +169,7 @@ if (!isArtist) {
     background-color: var(--color-neutral-50);
     border: var(--border-width-default) solid var(--color-neutral-200);
     width: 100%;
-    max-width: 416px;
+    max-width: 364px;
     min-height: 0;
   }
 
@@ -321,15 +321,4 @@ if (!isArtist) {
     width: 100%;
   }
 
-  /* Mobile Breakpoint - 767px and below */
-  @media (max-width: 767px) {
-    .card {
-      max-width: 364px;
-    }
-
-    /* Style Card - Mobile Header Image - same 4:3 ratio */
-    .card-Style .card-header-image {
-      padding-bottom: 75%;
-    }
-  }
 </style>

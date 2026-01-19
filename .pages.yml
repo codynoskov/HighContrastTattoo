@@ -541,7 +541,8 @@ content:
       - name: order
         label: Order
         type: number
-        description: Lower numbers appear first. Use decimals (like 1.5) to insert between items.
+        default: 9999
+        description: Lower numbers appear first. Use decimals (like 1.5) to insert between items. Items without an order appear at the end alphabetically.
       
       - name: intro
         label: Introduction
@@ -614,7 +615,8 @@ content:
       - name: order
         label: Order
         type: number
-        description: Lower numbers appear first. Use decimals (like 2.5) to insert between items.
+        default: 9999
+        description: Lower numbers appear first. Use decimals (like 2.5) to insert between items. Items without an order appear at the end alphabetically.
       
       - name: photo
         label: Profile Photo
@@ -713,7 +715,8 @@ content:
       - name: order
         label: Order
         type: number
-        description: Lower numbers appear first. The first work is used as preview on artist cards.
+        default: 9999
+        description: Lower numbers appear first. The first work is used as preview on artist cards. Items without an order appear at the end.
   
   # ============================================
   # REVIEWS
@@ -745,7 +748,8 @@ content:
       - name: order
         label: Order
         type: number
-        description: Lower numbers appear first. Use decimals (like 1.5) to insert between items.
+        default: 9999
+        description: Lower numbers appear first. Use decimals (like 1.5) to insert between items. Items without an order appear at the end.
       
       - name: body
         label: Review Text

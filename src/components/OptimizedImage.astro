@@ -3,12 +3,13 @@
  * OptimizedImage - Uses Astro's built-in Image component for optimization
  * 
  * Supports three image source types:
- * 1. Remote URLs (http/https) - Optimized via configured domains in astro.config.mjs
- * 2. Imported images (ImageMetadata) - Full build-time optimization with srcset
- * 3. Local paths (/images/...) - Served as-is from public folder (fallback)
+ * 1. Remote URLs (http/https) - Served directly from CDN
+ * 2. Imported images (ImageMetadata) - Full build-time optimization with WebP
+ * 3. Local paths (/images/...) - Automatically resolved to ImageMetadata for optimization
  */
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
+import { getImageMetadata } from '../utils/imageResolver';
 
 interface Props {
   src: string | ImageMetadata;
@@ -37,10 +38,22 @@ const {
 } = Astro.props;
 
 // Determine the type of image source
-const isImageMetadata = typeof rawSrc === 'object' && rawSrc !== null && 'src' in rawSrc;
+const isImageMetadataInput = typeof rawSrc === 'object' && rawSrc !== null && 'src' in rawSrc;
 const isRemoteUrl = typeof rawSrc === 'string' && (rawSrc.startsWith('http://') || rawSrc.startsWith('https://'));
 const isLocalPath = typeof rawSrc === 'string' && rawSrc.startsWith('/');
-const hasSrc = rawSrc && (isImageMetadata || (typeof rawSrc === 'string' && rawSrc.length > 0));
+const hasSrc = rawSrc && (isImageMetadataInput || (typeof rawSrc === 'string' && rawSrc.length > 0));
+
+// For local paths, try to resolve to ImageMetadata for optimization
+let resolvedSrc: string | ImageMetadata = rawSrc;
+let isImageMetadata = isImageMetadataInput;
+
+if (isLocalPath && typeof rawSrc === 'string') {
+  const metadata = getImageMetadata(rawSrc);
+  if (metadata) {
+    resolvedSrc = metadata;
+    isImageMetadata = true;
+  }
+}
 
 // Calculate dimensions if aspectRatio is provided
 let finalWidth = width;
@@ -74,9 +87,9 @@ if (isRemoteUrl && (!finalWidth || !finalHeight)) {
   if (!finalHeight) finalHeight = 800; // Square as fallback
 }
 
-// For imported images, get dimensions from metadata if not specified
+// For images with metadata (imported or resolved from local path), get dimensions if not specified
 if (isImageMetadata && !finalWidth && !finalHeight) {
-  const metadata = rawSrc as ImageMetadata;
+  const metadata = resolvedSrc as ImageMetadata;
   finalWidth = metadata.width;
   finalHeight = metadata.height;
 }
@@ -95,9 +108,9 @@ if (isImageMetadata && !finalWidth && !finalHeight) {
     />
   ) : null
 ) : isImageMetadata ? (
-  /* Imported image - full Astro optimization with WebP/AVIF and srcset */
+  /* Optimized image - includes both imported images AND resolved local paths */
   <Image
-    src={rawSrc as ImageMetadata}
+    src={resolvedSrc as ImageMetadata}
     alt={alt}
     width={finalWidth}
     height={finalHeight}
@@ -109,9 +122,8 @@ if (isImageMetadata && !finalWidth && !finalHeight) {
   />
 ) : isRemoteUrl ? (
   /* Remote URL - serve directly from CDN without build-time processing */
-  /* This avoids build timeouts when fetching many remote images */
   <img
-    src={rawSrc as string}
+    src={resolvedSrc as string}
     alt={alt}
     width={finalWidth}
     height={finalHeight}
@@ -120,26 +132,16 @@ if (isImageMetadata && !finalWidth && !finalHeight) {
     style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
     onerror={fallbackSrc ? `this.src='${fallbackSrc}'; this.onerror=null;` : undefined}
   />
-) : isLocalPath ? (
-  /* Local path from public/ - serve as-is (can't optimize without import) */
-  <img
-    src={rawSrc as string}
-    alt={alt}
-    width={finalWidth}
-    height={finalHeight}
-    loading={loading}
-    class={className}
-    onerror={fallbackSrc ? `this.src='${fallbackSrc}'; this.onerror=null;` : undefined}
-  />
 ) : (
-  /* Fallback for any other string src */
+  /* Fallback for unresolved local paths or other strings */
   <img
-    src={rawSrc as string}
+    src={resolvedSrc as string}
     alt={alt}
     width={finalWidth}
     height={finalHeight}
     loading={loading}
     class={className}
+    style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
     onerror={fallbackSrc ? `this.src='${fallbackSrc}'; this.onerror=null;` : undefined}
   />
 )}

@@ -7,10 +7,9 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "sync-images": "node scripts/sync-images.mjs",
     "sync-to-r2": "node scripts/sync-to-r2.mjs",
     "sync-from-r2": "node scripts/sync-from-r2.mjs",
-    "build": "npm run sync-images && astro build && npm run create-video-placeholders",
+    "build": "astro build && npm run create-video-placeholders",
     "create-video-placeholders": "node scripts/create-video-placeholders.mjs",
     "find-unused-media": "node scripts/find-unused-media.mjs",
     "preview": "astro preview",

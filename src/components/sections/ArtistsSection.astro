@@ -3,7 +3,7 @@ import Card from '../Card.astro';
 import Button from '../Button.astro';
 import placeholderImage from '../../assets/images/artist-placeholder.png';
 import { getCollection } from 'astro:content';
-import { getSlug, resolveImage, resolveStyles, getArtistSlugFromWork } from '../../utils/contentHelpers';
+import { getSlug, resolveImage, resolveStyles } from '../../utils/contentHelpers';
 import type { ImageMetadata } from 'astro';
 
 interface Props {
@@ -16,7 +16,6 @@ interface Props {
 
 // Fetch content collections
 const artistEntries = await getCollection('artists');
-const worksEntries = await getCollection('works');
 const styleEntries = await getCollection('styles');
 
 // Sort artists by order if defined, otherwise alphabetically
@@ -38,12 +37,8 @@ const sortedArtists = [...artistEntries].sort((a, b) => {
 const artistsData = sortedArtists.map((entry) => {
   const slug = getSlug(entry);
   
-  // Get works by this artist to determine their styles
-  const artistWorks = worksEntries.filter(work => getArtistSlugFromWork(work) === slug);
-  
-  // Collect all unique styles from artist's works
-  const allStyleSlugs = [...new Set(artistWorks.flatMap(work => work.data.styles))];
-  const resolvedStyles = resolveStyles(allStyleSlugs, styleEntries);
+  // Resolve artist's manually selected styles to style links (same as Artist page)
+  const resolvedStyles = resolveStyles(entry.data.styles ?? [], styleEntries);
   
   // Transform to tag format with links
   const artistTags = resolvedStyles.map(style => ({

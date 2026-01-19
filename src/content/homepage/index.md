@@ -8,7 +8,7 @@ topRightImage: /images/001A5570-Edit.jpg
 bottomLeftImage: /images/001A5645-Edit.jpg
 reviewsTitle: Experiences Shared
 reviewsSubtitle: Trusted by hundreds with **100% positive** reviews
-instagramTitle: Stay tuned
+instagramTitle: Stay updated
 instagramHandle: "@highcontrasttattoo"
 instagramUrl: https://instagram.com/highcontrasttattoo
 instagramBackgroundImage: /images/instagram-bg.png

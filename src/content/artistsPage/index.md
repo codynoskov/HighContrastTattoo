@@ -1,4 +1,7 @@
 ---
-title: "Artists"
-description: "Our artists bring distinct styles and a shared focus on precision, creativity, and custom tattoo work, ensuring each piece is crafted with care from concept to final detail."
+title: Artists
+description: "Our artists are all very different in their styles and ways of
+  working. What connects us is one main goal: that you leave the studio with
+  good memories and a positive experience."
+noIndex: false
 ---

@@ -6,8 +6,8 @@ buttonInstagram: See on Instagram
 footerHeadline: In the heart of Friedrichshain
 footerDescription: We are located in Samariterkiez in Friedrichshain, a
   neighbourhood with cafés, bars and a lot of everyday street life. The area is
-  easy to reach and has the kind of relaxed atmosphere that also shapes the mood
-  in our studio.
+  easy to reach and has the kind of calm, open atmosphere that also sets the
+  mood in our studio.
 footerMapImage: /images/map.png
 footerEmailLabel: Email
 footerEmailDescription: Reach out anytime with questions

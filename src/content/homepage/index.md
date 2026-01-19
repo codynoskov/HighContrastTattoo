@@ -31,7 +31,7 @@ valuesDescription: >-
   At High Contrast Tattoo, we care about more than just how a tattoo looks. We
   want you to feel good from the moment you walk in until the bandage goes on.
   Our studio is friendly and relaxed, with high standards for both quality and
-  hygiene.
+  hygiene. 
 
 
   We take time to listen to your idea, talk it through together and then turn it

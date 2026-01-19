@@ -12,7 +12,8 @@ import StylesSection from '../components/sections/StylesSection.astro';
 import ArtistsSection from '../components/sections/ArtistsSection.astro';
 import ValuesSection from '../components/sections/ValuesSection.astro';
 import { getCollection } from 'astro:content';
-import { resolveImagePath } from '../utils/contentHelpers';
+import { resolveImagePath, resolveImage } from '../utils/contentHelpers';
+import type { ImageMetadata } from 'astro';
 
 // Get homepage content
 const homepageEntries = await getCollection('homepage');
@@ -22,7 +23,7 @@ const homepage = homepageEntries[0]?.data || {};
 const settingsEntries = await getCollection('settings');
 const settings = settingsEntries[0]?.data || {};
 
-// Helper function to safely resolve image paths (handles both strings and CMS objects)
+// Helper function to safely resolve image paths for video/non-optimized assets
 function safeResolveImagePath(imagePath: any): string | undefined {
   if (!imagePath) return undefined;
   try {
@@ -33,14 +34,28 @@ function safeResolveImagePath(imagePath: any): string | undefined {
   }
 }
 
-// Resolve image and video paths (handles R2 URLs automatically and CMS objects)
-const topRightImage = safeResolveImagePath(homepage.topRightImage);
-const bottomLeftImage = safeResolveImagePath(homepage.bottomLeftImage);
+// Helper function to safely resolve images for optimization (returns ImageMetadata when possible)
+function safeResolveImage(imagePath: any): string | ImageMetadata | undefined {
+  if (!imagePath) return undefined;
+  try {
+    const resolved = resolveImage(imagePath);
+    return resolved || undefined;
+  } catch (error) {
+    console.warn('Failed to resolve image:', imagePath, error);
+    return undefined;
+  }
+}
+
+// Resolve video paths (videos are served from R2, not optimized)
 const videoSrc = safeResolveImagePath(homepage.videoSrc);
 const videoPoster = safeResolveImagePath(homepage.videoPoster);
-const instagramBgImage = safeResolveImagePath(homepage.instagramBackgroundImage);
-const walkInBgImage = safeResolveImagePath(homepage.walkInBackgroundImage);
-const footerMapImage = safeResolveImagePath(settings.footerMapImage);
+
+// Resolve images for optimization (returns ImageMetadata when available)
+const topRightImage = safeResolveImage(homepage.topRightImage);
+const bottomLeftImage = safeResolveImage(homepage.bottomLeftImage);
+const instagramBgImage = safeResolveImage(homepage.instagramBackgroundImage);
+const walkInBgImage = safeResolveImage(homepage.walkInBackgroundImage);
+const footerMapImage = safeResolveImage(settings.footerMapImage);
 
 // Helper to safely get string values (filters out CMS metadata objects)
 function safeString(value: any): string | undefined {

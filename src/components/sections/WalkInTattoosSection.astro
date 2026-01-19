@@ -2,13 +2,14 @@
 import Button from '../Button.astro';
 import OptimizedImage from '../OptimizedImage.astro';
 import imagePlaceholder from '../../assets/images/image-placeholder.png';
+import type { ImageMetadata } from 'astro';
 
 interface Props {
   title?: string;
   description?: string;
   schedule?: string;
   googleMapsUrl?: string;
-  backgroundImage?: string;
+  backgroundImage?: string | ImageMetadata;
   buttonText?: string;
   className?: string;
 }
@@ -18,7 +19,7 @@ const {
   description = "Walk-ins are available",
   schedule = "Monday–Saturday, 11:30–15:00",
   googleMapsUrl = "https://maps.google.com/?q=High+Contrast+Tattoo,+Schreinerstraße+6,+10247+Berlin,+Germany",
-  backgroundImage = imagePlaceholder.src,
+  backgroundImage = imagePlaceholder,
   buttonText = "Open in Google Maps",
   className = ""
 } = Astro.props;
@@ -31,6 +32,8 @@ const {
       src={backgroundImage} 
       alt="" 
       className="banner-bg-image"
+      widths={[600, 1200, 1920]}
+      sizes="100vw"
       loading="lazy"
       quality={80}
       fallbackSrc={imagePlaceholder.src}

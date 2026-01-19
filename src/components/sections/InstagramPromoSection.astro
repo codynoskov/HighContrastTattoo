@@ -2,12 +2,13 @@
 import Button from '../Button.astro';
 import OptimizedImage from '../OptimizedImage.astro';
 import imagePlaceholder from '../../assets/images/image-placeholder.png';
+import type { ImageMetadata } from 'astro';
 
 interface Props {
   title?: string;
   instagramHandle?: string;
   instagramUrl?: string;
-  backgroundImage?: string;
+  backgroundImage?: string | ImageMetadata;
   buttonText?: string;
   className?: string;
 }
@@ -16,7 +17,7 @@ const {
   title = "Stay tuned",
   instagramHandle = "@highcontrasttattoo",
   instagramUrl = "https://instagram.com/highcontrasttattoo",
-  backgroundImage = imagePlaceholder.src,
+  backgroundImage = imagePlaceholder,
   buttonText = "See on Instagram",
   className = ""
 } = Astro.props;
@@ -29,6 +30,8 @@ const {
       src={backgroundImage} 
       alt="" 
       className="banner-bg-image"
+      widths={[600, 1200, 1920]}
+      sizes="100vw"
       loading="lazy"
       quality={80}
       fallbackSrc={imagePlaceholder.src}

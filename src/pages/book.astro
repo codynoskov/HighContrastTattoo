@@ -264,7 +264,8 @@ const seoDescription = 'Book a tattoo appointment at High Contrast Tattoo Berlin
     overflow-x: hidden;
   }
 
-  .form-container {
+  .form-container,
+  :global(.form-container) {
     max-width: 1440px;
     width: 100%;
     margin: 0 auto;
@@ -357,7 +358,8 @@ const seoDescription = 'Book a tattoo appointment at High Contrast Tattoo Berlin
       padding: var(--spacing-core-900-md) 0;
     }
 
-    .form-container {
+    .form-container,
+    :global(.form-container) {
       padding: 0 var(--spacing-core-600-md);
     }
   }

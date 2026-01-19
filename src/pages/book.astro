@@ -152,7 +152,7 @@ const seoDescription = 'Book a tattoo appointment at High Contrast Tattoo Berlin
                 optionalHint={true}
               >
                 {artists.map((artist) => (
-                  <option value={artist.slug}>{artist.name}</option>
+                  <option value={artist.name}>{artist.name}</option>
                 ))}
               </InputField>
             </div>
@@ -187,7 +187,7 @@ const seoDescription = 'Book a tattoo appointment at High Contrast Tattoo Berlin
                 label="Tattoo description"
                 name="description"
                 id="description"
-                placeholder="Optional hint"
+                placeholder="Describe your tattoo idea, style preferences, or any details you'd like us to know"
                 mandatoryField={false}
                 optionalHint={true}
               />
@@ -362,7 +362,7 @@ const seoDescription = 'Book a tattoo appointment at High Contrast Tattoo Berlin
     }
   }
 
-  /* Success State - matches Figma design */
+  /* Success/Error State - matches Figma design */
   .state-message {
     display: flex;
     flex-direction: column;
@@ -372,8 +372,8 @@ const seoDescription = 'Book a tattoo appointment at High Contrast Tattoo Berlin
     min-height: 416px;
     padding: var(--spacing-core-800-md);
     width: 100%;
-    max-width: 1440px;
     box-sizing: border-box;
+    margin: 0 auto;
   }
 
   .state-message--success {
@@ -390,6 +390,7 @@ const seoDescription = 'Book a tattoo appointment at High Contrast Tattoo Berlin
     font: var(--typography-heading-md);
     text-align: center;
     width: 100%;
+    margin: 0;
   }
 
   .state-message--success .state-message__title {
@@ -404,6 +405,7 @@ const seoDescription = 'Book a tattoo appointment at High Contrast Tattoo Berlin
     font: var(--typography-body-md);
     text-align: center;
     width: 100%;
+    margin: 0;
   }
 
   .state-message--success .state-message__text {
@@ -422,6 +424,14 @@ const seoDescription = 'Book a tattoo appointment at High Contrast Tattoo Berlin
     justify-content: center;
     padding-top: var(--spacing-core-900-md);
     width: 100%;
+  }
+
+  /* Mobile responsive for state messages */
+  @media (max-width: 767px) {
+    .state-message {
+      min-height: 300px;
+      padding: var(--spacing-core-600-md);
+    }
   }
 
   /* State buttons (secondary style) */

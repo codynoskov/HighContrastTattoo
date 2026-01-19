@@ -1,0 +1,6 @@
+# Copy this file to .dev.vars and fill in your actual values
+# .dev.vars is gitignored and used for local development only
+
+BREVO_API_KEY=your-brevo-api-key-here
+BREVO_SENDER_EMAIL=noreply@yourdomain.com
+STUDIO_EMAIL=studio@yourdomain.com

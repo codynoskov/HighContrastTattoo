@@ -1,0 +1,9 @@
+name = "hct-website"
+compatibility_date = "2024-01-01"
+pages_build_output_dir = "dist"
+
+# Environment variables are configured in Cloudflare Pages dashboard
+# This file documents what variables are needed:
+# - BREVO_API_KEY: Your Brevo API key for sending emails
+# - BREVO_SENDER_EMAIL: The verified sender email address
+# - STUDIO_EMAIL: The studio email to receive booking notifications

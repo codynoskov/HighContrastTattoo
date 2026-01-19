@@ -1,5 +1,5 @@
 ---
-image: /images/works/nastia-zlotin-3.jpeg
+image: /images/nastia-zlotin-3.jpeg
 styles:
   - floral-and-botanic
   - neo-traditional

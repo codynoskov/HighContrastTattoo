@@ -2,7 +2,7 @@
 name: Sinah Ra
 slugOverride: sinah-ra
 order: 6
-photo: /images/artists/sina-ra-avatar.jpg
+photo: /images/sina-ra-avatar.jpg
 intro: >
   Sinah Ra is a blackwork tattoo artist specialising in floral, ornamental and
   geometric designs with a focus on symmetry and detail. 

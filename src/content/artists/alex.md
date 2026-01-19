@@ -2,7 +2,7 @@
 name: Alex
 slugOverride: alex
 order: 11
-photo: /images/artists/alex-avatar.jpg
+photo: /images/alex-avatar.jpg
 intro: Alex is a traditional tattoo artist from the hardcore punk scene.
   Specializing in cartoon-inspired bold designs and clean linework with a
   direct, no-frills feel.

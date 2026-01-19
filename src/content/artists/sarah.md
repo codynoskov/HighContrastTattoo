@@ -2,7 +2,7 @@
 name: Sarah
 slugOverride: sarah
 order: 4
-photo: /images/artists/sarah-avatar.jpg
+photo: /images/sarah-avatar.jpg
 intro: Sarah is a Berlin-based artist originally from Castrop-Rauxel. Her tattoo
   style blends blackwork with traditional elements.
 ---

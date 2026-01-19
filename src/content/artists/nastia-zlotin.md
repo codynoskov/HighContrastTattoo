@@ -2,7 +2,7 @@
 name: Nastia Zlotin
 slugOverride: nastia-zlotin
 order: 1
-photo: /images/artists/nastia-zlotin-avatar.jpg
+photo: /images/nastia-zlotin-avatar.jpg
 intro: Nastia Zlotina is a colour focused neo-traditional and illustrative
   tattoo artist, co-running High Contrast Tattoo Berlin with her husband Ed and
   known for feminine, floral work and complex cover ups that turn difficult old

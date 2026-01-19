@@ -56,16 +56,18 @@ const isActive = (href: string) => {
           </span>
           <span class="menu-text">Menu</span>
         </button>
-        <div class="header-logo-section">
-          <div class="header-logo-wrapper">
-            <Logo class="header-logo" />
+        <a href="/" class="header-logo-link" aria-label="Go to homepage">
+          <div class="header-logo-section">
+            <div class="header-logo-wrapper">
+              <Logo class="header-logo" />
+            </div>
+            <div class="header-logo-text-wrapper">
+              <span class="header-logo-text-line">HIGH</span>
+              <span class="header-logo-text-line">CONTRAST</span>
+              <span class="header-logo-text-line">TATTOO</span>
+            </div>
           </div>
-          <div class="header-logo-text-wrapper">
-            <span class="header-logo-text-line">HIGH</span>
-            <span class="header-logo-text-line">CONTRAST</span>
-            <span class="header-logo-text-line">TATTOO</span>
-          </div>
-        </div>
+        </a>
         <div class="nav-items">
           <a href="/" class={`nav-link ${isActive('/studio') ? 'nav-link--active' : ''}`}>Studio</a>
           <a href="/artists" class={`nav-link ${isActive('/artists') ? 'nav-link--active' : ''}`}>Artists</a>
@@ -220,6 +222,13 @@ const isActive = (href: string) => {
     align-items: center;
     justify-content: flex-end;
     position: relative;
+  }
+
+  .header-logo-link {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    display: inline-block;
   }
 
   .header-logo-section {

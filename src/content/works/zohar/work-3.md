@@ -1,5 +1,5 @@
 ---
-image: /images/works/zohar-3.jpg
+image: /images/zohar-3.jpg
 styles:
   - floral-and-botanic
   - neo-traditional

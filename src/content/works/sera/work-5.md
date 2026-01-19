@@ -1,5 +1,5 @@
 ---
-image: /images/works/sera-5.jpg
+image: /images/sera-5.jpg
 styles:
   - linework
   - floral-and-botanic

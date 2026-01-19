@@ -1,5 +1,5 @@
 ---
-image: /images/works/sarah-1.jpeg
+image: /images/sarah-1.jpeg
 styles:
   - linework
   - blackwork

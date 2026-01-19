@@ -2,7 +2,7 @@
 name: Gil
 slugOverride: gil
 order: 3
-photo: /images/artists/gil-avatar.jpg
+photo: /images/gil-avatar.jpg
 intro: >
   Gil is an engraving focused tattoo artist whose work channels medieval
   woodcuts, copper engravings and nature motifs into finely detailed black line

@@ -1,5 +1,5 @@
 ---
-image: /images/works/skezy-4.jpg
+image: /images/skezy-4.jpg
 styles:
   - blackwork
   - white-on-black

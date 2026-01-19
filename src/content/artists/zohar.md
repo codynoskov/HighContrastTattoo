@@ -2,7 +2,7 @@
 name: Zohar
 slugOverride: zohar
 order: 10
-photo: /images/artists/zohar-avatar.jpg
+photo: /images/zohar-avatar.jpg
 intro: >
   Zohar, aka Useless Treasures, is an illustrative tattoo artist known for bold,
   surreal pieces that blend nature, floral motifs, underground culture and pop

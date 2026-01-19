@@ -2,7 +2,7 @@
 name: Luh
 slugOverride: luh
 order: 9
-photo: /images/artists/luara-avatar.jpg
+photo: /images/luara-avatar.jpg
 intro: >
   Luh is a colour tattoo artist whose work blends Neo Traditional, Anime &
   Manga, Floral & Botanic and Art Nouveau influences into whimsical,

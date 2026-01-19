@@ -1,5 +1,5 @@
 ---
-image: /images/works/sina-ra-2.jpeg
+image: /images/sina-ra-2.jpeg
 styles:
   - floral-and-botanic
   - blackwork

@@ -4,8 +4,8 @@ introText: "**High Contrast Tattoo** is a Berlin-Friedrichshain studio known for
   combining classic tattoo motifs with contemporary stylistic elements and
   delivering detailed, high-quality custom work."
 videoSrc: /images/videos/HCT_CoverVideo-1080.mp4
-topRightImage: /images/works/arseniy-3.jpg
-bottomLeftImage: /images/studio/001A5610-Edit.jpg
+topRightImage: /images/arseniy-3.jpg
+bottomLeftImage: /images/001A5610-Edit.jpg
 reviewsTitle: Experiences Shared
 reviewsSubtitle: Trusted by hundreds with **100% positive** reviews
 instagramTitle: Stay tuned
@@ -19,7 +19,7 @@ studioDescription: Step into our creative space in the heart of Friedrichshain.
 walkInTitle: Walk-In Tattoos
 walkInDescription: Walk-ins are available
 walkInSchedule: Monday–Saturday, 11:30–15:00
-walkInBackgroundImage: /images/studio/001A5570-Edit.jpg
+walkInBackgroundImage: /images/001A5570-Edit.jpg
 stylesTitle: Explore the Styles
 stylesDescription: From neo-traditional and blackwork to lettering and geometric
   designs, our artists cover a wide range of styles.

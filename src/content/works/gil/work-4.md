@@ -1,5 +1,5 @@
 ---
-image: /images/works/gil-4.jpg
+image: /images/gil-4.jpg
 styles:
   - linework
   - floral-and-botanic

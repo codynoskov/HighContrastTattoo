@@ -2,7 +2,7 @@
 name: Bruno Da Mata
 slugOverride: bruno-da-mata
 order: 8
-photo: /images/artists/bruno-avatar.jpg
+photo: /images/bruno-avatar.jpg
 intro: >
   Bruno Da Mata is a Brazilian tattoo artist specialising in Blackwork with a
   strong graphic and illustrative approach.

@@ -10,7 +10,7 @@ buttonInstagram: "See on Instagram"
 # Footer
 footerHeadline: "In the heart of Friedrichshain"
 footerDescription: "We're located in Berlin's most vibrant creative neighborhood, where art lives in the streets and studios. Easy to reach, impossible to forget."
-footerMapImage: "/images/footer/map.png"
+footerMapImage: "/images/map.png"
 footerEmailLabel: "Email"
 footerEmailDescription: "Reach out anytime with questions"
 footerPhoneLabel: "Phone"

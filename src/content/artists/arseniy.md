@@ -2,7 +2,7 @@
 name: Arseniy
 slugOverride: arseniy
 order: 2
-photo: /images/artists/arseniy-avatar.jpg
+photo: /images/arseniy-avatar.jpg
 intro: Arseniy is a traditional and old school tattoo artist with a hardcore
   punk background, known for fast, bold flash pieces and solid, readable designs
   in Traditional & Old School.

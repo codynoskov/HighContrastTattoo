@@ -1,5 +1,5 @@
 ---
-image: /images/works/arseniy-4.jpg
+image: /images/arseniy-4.jpg
 styles:
   - linework
   - white-on-black

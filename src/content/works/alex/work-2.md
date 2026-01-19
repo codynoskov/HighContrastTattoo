@@ -1,5 +1,5 @@
 ---
-image: /images/works/alex-2.jpg
+image: /images/alex-2.jpg
 styles:
   - traditional-and-old-school
   - cartoon

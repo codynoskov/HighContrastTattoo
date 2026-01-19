@@ -2,7 +2,7 @@
 name: Skezy
 slugOverride: skezy
 order: 7
-photo: /images/artists/skezy-avatar.jpg
+photo: /images/skezy-avatar.jpg
 intro: Skezy is a heavy blackwork and lettering artist creating abstract,
   freehand designs with a dark, obscure and aggressively graphic aesthetic.
 instagram: skezytattoo

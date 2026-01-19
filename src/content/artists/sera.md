@@ -2,7 +2,7 @@
 name: Sera
 slugOverride: sera
 order: 5
-photo: /images/artists/sera-avatar.jpg
+photo: /images/sera-avatar.jpg
 intro: Sera is an illustrative tattoo artist whose work moves between Neo
   Traditional and Art Nouveau, using earthy colour palettes and line-based
   compositions inspired by wildlife and folklore.

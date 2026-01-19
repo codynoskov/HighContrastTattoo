@@ -1,5 +1,5 @@
 ---
-image: /images/works/bruno-1.jpg
+image: /images/bruno-1.jpg
 styles:
   - linework
   - blackwork

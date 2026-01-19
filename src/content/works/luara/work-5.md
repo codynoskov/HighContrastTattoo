@@ -1,5 +1,5 @@
 ---
-image: /images/works/luara-5.jpg
+image: /images/luara-5.jpg
 styles:
   - floral-and-botanic
   - neo-traditional

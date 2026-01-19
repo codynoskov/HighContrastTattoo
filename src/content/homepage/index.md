@@ -22,8 +22,9 @@ walkInDescription: Custom work is by appointment
 walkInSchedule: Walk-ins are available Monday–Saturday, 11:30–15:00
 walkInBackgroundImage: /images/001A5570-Edit.jpg
 stylesTitle: Explore the Styles
-stylesDescription: From neo-traditional and blackwork to lettering and geometric
-  designs, our artists cover a wide range of styles.
+stylesDescription: An introduction to our signature tattoo styles, designed to
+  show you how each one looks, feels and what it can do for your ideas before
+  you sit down with your artist.
 stylesCtaText: Explore all Styles
 valuesTitle: Our approach and values
 valuesDescription: At High Contrast Tattoo, we believe in creating more than

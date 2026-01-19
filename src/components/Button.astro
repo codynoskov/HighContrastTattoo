@@ -13,6 +13,7 @@ interface Props {
   target?: string;
   rel?: string;
   "aria-label"?: string;
+  buttonType?: "button" | "submit" | "reset";
 }
 
 const { 
@@ -26,7 +27,8 @@ const {
   className = "",
   target,
   rel,
-  "aria-label": ariaLabel
+  "aria-label": ariaLabel,
+  buttonType = "button"
 } = Astro.props;
 
 const isPrimary = type === "Primary";
@@ -40,7 +42,7 @@ const tagProps = href
       "aria-label": ariaLabel,
     } 
   : { 
-      type: "button",
+      type: buttonType,
       "aria-label": ariaLabel,
     };
 ---

@@ -4,8 +4,8 @@ introText: "**High Contrast Tattoo** is a Berlin-Friedrichshain studio known for
   combining classic tattoo motifs with contemporary stylistic elements and
   delivering detailed, high-quality custom work."
 videoSrc: /images/videos/HCT_CoverVideo-1080.mp4
-topRightImage: /images/arseniy-3.jpg
-bottomLeftImage: /images/001A5610-Edit.jpg
+topRightImage: /images/001A5615-Edit.jpg
+bottomLeftImage: /images/001A5638-Edit.jpg
 reviewsTitle: Experiences Shared
 reviewsSubtitle: Trusted by hundreds with **100% positive** reviews
 instagramTitle: Stay tuned

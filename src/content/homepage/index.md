@@ -27,11 +27,17 @@ stylesDescription: An introduction to our signature tattoo styles, designed to
   you sit down with your artist.
 stylesCtaText: Explore all Styles
 valuesTitle: Our approach and values
-valuesDescription: At High Contrast Tattoo, we believe in creating more than
-  just tattoos — we create meaningful art that becomes part of your story. Our
-  approach combines technical excellence with genuine collaboration. We take
-  time to understand your vision, refine it together, and execute it with
-  precision. Every session is a partnership where your ideas meet our expertise.
+valuesDescription: >-
+  At High Contrast Tattoo, we care about more than just how a tattoo looks. We
+  want you to feel good from the moment you walk in until the bandage goes on.
+  Our studio is friendly and relaxed, with high standards for both quality and
+  hygiene.
+
+
+  We take time to listen to your idea, talk it through together and then turn it
+  into a clear, well-planned design. Every tattoo is done carefully and cleanly,
+  and we always try to make the session as comfortable as possible, whether it
+  is your first tattoo or your tenth.
 artistsTitle: Meet the Artists
 artistsDescription: Our team brings years of experience across many tattoo
   styles. Explore portfolios and find the right artist for your idea.

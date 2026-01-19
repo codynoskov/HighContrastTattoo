@@ -362,8 +362,8 @@ const seoDescription = 'Book a tattoo appointment at High Contrast Tattoo Berlin
     }
   }
 
-  /* Success/Error State - matches Figma design */
-  .state-message {
+  /* Success/Error State - uses :global() for dynamically injected HTML */
+  :global(.state-message) {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -376,47 +376,47 @@ const seoDescription = 'Book a tattoo appointment at High Contrast Tattoo Berlin
     margin: 0 auto;
   }
 
-  .state-message--success {
+  :global(.state-message--success) {
     background-color: var(--color-neutral-50);
     border: 1px solid var(--color-neutral-200);
   }
 
-  .state-message--error {
+  :global(.state-message--error) {
     background-color: var(--color-accent-50);
     border: 1px solid var(--color-accent-200);
   }
 
-  .state-message__title {
+  :global(.state-message__title) {
     font: var(--typography-heading-md);
     text-align: center;
     width: 100%;
     margin: 0;
   }
 
-  .state-message--success .state-message__title {
+  :global(.state-message--success .state-message__title) {
     color: var(--color-neutral-900);
   }
 
-  .state-message--error .state-message__title {
+  :global(.state-message--error .state-message__title) {
     color: var(--color-accent-900);
   }
 
-  .state-message__text {
+  :global(.state-message__text) {
     font: var(--typography-body-md);
     text-align: center;
     width: 100%;
     margin: 0;
   }
 
-  .state-message--success .state-message__text {
+  :global(.state-message--success .state-message__text) {
     color: var(--color-neutral-900);
   }
 
-  .state-message--error .state-message__text {
+  :global(.state-message--error .state-message__text) {
     color: var(--color-accent-900);
   }
 
-  .state-message__actions {
+  :global(.state-message__actions) {
     display: flex;
     flex-wrap: wrap;
     gap: var(--spacing-core-800-md);
@@ -428,14 +428,14 @@ const seoDescription = 'Book a tattoo appointment at High Contrast Tattoo Berlin
 
   /* Mobile responsive for state messages */
   @media (max-width: 767px) {
-    .state-message {
+    :global(.state-message) {
       min-height: 300px;
       padding: var(--spacing-core-600-md);
     }
   }
 
-  /* State buttons (secondary style) */
-  .state-button {
+  /* State buttons (secondary style) - uses :global() for dynamically injected HTML */
+  :global(.state-button) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -454,27 +454,27 @@ const seoDescription = 'Book a tattoo appointment at High Contrast Tattoo Berlin
     text-transform: uppercase;
   }
 
-  .state-button--secondary {
+  :global(.state-button--secondary) {
     color: var(--color-primary-600);
   }
 
-  .state-button--accent {
+  :global(.state-button--accent) {
     color: var(--color-accent-600);
   }
 
-  .state-button__text {
+  :global(.state-button__text) {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 
-  .state-button__icon {
+  :global(.state-button__icon) {
     width: 24px;
     height: 24px;
     flex-shrink: 0;
   }
 
-  .state-button:hover {
+  :global(.state-button:hover) {
     opacity: 0.8;
   }
 

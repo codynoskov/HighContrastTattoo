@@ -18,8 +18,8 @@ studioDescription: Step into our creative space in the heart of Friedrichshain.
   Our studio is designed for comfort and inspiration, where art comes to life on
   skin.
 walkInTitle: Walk-In Tattoos
-walkInDescription: Custom work is by appointment; walk-ins are also available
-walkInSchedule: Monday–Saturday, 11:30–15:00
+walkInDescription: Custom work is by appointment
+walkInSchedule: walk-ins are available Monday–Saturday, 11:30–15:00
 walkInBackgroundImage: /images/001A5570-Edit.jpg
 stylesTitle: Explore the Styles
 stylesDescription: From neo-traditional and blackwork to lettering and geometric

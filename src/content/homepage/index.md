@@ -1,5 +1,5 @@
 ---
-headline: Tattoos we design and shape together
+headline: A studio for people who care about their tattoos
 introText: "**High Contrast Tattoo** is a custom tattoo shop in the heart of
   Friedrichshain, Berlin. Our team works in almost all of the most popular
   tattoo styles. The studio is friendly and cozy, and we welcome walk-ins. We

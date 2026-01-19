@@ -8,12 +8,12 @@ import InputField from '../components/InputField.astro';
 import Checkbox from '../components/Checkbox.astro';
 import Button from '../components/Button.astro';
 import { getCollection } from 'astro:content';
-import { resolveImagePath } from '../utils/contentHelpers';
+import { resolveImage } from '../utils/contentHelpers';
 
 // Get settings content
 const settingsEntries = await getCollection('settings');
 const settings = settingsEntries[0]?.data || {};
-const footerMapImage = settings.footerMapImage ? resolveImagePath(settings.footerMapImage) : undefined;
+const footerMapImage = settings.footerMapImage ? resolveImage(settings.footerMapImage) : undefined;
 
 const styleEntries = await getCollection('styles');
 // Sort styles by order if defined, otherwise alphabetically

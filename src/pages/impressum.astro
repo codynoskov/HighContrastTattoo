@@ -4,12 +4,12 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ArtistsHeroSection from '../components/sections/ArtistsHeroSection.astro';
 import { getCollection } from 'astro:content';
-import { resolveImagePath } from '../utils/contentHelpers';
+import { resolveImage } from '../utils/contentHelpers';
 
 // Get settings content
 const settingsEntries = await getCollection('settings');
 const settings = settingsEntries[0]?.data || {};
-const footerMapImage = settings.footerMapImage ? resolveImagePath(settings.footerMapImage) : undefined;
+const footerMapImage = settings.footerMapImage ? resolveImage(settings.footerMapImage) : undefined;
 
 const seoTitle = `Imprint | ${settings.seoSiteName || settings.studioName || 'High Contrast Tattoo'}`;
 const seoDescription = 'Imprint and legal notice.';

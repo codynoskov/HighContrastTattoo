@@ -31,7 +31,7 @@ const { artist, works, styles } = Astro.props;
 // Get settings content
 const settingsEntries = await getCollection('settings');
 const settings = settingsEntries[0]?.data || {};
-const footerMapImage = settings.footerMapImage ? resolveImagePath(settings.footerMapImage) : undefined;
+const footerMapImage = settings.footerMapImage ? resolveImage(settings.footerMapImage) : undefined;
 const artistData = artist.data;
 
 // Render the markdown body content

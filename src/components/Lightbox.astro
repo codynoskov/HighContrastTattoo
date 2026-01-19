@@ -44,12 +44,12 @@ const { images = [], galleryId } = Astro.props;
             <OptimizedImage
               src={image.src || imagePlaceholder}
               alt={image.alt || `Gallery image ${index + 1}`}
+              widths={[800, 1200, 1920]}
               sizes="100vw"
               loading="lazy"
               className="lightbox-image"
               fallbackSrc={imagePlaceholder.src}
               quality={90}
-              width={1920}
             />
             <div class="gallery-lightbox-counter">
               <span class="gallery-lightbox-current">{index + 1}</span>

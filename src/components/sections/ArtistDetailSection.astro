@@ -3,6 +3,7 @@ import ArtistImage from '../ArtistImage.astro';
 import Button from '../Button.astro';
 import Gallery from '../Gallery.astro';
 import type { GalleryImage } from '../../utils/contentHelpers';
+import type { ImageMetadata } from 'astro';
 
 interface StyleLink {
   name: string;
@@ -14,7 +15,7 @@ interface Props {
   slug?: string;
   intro: string;
   instagram?: string;
-  photo?: string;
+  photo?: string | ImageMetadata;
   styles?: StyleLink[];
   galleryImages?: GalleryImage[];
   className?: string;

@@ -7,12 +7,12 @@ import Divider from '../components/Divider.astro';
 import ArtistsHeroSection from '../components/sections/ArtistsHeroSection.astro';
 import ArtistDetailSection from '../components/sections/ArtistDetailSection.astro';
 import { getCollection } from 'astro:content';
-import { getSlug, getWorksByArtist, worksToGalleryImages, resolveStyles, resolveImagePath } from '../utils/contentHelpers';
+import { getSlug, getWorksByArtist, worksToGalleryImages, resolveStyles, resolveImage } from '../utils/contentHelpers';
 
 // Get settings content
 const settingsEntries = await getCollection('settings');
 const settings = settingsEntries[0]?.data || {};
-const footerMapImage = settings.footerMapImage ? resolveImagePath(settings.footerMapImage) : undefined;
+const footerMapImage = settings.footerMapImage ? resolveImage(settings.footerMapImage) : undefined;
 
 // Get artists page content
 const artistsPageEntries = await getCollection('artistsPage');
@@ -60,7 +60,7 @@ const artists = sortedArtists.map(entry => {
     slug: artistSlug,
     intro: entry.data.intro,
     instagram: entry.data.instagram,
-    photo: resolveImagePath(entry.data.photo),
+    photo: resolveImage(entry.data.photo),
     styles,
     galleryImages,
   };

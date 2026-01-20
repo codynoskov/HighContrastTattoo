@@ -11,13 +11,13 @@ jobs:
   merge-if-needed:
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # Required to push to main
+      contents: write
     
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Get full history to compare branches
+          fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
           
       - name: Configure Git
@@ -27,27 +27,21 @@ jobs:
           
       - name: Check for changes and merge
         run: |
-          # Fetch latest from both branches
           git fetch origin draft
           git fetch origin main
           
-          # Check if draft has commits ahead of main
           AHEAD=$(git rev-list --count origin/main..origin/draft)
           
           if [ "$AHEAD" -gt 0 ]; then
-            echo "✓ Found $AHEAD new commit(s) in draft branch"
-            echo "Merging draft → main..."
+            echo "Found $AHEAD new commits in draft branch"
+            echo "Merging draft to main..."
             
-            # Checkout main and merge draft
             git checkout main
-            git merge origin/draft --no-ff -m "Auto-merge: Publish $AHEAD commit(s) from draft branch"
-            
-            # Push to main (triggers Cloudflare deployment)
+            git merge origin/draft --no-ff -m "Auto-merge: Publish $AHEAD commits from draft"
             git push origin main
             
-            echo "✓ Successfully merged and pushed to main"
-            echo "Cloudflare deployment will be triggered automatically"
+            echo "Successfully merged and pushed to main"
           else
-            echo "ℹ No new changes in draft branch"
-            echo "Skipping merge - nothing to deploy"
+            echo "No new changes in draft branch"
+            echo "Skipping merge"
           fi

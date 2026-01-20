@@ -1,0 +1,56 @@
+name: Auto-merge draft to main
+
+on:
+  schedule:
+    # Runs at :00, :20, and :40 of every hour
+    - cron: '0,20,40 * * * *'
+  # Allow manual trigger for testing
+  workflow_dispatch:
+
+jobs:
+  merge-if-needed:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Required to push to main
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Get full history to compare branches
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+      - name: Check for changes and merge
+        run: |
+          # Fetch latest from both branches
+          git fetch origin draft
+          git fetch origin main
+          
+          # Check if draft has commits ahead of main
+          AHEAD=$(git rev-list --count origin/main..origin/draft)
+          
+          if [ "$AHEAD" -gt 0 ]; then
+            echo "✓ Found $AHEAD new commit(s) in draft branch"
+            echo "Merging draft → main..."
+            
+            # Checkout main and merge draft
+            git checkout main
+            git merge origin/draft --no-ff -m "Auto-merge: Publish changes from draft branch
+
+This merge includes $AHEAD commit(s) from the draft branch.
+Triggered by scheduled GitHub Action at $(date -u '+%Y-%m-%d %H:%M:%S UTC')."
+            
+            # Push to main (triggers Cloudflare deployment)
+            git push origin main
+            
+            echo "✓ Successfully merged and pushed to main"
+            echo "Cloudflare deployment will be triggered automatically"
+          else
+            echo "ℹ No new changes in draft branch"
+            echo "Skipping merge - nothing to deploy"
+          fi

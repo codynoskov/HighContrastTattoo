@@ -4,6 +4,7 @@ import '../styles/fonts.css';
 import '../styles/typography.css';
 import SEO from '../components/SEO.astro';
 import LocalBusinessSchema from '../components/LocalBusinessSchema.astro';
+import PostHog from '../components/posthog.astro';
 import { getCollection } from 'astro:content';
 import { getFaviconUrl } from '../utils/contentHelpers';
 
@@ -49,6 +50,9 @@ const defaultOgImage = settings.seoDefaultOgImage || '/images/og-default.jpg';
 		<link rel="apple-touch-icon" sizes="180x180" href={getFaviconUrl('apple-touch-icon.png')} />
 		<link rel="manifest" href="/site.webmanifest" />
 		<meta name="generator" content={Astro.generator} />
+		
+		<!-- PostHog Analytics -->
+		<PostHog />
 		
 		<!-- SEO Meta Tags -->
 		<SEO

@@ -40,10 +40,7 @@ jobs:
             
             # Checkout main and merge draft
             git checkout main
-            git merge origin/draft --no-ff -m "Auto-merge: Publish changes from draft branch
-
-This merge includes $AHEAD commit(s) from the draft branch.
-Triggered by scheduled GitHub Action at $(date -u '+%Y-%m-%d %H:%M:%S UTC')."
+            git merge origin/draft --no-ff -m "Auto-merge: Publish $AHEAD commit(s) from draft branch"
             
             # Push to main (triggers Cloudflare deployment)
             git push origin main

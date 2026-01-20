@@ -3,6 +3,6 @@ image: /images/nastia-zlotin-4.jpeg
 styles:
   - floral-and-botanic
   - neo-traditional
-  - art-nouveau
+  - cover-up
 order: 4
 ---

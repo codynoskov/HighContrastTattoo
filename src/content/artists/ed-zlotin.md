@@ -16,7 +16,6 @@ styles:
   - illustrative
   - surrealism
   - mandala-and-geometric
-  - white-on-black
   - dotwork
 noIndex: false
 ---

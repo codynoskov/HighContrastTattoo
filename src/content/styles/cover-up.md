@@ -1,7 +1,7 @@
 ---
 name: Cover-up
 slugOverride: cover-up
-order: 9998
+order: 21
 intro: Cover-up work focuses on hiding or reworking old tattoos and replacing
   them with a clear, fresh design.
 cardImage: /images/nastia-zlotin-2.jpeg

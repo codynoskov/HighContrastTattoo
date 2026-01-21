@@ -50,6 +50,7 @@ const { images = [], galleryId } = Astro.props;
               className="lightbox-image"
               fallbackSrc={imagePlaceholder.src}
               quality={90}
+              objectFit="contain"
             />
             <div class="gallery-lightbox-counter">
               <span class="gallery-lightbox-current">{index + 1}</span>

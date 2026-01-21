@@ -27,6 +27,7 @@ interface Props {
   className?: string;
   fallbackSrc?: string;
   quality?: number; // 1-100, default 80
+  objectFit?: 'cover' | 'contain'; // How image should fit container (default: cover)
 }
 
 const {
@@ -41,6 +42,7 @@ const {
   className = '',
   fallbackSrc,
   quality = 80,
+  objectFit = 'cover',
 } = Astro.props;
 
 // Determine the type of image source
@@ -106,6 +108,11 @@ const srcsetFallbackWidth = widths ? Math.max(...widths) : undefined;
 
 // Determine if we should use srcset mode (widths array provided)
 const useSrcset = widths && widths.length > 0 && isImageMetadata;
+
+// For contain mode, use auto sizing to show full image; for cover mode, use 100% sizing
+const sizeStyle = objectFit === 'contain' 
+  ? 'max-width: 100%; max-height: 100%; width: auto; height: auto;'
+  : 'width: 100%; height: 100%;';
 ---
 
 {!hasSrc ? (
@@ -131,7 +138,7 @@ const useSrcset = widths && widths.length > 0 && isImageMetadata;
     loading={loading}
     class={className}
     format="webp"
-    style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
+    style={`${sizeStyle} object-fit: ${objectFit}; object-position: center;`}
   />
 ) : isImageMetadata ? (
   /* Single-size optimized image */
@@ -144,7 +151,7 @@ const useSrcset = widths && widths.length > 0 && isImageMetadata;
     loading={loading}
     class={className}
     format="webp"
-    style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
+    style={`${sizeStyle} object-fit: ${objectFit}; object-position: center;`}
   />
 ) : isRemoteUrl ? (
   /* Remote URL - serve directly from CDN without build-time processing */
@@ -155,7 +162,7 @@ const useSrcset = widths && widths.length > 0 && isImageMetadata;
     height={finalHeight}
     loading={loading}
     class={className}
-    style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
+    style={`${sizeStyle} object-fit: ${objectFit}; object-position: center;`}
     onerror={fallbackSrc ? `this.src='${fallbackSrc}'; this.onerror=null;` : undefined}
   />
 ) : (
@@ -167,7 +174,7 @@ const useSrcset = widths && widths.length > 0 && isImageMetadata;
     height={finalHeight}
     loading={loading}
     class={className}
-    style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
+    style={`${sizeStyle} object-fit: ${objectFit}; object-position: center;`}
     onerror={fallbackSrc ? `this.src='${fallbackSrc}'; this.onerror=null;` : undefined}
   />
 )}

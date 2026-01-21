@@ -4,7 +4,7 @@ slugOverride: cover-up
 order: 21
 intro: Cover-up work focuses on hiding or reworking old tattoos and replacing
   them with a clear, fresh design.
-cardImage: /images/nastia-zlotin-2.jpeg
+cardImage: /images/7.jpg
 noIndex: false
 ---
 Cover-up tattoos are for people who already have a tattoo but do not like it anymore, maybe it is old, badly done or simply does not feel like you now. Cover-up work is not just “drawing over” an old tattoo, it is about building a new, clear design that is stronger and more readable than the unwanted piece below it.

@@ -10,9 +10,7 @@ instagram: arspunx
 styles:
   - traditional-and-old-school
   - fineline
-  - tribal-and-neo-tribal
   - linework
-  - white-on-black
 noIndex: false
 ---
 Hi, I’m Arseniy. I come from the hardcore punk scene and I’ve been tattooing since 2013. That background shaped how I see tattooing: direct, honest and built on strong fundamentals rather than decoration for its own sake. Over time I naturally gravitated towards Traditional & Old School tattooing, where clear symbols, bold outlines and simple, effective colour do most of the talking.

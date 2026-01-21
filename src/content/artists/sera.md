@@ -14,6 +14,10 @@ styles:
   - neo-traditional
   - art-nouveau
 noIndex: false
+metaTitle: Sera | High Contrast Tattoo Berlin
+metaDescription: Illustrative tattoo artist in Berlin Friedrichshain.
+  Neo-traditional and Art Nouveau style with earthy colours. Wildlife and
+  folklore-inspired designs.
 ---
 Hiya and welcome to this little “Get to Know Me” section! I’ve been working as a professional tattoo artist since 2019 and joined the High Contrast family in October 2024. My style is largely illustrative and floats along the Neo Traditional spectrum; it follows clear, flowing structures that complement the body, and is brought to life by a selection of colours that feel earthy and natural rather than hyper-saturated. Of course my designs can be easily adapted to your preferences, as well – whether that's a soft colour piece, a more subtle black and grey motif or a pure linework composition.  
   

@@ -43,4 +43,8 @@ artistsDescription: Our team brings years of experience across many tattoo
   styles. Explore portfolios and find the right artist for your idea.
 artistsCtaText: Meet all our Artists
 noIndex: false
+metaTitle: High Contrast Tattoo | Custom Tattoo Studio Berlin
+metaDescription: Custom tattoo studio in Berlin Friedrichshain. Professional
+  artists, walk-ins welcome. Neo-traditional, blackwork, floral and more styles.
+  Book your session.
 ---

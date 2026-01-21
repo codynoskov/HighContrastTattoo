@@ -16,5 +16,9 @@ styles:
   - dotwork
   - cover-up
 noIndex: false
+metaTitle: Sinah Ra | High Contrast Tattoo Berlin
+metaDescription: Blackwork tattoo artist in Berlin Friedrichshain. Ornamental,
+  floral and geometric designs. Specializing in symmetrical pieces and
+  cover-ups.
 ---
 Hello, I’m Sinah. I work mostly in Blackwork, combining Floral & Botanic, Ornamental and Mandala & Geometric elements to create clean, structured designs. I especially enjoy large, symmetrical pieces like sternums, backs or torso projects, but I’m also happy to work on smaller tattoos, Dotwork details and cover-ups when an old piece needs a fresh start. I work with your Body flow and I prefer clear, readable designs that becomes a fusion with your Body.

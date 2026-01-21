@@ -13,6 +13,10 @@ styles:
   - engraving
   - floral-and-botanic
 noIndex: false
+metaTitle: Gil | High Contrast Tattoo Berlin
+metaDescription: Engraving style tattoo artist in Berlin Friedrichshain.
+  Medieval woodcut aesthetics, detailed linework and botanical designs. Book
+  your custom tattoo.
 ---
 Hey, I’m Gil, born and raised in berlin. I tattoo in an engraving style that takes its cues from medieval woodcuts and copper engravings: dense linework, hatching, cross-hatching and a print-like feel, as if the design could have been taken from an old book or map.  
   

@@ -12,6 +12,10 @@ styles:
   - linework
   - traditional-and-old-school
 noIndex: false
+metaTitle: Sarah | High Contrast Tattoo Berlin
+metaDescription: Blackwork and traditional tattoo artist in Berlin
+  Friedrichshain. Clean linework, bold shapes and a calm, supportive experience.
+  Book your session.
 ---
 Hey, I’m Sarah, a beginner tattoo artist with roots in Castrop-Rauxel and a big love for black ink, bold shapes and classic tattoo imagery. My style currently sits somewhere between Blackwork and Traditional & Old School: strong outlines, simple forms and clear, high contrast designs, often supported by straightforward Linework.  
   

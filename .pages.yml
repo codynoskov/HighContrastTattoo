@@ -469,7 +469,6 @@ content:
     path: src/content/styles
     create: true
     delete: true
-    filename: "{{fields.slugOverride}}"
     view:
       fields: [order, name]
       sort_by: order
@@ -544,7 +543,6 @@ content:
     path: src/content/artists
     create: true
     delete: true
-    filename: "{{fields.slugOverride}}"
     view:
       fields: [order, photo, name]
       sort_by: order

@@ -3,13 +3,6 @@ name: Cartoon
 slugOverride: cartoon
 order: 12
 intro: Playful, humorous tattoos with a bold cartoony feel.
-
-  animated movies, TV shows and comic strips. Many of our clients choose this
-  style to show humour, childhood memories or love for pop culture. In our
-  Berlin-Friedrichshain studio, our artists tattoo famous characters, memes and
-  mascots or create new cartoon figures from your ideas. These tattoos work well
-  on the forearm, calf, shoulder and other visible spots if you want something
-  light and fun.
+noIndex: false
 ---
-
-Cartoon tattoos are bright, playful and often exaggerated, inspired by
+Cartoon tattoos are bright, playful and often exaggerated, inspired by animated movies, TV shows and comic strips. Many of our clients choose this style to show humour, childhood memories or love for pop culture. In our Berlin-Friedrichshain studio, our artists tattoo famous characters, memes and mascots or create new cartoon figures from your ideas. These tattoos work well on the forearm, calf, shoulder and other visible spots if you want something light and fun.

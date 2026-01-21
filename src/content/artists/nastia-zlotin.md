@@ -12,6 +12,7 @@ styles:
   - floral-and-botanic
   - art-nouveau
   - neo-traditional
+  - cover-up
 noIndex: false
 ---
 Hi, I’m Nastia. I own High Contrast Tattoo Berlin together with my husband Ed. I’ve been tattooing for over 13 years, working mainly with neo-traditional and colour tattoos. I enjoy building bright, carefully composed pieces that feel elegant and personal instead of generic. For me, a good tattoo should reflect something real about the person wearing it, their personality, their story, their taste.

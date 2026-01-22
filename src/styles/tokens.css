@@ -284,12 +284,16 @@
 
 .section--carousel .carousel-track .card {
   min-width: 300px;
-  max-width: 80vw;
+  max-width: 364px;
 }
 
 @media (max-width: 767px) {
   .section--carousel .section-text-block {
     max-width: 100%;
+  }
+
+  .section--carousel .carousel-track .card {
+    max-width: 80vw;
   }
 }
 

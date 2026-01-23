@@ -1,7 +1,7 @@
 ---
 name: Skezy
 slugOverride: skezy
-order: 7
+order: 10
 photo: /images/skezy-avatar.jpg
 intro: Skezy is a heavy blackwork and lettering artist creating abstract,
   freehand designs with a dark, obscure and aggressively graphic aesthetic.
@@ -10,10 +10,10 @@ styles:
   - heavy-blackwork
   - blackwork
   - calligraphy
-noIndex: false
 metaTitle: Skezy | High Contrast Tattoo Berlin
 metaDescription: Heavy blackwork and lettering artist in Berlin Friedrichshain.
   Abstract freehand designs with dark aesthetics. Book your session now.
+noIndex: false
 ---
 My style is heavy, gooey blackwork and lettering. I like abstract, expressive shapes that don’t try to be polite and will stand out immediately from other tattoos around them. Think big, hellish meat, distorted forms and dark aesthetics rather than clean, “pretty” pictures.
 

@@ -1,6 +1,8 @@
 ---
+order: 55
 image: /images/ed-works-56.jpg
 styles:
-  - graphic
-order: 55
+  - blackwork
+  - script-calligraphy
+  - dotwork
 ---

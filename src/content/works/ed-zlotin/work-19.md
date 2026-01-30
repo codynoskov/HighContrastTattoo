@@ -1,6 +1,7 @@
 ---
+order: 19
 image: /images/ed-works-19.jpg
 styles:
-  - graphic
-order: 19
+  - blackwork
+  - dotwork
 ---

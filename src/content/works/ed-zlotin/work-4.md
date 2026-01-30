@@ -1,6 +1,7 @@
 ---
+order: 4
 image: /images/ed-works-4.jpg
 styles:
-  - graphic
-order: 4
+  - blackwork
+  - illustrative
 ---

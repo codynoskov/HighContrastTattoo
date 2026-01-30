@@ -4,7 +4,7 @@ slugOverride: ornamental
 order: 18
 intro: Decorative tattoos that feel like jewellery or architectural detail on
   the skin.
-cardImage: /images/PHOTO-2026-01-21-17-35-47 (1).jpg
+cardImage: /images/PHOTO-2026-01-21-17-32-35 (2).jpg
 metaTitle: Ornamental Tattoos | High Contrast Tattoo Berlin
 metaDescription: Ornamental tattoos in Berlin Friedrichshain. Decorative designs
   like jewellery on skin. Filigree, lace patterns and elegant custom pieces for

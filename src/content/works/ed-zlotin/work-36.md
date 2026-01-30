@@ -1,6 +1,7 @@
 ---
+order: 36
 image: /images/ed-works-37.jpg
 styles:
-  - graphic
-order: 36
+  - blackwork
+  - dotwork
 ---

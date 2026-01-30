@@ -647,7 +647,8 @@ content:
         label: Order
         type: number
         required: true
-        description: "Display order — also becomes the filename (e.g. order 5 → work-5.md). Lower numbers appear first. Use decimals (5.5) to insert between items."
+        default: 1
+        description: "Display order — also becomes the filename (e.g. order 5 → work-5.md). Use 2, 3, 4... for new works. Use decimals (5.5) to insert between items."
       
       - name: image
         label: Tattoo Image

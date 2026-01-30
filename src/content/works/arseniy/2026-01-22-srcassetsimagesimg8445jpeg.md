@@ -1,7 +1,0 @@
----
-image: /images/IMG_8445.jpeg
-styles:
-  - traditional-and-old-school
-  - script-calligraphy
-order: 21
----

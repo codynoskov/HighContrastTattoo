@@ -1,6 +1,8 @@
 ---
+order: 26
 image: /images/ed-works-26.jpg
 styles:
-  - graphic
-order: 26
+  - blackwork
+  - dotwork
+  - surrealism
 ---

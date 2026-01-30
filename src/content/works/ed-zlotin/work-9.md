@@ -1,6 +1,7 @@
 ---
+order: 9
 image: /images/ed-works-9.jpg
 styles:
-  - graphic
-order: 9
+  - surrealism
+  - blackwork
 ---

@@ -1,6 +1,7 @@
 ---
+order: 77
 image: /images/ed-works-78.jpg
 styles:
-  - graphic
-order: 77
+  - dotwork
+  - mandala-and-geometric
 ---

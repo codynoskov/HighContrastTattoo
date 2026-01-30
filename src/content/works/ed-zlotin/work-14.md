@@ -1,6 +1,8 @@
 ---
+order: 14
 image: /images/ed-works-14.jpg
 styles:
-  - graphic
-order: 14
+  - blackwork
+  - dotwork
+  - surrealism
 ---

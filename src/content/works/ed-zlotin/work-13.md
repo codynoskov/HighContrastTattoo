@@ -1,6 +1,8 @@
 ---
+order: 13
 image: /images/ed-works-13.jpg
 styles:
-  - graphic
-order: 13
+  - blackwork
+  - dotwork
+  - surrealism
 ---

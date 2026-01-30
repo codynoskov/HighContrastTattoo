@@ -1,6 +1,7 @@
 ---
+order: 2
 image: /images/ed-works-2.jpg
 styles:
-  - graphic
-order: 2
+  - blackwork
+  - dotwork
 ---

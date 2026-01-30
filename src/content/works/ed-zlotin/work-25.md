@@ -1,6 +1,7 @@
 ---
+order: 25
 image: /images/ed-works-25.jpg
 styles:
-  - graphic
-order: 25
+  - blackwork
+  - dotwork
 ---

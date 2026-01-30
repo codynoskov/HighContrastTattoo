@@ -33,6 +33,17 @@ const sortedArtists = [...artistEntries].sort((a, b) => {
   return a.data.name.localeCompare(b.data.name);
 });
 
+// Helper to check if a resolved image is valid (ImageMetadata or remote URL)
+function isValidImage(img: ImageMetadata | string): boolean {
+  if (!img) return false;
+  // ImageMetadata objects are valid
+  if (typeof img === 'object' && img !== null && 'src' in img) return true;
+  // Remote URLs are valid
+  if (typeof img === 'string' && (img.startsWith('http://') || img.startsWith('https://'))) return true;
+  // Local path strings are not valid (file might not exist)
+  return false;
+}
+
 // Transform artists into card format
 const artistsData = sortedArtists.map((entry) => {
   const slug = getSlug(entry);
@@ -46,8 +57,14 @@ const artistsData = sortedArtists.map((entry) => {
     href: style.href
   }));
   
-  // Resolve the artist photo - returns ImageMetadata if available, string otherwise
-  const resolvedPhoto = entry.data.photo ? resolveImage(entry.data.photo) : placeholderImage;
+  // Resolve the artist photo - only use if valid, otherwise fall back to placeholder
+  let resolvedPhoto: ImageMetadata | string = placeholderImage;
+  if (entry.data.photo) {
+    const resolved = resolveImage(entry.data.photo);
+    if (isValidImage(resolved)) {
+      resolvedPhoto = resolved;
+    }
+  }
   
   return {
     title: entry.data.name,

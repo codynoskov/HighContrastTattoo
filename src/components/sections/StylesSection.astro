@@ -43,6 +43,17 @@ function getImageKey(img: ImageMetadata | string): string {
   return img.src;
 }
 
+// Helper to check if a resolved image is valid (ImageMetadata or remote URL)
+function isValidImage(img: ImageMetadata | string): boolean {
+  if (!img) return false;
+  // ImageMetadata objects are valid
+  if (typeof img === 'object' && img !== null && 'src' in img) return true;
+  // Remote URLs are valid
+  if (typeof img === 'string' && (img.startsWith('http://') || img.startsWith('https://'))) return true;
+  // Local path strings are not valid (file might not exist)
+  return false;
+}
+
 // Transform styles into card format
 const stylesData = sortedStyles.map((entry) => {
   const slug = getSlug(entry);
@@ -50,20 +61,25 @@ const stylesData = sortedStyles.map((entry) => {
   
   let image: ImageMetadata | string = imagePlaceholder;
   
-  // Priority 1: Use cardImage if available
+  // Priority 1: Use cardImage if available and valid
   if (entry.data.cardImage) {
-    image = resolveImage(entry.data.cardImage);
-    usedImageKeys.add(getImageKey(image));
+    const resolved = resolveImage(entry.data.cardImage);
+    if (isValidImage(resolved)) {
+      image = resolved;
+      usedImageKeys.add(getImageKey(image));
+    }
   } 
-  // Priority 2: Use an unused work image
-  else if (styleWorks.length > 0) {
+  // Priority 2: Use an unused work image (only if valid)
+  if (image === imagePlaceholder && styleWorks.length > 0) {
     for (const work of styleWorks) {
       const workImage = resolveImage(work.data.image);
-      const key = getImageKey(workImage);
-      if (!usedImageKeys.has(key)) {
-        image = workImage;
-        usedImageKeys.add(key);
-        break;
+      if (isValidImage(workImage)) {
+        const key = getImageKey(workImage);
+        if (!usedImageKeys.has(key)) {
+          image = workImage;
+          usedImageKeys.add(key);
+          break;
+        }
       }
     }
   }

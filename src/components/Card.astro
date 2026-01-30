@@ -55,10 +55,19 @@ const descriptionSizeClass = `card-description-${descriptionSize}`;
 // Get optimized image URL for background-image
 let backgroundImageUrl = '';
 if (!isArtist) {
+  // Always pre-optimize the placeholder so we have a guaranteed fallback
+  const optimizedPlaceholder = await getImage({
+    src: imagePlaceholder,
+    width: 364,
+    height: 273,
+    quality: 85,
+    format: 'webp'
+  });
+  const placeholderUrl = optimizedPlaceholder.src.toString();
+  
   const imageSrc = image || imagePlaceholder;
   const isRemoteUrl = typeof imageSrc === 'string' && (imageSrc.startsWith('http://') || imageSrc.startsWith('https://'));
   const isImageMetadata = typeof imageSrc === 'object' && imageSrc !== null && 'src' in imageSrc;
-  const isLocalPath = typeof imageSrc === 'string' && imageSrc.startsWith('/');
   
   try {
     if (isImageMetadata) {
@@ -74,30 +83,18 @@ if (!isArtist) {
     } else if (isRemoteUrl) {
       // For remote URLs (R2 images) - serve directly from CDN without build-time processing
       backgroundImageUrl = imageSrc as string;
-    } else if (isLocalPath) {
-      // For local paths from public/ - serve as-is (fallback during migration)
-      backgroundImageUrl = imageSrc as string;
     } else {
-      // Fallback to placeholder
-      const optimized = await getImage({
-        src: imagePlaceholder,
-        width: 364,
-        height: 273,
-        quality: 85,
-        format: 'webp'
-      });
-      backgroundImageUrl = optimized.src.toString();
+      // For local path strings or any other case, use the pre-optimized placeholder
+      backgroundImageUrl = placeholderUrl;
     }
   } catch (error) {
-    // Fallback to placeholder if optimization fails
-    const optimized = await getImage({
-      src: imagePlaceholder,
-      width: 364,
-      height: 273,
-      quality: 85,
-      format: 'webp'
-    });
-    backgroundImageUrl = optimized.src.toString();
+    // Fallback to the pre-optimized placeholder if anything fails
+    backgroundImageUrl = placeholderUrl;
+  }
+  
+  // Final safety check - if backgroundImageUrl is still empty, use placeholder
+  if (!backgroundImageUrl) {
+    backgroundImageUrl = placeholderUrl;
   }
 }
 ---
@@ -201,6 +198,7 @@ if (!isArtist) {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-color: var(--color-neutral-200); /* Fallback color if image fails to load */
   }
 
 

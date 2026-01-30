@@ -3,7 +3,7 @@ name: Blackwork
 slugOverride: blackwork
 order: 2
 intro: Bold, high-impact tattoos created with solid black ink.
-cardImage: /images/sina-ra-1.jpeg
+cardImage: /images/ed-works-6.jpg
 metaTitle: Blackwork Tattoos | High Contrast Tattoo Berlin
 metaDescription: Bold blackwork tattoos in Berlin Friedrichshain. Solid black
   ink designs, ornaments, sleeves and cover-ups by experienced artists. Book

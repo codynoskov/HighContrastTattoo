@@ -1,6 +1,7 @@
 ---
+order: 24
 image: /images/ed-works-24.jpg
 styles:
-  - graphic
-order: 24
+  - blackwork
+  - surrealism
 ---

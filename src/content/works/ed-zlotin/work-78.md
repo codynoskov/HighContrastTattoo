@@ -1,6 +1,7 @@
 ---
+order: 78
 image: /images/ed-works-79.jpg
 styles:
-  - graphic
-order: 78
+  - blackwork
+  - floral-and-botanic
 ---

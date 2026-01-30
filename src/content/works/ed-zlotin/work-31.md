@@ -1,6 +1,7 @@
 ---
+order: 31
 image: /images/ed-works-32.jpg
 styles:
-  - graphic
-order: 31
+  - blackwork
+  - surrealism
 ---

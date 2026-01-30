@@ -1,6 +1,7 @@
 ---
+order: 61
 image: /images/ed-works-62.jpg
 styles:
-  - graphic
-order: 61
+  - blackwork
+  - mandala-and-geometric
 ---

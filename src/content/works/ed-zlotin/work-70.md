@@ -1,6 +1,6 @@
 ---
+order: 70
 image: /images/ed-works-71.jpg
 styles:
-  - graphic
-order: 70
+  - floral-and-botanic
 ---

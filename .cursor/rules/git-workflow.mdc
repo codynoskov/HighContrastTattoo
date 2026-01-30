@@ -18,3 +18,4 @@
 
 - Do **not** commit directly to `main` — content added there won't appear in Pages CMS (which reads from draft)
 - To sync draft with main (e.g., after accidental direct commits to main): merge main into draft, then push draft
+- When syncing, you can ignore later commits to draft — prioritize bringing draft in line with main

@@ -1,6 +1,8 @@
 ---
+order: 21
 image: /images/ed-works-21.jpg
 styles:
-  - graphic
-order: 21
+  - blackwork
+  - dotwork
+  - surrealism
 ---

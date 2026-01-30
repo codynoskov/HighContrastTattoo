@@ -1,7 +1,7 @@
 ---
 name: Script - Calligraphy
 slugOverride: script-calligraphy
-order: 17
+order: 9
 intro: Expressive lettering tattoos that focus on the shape, rhythm and flow of
   written words.
 metaTitle: Calligraphy & Script | High Contrast Tattoo Berlin

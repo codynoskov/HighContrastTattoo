@@ -3,6 +3,7 @@ media:
     label: Images
     input: src/assets/images
     output: /images
+    path: .  # Open media browser at root of images folder (shows all files)
     extensions: [jpg, jpeg, png, gif, svg, webp, avif]
     categories: [image]
 

@@ -1,6 +1,8 @@
 ---
+order: 47
 image: /images/ed-works-48.jpg
 styles:
-  - graphic
-order: 47
+  - blackwork
+  - dotwork
+  - surrealism
 ---

@@ -1,6 +1,7 @@
 ---
+order: 75
 image: /images/ed-works-76.jpg
 styles:
-  - graphic
-order: 75
+  - dotwork
+  - illustrative
 ---

@@ -1,6 +1,8 @@
 ---
+order: 73
 image: /images/ed-works-74.jpg
 styles:
-  - graphic
-order: 73
+  - blackwork
+  - dotwork
+  - illustrative
 ---

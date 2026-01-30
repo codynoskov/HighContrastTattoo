@@ -1,6 +1,7 @@
 ---
+order: 65
 image: /images/ed-works-66.jpg
 styles:
-  - graphic
-order: 65
+  - blackwork
+  - floral-and-botanic
 ---

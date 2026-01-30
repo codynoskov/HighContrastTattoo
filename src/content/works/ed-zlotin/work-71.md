@@ -1,6 +1,7 @@
 ---
+order: 71
 image: /images/ed-works-72.jpg
 styles:
-  - graphic
-order: 71
+  - floral-and-botanic
+  - dotwork
 ---

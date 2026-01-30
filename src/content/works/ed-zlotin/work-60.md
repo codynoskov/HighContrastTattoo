@@ -1,6 +1,8 @@
 ---
+order: 60
 image: /images/ed-works-61.jpg
 styles:
-  - graphic
-order: 60
+  - blackwork
+  - dotwork
+  - illustrative
 ---

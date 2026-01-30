@@ -4,8 +4,8 @@
 
 **Always work on the `draft` branch first, then merge to `main`.**
 
-- **draft** – Branch for all new content and changes. Pages CMS edits this branch.
-- **main** – Production branch. Deployed to the live site. Updated by merging from draft.
+- **draft** – Staging branch for new content and changes. Merge to main to publish.
+- **main** – Production branch. Deployed to the live site. Pages CMS reads from main.
 
 ## Workflow
 
@@ -16,6 +16,6 @@
 
 ## Important
 
-- Do **not** commit directly to `main` — content added there won't appear in Pages CMS (which reads from draft)
+- Do **not** commit directly to `main` — use draft first, then merge. The CMS reads from main.
 - To sync draft with main (e.g., after accidental direct commits to main): merge main into draft, then push draft
 - When syncing, you can ignore later commits to draft — prioritize bringing draft in line with main

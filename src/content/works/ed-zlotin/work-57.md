@@ -1,6 +1,8 @@
 ---
+order: 57
 image: /images/ed-works-58.jpg
 styles:
   - graphic
-order: 57
+  - blackwork
+  - dotwork
 ---

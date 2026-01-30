@@ -1,6 +1,9 @@
 ---
+order: 35
 image: /images/ed-works-36.jpg
 styles:
+  - blackwork
+  - dotwork
   - graphic
-order: 35
+  - floral-and-botanic
 ---

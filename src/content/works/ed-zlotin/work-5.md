@@ -1,6 +1,8 @@
 ---
+order: 5
 image: /images/ed-works-5.jpg
 styles:
-  - graphic
-order: 5
+  - blackwork
+  - surrealism
+  - dotwork
 ---

@@ -1,7 +1,7 @@
 ---
 name: Art Nouveau
 slugOverride: art-nouveau
-order: 7
+order: 14
 intro: Decorative, flowing tattoos inspired by the Art Nouveau era.
 cardImage: /images/PXL_20240102_154142678~5.jpg
 metaTitle: Art Nouveau Tattoos | High Contrast Tattoo Berlin

@@ -1,7 +1,7 @@
 ---
 name: Ornamental
 slugOverride: ornamental
-order: 18
+order: 7
 intro: Decorative tattoos that feel like jewellery or architectural detail on
   the skin.
 cardImage: /images/PHOTO-2026-01-21-17-32-35 (2).jpg

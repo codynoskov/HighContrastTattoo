@@ -1,7 +1,7 @@
 ---
 name: Fineline
 slugOverride: fineline
-order: 11
+order: 18
 intro: Ultra-delicate tattoos made with very fine needles and subtle detail.
 metaTitle: Fineline Tattoos | High Contrast Tattoo Berlin
 metaDescription: Fineline tattoos in Berlin Friedrichshain. Delicate, ultra-thin

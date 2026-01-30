@@ -629,17 +629,26 @@ content:
   # ============================================
   # WORKS
   # ============================================
+  # Filename = order (e.g. work-1.md, work-2.md). Set order first when creating new works.
   - name: works
     label: Works
     type: collection
     path: src/content/works
     create: true
     delete: true
+    filename: 'work-{order}.md'
     view:
       fields: [order, styles, image]
+      primary: order
       sort_by: order
       sort_direction: asc
     fields:
+      - name: order
+        label: Order
+        type: number
+        required: true
+        description: "Display order — also becomes the filename (e.g. order 5 → work-5.md). Lower numbers appear first. Use decimals (5.5) to insert between items."
+      
       - name: image
         label: Tattoo Image
         type: image
@@ -656,12 +665,6 @@ content:
           value: "{slugOverride}"
           multiple: true
         description: Select all styles that apply to this work. Multiple can be selected.
-      
-      - name: order
-        label: Order
-        type: number
-        default: 9999
-        description: Lower numbers appear first. The first work is used as preview on artist cards. Items without an order appear at the end.
   
   # ============================================
   # REVIEWS

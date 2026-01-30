@@ -302,7 +302,8 @@ export function resolveStyles(styleSlugs: string[], styles: StyleEntry[]): Array
  * Artist is derived from the work's folder structure (slug prefix).
  */
 export function getWorksByArtist(artistSlug: string, works: WorkEntry[]): WorkEntry[] {
-  return works.filter((work) => getArtistSlugFromWork(work) === artistSlug);
+  const filtered = works.filter((work) => getArtistSlugFromWork(work) === artistSlug);
+  return filtered.sort((a, b) => (a.data.order ?? 9999) - (b.data.order ?? 9999));
 }
 
 /**
@@ -310,9 +311,10 @@ export function getWorksByArtist(artistSlug: string, works: WorkEntry[]): WorkEn
  * Handles both plain slugs and full paths from CMS stored in work.data.styles.
  */
 export function getWorksByStyle(styleSlug: string, works: WorkEntry[]): WorkEntry[] {
-  return works.filter((work) => 
+  const filtered = works.filter((work) => 
     normalizeStyleSlugs(work.data.styles).includes(styleSlug)
   );
+  return filtered.sort((a, b) => (a.data.order ?? 9999) - (b.data.order ?? 9999));
 }
 
 /**

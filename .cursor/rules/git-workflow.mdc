@@ -2,20 +2,19 @@
 
 ## Branch Strategy
 
-**Always work on the `draft` branch first, then merge to `main`.**
+**Always push to `draft` first, then merge to `main`.** Never commit or push directly to main.
 
-- **draft** – Staging branch for new content and changes. Merge to main to publish.
-- **main** – Production branch. Deployed to the live site. Pages CMS reads from main.
+- **draft** – Staging branch. Client edits in Pages CMS use draft. All changes go here first.
+- **main** – Production branch. Deployed to the live site. Only updated by merging from draft.
 
 ## Workflow
 
-1. **Start on draft**: `git checkout draft` before making changes
-2. **Commit to draft**: All new commits go to draft
-3. **Push draft**: `git push origin draft`
-4. **Publish**: Use the auto-merge workflow (or manual merge) to merge draft → main
+1. **Work on draft**: `git checkout draft` before making changes
+2. **Commit and push draft**: `git add ... && git commit ... && git push origin draft`
+3. **Publish**: Merge draft → main (manual or via auto-merge workflow)
 
 ## Important
 
-- Do **not** commit directly to `main` — use draft first, then merge. The CMS reads from main.
-- To sync draft with main (e.g., after accidental direct commits to main): merge main into draft, then push draft
-- When syncing, you can ignore later commits to draft — prioritize bringing draft in line with main
+- **Never** push directly to `main`. Always: push to draft → merge draft to main.
+- Do **not** commit directly to main — the client works in draft via Pages CMS.
+- To sync draft with main: merge main into draft, then push draft.

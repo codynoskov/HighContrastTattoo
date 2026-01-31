@@ -553,6 +553,7 @@
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-core-100-md);
+  cursor: pointer;
 }
 
 .nav-link:hover {

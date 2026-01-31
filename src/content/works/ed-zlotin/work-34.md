@@ -1,4 +1,6 @@
 ---
+artists:
+  - ed-zlotin
 order: 34
 image: /images/ed-works-35.jpg
 styles:

@@ -1,5 +1,7 @@
 ---
 image: /images/PXL_20241002_165159982.jpg
+artists:
+  - luara
 styles:
   - art-nouveau
   - neo-traditional

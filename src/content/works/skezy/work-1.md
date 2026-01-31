@@ -1,4 +1,6 @@
 ---
+artists:
+  - skezy
 order: 1
 image: /images/skezy-1.jpg
 styles:

@@ -235,12 +235,25 @@ export function getSlug(entry: { slug: string; data: { slugOverride?: string; na
 }
 
 /**
- * Extract artist slug from a work's slug.
- * Works are stored as: content/works/{artist}/{work-file}.md
- * So the slug is: {artist}/{work-name}
+ * Extract artist slugs from a work.
+ * Returns the artists array from frontmatter if available,
+ * otherwise falls back to folder-based derivation for backwards compatibility.
+ */
+export function getArtistSlugsFromWork(work: WorkEntry): string[] {
+  // Use explicit artists field if available
+  if (work.data.artists && work.data.artists.length > 0) {
+    return work.data.artists;
+  }
+  // Fallback to folder-based derivation (backwards compatibility)
+  return [work.slug.split('/')[0]];
+}
+
+/**
+ * @deprecated Use getArtistSlugsFromWork instead (returns array for multi-artist support)
  */
 export function getArtistSlugFromWork(work: WorkEntry): string {
-  return work.slug.split('/')[0];
+  const artists = getArtistSlugsFromWork(work);
+  return artists[0] || work.slug.split('/')[0];
 }
 
 /**
@@ -299,10 +312,10 @@ export function resolveStyles(styleSlugs: string[], styles: StyleEntry[]): Array
 
 /**
  * Filter works by artist slug.
- * Artist is derived from the work's folder structure (slug prefix).
+ * Checks if the artist is included in the work's artists array.
  */
 export function getWorksByArtist(artistSlug: string, works: WorkEntry[]): WorkEntry[] {
-  const filtered = works.filter((work) => getArtistSlugFromWork(work) === artistSlug);
+  const filtered = works.filter((work) => getArtistSlugsFromWork(work).includes(artistSlug));
   return filtered.sort((a, b) => (a.data.order ?? 9999) - (b.data.order ?? 9999));
 }
 
@@ -368,9 +381,20 @@ export function worksToGalleryImages(works: WorkEntry[], options: WorksToGallery
       });
     } else if (context === 'style' && artists.length > 0) {
       // Show artist tags for style pages (Accent color) with links to artist pages
-      const resolvedArtist = resolveArtist(getArtistSlugFromWork(work), artists);
-      if (resolvedArtist) {
-        tags.push({ text: `Created by ${resolvedArtist.name}`, color: 'Accent', href: resolvedArtist.href });
+      // Support multiple artists per work
+      const artistSlugs = getArtistSlugsFromWork(work);
+      const resolvedArtists = artistSlugs
+        .map(slug => resolveArtist(slug, artists))
+        .filter((a): a is { name: string; href: string } => a !== undefined);
+      
+      if (resolvedArtists.length === 1) {
+        // Single artist - use "Created by" format
+        tags.push({ text: `Created by ${resolvedArtists[0].name}`, color: 'Accent', href: resolvedArtists[0].href });
+      } else if (resolvedArtists.length > 1) {
+        // Multiple artists - show each name as a separate tag
+        resolvedArtists.forEach((artist) => {
+          tags.push({ text: artist.name, color: 'Accent', href: artist.href });
+        });
       }
     }
 

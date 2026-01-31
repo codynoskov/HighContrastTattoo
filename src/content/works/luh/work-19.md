@@ -1,5 +1,7 @@
 ---
 image: /images/PXL_20240103_151652747~2.jpg
+artists:
+  - luara
 styles:
   - anime-and-manga
   - neo-traditional

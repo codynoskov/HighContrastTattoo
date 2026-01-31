@@ -1,4 +1,6 @@
 ---
+artists:
+  - ed-zlotin
 order: 68
 image: /images/ed-works-69.jpg
 styles:

@@ -1,5 +1,7 @@
 ---
 image: /images/IMG_5187.jpeg
+artists:
+  - bruno
 styles:
   - surrealism
   - blackwork

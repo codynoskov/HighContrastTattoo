@@ -1,5 +1,7 @@
 ---
 image: /images/PXL_20250911_153708399~5.jpg
+artists:
+  - sera
 styles:
   - illustrative
   - neo-traditional

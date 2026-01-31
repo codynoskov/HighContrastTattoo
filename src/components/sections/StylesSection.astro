@@ -3,7 +3,7 @@ import Card from '../Card.astro';
 import Button from '../Button.astro';
 import imagePlaceholder from '../../assets/images/image-placeholder.png';
 import { getCollection } from 'astro:content';
-import { getSlug, getWorksByStyle, resolveImage, resolveArtist, getArtistSlugFromWork } from '../../utils/contentHelpers';
+import { getSlug, getWorksByStyle, resolveImage, resolveArtist, getArtistSlugsFromWork } from '../../utils/contentHelpers';
 import type { ImageMetadata } from 'astro';
 
 interface Props {
@@ -85,8 +85,8 @@ const stylesData = sortedStyles.map((entry) => {
   }
   // Priority 3: Use placeholder (already set as default)
   
-  // Get artist links who work in this style
-  const artistSlugs = [...new Set(styleWorks.map(work => getArtistSlugFromWork(work)))];
+  // Get artist links who work in this style (flatten arrays and deduplicate)
+  const artistSlugs = [...new Set(styleWorks.flatMap(work => getArtistSlugsFromWork(work)))];
   const artistLinks = artistSlugs
     .map(slug => resolveArtist(slug, artistEntries))
     .filter((artist): artist is { name: string; href: string } => artist !== undefined);

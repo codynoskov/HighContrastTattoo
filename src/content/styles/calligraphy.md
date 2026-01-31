@@ -4,7 +4,7 @@ slugOverride: script-calligraphy
 order: 9
 intro: Expressive lettering tattoos that focus on the shape, rhythm and flow of
   written words.
-cardImage: /images/ed-works-56.jpg
+cardImage: /images/56.jpg
 metaTitle: Calligraphy & Script | High Contrast Tattoo Berlin
 metaDescription: Calligraphy and lettering tattoos in Berlin Friedrichshain.
   Custom scripts, quotes and text designs. From small words to full sleeves.

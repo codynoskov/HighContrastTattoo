@@ -12,7 +12,7 @@ footerMapImage: /images/map.png
 footerEmailLabel: Email
 footerEmailDescription: Reach out anytime with questions
 footerPhoneLabel: Phone
-footerPhoneDescription: Call or message us directly
+footerPhoneDescription: Call us Mon–Sat, 11:30–15:00, or message us any time.
 footerStudioLabel: Studio
 footerEmail: highcontrasttattoo@gmail.com
 footerPhone: +49 176 72745645

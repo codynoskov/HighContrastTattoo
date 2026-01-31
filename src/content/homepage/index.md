@@ -1,9 +1,8 @@
 ---
 headline: A studio for people who care about their tattoos
 introText: "**High Contrast Tattoo** is a custom tattoo shop in the heart of
-  Friedrichshain, Berlin, working in almost all popular tattoo styles. Our
-  friendly, cozy studio is clean, sterile and professional, welcomes walk-ins,
-  and focuses on good vibes and tattoos that feel personal and tell your story."
+  Friedrichshain, Berlin. Our studio is friendly, cozy, clean, sterile and
+  professional, and walk-ins are welcome."
 videoSrc: /images/videos/HCT_CoverVideo-1080.mp4
 videoPoster: /images/hct-video-placeholder.png
 topRightImage: /images/001A5638-Edit.jpg

@@ -4,7 +4,7 @@ slugOverride: cover-up
 order: 8
 intro: Cover-up work focuses on hiding or reworking old tattoos and replacing
   them with a clear, fresh design.
-cardImage: /images/7.jpg
+cardImage: /images/photo-output (1).jpeg
 metaTitle: Cover-up Tattoos | High Contrast Tattoo Berlin
 metaDescription: Cover-up tattoos in Berlin Friedrichshain. Transform old or
   unwanted tattoos into fresh custom designs. Expert rework and concealment.

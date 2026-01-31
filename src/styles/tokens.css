@@ -119,7 +119,7 @@
   --typography-body-md: var(--font-weight-light) var(--font-size-core-700-md)/var(--line-height-core-800-md) var(--font-stack-sans);
   --typography-body-lg: var(--font-weight-light) var(--font-size-core-800-sm)/var(--line-height-core-800-lg) var(--font-stack-sans);
 
-  /* Typography Styles - Headings */
+  /* Typography Styles - Headings (75% scale on mobile via media query below) */
   --typography-h1: var(--font-weight-regular) var(--font-size-core-1000-lg)/var(--line-height-core-1000-lg) var(--font-stack-sans-notch);
   --typography-h2: var(--font-weight-regular) var(--font-size-core-1000-sm)/var(--line-height-core-1000-sm) var(--font-stack-sans-notch);
   --typography-h3: var(--font-weight-regular) var(--font-size-core-900-md)/var(--line-height-core-900-md) var(--font-stack-sans-notch);
@@ -241,6 +241,18 @@
     padding: var(--spacing-core-1100-md) 0;
   }
 
+}
+
+/* Heading typography: 75% scale on mobile (applies to all uses of var(--typography-h1) etc.) */
+@media (max-width: 767px) {
+  :root {
+    --typography-h1: var(--font-weight-regular) 45px/45px var(--font-stack-sans-notch);
+    --typography-h2: var(--font-weight-regular) 36px/36px var(--font-stack-sans-notch);
+    --typography-h3: var(--font-weight-regular) 27px/27px var(--font-stack-sans-notch);
+    --typography-h4: var(--font-weight-regular) 21px/21px var(--font-stack-sans-notch);
+    --typography-h5: var(--font-weight-regular) 15px/15px var(--font-stack-sans-notch);
+    --typography-h6: var(--font-weight-regular) 12px/12px var(--font-stack-sans-notch);
+  }
 }
 
 /* Section Variants */

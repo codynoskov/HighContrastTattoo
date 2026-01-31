@@ -100,6 +100,7 @@ a, .link {
   text-decoration: underline;
   text-underline-position: from-font;
   letter-spacing: var(--letter-spacing-normal);
+  cursor: pointer;
   transition: opacity 0.2s ease;
 }
 
@@ -119,6 +120,7 @@ a:focus-visible, .link:focus-visible {
 button, .button {
   font: var(--typography-button);
   letter-spacing: var(--letter-spacing-core-100-md);
+  cursor: pointer;
 }
 
 /* ============================================

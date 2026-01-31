@@ -1,10 +1,6 @@
 ---
 rating: 5
-author: Mai Giménez
+author: Krisztina Tóth
 order: 2
 ---
-I had two sessions with the incredibly talented Nastya, and I couldn't be happier with the beautiful piece she created. A brilliant cover that couldn't have gone better. She also made me feel super comfortable during the whole process.
-
-The space is pristine, delightful y decorated and cosy, creating a relaxed and welcoming vibe.
-
-Worth the travel to visit Nastya and get an astonishing tattoo 🖤
+**Ed**, our tattoo artist has been very attentive, friendly and competent. We felt very safe. Our tattoos, the very first ones, turn**ed** out to be beautiful and exactly how I and my husband imagin**ed** it. Just lovely. Getting an appointment was also easy. The studio has a great, bright atmosphere and the other artists have been very friendly too.

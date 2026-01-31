@@ -638,7 +638,7 @@ content:
     delete: true
     filename: 'work-{order}.md'
     view:
-      fields: [order, styles, image]
+      fields: [order, artists, styles, image]
       primary: order
       sort_by: order
       sort_direction: asc
@@ -655,6 +655,17 @@ content:
         type: image
         required: true
         description: Photo of the finished tattoo work. Compress at tinypng.com before uploading (max 500KB recommended).
+      
+      - name: artists
+        label: Artists
+        type: reference
+        required: true
+        options:
+          collection: artists
+          label: "{name}"
+          value: "{slugOverride}"
+          multiple: true
+        description: Select the artist(s) who created this work. For collaborations, select multiple artists.
       
       - name: styles
         label: Styles

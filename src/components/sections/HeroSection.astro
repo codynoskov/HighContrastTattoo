@@ -96,12 +96,23 @@ const introParts = parseIntroText(introText);
         <!-- Video Container -->
         <div class="hero-video-wrapper">
           {streamUrl ? (
-            <iframe 
-              src={streamUrl}
-              class="hero-video hero-video-stream"
-              allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-              loading="eager"
-            ></iframe>
+            <div class="hero-video-stream-container">
+              {/* Poster image as fallback for devices that don't support Stream */}
+              {videoPoster && (
+                <img 
+                  src={videoPoster} 
+                  alt="" 
+                  class="hero-video-poster"
+                  loading="eager"
+                />
+              )}
+              <iframe 
+                src={streamUrl}
+                class="hero-video hero-video-stream"
+                allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+                loading="eager"
+              ></iframe>
+            </div>
           ) : videoSrc ? (
             <video 
               autoplay 
@@ -316,7 +327,24 @@ const introParts = parseIntroText(introText);
     opacity: 0.8;
   }
 
+  .hero-video-stream-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-video-poster {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
   .hero-video-stream {
+    position: relative;
+    z-index: 1;
     border: none;
     pointer-events: none; /* Prevent interaction with video controls */
   }

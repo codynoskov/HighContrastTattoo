@@ -1,9 +1,6 @@
 ---
 rating: 5
-author: Steven Knaack
+author: Misha Testras
 order: 5
 ---
-
-This was a super nice experience. The artist useless treasures really took the time to adapt the tattoo for my wishes. Being tattooed was super convenient and fun! Have a look at the result (immediately after finishing) yourself :)
-
-Can't stop looking at the pictures and looking forward to the healed art 😍 derinetly recommend this cozy studio and the exceptional artists
+Ich war bei Luara und bin total begeistert. Gerade im Vergleich zu anderen Studios wo ich schon war genieße ich die freundschaftliche Atmosphäre. Man kann viel quatschen und merkt fast nicht was für ein cooles Design man gerade gestochen bekommt. Die Pflegetipps waren auch großartig und es sieht besser aus als ich es erwartet hatte.

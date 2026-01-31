@@ -1,7 +1,7 @@
 ---
 image: /images/PXL_20240424_152032382.jpg
 artists:
-  - luara
+  - luh
 styles:
   - floral-and-botanic
   - neo-traditional

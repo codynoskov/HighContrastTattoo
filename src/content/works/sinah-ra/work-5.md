@@ -1,7 +1,7 @@
 ---
 image: /images/sina-ra-5.jpeg
 artists:
-  - sina-ra
+  - sinah-ra
 styles:
   - floral-and-botanic
   - blackwork

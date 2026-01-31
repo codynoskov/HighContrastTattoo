@@ -1,7 +1,7 @@
 ---
 image: /images/bruno-4.jpg
 artists:
-  - bruno
+  - bruno-da-mata
 styles:
   - blackwork
   - illustrative

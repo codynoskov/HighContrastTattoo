@@ -1,7 +1,7 @@
 ---
 image: /images/luara-1.jpg
 artists:
-  - luara
+  - luh
 styles:
   - neo-traditional
   - art-nouveau

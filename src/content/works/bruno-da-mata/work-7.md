@@ -1,7 +1,7 @@
 ---
 image: /images/IMG_5183.jpeg
 artists:
-  - bruno
+  - bruno-da-mata
 styles:
   - blackwork
   - floral-and-botanic

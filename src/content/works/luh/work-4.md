@@ -1,7 +1,7 @@
 ---
 image: /images/luara-4.jpg
 artists:
-  - luara
+  - luh
 styles:
   - neo-traditional
 order: 4

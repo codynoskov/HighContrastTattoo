@@ -1,7 +1,7 @@
 ---
 image: /images/IMG_5192.jpeg
 artists:
-  - bruno
+  - bruno-da-mata
 styles:
   - blackwork
   - graphic

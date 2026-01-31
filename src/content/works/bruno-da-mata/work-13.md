@@ -1,7 +1,7 @@
 ---
 image: /images/IMG_5188.jpeg
 artists:
-  - bruno
+  - bruno-da-mata
 styles:
   - blackwork
   - illustrative

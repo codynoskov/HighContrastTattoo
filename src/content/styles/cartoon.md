@@ -3,6 +3,7 @@ name: Cartoon
 slugOverride: cartoon
 order: 17
 intro: Playful, humorous tattoos with a bold cartoony feel.
+cardImage: /images/IMG_5164.jpeg
 metaTitle: Cartoon Tattoos | High Contrast Tattoo Berlin
 metaDescription: Cartoon tattoos in Berlin Friedrichshain. Playful designs from
   TV shows, comics and pop culture. Fun custom tattoos by our experienced

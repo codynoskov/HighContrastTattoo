@@ -16,6 +16,7 @@ export const collections = {
       intro: z.string(),
       order: z.number().optional(),
       cardImage: z.string().optional(),
+      slugOverride: z.string().optional().describe('Custom URL slug (overrides filename-based slug)'),
       // SEO fields
       ...seoFields,
     }),
@@ -30,6 +31,7 @@ export const collections = {
       instagram: z.string().optional().describe('Instagram handle'),
       order: z.number().optional().describe('Display order'),
       styles: z.array(z.string()).optional().describe('Style slugs this artist works in'),
+      slugOverride: z.string().optional().describe('Custom URL slug (overrides filename-based slug)'),
       // SEO fields
       ...seoFields,
     }),

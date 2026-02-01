@@ -91,6 +91,11 @@ const effectiveNoIndex = isStaging || noIndex;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
+		<!-- Preload critical fonts to reduce FOUT (flash of unstyled text) -->
+		<link rel="preload" href="/fonts/stack-sans-text-300.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="/fonts/stack-sans-text-400.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="/fonts/stack-sans-notch-300.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="/fonts/stack-sans-notch-400.woff2" as="font" type="font/woff2" crossorigin />
 		<!-- Preconnect to R2 for faster image/video loading -->
 		<link rel="preconnect" href="https://pub-5fa780a0c82a42df836a1dd9282c562b.r2.dev" crossorigin />
 		<link rel="icon" type="image/x-icon" href={getFaviconUrl('favicon.ico')} />

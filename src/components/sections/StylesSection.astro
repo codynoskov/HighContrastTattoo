@@ -1,6 +1,7 @@
 ---
 import Card from '../Card.astro';
 import Button from '../Button.astro';
+import CarouselNav from '../CarouselNav.astro';
 import imagePlaceholder from '../../assets/images/image-placeholder.png';
 import { getCollection } from 'astro:content';
 import { getSlug, getWorksByStyle, resolveImage, resolveArtist, getArtistSlugsFromWork } from '../../utils/contentHelpers';
@@ -114,7 +115,9 @@ const {
     <div class="section-text-block">
       <h2 class="section-title">{title}</h2>
       <p class="section-description">{description}</p>
-      <div class="section-action" style="margin-top: var(--spacing-core-600-md);">
+    </div>
+    <div class="section-actions-row">
+      <div class="section-action">
         <Button 
           type="Secondary" 
           color="Primary"
@@ -125,11 +128,12 @@ const {
           {ctaText}
         </Button>
       </div>
+      <CarouselNav carouselId="styles-carousel" />
     </div>
   </div>
   
   <div class="carousel-wrapper" style="margin-top: var(--spacing-core-900-md);">
-    <div class="carousel">
+    <div class="carousel" id="styles-carousel">
       <div class="carousel-track">
         {stylesData.map((style) => (
           <Card 
@@ -149,5 +153,110 @@ const {
 </section>
 
 <style>
-  /* All styles now handled by .section--carousel in tokens.css */
+  .section-actions-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-core-800-md);
+    margin-top: var(--spacing-core-600-md);
+    width: 100%;
+  }
+
+  @media (max-width: 767px) {
+    .section-actions-row {
+      justify-content: flex-start;
+    }
+  }
 </style>
+
+<script>
+  // Carousel navigation functionality
+  function initCarouselNav(carouselId: string) {
+    const carousel = document.getElementById(carouselId);
+    const navContainer = document.querySelector(`[data-carousel-nav="${carouselId}"]`);
+    
+    if (!carousel || !navContainer) return;
+    
+    const prevBtn = navContainer.querySelector('[data-direction="prev"]') as HTMLButtonElement;
+    const nextBtn = navContainer.querySelector('[data-direction="next"]') as HTMLButtonElement;
+    
+    if (!prevBtn || !nextBtn) return;
+    
+    function updateNavVisibility() {
+      if (!carousel || !navContainer) return;
+      
+      const isScrollable = carousel.scrollWidth > carousel.clientWidth;
+      const atStart = carousel.scrollLeft <= 1;
+      const atEnd = carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth - 1;
+      
+      // Hide entire nav if not scrollable
+      if (!isScrollable) {
+        (navContainer as HTMLElement).style.display = 'none';
+        return;
+      }
+      
+      // Show nav on desktop
+      if (window.innerWidth >= 768) {
+        (navContainer as HTMLElement).style.display = 'flex';
+      }
+      
+      // Toggle individual button visibility
+      prevBtn.setAttribute('data-hidden', atStart ? 'true' : 'false');
+      nextBtn.setAttribute('data-hidden', atEnd ? 'true' : 'false');
+    }
+    
+    function scrollCarousel(direction: 'prev' | 'next') {
+      if (!carousel) return;
+      
+      if (direction === 'next') {
+        // Find first card that's partially or fully cut off on the right
+        const cards = carousel.querySelectorAll('.card');
+        if (!cards.length) return;
+        
+        const containerRect = carousel.getBoundingClientRect();
+        const scrollPadding = parseFloat(getComputedStyle(carousel).scrollPaddingLeft) || 0;
+        
+        for (const card of cards) {
+          const cardRect = card.getBoundingClientRect();
+          // If card's right edge is beyond the container's right edge (with small tolerance)
+          if (cardRect.right > containerRect.right + 1) {
+            carousel.scrollTo({
+              left: carousel.scrollLeft + (cardRect.left - containerRect.left) - scrollPadding,
+              behavior: 'smooth'
+            });
+            break;
+          }
+        }
+      } else {
+        // Scroll back by container width
+        const scrollAmount = carousel.clientWidth;
+        carousel.scrollBy({
+          left: -scrollAmount,
+          behavior: 'smooth'
+        });
+      }
+    }
+    
+    prevBtn.addEventListener('click', () => scrollCarousel('prev'));
+    nextBtn.addEventListener('click', () => scrollCarousel('next'));
+    carousel.addEventListener('scroll', updateNavVisibility);
+    window.addEventListener('resize', updateNavVisibility);
+    
+    // Ensure carousel starts at the beginning and update nav visibility
+    carousel.scrollLeft = 0;
+    updateNavVisibility();
+  }
+  
+  // Initialize on DOM ready with a frame delay to ensure layout is complete
+  function init() {
+    requestAnimationFrame(() => {
+      initCarouselNav('styles-carousel');
+    });
+  }
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+</script>

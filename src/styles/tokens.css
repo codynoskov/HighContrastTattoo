@@ -290,13 +290,13 @@
   text-align: left;
   flex-shrink: 0;
   width: max-content;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0;
 }
 
 .section--carousel .carousel-track .card {
   min-width: 300px;
   max-width: 364px;
+  scroll-snap-align: start;
 }
 
 @media (max-width: 767px) {
@@ -373,62 +373,19 @@
   overflow-x: auto;
   overflow-y: visible;
   -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--spacing-core-800-md);
 }
 
-/* Hide scrollbars on mobile */
-@media (max-width: 767px) {
-  .carousel {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-
-  .carousel::-webkit-scrollbar {
-    display: none;
-  }
+/* Hide scrollbars on all screen sizes */
+.carousel {
+  scrollbar-width: none;           /* Firefox */
+  -ms-overflow-style: none;        /* IE/Edge */
 }
 
-/* Show visible scrollbars on desktop - transparent by default, visible on hover */
-@media (min-width: 768px) {
-  .carousel {
-    overflow-x: scroll;
-    /* Always show scrollbar but make it transparent - prevents layout shift */
-    scrollbar-width: thin;
-    scrollbar-color: transparent transparent;
-  }
-
-  /* Webkit: Always show scrollbar but transparent by default */
-  .carousel::-webkit-scrollbar {
-    height: 12px;
-    -webkit-appearance: none;
-  }
-
-  .carousel::-webkit-scrollbar-track {
-    background: transparent;
-    border-radius: 6px;
-  }
-
-  .carousel::-webkit-scrollbar-thumb {
-    background: transparent;
-    border-radius: 6px;
-  }
-
-  /* Show scrollbar colors on hover */
-  .carousel:hover {
-    scrollbar-color: var(--color-neutral-400) var(--color-neutral-100);
-  }
-
-  .carousel:hover::-webkit-scrollbar-track {
-    background: var(--color-neutral-100);
-  }
-
-  .carousel:hover::-webkit-scrollbar-thumb {
-    background: var(--color-neutral-400);
-    border: 2px solid var(--color-neutral-100);
-  }
-
-  .carousel:hover::-webkit-scrollbar-thumb:hover {
-    background: var(--color-neutral-500);
-  }
+.carousel::-webkit-scrollbar {
+  display: none;                   /* Chrome/Safari/Opera */
 }
 
 /* Carousel track - flex container for items */

@@ -1,0 +1,90 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  carouselId: string;
+  className?: string;
+}
+
+const { carouselId, className = "" } = Astro.props;
+---
+
+<div class={`carousel-nav ${className}`} data-carousel-nav={carouselId}>
+  <button 
+    class="carousel-nav-btn carousel-nav-btn--prev" 
+    aria-label="Scroll left"
+    data-direction="prev"
+  >
+    <Icon name="chevron-left" size={24} />
+  </button>
+  <button 
+    class="carousel-nav-btn carousel-nav-btn--next" 
+    aria-label="Scroll right"
+    data-direction="next"
+  >
+    <Icon name="chevron-right" size={24} />
+  </button>
+</div>
+
+<style>
+  /* Hide on mobile, show on desktop */
+  .carousel-nav {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .carousel-nav {
+      display: flex;
+      gap: var(--spacing-core-500-md);
+      align-items: center;
+    }
+  }
+
+  .carousel-nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: var(--border-width-divider) solid var(--color-neutral-200);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    cursor: pointer;
+    transition: 
+      border-color 0.2s ease,
+      background-color 0.2s ease,
+      color 0.2s ease,
+      opacity 0.2s ease,
+      visibility 0.2s ease;
+  }
+
+  .carousel-nav-btn:hover {
+    border-color: var(--color-primary-300);
+    background-color: var(--color-primary-50);
+    color: var(--color-primary-600);
+  }
+
+  .carousel-nav-btn:active {
+    border-color: var(--color-primary-400);
+    background-color: var(--color-primary-100);
+    color: var(--color-primary-700);
+  }
+
+  .carousel-nav-btn:focus-visible {
+    outline: 2px solid var(--color-primary-500);
+    outline-offset: 2px;
+  }
+
+  /* Hidden state for buttons at scroll boundaries */
+  .carousel-nav-btn[data-hidden="true"] {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .carousel-nav-btn :global(.icon) {
+    width: 24px;
+    height: 24px;
+  }
+</style>

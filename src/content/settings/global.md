@@ -25,8 +25,7 @@ seoSiteName: High Contrast Tattoo Berlin
 seoDefaultDescription: Custom tattoo studio in Berlin-Friedrichshain.
   Neo-traditional, blackwork, floral designs by experienced artists. Book your
   session today.
-# Replace with /images/og-hct.png (1200x630) when branded image is available
-seoDefaultOgImage: /images/hct-video-placeholder.png
+seoDefaultOgImage: /images/og-hct.png
 seoGoogleMapsUrl: https://maps.app.goo.gl/HmkDXBtuHm3nyBRVA
 seoInstagramUrl: https://instagram.com/highcontrasttattoo
 seoSiteUrl: https://highcontrasttattoo.com

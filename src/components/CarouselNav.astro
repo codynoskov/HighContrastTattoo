@@ -54,18 +54,16 @@ const { carouselId, className = "" } = Astro.props;
     transition: 
       border-color 0.2s ease,
       background-color 0.2s ease,
-      color 0.2s ease,
-      opacity 0.2s ease,
-      visibility 0.2s ease;
+      color 0.2s ease;
   }
 
-  .carousel-nav-btn:hover {
+  .carousel-nav-btn:hover:not(:disabled) {
     border-color: var(--color-primary-300);
     background-color: var(--color-primary-50);
     color: var(--color-primary-600);
   }
 
-  .carousel-nav-btn:active {
+  .carousel-nav-btn:active:not(:disabled) {
     border-color: var(--color-primary-400);
     background-color: var(--color-primary-100);
     color: var(--color-primary-700);
@@ -76,10 +74,10 @@ const { carouselId, className = "" } = Astro.props;
     outline-offset: 2px;
   }
 
-  /* Hidden state for buttons at scroll boundaries */
-  .carousel-nav-btn[data-hidden="true"] {
-    opacity: 0;
-    visibility: hidden;
+  /* Disabled state for buttons at scroll boundaries */
+  .carousel-nav-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
     pointer-events: none;
   }
 

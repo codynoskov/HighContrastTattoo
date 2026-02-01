@@ -178,9 +178,9 @@ const {
         (navContainer as HTMLElement).style.display = 'flex';
       }
       
-      // Toggle individual button visibility
-      prevBtn.setAttribute('data-hidden', atStart ? 'true' : 'false');
-      nextBtn.setAttribute('data-hidden', atEnd ? 'true' : 'false');
+      // Toggle individual button disabled state
+      prevBtn.disabled = atStart;
+      nextBtn.disabled = atEnd;
     }
     
     function scrollCarousel(direction: 'prev' | 'next') {

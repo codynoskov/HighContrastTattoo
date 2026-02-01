@@ -1,12 +1,14 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
   // Set SITE_URL environment variable for CMS preview support
   // Example: SITE_URL=https://your-site.com npm run build
-  site: process.env.SITE_URL || process.env.PUBLIC_SITE_URL,
+  site: process.env.SITE_URL || process.env.PUBLIC_SITE_URL || 'https://highcontrasttattoo.com',
+  integrations: [sitemap()],
   devToolbar: {
     enabled: false
   },

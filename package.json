@@ -16,6 +16,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.0",
     "@aws-sdk/client-s3": "^3.969.0",
     "@fontsource/stack-sans-notch": "^5.1.4",
     "@fontsource/stack-sans-text": "^5.1.4",

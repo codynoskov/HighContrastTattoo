@@ -3,7 +3,7 @@ name: Illustrative
 slugOverride: illustrative
 order: 13
 intro: Tattoos that feel like drawings from a sketchbook or art book.
-cardImage: /images/Useless_Treasures_HC3.jpg
+cardImage: /images/Useless_Treasures_HC3-1.jpg
 metaTitle: Illustrative Tattoos | High Contrast Tattoo Berlin
 metaDescription: Illustrative tattoos in Berlin Friedrichshain. Story-based
   designs, fantasy creatures and custom characters. Tattoos that look like

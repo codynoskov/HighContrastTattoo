@@ -13,10 +13,10 @@ export async function getStaticPaths() {
   const styles = await getCollection('styles');
   const works = await getCollection('works');
   const artists = await getCollection('artists');
-  
+
   return styles.map((style) => ({
     params: { slug: getSlug(style) },
-    props: { style, works, artists }
+    props: { style, works, artists, styles },
   }));
 }
 
@@ -24,9 +24,10 @@ interface Props {
   style: CollectionEntry<'styles'>;
   works: CollectionEntry<'works'>[];
   artists: CollectionEntry<'artists'>[];
+  styles: CollectionEntry<'styles'>[];
 }
 
-const { style, works, artists } = Astro.props;
+const { style, works, artists, styles } = Astro.props;
 const styleData = style.data;
 
 // Get settings content
@@ -46,6 +47,7 @@ const styleWorks = getWorksByStyle(styleSlug, works);
 const galleryImages = worksToGalleryImages(styleWorks, {
   context: 'style',
   artists,
+  styles,
 });
 
 // Get unique artists who have works in this style

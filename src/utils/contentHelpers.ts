@@ -363,9 +363,30 @@ export function resolveArtist(artistSlug: string, artists: ArtistEntry[]): { nam
 }
 
 /**
+ * Build SEO-friendly alt text for a tattoo work from its style and artist names.
+ * Kept concise (max 125 chars) to balance SEO with limited redundancy for screen readers
+ * who also hear the visible tags.
+ */
+function buildWorkAltText(styleNames: string[], artistNames: string[]): string {
+  const stylePart =
+    styleNames.length > 0
+      ? styleNames.join(', ').replace(/, ([^,]*)$/, ' and $1') + ' tattoo'
+      : 'Tattoo';
+  const artistPart =
+    artistNames.length > 1
+      ? `by ${artistNames.join(' and ')}`
+      : artistNames.length === 1
+        ? `by ${artistNames[0]}`
+        : '';
+  const alt = artistPart ? `${stylePart} ${artistPart}` : stylePart;
+  return alt.length <= 125 ? alt : alt.slice(0, 122) + '...';
+}
+
+/**
  * Transform works collection entries into gallery images with appropriate tags.
  * - Artist pages: Show style tags (Primary/teal color) linking to style pages
  * - Style pages: Show artist tags (Accent/pink color, "Created by [Name]" format) linking to artist pages
+ * - Alt text is auto-generated from styles and artists for SEO; editors need not add it manually.
  */
 export function worksToGalleryImages(works: WorkEntry[], options: WorksToGalleryOptions): GalleryImage[] {
   const { context, styles = [], artists = [] } = options;
@@ -384,9 +405,9 @@ export function worksToGalleryImages(works: WorkEntry[], options: WorksToGallery
       // Support multiple artists per work
       const artistSlugs = getArtistSlugsFromWork(work);
       const resolvedArtists = artistSlugs
-        .map(slug => resolveArtist(slug, artists))
+        .map((slug) => resolveArtist(slug, artists))
         .filter((a): a is { name: string; href: string } => a !== undefined);
-      
+
       if (resolvedArtists.length === 1) {
         // Single artist - use "Created by" format
         tags.push({ text: `Created by ${resolvedArtists[0].name}`, color: 'Accent', href: resolvedArtists[0].href });
@@ -398,9 +419,17 @@ export function worksToGalleryImages(works: WorkEntry[], options: WorksToGallery
       }
     }
 
+    // Auto-generate alt from styles and artists for SEO; no manual entry needed
+    const styleNames = resolveStyleNames(work.data.styles ?? [], styles);
+    const artistSlugs = getArtistSlugsFromWork(work);
+    const artistNames = artistSlugs
+      .map((slug) => resolveArtistName(slug, artists))
+      .filter((n): n is string => Boolean(n));
+    const alt = buildWorkAltText(styleNames, artistNames);
+
     return {
       src: resolveImage(work.data.image),
-      alt: `Tattoo work`,
+      alt,
       tags,
     };
   });

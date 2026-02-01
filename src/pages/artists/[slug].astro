@@ -13,10 +13,10 @@ export async function getStaticPaths() {
   const artists = await getCollection('artists');
   const works = await getCollection('works');
   const styles = await getCollection('styles');
-  
+
   return artists.map((artist) => ({
     params: { slug: getSlug(artist) },
-    props: { artist, works, styles }
+    props: { artist, works, styles, artists },
   }));
 }
 
@@ -24,9 +24,10 @@ interface Props {
   artist: CollectionEntry<'artists'>;
   works: CollectionEntry<'works'>[];
   styles: CollectionEntry<'styles'>[];
+  artists: CollectionEntry<'artists'>[];
 }
 
-const { artist, works, styles } = Astro.props;
+const { artist, works, styles, artists } = Astro.props;
 
 // Get settings content
 const settingsEntries = await getCollection('settings');
@@ -43,6 +44,7 @@ const artistWorks = getWorksByArtist(artistSlug, works);
 const galleryImages = worksToGalleryImages(artistWorks, {
   context: 'artist',
   styles,
+  artists,
 });
 
 // Resolve artist's manually selected styles to style links

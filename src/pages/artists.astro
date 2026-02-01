@@ -50,6 +50,7 @@ const artists = sortedArtists.map(entry => {
   const galleryImages = worksToGalleryImages(artistWorks, {
     context: 'artist',
     styles: stylesEntries,
+    artists: artistEntries,
   });
   
   // Resolve artist's manually selected styles to style links

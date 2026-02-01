@@ -63,6 +63,7 @@ const seoOgImage = artistData.ogImage || resolveImagePath(artistData.photo);
   description={seoDescription}
   ogImage={seoOgImage}
   ogType="profile"
+  noIndex={artistData.noIndex}
 >
   <Header 
     studioName={settings.studioName}

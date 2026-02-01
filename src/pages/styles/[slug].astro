@@ -89,6 +89,11 @@ const stylePageUrl = `${siteUrl}/styles/${styleSlug}`;
   ]}
   datePublished={styleData.datePublished}
   dateModified={styleData.dateModified}
+  styleService={{
+    name: styleData.name,
+    description: seoDescription,
+    url: stylePageUrl,
+  }}
 >
   <Header 
     studioName={settings.studioName}

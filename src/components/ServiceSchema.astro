@@ -3,6 +3,7 @@
  * ServiceSchema Component
  * Outputs JSON-LD structured data for schema.org/Service.
  * Describes tattoo services offered by the studio for local SEO.
+ * Optionally includes potentialAction for booking (ReservationAction).
  */
 
 interface Props {
@@ -11,11 +12,13 @@ interface Props {
   providerName: string;
   siteUrl: string;
   serviceUrl?: string;
+  /** Include a ReservationAction pointing to the booking page */
+  includeBookingAction?: boolean;
 }
 
-const { name, description, providerName, siteUrl, serviceUrl } = Astro.props;
+const { name, description, providerName, siteUrl, serviceUrl, includeBookingAction = false } = Astro.props;
 
-const schema = {
+const schema: Record<string, unknown> = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   name,
@@ -26,6 +29,25 @@ const schema = {
   },
   url: serviceUrl || `${siteUrl}/book`,
 };
+
+// Add ReservationAction for booking pages
+if (includeBookingAction) {
+  schema.potentialAction = {
+    '@type': 'ReserveAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: `${siteUrl}/book`,
+      actionPlatform: [
+        'http://schema.org/DesktopWebPlatform',
+        'http://schema.org/MobileWebPlatform',
+      ],
+    },
+    result: {
+      '@type': 'Reservation',
+      name: 'Tattoo Appointment',
+    },
+  };
+}
 ---
 
 <script type="application/ld+json" set:html={JSON.stringify(schema, null, 2)} />

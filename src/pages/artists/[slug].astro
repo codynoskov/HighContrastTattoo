@@ -82,6 +82,8 @@ const personImageUrl = typeof seoOgImage === 'string' && seoOgImage.startsWith('
     { name: 'Artists', url: siteUrl + '/artists' },
     { name: artistData.name, url: artistPageUrl },
   ]}
+  datePublished={artistData.datePublished}
+  dateModified={artistData.dateModified}
 >
   <Header 
     studioName={settings.studioName}

@@ -79,6 +79,8 @@ const artists = sortedArtists.map(entry => {
     { name: 'Home', url: siteUrl + '/' },
     { name: 'Artists', url: siteUrl + '/artists' },
   ]}
+  datePublished={artistsPage.datePublished}
+  dateModified={artistsPage.dateModified}
 >
   <Header 
     studioName={settings.studioName}

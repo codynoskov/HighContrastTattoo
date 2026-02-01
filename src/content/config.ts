@@ -6,6 +6,8 @@ const seoFields = {
   metaDescription: z.string().max(160).optional().describe('Custom description for search results (max 160 chars)'),
   ogImage: z.string().optional().describe('Custom social sharing image (1200x630px recommended)'),
   noIndex: z.boolean().optional().default(false).describe('Hide this page from search engines'),
+  datePublished: z.coerce.date().optional().describe('ISO date when content was first published'),
+  dateModified: z.coerce.date().optional().describe('ISO date when content was last updated'),
 };
 
 export const collections = {

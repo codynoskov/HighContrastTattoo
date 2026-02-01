@@ -88,6 +88,8 @@ const seoOgImage = safeResolveImagePath(homepage.ogImage) || safeResolveImagePat
 	includeLocalBusiness={true}
 	includeServiceSchema={true}
 	breadcrumbItems={[{ name: 'Home', url: siteUrl + '/' }]}
+	datePublished={homepage.datePublished}
+	dateModified={homepage.dateModified}
 >
 	<Header 
 		studioName={safeString(settings.studioName)}

@@ -1,0 +1,36 @@
+---
+/**
+ * WebPageSchema Component
+ * Outputs JSON-LD WebPage with datePublished/dateModified for freshness signals.
+ */
+
+interface Props {
+  url: string;
+  datePublished?: string | Date;
+  dateModified?: string | Date;
+}
+
+const { url, datePublished, dateModified } = Astro.props;
+
+const toISO = (d: string | Date | undefined): string | undefined => {
+  if (!d) return undefined;
+  return typeof d === 'string' ? d : d.toISOString();
+};
+
+const published = toISO(datePublished);
+const modified = toISO(dateModified);
+
+if (!published && !modified) {
+  return null;
+}
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  url,
+  ...(published && { datePublished: published }),
+  ...(modified && { dateModified: modified }),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema, null, 2)} />

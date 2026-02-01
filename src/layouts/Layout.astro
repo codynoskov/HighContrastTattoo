@@ -7,6 +7,7 @@ import LocalBusinessSchema from '../components/LocalBusinessSchema.astro';
 import ServiceSchema from '../components/ServiceSchema.astro';
 import PersonSchema from '../components/PersonSchema.astro';
 import BreadcrumbListSchema from '../components/BreadcrumbListSchema.astro';
+import WebPageSchema from '../components/WebPageSchema.astro';
 import PostHog from '../components/posthog.astro';
 import { getCollection } from 'astro:content';
 import { getFaviconUrl } from '../utils/contentHelpers';
@@ -31,6 +32,9 @@ interface Props {
   personUrl?: string;
   personSameAs?: string;
   breadcrumbItems?: BreadcrumbItem[];
+  /** Optional dates for WebPage schema (freshness signals) */
+  datePublished?: string | Date;
+  dateModified?: string | Date;
 }
 
 const {
@@ -48,11 +52,28 @@ const {
   personUrl,
   personSameAs,
   breadcrumbItems,
+  datePublished,
+  dateModified,
 } = Astro.props;
 
 // Get global settings for SEO defaults
 const settingsEntries = await getCollection('settings');
 const settings = settingsEntries[0]?.data || {};
+
+// Compute aggregate rating from reviews when showing LocalBusiness (e.g. homepage)
+let aggregateRating: { ratingValue: number; reviewCount: number; bestRating: number; worstRating: number } | undefined;
+if (includeLocalBusiness) {
+  const reviewsEntries = await getCollection('reviews');
+  if (reviewsEntries.length > 0) {
+    const sum = reviewsEntries.reduce((acc, r) => acc + (r.data.rating ?? 5), 0);
+    aggregateRating = {
+      ratingValue: Math.round((sum / reviewsEntries.length) * 10) / 10,
+      reviewCount: reviewsEntries.length,
+      bestRating: 5,
+      worstRating: 1,
+    };
+  }
+}
 
 // SEO defaults from settings
 const siteName = settings.seoSiteName || settings.studioName || 'High Contrast Tattoo';
@@ -70,6 +91,8 @@ const effectiveNoIndex = isStaging || noIndex;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
+		<!-- Preconnect to R2 for faster image/video loading -->
+		<link rel="preconnect" href="https://pub-5fa780a0c82a42df836a1dd9282c562b.r2.dev" crossorigin />
 		<link rel="icon" type="image/x-icon" href={getFaviconUrl('favicon.ico')} />
 		<link rel="icon" type="image/png" sizes="16x16" href={getFaviconUrl('favicon-16x16.png')} />
 		<link rel="icon" type="image/png" sizes="32x32" href={getFaviconUrl('favicon-32x32.png')} />
@@ -105,6 +128,7 @@ const effectiveNoIndex = isStaging || noIndex;
 				googleMapsUrl={settings.seoGoogleMapsUrl}
 				instagramUrl={settings.seoInstagramUrl}
 				ogImage={defaultOgImage}
+				aggregateRating={aggregateRating}
 			/>
 		)}
 
@@ -131,6 +155,15 @@ const effectiveNoIndex = isStaging || noIndex;
 		<!-- BreadcrumbList Structured Data -->
 		{breadcrumbItems && breadcrumbItems.length > 0 && (
 			<BreadcrumbListSchema items={breadcrumbItems} />
+		)}
+
+		<!-- WebPage with dateModified/datePublished (freshness signals) -->
+		{canonicalUrl && (dateModified || datePublished) && (
+			<WebPageSchema
+				url={canonicalUrl}
+				datePublished={datePublished}
+				dateModified={dateModified}
+			/>
 		)}
 		
 		<!-- Fonts are loaded locally for GDPR compliance - no external requests -->

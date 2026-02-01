@@ -14,6 +14,13 @@ interface Props {
   googleMapsUrl?: string;
   instagramUrl?: string;
   ogImage?: string;
+  /** Aggregate rating from reviews (enables star ratings in search results) */
+  aggregateRating?: {
+    ratingValue: number;
+    reviewCount: number;
+    bestRating?: number;
+    worstRating?: number;
+  };
 }
 
 const {
@@ -25,6 +32,7 @@ const {
   googleMapsUrl,
   instagramUrl,
   ogImage = '/images/og-hct.png',
+  aggregateRating,
 } = Astro.props;
 
 // Parse address: "Schreinerstraße 6, 10247 Berlin, Germany"
@@ -77,6 +85,15 @@ const schema = {
   "priceRange": "$$",
   ...(sameAs.length > 0 && { "sameAs": sameAs }),
   ...(googleMapsUrl && { "hasMap": googleMapsUrl }),
+  ...(aggregateRating && aggregateRating.reviewCount > 0 && {
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": String(aggregateRating.ratingValue),
+      "reviewCount": String(aggregateRating.reviewCount),
+      "bestRating": String(aggregateRating.bestRating ?? 5),
+      "worstRating": String(aggregateRating.worstRating ?? 1),
+    },
+  }),
 };
 ---
 

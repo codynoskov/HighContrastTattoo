@@ -56,6 +56,7 @@ const artists = sortedArtists.map(entry => ({
 }));
 
 // SEO - Booking page
+const siteUrl = settings.seoSiteUrl || 'https://highcontrasttattoo.com';
 const seoTitle = `Book an Appointment | ${settings.seoSiteName || 'High Contrast Tattoo'}`;
 const seoDescription = 'Book a tattoo appointment at High Contrast Tattoo Berlin. Discuss your idea, placement, and details with our experienced artists.';
 ---
@@ -63,6 +64,11 @@ const seoDescription = 'Book a tattoo appointment at High Contrast Tattoo Berlin
 <Layout
   title={seoTitle}
   description={seoDescription}
+  canonicalUrl={`${siteUrl}/book`}
+  breadcrumbItems={[
+    { name: 'Home', url: siteUrl + '/' },
+    { name: 'Book', url: siteUrl + '/book' },
+  ]}
 >
   <Header 
     studioName={settings.studioName}

@@ -21,6 +21,7 @@ const stylesPage = stylesPageEntries[0]?.data || {};
 // SEO - Styles page
 const pageTitle = stylesPage.title || 'Styles';
 const pageDescription = stylesPage.description || 'An overview of our signature styles, highlighting the approaches, techniques, and visual directions that define our tattoo work.';
+const siteUrl = settings.seoSiteUrl || 'https://highcontrasttattoo.com';
 const seoTitle = stylesPage.metaTitle || `${pageTitle} | ${settings.seoSiteName || 'High Contrast Tattoo'}`;
 const seoDescription = stylesPage.metaDescription || pageDescription;
 const seoOgImage = stylesPage.ogImage || settings.seoDefaultOgImage;
@@ -66,7 +67,12 @@ const styles = sortedStyles.map(entry => {
   title={seoTitle}
   description={seoDescription}
   ogImage={seoOgImage}
+  canonicalUrl={`${siteUrl}/styles`}
   noIndex={stylesPage.noIndex}
+  breadcrumbItems={[
+    { name: 'Home', url: siteUrl + '/' },
+    { name: 'Styles', url: siteUrl + '/styles' },
+  ]}
 >
   <Header 
     studioName={settings.studioName}

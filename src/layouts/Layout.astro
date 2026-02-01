@@ -4,9 +4,16 @@ import '../styles/fonts.css';
 import '../styles/typography.css';
 import SEO from '../components/SEO.astro';
 import LocalBusinessSchema from '../components/LocalBusinessSchema.astro';
+import PersonSchema from '../components/PersonSchema.astro';
+import BreadcrumbListSchema from '../components/BreadcrumbListSchema.astro';
 import PostHog from '../components/posthog.astro';
 import { getCollection } from 'astro:content';
 import { getFaviconUrl } from '../utils/contentHelpers';
+
+interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
 
 interface Props {
   title?: string;
@@ -16,6 +23,12 @@ interface Props {
   canonicalUrl?: string;
   noIndex?: boolean;
   includeLocalBusiness?: boolean;
+  includePersonSchema?: boolean;
+  personName?: string;
+  personImage?: string;
+  personUrl?: string;
+  personSameAs?: string;
+  breadcrumbItems?: BreadcrumbItem[];
 }
 
 const {
@@ -26,6 +39,12 @@ const {
   canonicalUrl,
   noIndex = false,
   includeLocalBusiness = false,
+  includePersonSchema = false,
+  personName,
+  personImage,
+  personUrl,
+  personSameAs,
+  breadcrumbItems,
 } = Astro.props;
 
 // Get global settings for SEO defaults
@@ -37,6 +56,10 @@ const siteName = settings.seoSiteName || settings.studioName || 'High Contrast T
 const siteUrl = settings.seoSiteUrl || '';
 const defaultDescription = settings.seoDefaultDescription || '';
 const defaultOgImage = settings.seoDefaultOgImage || '/images/og-hct.png';
+
+// Staging noindex: when SITE contains pages.dev, force noindex on all pages
+const isStaging = (import.meta.env.SITE || siteUrl || '').includes('pages.dev');
+const effectiveNoIndex = isStaging || noIndex;
 ---
 
 <!doctype html>
@@ -61,13 +84,13 @@ const defaultOgImage = settings.seoDefaultOgImage || '/images/og-hct.png';
 			ogImage={ogImage}
 			ogType={ogType}
 			canonicalUrl={canonicalUrl}
-			noIndex={noIndex}
+			noIndex={effectiveNoIndex}
 			siteName={siteName}
 			siteUrl={siteUrl}
 			defaultDescription={defaultDescription}
 			defaultOgImage={defaultOgImage}
 		/>
-		
+
 		<!-- Local Business Structured Data (homepage only) -->
 		{includeLocalBusiness && (
 			<LocalBusinessSchema
@@ -80,6 +103,21 @@ const defaultOgImage = settings.seoDefaultOgImage || '/images/og-hct.png';
 				instagramUrl={settings.seoInstagramUrl}
 				ogImage={defaultOgImage}
 			/>
+		)}
+
+		<!-- Person Structured Data (artist pages only) -->
+		{includePersonSchema && personName && personImage && personUrl && (
+			<PersonSchema
+				name={personName}
+				image={personImage}
+				url={personUrl}
+				sameAs={personSameAs}
+			/>
+		)}
+
+		<!-- BreadcrumbList Structured Data -->
+		{breadcrumbItems && breadcrumbItems.length > 0 && (
+			<BreadcrumbListSchema items={breadcrumbItems} />
 		)}
 		
 		<!-- Fonts are loaded locally for GDPR compliance - no external requests -->

@@ -8,7 +8,12 @@ export default defineConfig({
   // Set SITE_URL environment variable for CMS preview support
   // Example: SITE_URL=https://your-site.com npm run build
   site: process.env.SITE_URL || process.env.PUBLIC_SITE_URL || 'https://highcontrasttattoo.com',
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      filter: (page) =>
+        !page.includes('/internal/') && !page.includes('/_design-system/'),
+    }),
+  ],
   devToolbar: {
     enabled: false
   },

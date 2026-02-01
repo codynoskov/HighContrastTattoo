@@ -1,0 +1,29 @@
+---
+/**
+ * PersonSchema Component
+ * Outputs JSON-LD structured data for schema.org/Person.
+ * Used on artist pages for rich results and knowledge panel potential.
+ */
+
+interface Props {
+  name: string;
+  image: string;
+  url: string;
+  jobTitle?: string;
+  sameAs?: string;
+}
+
+const { name, image, url, jobTitle = 'Tattoo Artist', sameAs } = Astro.props;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name,
+  image,
+  url,
+  jobTitle,
+  ...(sameAs && { sameAs: [sameAs] }),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema, null, 2)} />

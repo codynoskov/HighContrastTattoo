@@ -54,10 +54,15 @@ const artistStyles = resolveStyles(artistData.styles ?? [], styles);
 const hasBodyContent = artist.body && artist.body.trim().length > 0;
 
 // SEO - Individual artist page
+const siteUrl = settings.seoSiteUrl || 'https://highcontrasttattoo.com';
 const siteName = settings.seoSiteName || 'High Contrast Tattoo';
 const seoTitle = artistData.metaTitle || `${artistData.name} | ${siteName}`;
 const seoDescription = artistData.metaDescription || artistData.intro.slice(0, 155) + (artistData.intro.length > 155 ? '...' : '');
 const seoOgImage = artistData.ogImage || resolveImagePath(artistData.photo);
+const artistPageUrl = `${siteUrl}/artists/${artistSlug}`;
+const personImageUrl = typeof seoOgImage === 'string' && seoOgImage.startsWith('http')
+  ? seoOgImage
+  : `${siteUrl}${seoOgImage.startsWith('/') ? '' : '/'}${seoOgImage}`;
 ---
 
 <Layout
@@ -65,7 +70,18 @@ const seoOgImage = artistData.ogImage || resolveImagePath(artistData.photo);
   description={seoDescription}
   ogImage={seoOgImage}
   ogType="profile"
+  canonicalUrl={artistPageUrl}
   noIndex={artistData.noIndex}
+  includePersonSchema={true}
+  personName={artistData.name}
+  personImage={personImageUrl}
+  personUrl={artistPageUrl}
+  personSameAs={artistData.instagram ? `https://instagram.com/${artistData.instagram.replace('@', '')}` : undefined}
+  breadcrumbItems={[
+    { name: 'Home', url: siteUrl + '/' },
+    { name: 'Artists', url: siteUrl + '/artists' },
+    { name: artistData.name, url: artistPageUrl },
+  ]}
 >
   <Header 
     studioName={settings.studioName}

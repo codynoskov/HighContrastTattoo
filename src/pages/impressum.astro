@@ -11,11 +11,20 @@ const settingsEntries = await getCollection('settings');
 const settings = settingsEntries[0]?.data || {};
 const footerMapImage = settings.footerMapImage ? resolveImage(settings.footerMapImage) : undefined;
 
+const siteUrl = settings.seoSiteUrl || 'https://highcontrasttattoo.com';
 const seoTitle = `Imprint | ${settings.seoSiteName || settings.studioName || 'High Contrast Tattoo'}`;
 const seoDescription = 'Imprint and legal notice.';
 ---
 
-<Layout title={seoTitle} description={seoDescription}>
+<Layout
+  title={seoTitle}
+  description={seoDescription}
+  canonicalUrl={`${siteUrl}/impressum`}
+  breadcrumbItems={[
+    { name: 'Home', url: siteUrl + '/' },
+    { name: 'Imprint', url: siteUrl + '/impressum' },
+  ]}
+>
   <Header studioName={settings.studioName} buttonBookSession={settings.buttonBookSession} />
   <main>
     <ArtistsHeroSection 

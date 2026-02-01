@@ -74,6 +74,7 @@ function safeString(value: any): string | undefined {
 }
 
 // SEO - Homepage uses custom values or falls back to global defaults
+const siteUrl = safeString(settings.seoSiteUrl) || 'https://highcontrasttattoo.com';
 const seoTitle = safeString(homepage.metaTitle) || safeString(settings.seoSiteName) || 'High Contrast Tattoo Berlin';
 const seoDescription = safeString(homepage.metaDescription) || safeString(settings.seoDefaultDescription);
 const seoOgImage = safeResolveImagePath(homepage.ogImage) || safeResolveImagePath(settings.seoDefaultOgImage);
@@ -83,7 +84,9 @@ const seoOgImage = safeResolveImagePath(homepage.ogImage) || safeResolveImagePat
 	title={seoTitle}
 	description={seoDescription}
 	ogImage={seoOgImage}
+	canonicalUrl={siteUrl + '/'}
 	includeLocalBusiness={true}
+	breadcrumbItems={[{ name: 'Home', url: siteUrl + '/' }]}
 >
 	<Header 
 		studioName={safeString(settings.studioName)}

@@ -68,17 +68,25 @@ const styleArtists = artists
 const hasBodyContent = style.body && style.body.trim().length > 0;
 
 // SEO - Individual style page
+const siteUrl = settings.seoSiteUrl || 'https://highcontrasttattoo.com';
 const siteName = settings.seoSiteName || 'High Contrast Tattoo';
 const seoTitle = styleData.metaTitle || `${styleData.name} Tattoos | ${siteName}`;
 const seoDescription = styleData.metaDescription || styleData.intro.slice(0, 155) + (styleData.intro.length > 155 ? '...' : '');
 const seoOgImage = styleData.ogImage || settings.seoDefaultOgImage;
+const stylePageUrl = `${siteUrl}/styles/${styleSlug}`;
 ---
 
 <Layout
   title={seoTitle}
   description={seoDescription}
   ogImage={seoOgImage}
+  canonicalUrl={stylePageUrl}
   noIndex={styleData.noIndex}
+  breadcrumbItems={[
+    { name: 'Home', url: siteUrl + '/' },
+    { name: 'Styles', url: siteUrl + '/styles' },
+    { name: styleData.name, url: stylePageUrl },
+  ]}
 >
   <Header 
     studioName={settings.studioName}

@@ -21,6 +21,7 @@ const artistsPage = artistsPageEntries[0]?.data || {};
 // SEO - Artists page
 const pageTitle = artistsPage.title || 'Artists';
 const pageDescription = artistsPage.description || 'Our artists bring distinct styles and a shared focus on precision, creativity, and custom tattoo work.';
+const siteUrl = settings.seoSiteUrl || 'https://highcontrasttattoo.com';
 const seoTitle = artistsPage.metaTitle || `${pageTitle} | ${settings.seoSiteName || 'High Contrast Tattoo'}`;
 const seoDescription = artistsPage.metaDescription || pageDescription;
 const seoOgImage = artistsPage.ogImage || settings.seoDefaultOgImage;
@@ -72,7 +73,12 @@ const artists = sortedArtists.map(entry => {
   title={seoTitle}
   description={seoDescription}
   ogImage={seoOgImage}
+  canonicalUrl={`${siteUrl}/artists`}
   noIndex={artistsPage.noIndex}
+  breadcrumbItems={[
+    { name: 'Home', url: siteUrl + '/' },
+    { name: 'Artists', url: siteUrl + '/artists' },
+  ]}
 >
   <Header 
     studioName={settings.studioName}

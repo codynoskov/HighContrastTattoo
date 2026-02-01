@@ -5,6 +5,7 @@ import type { GalleryImage } from '../../utils/contentHelpers';
 
 interface Props {
   name: string;
+  styleSlug?: string;
   intro: string;
   exploreHref?: string;
   galleryImages?: GalleryImage[];
@@ -13,6 +14,7 @@ interface Props {
 
 const {
   name,
+  styleSlug,
   intro,
   exploreHref = `/styles/${name.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and')}`,
   galleryImages = [],
@@ -34,7 +36,7 @@ const {
           <Button 
             type="Primary" 
             color="Primary" 
-            href="/book" 
+            href={styleSlug ? `/book?style=${encodeURIComponent(styleSlug)}` : '/book'} 
             leadingIcon={false} 
             trailingIcon={true}
             aria-label="Book a session"

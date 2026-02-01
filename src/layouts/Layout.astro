@@ -4,6 +4,7 @@ import '../styles/fonts.css';
 import '../styles/typography.css';
 import SEO from '../components/SEO.astro';
 import LocalBusinessSchema from '../components/LocalBusinessSchema.astro';
+import ServiceSchema from '../components/ServiceSchema.astro';
 import PersonSchema from '../components/PersonSchema.astro';
 import BreadcrumbListSchema from '../components/BreadcrumbListSchema.astro';
 import PostHog from '../components/posthog.astro';
@@ -23,6 +24,7 @@ interface Props {
   canonicalUrl?: string;
   noIndex?: boolean;
   includeLocalBusiness?: boolean;
+  includeServiceSchema?: boolean;
   includePersonSchema?: boolean;
   personName?: string;
   personImage?: string;
@@ -39,6 +41,7 @@ const {
   canonicalUrl,
   noIndex = false,
   includeLocalBusiness = false,
+  includeServiceSchema = false,
   includePersonSchema = false,
   personName,
   personImage,
@@ -102,6 +105,16 @@ const effectiveNoIndex = isStaging || noIndex;
 				googleMapsUrl={settings.seoGoogleMapsUrl}
 				instagramUrl={settings.seoInstagramUrl}
 				ogImage={defaultOgImage}
+			/>
+		)}
+
+		<!-- Service Structured Data (homepage only) -->
+		{includeServiceSchema && (
+			<ServiceSchema
+				name="Custom Tattoo Appointment"
+				description="Book a custom tattoo consultation and session at High Contrast Tattoo Berlin. Discuss your idea, placement, and style with our experienced artists. Neo-traditional, blackwork, floral, fineline and more."
+				providerName={settings.studioName || 'High Contrast Tattoo'}
+				siteUrl={siteUrl}
 			/>
 		)}
 

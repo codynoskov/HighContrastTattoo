@@ -11,6 +11,7 @@ interface StyleLink {
 
 interface Props {
   name: string;
+  artistSlug?: string;
   intro: string;
   instagram?: string;
   photo?: string | ImageMetadata;
@@ -20,6 +21,7 @@ interface Props {
 
 const {
   name,
+  artistSlug,
   intro,
   instagram,
   photo,
@@ -62,7 +64,7 @@ const {
           <Button
             type="Primary"
             color="Primary"
-            href="/book"
+            href={artistSlug ? `/book?artist=${encodeURIComponent(artistSlug)}` : '/book'}
             leadingIcon={false}
             trailingIcon={true}
             trailingIconName="chevron-right"

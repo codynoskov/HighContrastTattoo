@@ -158,7 +158,7 @@ const seoDescription = 'Book a tattoo appointment at High Contrast Tattoo Berlin
                 optionalHint={true}
               >
                 {artists.map((artist) => (
-                  <option value={artist.name}>{artist.name}</option>
+                  <option value={artist.name} data-slug={artist.slug}>{artist.name}</option>
                 ))}
               </InputField>
             </div>
@@ -503,6 +503,23 @@ const seoDescription = 'Book a tattoo appointment at High Contrast Tattoo Berlin
     const form = document.getElementById('booking-form') as HTMLFormElement;
     if (!form) return;
 
+    // Pre-fill style and artist from URL params (?style=blackwork&artist=ed-zlotin)
+    const params = new URLSearchParams(window.location.search);
+    const styleSlug = params.get('style');
+    const artistSlug = params.get('artist');
+
+    if (styleSlug) {
+      const styleSelect = form.querySelector('#style') as HTMLSelectElement;
+      const styleOption = styleSelect && Array.from(styleSelect.options).find((o) => o.value === styleSlug);
+      if (styleOption) styleSelect.value = styleOption.value;
+    }
+
+    if (artistSlug) {
+      const artistSelect = form.querySelector('#artist') as HTMLSelectElement;
+      const artistOption = artistSelect && Array.from(artistSelect.options).find((o) => o.dataset.slug === artistSlug);
+      if (artistOption) artistSelect.value = artistOption.value;
+    }
+
     const submitButton = form.querySelector('.form-actions button') as HTMLButtonElement;
     if (!submitButton) return;
 
@@ -606,6 +623,13 @@ const seoDescription = 'Book a tattoo appointment at High Contrast Tattoo Berlin
         const result = await response.json();
 
         if (response.ok && result.success) {
+          // Track conversion (cookieless, consistent with privacy policy)
+          if (typeof window !== 'undefined' && window.posthog) {
+            window.posthog.capture('booking_submitted', {
+              style: data.style,
+              artist: data.artist || undefined,
+            });
+          }
           // Success - show success state matching Figma design
           showSuccessState();
         } else {

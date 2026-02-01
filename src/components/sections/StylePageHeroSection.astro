@@ -9,6 +9,7 @@ interface ArtistLink {
 
 interface Props {
   name: string;
+  styleSlug?: string;
   intro: string;
   artists?: ArtistLink[];
   className?: string;
@@ -16,6 +17,7 @@ interface Props {
 
 const {
   name,
+  styleSlug,
   intro,
   artists = [],
   className = ""
@@ -49,7 +51,7 @@ const {
           <Button
             type="Primary"
             color="Accent"
-            href="/book"
+            href={styleSlug ? `/book?style=${encodeURIComponent(styleSlug)}` : '/book'}
             leadingIcon={false}
             trailingIcon={true}
             trailingIconName="chevron-right"

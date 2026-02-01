@@ -1,0 +1,31 @@
+---
+/**
+ * ServiceSchema Component
+ * Outputs JSON-LD structured data for schema.org/Service.
+ * Describes tattoo services offered by the studio for local SEO.
+ */
+
+interface Props {
+  name: string;
+  description: string;
+  providerName: string;
+  siteUrl: string;
+  serviceUrl?: string;
+}
+
+const { name, description, providerName, siteUrl, serviceUrl } = Astro.props;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name,
+  description,
+  provider: {
+    '@type': 'TattooParlor',
+    name: providerName,
+  },
+  url: serviceUrl || `${siteUrl}/book`,
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema, null, 2)} />

@@ -90,6 +90,7 @@ const personImageUrl = typeof seoOgImage === 'string' && seoOgImage.startsWith('
   <main>
     <ArtistPageHeroSection
       name={artistData.name}
+      artistSlug={artistSlug}
       intro={artistData.intro}
       instagram={artistData.instagram}
       photo={resolveImage(artistData.photo)}

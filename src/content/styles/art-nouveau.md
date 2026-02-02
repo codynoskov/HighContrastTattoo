@@ -3,7 +3,7 @@ name: Art Nouveau
 slugOverride: art-nouveau
 order: 14
 intro: Decorative, flowing tattoos inspired by the Art Nouveau era.
-cardImage: /images/artneuvoe.jpg
+cardImage: /images/Art neuvoe.jpg
 metaTitle: Art Nouveau Tattoos | High Contrast Tattoo Berlin
 metaDescription: Art Nouveau tattoos in Berlin Friedrichshain. Flowing curves,
   decorative frames and vintage-inspired designs. Elegant custom tattoos for

@@ -3,7 +3,7 @@ name: Traditional & Old School
 slugOverride: traditional-and-old-school
 order: 5
 intro: Classic tattoo imagery with bold lines and timeless character.
-cardImage: /images/traditional.jpg
+cardImage: /images/traditional1.jpg
 metaTitle: Traditional Tattoos | High Contrast Tattoo Berlin
 metaDescription: Traditional and old school tattoos in Berlin Friedrichshain.
   Classic designs with bold lines. Anchors, roses, ships and timeless imagery.

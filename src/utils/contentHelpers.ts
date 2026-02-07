@@ -236,15 +236,13 @@ export function getSlug(entry: { slug: string; data: { slugOverride?: string; na
 
 /**
  * Extract artist slugs from a work.
- * Returns the artists array from frontmatter if available,
+ * Returns the artists array from frontmatter if available (normalized from paths/slugs),
  * otherwise falls back to folder-based derivation for backwards compatibility.
  */
 export function getArtistSlugsFromWork(work: WorkEntry): string[] {
-  // Use explicit artists field if available
   if (work.data.artists && work.data.artists.length > 0) {
-    return work.data.artists;
+    return normalizeArtistSlugs(work.data.artists);
   }
-  // Fallback to folder-based derivation (backwards compatibility)
   return [work.slug.split('/')[0]];
 }
 
@@ -279,6 +277,25 @@ export function normalizeStyleSlugs(styleRefs: string[]): string[] {
   return styleRefs.map(normalizeStyleSlug);
 }
 
+/**
+ * Normalize an artist reference to just the slug.
+ * Handles both plain slugs ("ed-zlotin") and full paths ("src/content/artists/2026-02-06-jab.md").
+ * This is needed because CMS relation widgets sometimes save full paths or date-prefixed filenames.
+ */
+export function normalizeArtistSlug(artistRef: string): string {
+  if (artistRef.includes('/') || artistRef.endsWith('.md')) {
+    const filename = artistRef.split('/').pop() || artistRef;
+    return filename.replace(/\.md$/, '');
+  }
+  return artistRef;
+}
+
+/**
+ * Normalize an array of artist references to slugs.
+ */
+export function normalizeArtistSlugs(artistRefs: string[]): string[] {
+  return artistRefs.map(normalizeArtistSlug);
+}
 
 /**
  * Resolve style slugs to their display names.
@@ -313,9 +330,11 @@ export function resolveStyles(styleSlugs: string[], styles: StyleEntry[]): Array
 /**
  * Filter works by artist slug.
  * Checks if the artist is included in the work's artists array.
+ * Normalizes refs so paths and date-prefixed slugs from the CMS match correctly.
  */
 export function getWorksByArtist(artistSlug: string, works: WorkEntry[]): WorkEntry[] {
-  const filtered = works.filter((work) => getArtistSlugsFromWork(work).includes(artistSlug));
+  const normalizedSlug = normalizeArtistSlug(artistSlug);
+  const filtered = works.filter((work) => getArtistSlugsFromWork(work).includes(normalizedSlug));
   return filtered.sort((a, b) => (a.data.order ?? 9999) - (b.data.order ?? 9999));
 }
 
@@ -332,9 +351,11 @@ export function getWorksByStyle(styleSlug: string, works: WorkEntry[]): WorkEntr
 
 /**
  * Resolve artist slug to artist name.
+ * Handles both plain slugs and full paths from CMS.
  */
 export function resolveArtistName(artistSlug: string, artists: ArtistEntry[]): string | undefined {
-  const artist = artists.find((a) => getSlug(a) === artistSlug);
+  const normalizedSlug = normalizeArtistSlug(artistSlug);
+  const artist = artists.find((a) => getSlug(a) === normalizedSlug);
   return artist?.data.name;
 }
 
@@ -352,9 +373,11 @@ export interface WorksToGalleryOptions {
 
 /**
  * Resolve artist slug to artist object with name and href.
+ * Handles both plain slugs and full paths from CMS.
  */
 export function resolveArtist(artistSlug: string, artists: ArtistEntry[]): { name: string; href: string } | undefined {
-  const artist = artists.find((a) => getSlug(a) === artistSlug);
+  const normalizedSlug = normalizeArtistSlug(artistSlug);
+  const artist = artists.find((a) => getSlug(a) === normalizedSlug);
   if (!artist) return undefined;
   return {
     name: artist.data.name,

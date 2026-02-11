@@ -18,6 +18,7 @@ metaTitle: Zohar | High Contrast Tattoo Berlin
 metaDescription: Illustrative tattoo artist in Berlin Friedrichshain. Surreal,
   botanical and pop art designs. Bold custom tattoos with nature and underground
   influences.
+ogImage: /images/zohar-avatar.jpg
 noIndex: false
 ---
 I’m Zohar, also working under the name Useless Treasures. My tattoos sit somewhere between surreal illustration and pop art, strange creatures, plants, symbols, and characters inspired by nature, underground culture, and the weirder sides of everyday life. I’m drawn to designs that feel a little unexpected, but stay bold, clear, and readable on the skin.  

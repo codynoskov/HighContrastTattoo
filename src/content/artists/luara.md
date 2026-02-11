@@ -17,6 +17,7 @@ metaTitle: Luh | High Contrast Tattoo Berlin
 metaDescription: Colour tattoo artist in Berlin Friedrichshain. Neo-traditional,
   anime, floral and Art Nouveau designs. Whimsical, nature-inspired custom
   tattoos.
+ogImage: /images/luara-avatar.jpg
 noIndex: false
 ---
 Hi, I’m Luh, a half German, half Brazilian tattoo artist, born and raised in Frankfurt am Main and tattooing since 2015. From the very beginning I was drawn to everything colourful! I always wanted to develop a style that feels playful, bright and a little bit whimsical. My work lives somewhere between nature, fantasy and digital media: Japanese folklore, anime, videogames and all the small creatures you might find in the forest.

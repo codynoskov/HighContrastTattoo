@@ -14,6 +14,7 @@ styles:
 metaTitle: Arseniy | High Contrast Tattoo Berlin
 metaDescription: Traditional and old school tattoo artist in Berlin
   Friedrichshain. Bold flash pieces and fineline work. Book your session today.
+ogImage: /images/arseniy-avatar.jpg
 noIndex: false
 ---
 Hi, I’m Arseniy. I come from the hardcore punk scene and I’ve been tattooing since 2013. That background shaped how I see tattooing: direct, honest and built on strong fundamentals rather than decoration for its own sake. Over time I naturally gravitated towards Traditional & Old School tattooing, where clear symbols, bold outlines and simple, effective colour do most of the talking.

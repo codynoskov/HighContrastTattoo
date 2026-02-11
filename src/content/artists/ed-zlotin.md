@@ -22,6 +22,7 @@ metaTitle: Ed Zlotin | High Contrast Tattoo Berlin
 metaDescription: Studio owner and tattoo artist in Berlin Friedrichshain since
   2009. Blackwork, dotwork, geometric and surreal designs. Book your custom
   abstract tattoo.
+ogImage: /images/001A3907-Edit.jpg
 noIndex: false
 ---
 I’m Ed, and I own High Contrast Tattoo Berlin together with my wife Nastia. I started tattooing in 2009, so I’ve been doing this for more than 17 years. Over time my style has grown into a mix of blackwork, dotwork, surrealism and graphic tattooing: clean lines, different line weights, patterns and geometry that turn simple ideas into more abstract designs.

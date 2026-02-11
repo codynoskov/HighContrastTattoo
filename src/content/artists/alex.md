@@ -15,6 +15,7 @@ metaTitle: Alex | High Contrast Tattoo Berlin
 metaDescription: Traditional tattoo artist in Berlin Friedrichshain. Bold,
   cartoon-inspired designs and clean linework. Flash tattoos and patchwork
   layouts. Book your session.
+ogImage: /images/alex-avatar.jpg
 noIndex: false
 ---
 My name is Alex. I'm a traditional tattoo artist, rooted in the hardcore punk scene, vegan, straight edge, DIY, PMA. That ethos is a foundation of my identity. I like tattoos that are bright and bold, built on strong linework and solid packing so they read well and keep that look over time.

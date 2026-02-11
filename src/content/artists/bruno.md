@@ -17,6 +17,7 @@ metaTitle: Bruno Da Mata | High Contrast Tattoo Berlin
 metaDescription: Blackwork and graphic tattoo artist in Berlin Friedrichshain.
   Illustrative, surreal designs with nature and organic motifs. Book your custom
   tattoo today.
+ogImage: /images/bruno-avatar.jpg
 noIndex: false
 ---
 Hi, I’m Bruno, a Brazilian tattoo artist focusing mainly on Blackwork and graphic, illustrative pieces. For me, tattooing is a way to show who we are and how we change over time — a visible record of our inner movement. I’m especially drawn to nature, faces and organic shapes, and I like to translate them into designs that feel calm, structured and visually fresh, guided by what makes sense to me artistically.

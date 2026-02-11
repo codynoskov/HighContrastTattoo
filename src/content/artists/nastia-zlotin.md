@@ -13,11 +13,12 @@ styles:
   - art-nouveau
   - neo-traditional
   - cover-up
-noIndex: false
 metaTitle: Nastia Zlotin | High Contrast Tattoo Berlin
 metaDescription: Studio owner and neo-traditional tattoo artist in Berlin
   Friedrichshain. Colour work, floral designs, cover-ups and Art Nouveau style.
   13+ years experience.
+ogImage: /images/nastia-zlotin-avatar.jpg
+noIndex: false
 ---
 Hi, I’m Nastia. I own High Contrast Tattoo Berlin together with my husband Ed. I’ve been tattooing for over 13 years, working mainly with neo-traditional and colour tattoos. I enjoy building bright, carefully composed pieces that feel elegant and personal instead of generic. For me, a good tattoo should reflect something real about the person wearing it, their personality, their story, their taste.
 

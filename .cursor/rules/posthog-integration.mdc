@@ -18,7 +18,8 @@ PostHog is already integrated into this Astro project. The configuration include
 ### Environment Variables
 - Use `PUBLIC_` prefix for client-side environment variables in Astro
 - `PUBLIC_POSTHOG_KEY` - Your PostHog project API key
-- `PUBLIC_POSTHOG_HOST` - Your PostHog instance URL
+- `PUBLIC_POSTHOG_HOST` - Your PostHog instance URL (for toolbar, etc.)
+- `PUBLIC_POSTHOG_API_HOST` - PostHog ingest API URL; set to your Cloudflare proxy domain (e.g. `https://ph.highcontrasttattoo.com`) to avoid ad blockers; omit to use direct `eu.i.posthog.com`
 
 ### Best Practices
 - Always use `posthog.identify()` when users sign in

@@ -1,0 +1,11 @@
+# PostHog reverse proxy Worker
+# Deploy: cd workers/posthog-proxy && npx wrangler deploy
+# Add custom domain in Cloudflare dashboard: e.g. ph.highcontrasttattoo.com
+
+name = "posthog-proxy"
+main = "index.js"
+compatibility_date = "2024-01-01"
+
+# Routes are configured when adding a custom domain in the Cloudflare dashboard.
+# After deploy, go to Workers & Pages → posthog-proxy → Settings → Domains & Routes
+# Add a custom domain like ph.highcontrasttattoo.com (avoid obvious names: analytics, tracking, posthog)

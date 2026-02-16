@@ -296,7 +296,12 @@
 .section--carousel .carousel-track .card {
   min-width: 300px;
   max-width: 364px;
-  scroll-snap-align: start;
+}
+
+@media (min-width: 768px) {
+  .section--carousel .carousel-track .card {
+    scroll-snap-align: start;
+  }
 }
 
 @media (max-width: 767px) {
@@ -374,8 +379,13 @@
   overflow-y: visible;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
   scroll-padding-inline: var(--spacing-core-800-md);
+}
+
+@media (min-width: 768px) {
+  .carousel {
+    scroll-snap-type: x mandatory;
+  }
 }
 
 /* Hide scrollbars on all screen sizes */

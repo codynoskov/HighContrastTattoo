@@ -1,6 +1,8 @@
 ---
----
-<script is:inline type="text/javascript" id="posthog-js">
+// Reverse proxy at e.highcontrasttattoo.com avoids ad blockers. Deploy worker first (see workers/posthog-proxy/README.md).
+// Override with PUBLIC_POSTHOG_API_HOST to use a different host (e.g. https://eu.i.posthog.com for direct).
+const posthogApiHost = import.meta.env.PUBLIC_POSTHOG_API_HOST ?? 'https://e.highcontrasttattoo.com';
+const posthogScript = `
   !(function(t, e) {
     var o, n, p, r;
     e.__SV ||
@@ -39,9 +41,11 @@
       (e.__SV = 1));
   })(document, window.posthog || []);
   posthog.init('phc_8qrCIT1THJRw5DTV59N56Plj1225qEIX9PyU2rZoXCN', {
-    api_host: import.meta.env.PUBLIC_POSTHOG_API_HOST || 'https://eu.i.posthog.com',
+    api_host: '${posthogApiHost}',
     ui_host: 'https://eu.posthog.com',
     defaults: '2025-05-24',
     cookieless_mode: 'always',
   });
-</script>
+`;
+---
+<script type="text/javascript" id="posthog-js" is:inline set:html={posthogScript}></script>

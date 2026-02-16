@@ -1,11 +1,23 @@
 /**
- * PostHog Cloudflare Reverse Proxy (EU region)
- * Proxies analytics requests through your domain to avoid ad blockers.
+ * PostHog Reverse Proxy - Cloudflare Worker
+ * Routes PostHog requests through your domain to avoid ad blockers.
  * See: https://posthog.com/docs/advanced/proxy/cloudflare
  */
 
-const API_HOST = "eu.i.posthog.com";
-const ASSET_HOST = "eu-assets.i.posthog.com";
+const API_HOST = 'eu.i.posthog.com';
+const ASSET_HOST = 'eu-assets.i.posthog.com';
+
+function addCorsHeaders(response) {
+  const newHeaders = new Headers(response.headers);
+  newHeaders.set('Access-Control-Allow-Origin', '*');
+  newHeaders.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  newHeaders.set('Access-Control-Allow-Headers', '*');
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers: newHeaders,
+  });
+}
 
 async function handleRequest(request, ctx) {
   const url = new URL(request.url);
@@ -13,11 +25,25 @@ async function handleRequest(request, ctx) {
   const search = url.search;
   const pathWithParams = pathname + search;
 
-  if (pathname.startsWith("/static/")) {
-    return retrieveStatic(request, pathWithParams, ctx);
-  } else {
-    return forwardRequest(request, pathWithParams);
+  if (request.method === 'OPTIONS') {
+    return new Response(null, {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+        'Access-Control-Allow-Headers': '*',
+        'Access-Control-Max-Age': '86400',
+      },
+    });
   }
+
+  let response;
+  if (pathname.startsWith('/static/')) {
+    response = await retrieveStatic(request, pathWithParams, ctx);
+  } else {
+    response = await forwardRequest(request, pathWithParams);
+  }
+
+  return addCorsHeaders(response);
 }
 
 async function retrieveStatic(request, pathname, ctx) {
@@ -30,43 +56,23 @@ async function retrieveStatic(request, pathname, ctx) {
 }
 
 async function forwardRequest(request, pathWithSearch) {
-  const ip = request.headers.get("CF-Connecting-IP") || "";
+  const ip = request.headers.get('CF-Connecting-IP') || '';
   const originHeaders = new Headers(request.headers);
-  originHeaders.delete("cookie");
-  originHeaders.set("X-Forwarded-For", ip);
+  originHeaders.delete('cookie');
+  originHeaders.set('X-Forwarded-For', ip);
 
   const originRequest = new Request(`https://${API_HOST}${pathWithSearch}`, {
     method: request.method,
     headers: originHeaders,
-    body:
-      request.method !== "GET" && request.method !== "HEAD"
-        ? await request.arrayBuffer()
-        : null,
+    body: request.method !== 'GET' && request.method !== 'HEAD' ? await request.arrayBuffer() : null,
     redirect: request.redirect,
   });
 
   return await fetch(originRequest);
 }
 
-function addCorsHeaders(response) {
-  const newHeaders = new Headers(response.headers);
-  newHeaders.set("Access-Control-Allow-Origin", "*");
-  newHeaders.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  newHeaders.set("Access-Control-Allow-Headers", "*");
-  return new Response(response.body, {
-    status: response.status,
-    statusText: response.statusText,
-    headers: newHeaders,
-  });
-}
-
 export default {
   async fetch(request, env, ctx) {
-    if (request.method === "OPTIONS") {
-      return addCorsHeaders(new Response(null, { status: 204 }));
-    }
-    const response =
-      (await handleRequest(request, ctx)) || new Response("Not found", { status: 404 });
-    return addCorsHeaders(response);
+    return handleRequest(request, ctx);
   },
 };

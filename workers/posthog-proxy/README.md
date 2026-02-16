@@ -1,39 +1,26 @@
-# PostHog Cloudflare Reverse Proxy
+# PostHog Reverse Proxy
 
-Proxies PostHog analytics through your domain to avoid ad blockers. See [PostHog docs](https://posthog.com/docs/advanced/proxy/cloudflare).
+Routes PostHog requests through `e.highcontrasttattoo.com` to avoid ad blockers.
 
-## Setup
+## Deploy
 
-### 1. Deploy the Worker
+1. **Deploy the Worker:**
+   ```bash
+   cd workers/posthog-proxy
+   npx wrangler deploy
+   ```
 
-```bash
-cd workers/posthog-proxy
-npx wrangler deploy
-```
+2. **Add custom domain** in Cloudflare Dashboard:
+   - Workers & Pages → posthog-proxy → Settings → Domains & Routes
+   - Add: `e.highcontrasttattoo.com`
+   - Cloudflare will create the DNS record automatically
 
-### 2. Add a custom domain
+3. **Add to PostHog authorized URLs** (Settings → Web analytics):
+   - `https://e.highcontrasttattoo.com`
+   - `https://highcontrasttattoo.com` (if not already added)
 
-1. Go to [Cloudflare Dashboard](https://dash.cloudflare.com) → **Workers & Pages** → **posthog-proxy**
-2. **Settings** → **Domains & Routes** → **Add**
-3. Add a subdomain like `ph.highcontrasttattoo.com` or `ingest.highcontrasttattoo.com`
-4. Avoid obvious names: `analytics`, `tracking`, `posthog`, `telemetry`
+4. **Deploy the website** so it uses the proxy (api_host is already set).
 
-The domain must be managed by Cloudflare (same account as your Pages site).
+## Fallback
 
-### 3. Configure your app
-
-Add to your `.env` (or Cloudflare Pages env vars for production):
-
-```
-PUBLIC_POSTHOG_API_HOST=https://ph.highcontrasttattoo.com
-```
-
-Replace with your actual proxy subdomain.
-
-### 4. Verify
-
-1. Deploy your site with the new env var
-2. Open DevTools → Network tab
-3. Trigger a page view
-4. Confirm requests go to your proxy domain (e.g. `ph.highcontrasttattoo.com`) with `200 OK`
-5. Check PostHog app for incoming events
+If the proxy isn't deployed yet, set `PUBLIC_POSTHOG_API_HOST=https://eu.i.posthog.com` to use PostHog directly.

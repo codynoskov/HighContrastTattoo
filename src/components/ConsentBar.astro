@@ -1,0 +1,153 @@
+---
+/**
+ * Minimal consent bar for Google Ads (Consent Mode v2).
+ * Only shown when user has not yet made a choice. Persists choice in localStorage.
+ */
+---
+
+<div id="consent-bar" class="consent-bar" role="dialog" aria-label="Cookie consent" aria-describedby="consent-message" hidden>
+  <p id="consent-message" class="consent-message">
+    We use cookies for analytics and advertising. You can accept or decline.
+  </p>
+  <div class="consent-actions">
+    <button type="button" id="consent-accept" class="consent-btn consent-btn--accept">Accept</button>
+    <button type="button" id="consent-decline" class="consent-btn consent-btn--decline">Decline</button>
+  </div>
+</div>
+
+<script is:inline>
+  (function() {
+    var KEY = 'gconsent';
+    var bar = document.getElementById('consent-bar');
+    var acceptBtn = document.getElementById('consent-accept');
+    var declineBtn = document.getElementById('consent-decline');
+
+    function hide() {
+      if (bar) bar.setAttribute('hidden', '');
+    }
+
+    function grant() {
+      try { localStorage.setItem(KEY, 'granted'); } catch (e) {}
+      if (typeof gtag === 'function') {
+        gtag('consent', 'update', {
+          'ad_storage': 'granted',
+          'ad_user_data': 'granted',
+          'ad_personalization': 'granted',
+          'analytics_storage': 'granted'
+        });
+      }
+      hide();
+      if (window.location.hash === '#cookie-settings') {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+    }
+
+    function deny() {
+      try { localStorage.setItem(KEY, 'denied'); } catch (e) {}
+      if (typeof gtag === 'function') {
+        gtag('consent', 'update', {
+          'ad_storage': 'denied',
+          'ad_user_data': 'denied',
+          'ad_personalization': 'denied',
+          'analytics_storage': 'denied'
+        });
+      }
+      hide();
+      if (window.location.hash === '#cookie-settings') {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+    }
+
+    function show() {
+      if (bar) bar.removeAttribute('hidden');
+    }
+
+    function checkHash() {
+      if (window.location.hash === '#cookie-settings') show();
+    }
+
+    function init() {
+      try {
+        var stored = localStorage.getItem(KEY);
+        if (!stored) { show(); }
+        else { checkHash(); }
+      } catch (e) {
+        show();
+      }
+
+      if (acceptBtn) acceptBtn.addEventListener('click', grant);
+      if (declineBtn) declineBtn.addEventListener('click', deny);
+
+      window.addEventListener('hashchange', checkHash);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>
+
+<style>
+  .consent-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px 16px;
+    padding: 12px 16px;
+    background-color: var(--color-neutral-900);
+    color: var(--color-neutral-0);
+    font: var(--typography-body-sm);
+    border-top: 1px solid var(--color-neutral-600);
+  }
+
+  .consent-bar[hidden] {
+    display: none;
+  }
+
+  .consent-message {
+    margin: 0;
+    flex: 1 1 200px;
+    font: var(--typography-body-sm);
+    font-size: 16px;
+    color: var(--color-neutral-200);
+  }
+
+  .consent-actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  .consent-btn {
+    padding: 8px 16px;
+    font: var(--typography-body-sm);
+    font-size: 16px;
+    font-weight: var(--font-weight-bold);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+
+  .consent-btn:hover {
+    opacity: 0.9;
+  }
+
+  .consent-btn--accept {
+    background-color: var(--color-neutral-0);
+    color: var(--color-neutral-900);
+  }
+
+  button.consent-btn--decline {
+    background-color: transparent;
+    color: var(--color-neutral-300);
+    border: 1px solid var(--color-neutral-400);
+  }
+</style>

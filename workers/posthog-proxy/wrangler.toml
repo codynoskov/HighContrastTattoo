@@ -1,13 +1,13 @@
 # PostHog Reverse Proxy Worker
-# Deploy: cd workers/posthog-proxy && npx wrangler deploy
-# Then add custom domain e.highcontrasttattoo.com in Cloudflare dashboard
+# Deploy: cd hct-website/workers/posthog-proxy && npx wrangler deploy
 
 name = "posthog-proxy"
 main = "index.js"
 compatibility_date = "2024-01-01"
+account_id = "e497040502b50ab384c7e59a931ec51f"
 
-# Add custom domain in Cloudflare Dashboard:
-# Workers & Pages → posthog-proxy → Settings → Domains & Routes
-# Add: e.highcontrasttattoo.com
-#
-# DNS: Cloudflare will auto-create the record when you add the domain
+# Custom domain - Cloudflare will create DNS + SSL when you deploy
+# Requires highcontrasttattoo.com to be a zone in your Cloudflare account
+[[routes]]
+pattern = "e.highcontrasttattoo.com"
+custom_domain = true

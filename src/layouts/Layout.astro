@@ -9,6 +9,8 @@ import PersonSchema from '../components/PersonSchema.astro';
 import BreadcrumbListSchema from '../components/BreadcrumbListSchema.astro';
 import WebPageSchema from '../components/WebPageSchema.astro';
 import PostHog from '../components/posthog.astro';
+import GoogleTag from '../components/google-tag.astro';
+import ConsentBar from '../components/ConsentBar.astro';
 import { getCollection } from 'astro:content';
 import { getFaviconUrl } from '../utils/contentHelpers';
 
@@ -117,6 +119,8 @@ const effectiveNoIndex = isStaging || noIndex;
 		
 		<!-- PostHog Analytics -->
 		<PostHog />
+		<!-- Google Ads with Consent Mode v2 (Germany) -->
+		<GoogleTag />
 		
 		<!-- SEO Meta Tags -->
 		<SEO
@@ -197,6 +201,7 @@ const effectiveNoIndex = isStaging || noIndex;
 	</head>
 	<body>
 		<slot />
+		<ConsentBar />
 	</body>
 </html>
 

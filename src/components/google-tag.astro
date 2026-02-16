@@ -1,0 +1,54 @@
+---
+/**
+ * Google Ads tag (AW-712648894) with Consent Mode v2.
+ * Default: denied for Germany (GDPR). No cookies until user consents.
+ * See: https://developers.google.com/tag-platform/security/guides/consent
+ */
+const GOOGLE_ADS_ID = 'AW-712648894';
+const scriptContent = `
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+
+  // Consent Mode v2: default denied for Germany (GDPR / TTG)
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'region': ['DE']
+  });
+  // Fallback for other regions (denied to be safe)
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied'
+  });
+
+  // Improve measurement when consent denied (cookieless pings, URL passthrough)
+  gtag('set', 'ads_data_redaction', true);
+  gtag('set', 'url_passthrough', true);
+
+  // Restore consent from previous visit (must run before config)
+  (function() {
+    try {
+      var c = localStorage.getItem('gconsent');
+      if (c === 'granted') {
+        gtag('consent', 'update', {
+          'ad_storage': 'granted',
+          'ad_user_data': 'granted',
+          'ad_personalization': 'granted',
+          'analytics_storage': 'granted'
+        });
+      }
+    } catch (e) {}
+  })();
+
+  gtag('js', new Date());
+  gtag('config', '${GOOGLE_ADS_ID}');
+`;
+---
+
+<!-- Google tag (gtag.js) with Consent Mode v2 -->
+<script is:inline set:html={scriptContent}></script>
+<script is:inline src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`} async></script>

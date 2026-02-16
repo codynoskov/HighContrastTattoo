@@ -18,8 +18,9 @@ footerEmail: highcontrasttattoo@gmail.com
 footerPhone: +49 176 72745645
 footerWhatsAppUrl: https://wa.me/4917672745645
 footerAddress: Schreinerstraße 6, 10247 Berlin, Germany
-footerPrivacyNote: No cookies. We only process personal data when you contact
-  us. Details in our Privacy Policy.
+footerPrivacyNote: We use cookies for analytics and advertising only when you
+  consent. You can change your cookie settings anytime. Details in our Privacy
+  Policy.
 footerCopyright: © 2026 High Contrast Tattoo
 seoSiteName: High Contrast Tattoo Berlin
 seoDefaultDescription: Custom tattoo studio in Berlin-Friedrichshain.

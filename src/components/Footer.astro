@@ -43,7 +43,7 @@ const {
   phone = "+49 176 72745645",
   whatsAppUrl = "https://wa.me/4917672745645",
   address = "Schreinerstraße 6, 10247 Berlin, Germany",
-  privacyNote = "No cookies. We only process personal data when you contact us. Details in our Privacy Policy.",
+  privacyNote = "We use cookies for analytics and advertising only when you consent. You can change your cookie settings anytime. Details in our Privacy Policy.",
   copyright = "© 2026 High Contrast Tattoo",
   buttonGoogleMaps = "Open in Google Maps"
 } = Astro.props;
@@ -53,6 +53,11 @@ const googleMapsUrl = `https://maps.google.com/?q=${encodeURIComponent(`High Con
 
 // Get current path to determine active nav item
 const currentPath = Astro.url.pathname;
+
+// Embed Cookie settings link in the privacy note text
+const cookieLink = '<a href="#cookie-settings" class="footer-link">cookie settings</a>';
+const privacyNoteWithLink = (privacyNote || '')
+  .replace(/\bcookie settings\b/gi, (match) => cookieLink.replace('cookie settings', match));
 
 // Check if a nav link is active (homepage "/" maps to "/studio")
 // Note: Template pages (/artists/[slug] and /styles/[slug]) should not mark nav links as active
@@ -142,7 +147,7 @@ const isActive = (href: string) => {
       <a href="/privacy" class={`nav-link ${isActive('/privacy') ? 'nav-link--active' : ''}`}>Privacy note</a>
     </nav>
     <div class="footer-text">
-      <p class="footer-small">{privacyNote}</p>
+      <p class="footer-small" set:html={privacyNoteWithLink} />
       <p class="footer-copyright">{copyright}</p>
     </div>
   </div>
@@ -343,6 +348,14 @@ const isActive = (href: string) => {
     font: var(--typography-body-sm);
     color: var(--color-primary-600);
     margin: 0;
+  }
+
+  .footer-link {
+    font-size: 12px;
+    font-weight: inherit;
+    line-height: inherit;
+    color: var(--color-primary-900);
+    text-decoration: underline;
   }
 
   .footer-copyright {

@@ -4,9 +4,10 @@ Routes PostHog requests through `e.highcontrasttattoo.com` to avoid ad blockers.
 
 ## Deploy
 
-1. **Deploy the Worker:**
+1. **Deploy the Worker** (from the `hct-website` directory):
    ```bash
-   cd workers/posthog-proxy
+   cd hct-website/workers/posthog-proxy
+   npx wrangler login   # if not already logged in
    npx wrangler deploy
    ```
 

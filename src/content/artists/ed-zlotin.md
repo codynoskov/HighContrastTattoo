@@ -1,6 +1,6 @@
 ---
 name: Ed Zlotin
-slugOverride: ed-zlotin
+slugOverride: ed-zlotin-tattoo-berlin
 order: 2
 photo: /images/001A3907-Edit.jpg
 intro: Ed is the owner of High Contrast Tattoo Berlin together with his wife

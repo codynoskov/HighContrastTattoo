@@ -1,6 +1,6 @@
 ---
 name: Zohar
-slugOverride: zohar
+slugOverride: zohar-tattoo-berlin
 order: 6
 photo: /images/zohar-avatar.jpg
 intro: >

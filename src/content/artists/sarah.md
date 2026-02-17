@@ -1,6 +1,6 @@
 ---
 name: Sarah
-slugOverride: sarah
+slugOverride: sarah-tattoo-berlin
 order: 11
 photo: /images/sarah-avatar.jpg
 intro: Sarah is a beginner tattoo artist who works in a blackwork-traditional

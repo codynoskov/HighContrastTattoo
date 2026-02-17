@@ -1,6 +1,6 @@
 ---
 name: Alex
-slugOverride: alex
+slugOverride: alex-tattoo-berlin
 order: 12
 photo: /images/alex-avatar.jpg
 intro: Alex is a traditional tattoo artist from the hardcore punk scene.

@@ -1,6 +1,6 @@
 ---
 name: Bruno Da Mata
-slugOverride: bruno-da-mata
+slugOverride: bruno-tattoo-berlin
 order: 5
 photo: /images/bruno-avatar.jpg
 intro: >

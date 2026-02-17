@@ -1,6 +1,6 @@
 ---
 name: Sera
-slugOverride: sera
+slugOverride: sera-tattoo-berlin
 order: 8
 photo: /images/001A5216-Edit.jpg
 intro: Sera is an illustrative tattoo artist whose work moves between Neo

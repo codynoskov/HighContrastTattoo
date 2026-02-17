@@ -1,6 +1,6 @@
 ---
 name: Arseniy
-slugOverride: arseniy
+slugOverride: arseniy-tattoo-berlin
 order: 3
 photo: /images/arseniy-avatar.jpg
 intro: Arseniy is a traditional and old school tattoo artist with a hardcore

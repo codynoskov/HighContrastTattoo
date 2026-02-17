@@ -1,6 +1,6 @@
 ---
 name: Nastia Zlotin
-slugOverride: nastia-zlotin
+slugOverride: nastia-zlotin-tattoo-berlin
 order: 1
 photo: /images/nastia-zlotin-avatar.jpg
 intro: Nastia Zlotina is a colour focused neo-traditional and illustrative

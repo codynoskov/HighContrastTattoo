@@ -1,6 +1,6 @@
 ---
 name: Sinah Ra
-slugOverride: sinah-ra
+slugOverride: sinah-tattoo-berlin
 order: 9
 photo: /images/sina-ra-avatar.jpg
 intro: >

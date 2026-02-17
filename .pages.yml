@@ -663,9 +663,9 @@ content:
         options:
           collection: artists
           label: "{name}"
-          value: "{slugOverride}"
+          value: "{slug}"
           multiple: true
-        description: Select the artist(s) who created this work. For collaborations, select multiple artists.
+        description: Select the artist(s) who created this work. For collaborations, select multiple artists. Uses stable filename-based reference so artist slug changes won't break the connection.
       
       - name: styles
         label: Styles

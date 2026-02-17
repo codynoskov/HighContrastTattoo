@@ -329,12 +329,25 @@ export function resolveStyles(styleSlugs: string[], styles: StyleEntry[]): Array
 
 /**
  * Filter works by artist slug.
- * Checks if the artist is included in the work's artists array.
- * Normalizes refs so paths and date-prefixed slugs from the CMS match correctly.
+ * Matches works using the artist's file-based slug (entry.slug) rather than their display slug (slugOverride).
+ * This makes the system resilient to slug changes - changing an artist's slugOverride won't break their works.
  */
-export function getWorksByArtist(artistSlug: string, works: WorkEntry[]): WorkEntry[] {
-  const normalizedSlug = normalizeArtistSlug(artistSlug);
-  const filtered = works.filter((work) => getArtistSlugsFromWork(work).includes(normalizedSlug));
+export function getWorksByArtist(artistSlug: string, works: WorkEntry[], artists: ArtistEntry[]): WorkEntry[] {
+  // Find the artist by their current display slug (slugOverride or file slug)
+  const artist = artists.find((a) => getSlug(a) === artistSlug);
+  if (!artist) return [];
+  
+  // Get the artist's file-based slug (e.g., "luara", "skezy") which is stable
+  const artistFileSlug = artist.slug;
+  
+  // Find works that reference this artist by their file slug
+  const filtered = works.filter((work) => {
+    const workArtistRefs = getArtistSlugsFromWork(work);
+    // Normalize to handle paths like "src/content/artists/luara.md"
+    const normalizedRefs = workArtistRefs.map(normalizeArtistSlug);
+    return normalizedRefs.includes(artistFileSlug);
+  });
+  
   return filtered.sort((a, b) => (a.data.order ?? 9999) - (b.data.order ?? 9999));
 }
 
@@ -350,12 +363,13 @@ export function getWorksByStyle(styleSlug: string, works: WorkEntry[]): WorkEntr
 }
 
 /**
- * Resolve artist slug to artist name.
- * Handles both plain slugs and full paths from CMS.
+ * Resolve artist slug/reference to artist name.
+ * Works with both file-based slugs (from work references) and display slugs (from URLs).
  */
-export function resolveArtistName(artistSlug: string, artists: ArtistEntry[]): string | undefined {
-  const normalizedSlug = normalizeArtistSlug(artistSlug);
-  const artist = artists.find((a) => getSlug(a) === normalizedSlug);
+export function resolveArtistName(artistRef: string, artists: ArtistEntry[]): string | undefined {
+  const normalizedRef = normalizeArtistSlug(artistRef);
+  // Try to match by file slug first, then by display slug
+  const artist = artists.find((a) => a.slug === normalizedRef || getSlug(a) === normalizedRef);
   return artist?.data.name;
 }
 
@@ -372,12 +386,13 @@ export interface WorksToGalleryOptions {
 }
 
 /**
- * Resolve artist slug to artist object with name and href.
- * Handles both plain slugs and full paths from CMS.
+ * Resolve artist slug/reference to artist object with name and href.
+ * Works with both file-based slugs (from work references) and display slugs (from URLs).
  */
-export function resolveArtist(artistSlug: string, artists: ArtistEntry[]): { name: string; href: string } | undefined {
-  const normalizedSlug = normalizeArtistSlug(artistSlug);
-  const artist = artists.find((a) => getSlug(a) === normalizedSlug);
+export function resolveArtist(artistRef: string, artists: ArtistEntry[]): { name: string; href: string } | undefined {
+  const normalizedRef = normalizeArtistSlug(artistRef);
+  // Try to match by file slug first, then by display slug
+  const artist = artists.find((a) => a.slug === normalizedRef || getSlug(a) === normalizedRef);
   if (!artist) return undefined;
   return {
     name: artist.data.name,

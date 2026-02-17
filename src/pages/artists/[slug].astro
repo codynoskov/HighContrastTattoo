@@ -40,7 +40,7 @@ const { Content } = await artist.render();
 
 // Compute derived data
 const artistSlug = getSlug(artist);
-const artistWorks = getWorksByArtist(artistSlug, works);
+const artistWorks = getWorksByArtist(artistSlug, works, artists);
 const galleryImages = worksToGalleryImages(artistWorks, {
   context: 'artist',
   styles,

@@ -1,7 +1,7 @@
 ---
 image: /images/IMG_5180.jpeg
 artists:
-  - skezy
+  - skezy-tattoo-berlin
 styles:
   - script-calligraphy
   - heavy-blackwork

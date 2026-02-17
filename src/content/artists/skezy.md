@@ -1,6 +1,6 @@
 ---
 name: Skezy
-slugOverride: skezy
+slugOverride: skezy-tattoo-berlin
 order: 10
 photo: /images/skezy-avatar.jpg
 intro: Skezy is a heavy blackwork and lettering artist creating abstract,

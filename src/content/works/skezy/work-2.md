@@ -1,6 +1,6 @@
 ---
 artists:
-  - skezy
+  - skezy-tattoo-berlin
 order: 2
 image: /images/skezy-2.jpg
 styles:

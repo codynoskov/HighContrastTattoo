@@ -1,7 +1,7 @@
 ---
 image: /images/PXL_20250319_181103811~2.jpg
 artists:
-  - luh-tattoo-berlin
+  - luara
 styles:
   - anime-and-manga
   - neo-traditional

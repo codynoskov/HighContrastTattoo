@@ -1,7 +1,7 @@
 ---
 image: /images/IMG_20251116_100630_762.jpg
 artists:
-  - luh-tattoo-berlin
+  - luara
 styles:
   - floral-and-botanic
   - neo-traditional

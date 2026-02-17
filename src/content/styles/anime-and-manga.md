@@ -1,6 +1,6 @@
 ---
 name: Anime & Manga
-slugOverride: anime-and-manga
+slugOverride: anime-and-manga-tattoo-berlin
 order: 15
 intro: Tattoos inspired by Japanese animation and manga culture.
 metaTitle: Anime & Manga Tattoos | High Contrast Tattoo Berlin

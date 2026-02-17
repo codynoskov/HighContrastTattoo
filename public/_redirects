@@ -1,0 +1,18 @@
+# 301 Redirects for artist slug changes (SEO preservation)
+# Old URLs -> New URLs with -tattoo-berlin suffix
+
+# Artist pages
+/artists/alex /artists/alex-tattoo-berlin 301
+/artists/arseniy /artists/arseniy-tattoo-berlin 301
+/artists/bruno-da-mata /artists/bruno-tattoo-berlin 301
+/artists/ed-zlotin /artists/ed-zlotin-tattoo-berlin 301
+/artists/jab /artists/jab-tattoo-berlin 301
+/artists/liza /artists/liza-tattoo-berlin 301
+/artists/luh /artists/luh-tattoo-berlin 301
+/artists/nastia-zlotin /artists/nastia-zlotin-tattoo-berlin 301
+/artists/sarah /artists/sarah-tattoo-berlin 301
+/artists/sera /artists/sera-tattoo-berlin 301
+/artists/sinah-ra /artists/sinah-tattoo-berlin 301
+/artists/zohar /artists/zohar-tattoo-berlin 301
+
+# Note: gil and skezy already had -tattoo-berlin, no redirect needed

@@ -1,6 +1,6 @@
 ---
 name: Luh
-slugOverride: luh
+slugOverride: luh-tattoo-berlin
 order: 4
 photo: /images/luara-avatar.jpg
 intro: >

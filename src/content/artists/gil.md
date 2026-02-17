@@ -1,6 +1,6 @@
 ---
 name: Gil
-slugOverride: gil
+slugOverride: gil-tattoo-berlin
 order: 7
 photo: /images/gil-avatar.jpg
 intro: >

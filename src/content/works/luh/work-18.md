@@ -1,7 +1,7 @@
 ---
 image: /images/PXL_20240918_171119716~2.jpg
 artists:
-  - luh
+  - luh-tattoo-berlin
 styles:
   - floral-and-botanic
   - neo-traditional

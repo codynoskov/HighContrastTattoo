@@ -1,7 +1,7 @@
 ---
 image: /images/luara-2.jpg
 artists:
-  - luh
+  - luh-tattoo-berlin
 styles:
   - neo-traditional
 order: 2

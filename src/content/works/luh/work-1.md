@@ -1,7 +1,7 @@
 ---
 image: /images/luara-1.jpg
 artists:
-  - luh
+  - luh-tattoo-berlin
 styles:
   - neo-traditional
   - art-nouveau

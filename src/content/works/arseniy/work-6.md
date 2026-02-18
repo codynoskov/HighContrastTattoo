@@ -1,7 +1,7 @@
 ---
 image: /images/IMG_1022.jpeg
 artists:
-  - arseniy
+  - arseniy-tattoo-berlin
 styles:
   - traditional-and-old-school
   - fineline

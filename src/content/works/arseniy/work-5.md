@@ -1,7 +1,7 @@
 ---
 image: /images/arseniy-5.jpg
 artists:
-  - arseniy
+  - arseniy-tattoo-berlin
 styles:
   - traditional-and-old-school
 order: 5

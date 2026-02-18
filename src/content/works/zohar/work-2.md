@@ -1,7 +1,7 @@
 ---
 image: /images/zohar-2.jpg
 artists:
-  - zohar
+  - zohar-tattoo-berlin
 styles:
   - floral-and-botanic
   - illustrative

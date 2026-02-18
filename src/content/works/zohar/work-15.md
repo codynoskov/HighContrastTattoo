@@ -1,7 +1,7 @@
 ---
 image: /images/triceratops_tattoo1.jpg
 artists:
-  - zohar
+  - zohar-tattoo-berlin
 styles:
   - illustrative
   - surrealism

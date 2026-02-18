@@ -1,7 +1,7 @@
 ---
 image: /images/IMG_8508.jpeg
 artists:
-  - gil
+  - gil-tattoo-berlin
 styles:
   - engraving
   - linework

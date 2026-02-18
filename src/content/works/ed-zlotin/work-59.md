@@ -1,6 +1,6 @@
 ---
 artists:
-  - ed-zlotin
+  - ed-zlotin-tattoo-berlin
 order: 59
 image: /images/ed-works-60.jpg
 styles:

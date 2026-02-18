@@ -2,7 +2,7 @@
 order: 7
 image: /images/77.jpg
 artists:
-  - liza
+  - liza-tattoo-berlin
 styles:
   - bio-organic-tribal
   - blackwork

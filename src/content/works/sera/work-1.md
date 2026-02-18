@@ -1,7 +1,7 @@
 ---
 image: /images/sera-1.jpg
 artists:
-  - sera
+  - sera-tattoo-berlin
 styles:
   - floral-and-botanic
   - neo-traditional

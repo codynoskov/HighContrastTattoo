@@ -1,7 +1,7 @@
 ---
 image: /images/bruno-1.jpg
 artists:
-  - bruno-da-mata
+  - bruno-tattoo-berlin
 styles:
   - blackwork
   - illustrative

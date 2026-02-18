@@ -1,7 +1,7 @@
 ---
 image: /images/alex-2.jpg
 artists:
-  - alex
+  - alex-tattoo-berlin
 styles:
   - traditional-and-old-school
   - cartoon

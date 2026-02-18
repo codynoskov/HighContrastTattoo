@@ -1,7 +1,7 @@
 ---
 image: /images/DSCF3728.jpg
 artists:
-  - sera
+  - sera-tattoo-berlin
 styles:
   - floral-and-botanic
   - linework

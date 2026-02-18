@@ -1,7 +1,7 @@
 ---
 image: /images/post_flower_tatArtboard 1 copy 2.jpg
 artists:
-  - zohar
+  - zohar-tattoo-berlin
 styles:
   - illustrative
   - surrealism

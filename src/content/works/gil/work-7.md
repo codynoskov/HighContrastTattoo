@@ -1,7 +1,7 @@
 ---
 image: /images/IMG_2641.jpeg
 artists:
-  - gil
+  - gil-tattoo-berlin
 styles:
   - engraving
   - illustrative

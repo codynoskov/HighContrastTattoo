@@ -1,7 +1,7 @@
 ---
 image: /images/for_mannheim8.jpg
 artists:
-  - zohar
+  - zohar-tattoo-berlin
 styles:
   - illustrative
   - surrealism

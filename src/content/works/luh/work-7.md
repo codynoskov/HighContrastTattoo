@@ -1,7 +1,7 @@
 ---
 image: /images/IMG_20241116_102049_816.jpg
 artists:
-  - luara
+  - luh-tattoo-berlin
 styles:
   - art-nouveau
   - floral-and-botanic

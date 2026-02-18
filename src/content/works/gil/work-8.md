@@ -1,7 +1,7 @@
 ---
 image: /images/IMG_3922.jpeg
 artists:
-  - gil
+  - gil-tattoo-berlin
 styles:
   - engraving
   - floral-and-botanic

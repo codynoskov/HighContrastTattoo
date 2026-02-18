@@ -1,7 +1,7 @@
 ---
 image: /images/IMG_5190.jpeg
 artists:
-  - bruno-da-mata
+  - bruno-tattoo-berlin
 styles:
   - blackwork
   - floral-and-botanic

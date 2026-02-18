@@ -1,7 +1,7 @@
 ---
 image: /images/gil-1.jpg
 artists:
-  - gil
+  - gil-tattoo-berlin
 styles:
   - linework
   - engraving

@@ -1,7 +1,7 @@
 ---
 image: /images/sarah-2.jpeg
 artists:
-  - sarah
+  - sarah-tattoo-berlin
 styles:
   - linework
   - traditional-and-old-school

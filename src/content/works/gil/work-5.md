@@ -1,7 +1,7 @@
 ---
 image: /images/gil-5.jpg
 artists:
-  - gil
+  - gil-tattoo-berlin
 styles:
   - linework
   - floral-and-botanic

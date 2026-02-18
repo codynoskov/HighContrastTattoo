@@ -1,7 +1,7 @@
 ---
 image: /images/luara-3.jpg
 artists:
-  - luara
+  - luh-tattoo-berlin
 styles:
   - floral-and-botanic
   - neo-traditional

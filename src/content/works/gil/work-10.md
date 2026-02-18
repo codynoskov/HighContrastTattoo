@@ -1,7 +1,7 @@
 ---
 image: /images/IMG_4742.jpeg
 artists:
-  - gil
+  - gil-tattoo-berlin
 styles:
   - engraving
   - linework

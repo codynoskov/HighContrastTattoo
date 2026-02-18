@@ -1,7 +1,7 @@
 ---
 image: /images/tattoo_post_shira1.jpg
 artists:
-  - zohar
+  - zohar-tattoo-berlin
 styles:
   - illustrative
   - surrealism

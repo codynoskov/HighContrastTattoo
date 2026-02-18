@@ -1,7 +1,7 @@
 ---
 image: /images/IMG_5186.jpeg
 artists:
-  - bruno-da-mata
+  - bruno-tattoo-berlin
 styles:
   - blackwork
   - illustrative

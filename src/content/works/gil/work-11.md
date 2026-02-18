@@ -1,7 +1,7 @@
 ---
 image: /images/IMG_5228.jpeg
 artists:
-  - gil
+  - gil-tattoo-berlin
 styles:
   - engraving
   - illustrative

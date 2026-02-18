@@ -1,7 +1,7 @@
 ---
 image: /images/1.jpg
 artists:
-  - ed-zlotin
+  - ed-zlotin-tattoo-berlin
 styles:
   - dotwork
   - surrealism

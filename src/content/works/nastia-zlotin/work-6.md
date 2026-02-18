@@ -1,7 +1,7 @@
 ---
 image: /images/2.jpg
 artists:
-  - nastia-zlotin
+  - nastia-zlotin-tattoo-berlin
 styles:
   - cover-up
   - neo-traditional

@@ -1,7 +1,7 @@
 ---
 image: /images/IMG_5162.jpeg
 artists:
-  - alex
+  - alex-tattoo-berlin
 styles:
   - traditional-and-old-school
   - cartoon

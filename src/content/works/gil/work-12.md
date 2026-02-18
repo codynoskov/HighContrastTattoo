@@ -1,7 +1,7 @@
 ---
 image: /images/IMG_6583.jpeg
 artists:
-  - gil
+  - gil-tattoo-berlin
 styles:
   - engraving
   - surrealism

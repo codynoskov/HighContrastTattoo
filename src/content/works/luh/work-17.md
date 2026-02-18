@@ -1,7 +1,7 @@
 ---
 image: /images/PXL_20250418_153251562~2.jpg
 artists:
-  - luara
+  - luh-tattoo-berlin
 styles:
   - floral-and-botanic
   - neo-traditional

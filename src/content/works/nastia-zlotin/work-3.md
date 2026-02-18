@@ -1,7 +1,7 @@
 ---
 image: /images/nastia-zlotin-3.jpeg
 artists:
-  - nastia-zlotin
+  - nastia-zlotin-tattoo-berlin
 styles:
   - floral-and-botanic
   - neo-traditional

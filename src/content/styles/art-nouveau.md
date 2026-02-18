@@ -1,6 +1,6 @@
 ---
 name: Art Nouveau
-slugOverride: art-nouveau
+slugOverride: art-nouveau-tattoo-berlin
 order: 14
 intro: Decorative, flowing tattoos inspired by the Art Nouveau era.
 cardImage: /images/Art neuvoe.jpg

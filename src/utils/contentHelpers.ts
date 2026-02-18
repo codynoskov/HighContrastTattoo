@@ -328,26 +328,53 @@ export function resolveStyles(styleSlugs: string[], styles: StyleEntry[]): Array
 }
 
 /**
+ * Build the full set of slugs that could identify a given artist.
+ * Covers mismatches between file slugs, slugOverrides, date-prefixed filenames,
+ * and CMS-entered artist references derived from the display name.
+ */
+function getArtistKnownSlugs(artist: ArtistEntry): Set<string> {
+  const slugs = new Set<string>();
+
+  slugs.add(artist.slug);
+  slugs.add(getSlug(artist));
+
+  const dateStripped = artist.slug.replace(/^\d{4}-\d{2}-\d{2}-/, '');
+  if (dateStripped !== artist.slug) {
+    slugs.add(dateStripped);
+  }
+
+  const nameSlug = artist.data.name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+  if (nameSlug) slugs.add(nameSlug);
+
+  return slugs;
+}
+
+/**
  * Filter works by artist slug.
- * Matches works using the artist's file-based slug (entry.slug) rather than their display slug (slugOverride).
- * This makes the system resilient to slug changes - changing an artist's slugOverride won't break their works.
+ * Matches using every known identifier for the artist (file slug, display slug,
+ * date-stripped slug, slugified name) against every identifier on the work
+ * (explicit artists field + directory-based slug).
  */
 export function getWorksByArtist(artistSlug: string, works: WorkEntry[], artists: ArtistEntry[]): WorkEntry[] {
-  // Find the artist by their current display slug (slugOverride or file slug)
   const artist = artists.find((a) => getSlug(a) === artistSlug);
   if (!artist) return [];
-  
-  // Get the artist's file-based slug (e.g., "luara", "skezy") which is stable
-  const artistFileSlug = artist.slug;
-  
-  // Find works that reference this artist by their file slug
+
+  const knownSlugs = getArtistKnownSlugs(artist);
+
   const filtered = works.filter((work) => {
-    const workArtistRefs = getArtistSlugsFromWork(work);
-    // Normalize to handle paths like "src/content/artists/luara.md"
-    const normalizedRefs = workArtistRefs.map(normalizeArtistSlug);
-    return normalizedRefs.includes(artistFileSlug);
+    const explicitRefs = getArtistSlugsFromWork(work).map(normalizeArtistSlug);
+    const dirSlug = work.slug.split('/')[0];
+    const allRefs = new Set([...explicitRefs, dirSlug]);
+
+    for (const ref of allRefs) {
+      if (knownSlugs.has(ref)) return true;
+    }
+    return false;
   });
-  
+
   return filtered.sort((a, b) => (a.data.order ?? 9999) - (b.data.order ?? 9999));
 }
 

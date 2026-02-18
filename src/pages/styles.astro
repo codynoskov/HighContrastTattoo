@@ -47,7 +47,7 @@ const sortedStyles = [...styleEntries].sort((a, b) => {
 
 const styles = sortedStyles.map(entry => {
   const slug = getSlug(entry);
-  const styleWorks = getWorksByStyle(slug, worksEntries);
+  const styleWorks = getWorksByStyle(slug, worksEntries, styleEntries);
   const galleryImages = worksToGalleryImages(styleWorks, {
     context: 'style',
     artists: artistEntries,

@@ -1,6 +1,6 @@
 ---
 name: Blackwork
-slugOverride: blackwork
+slugOverride: blackwork-tattoo-berlin
 order: 2
 intro: Bold, high-impact tattoos created with solid black ink.
 cardImage: /images/sina-ra-1.jpeg

@@ -58,7 +58,7 @@ function isValidImage(img: ImageMetadata | string): boolean {
 // Transform styles into card format
 const stylesData = sortedStyles.map((entry) => {
   const slug = getSlug(entry);
-  const styleWorks = getWorksByStyle(slug, worksEntries);
+  const styleWorks = getWorksByStyle(slug, worksEntries, styleEntries);
   
   let image: ImageMetadata | string = imagePlaceholder;
   

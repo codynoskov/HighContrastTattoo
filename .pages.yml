@@ -674,9 +674,9 @@ content:
         options:
           collection: styles
           label: "{name}"
-          value: "{slugOverride}"
+          value: "{slug}"
           multiple: true
-        description: Select all styles that apply to this work. Multiple can be selected.
+        description: Select all styles that apply to this work. Uses stable filename-based reference so style slug changes won't break the connection.
   
   # ============================================
   # REVIEWS

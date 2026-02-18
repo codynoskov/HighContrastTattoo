@@ -298,14 +298,61 @@ export function normalizeArtistSlugs(artistRefs: string[]): string[] {
 }
 
 /**
+ * Slugify a display name into a URL-safe identifier.
+ * "Bruno Da Mata" → "bruno-da-mata", "Bio Organic & Tribal" → "bio-organic-tribal"
+ */
+function slugifyName(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
+/**
+ * Build the full set of slugs that could identify a given style.
+ * Covers mismatches between file slugs, slugOverrides, date-prefixed filenames,
+ * and CMS-entered style references derived from the display name.
+ */
+function getStyleKnownSlugs(style: StyleEntry): Set<string> {
+  const slugs = new Set<string>();
+
+  slugs.add(style.slug);
+  slugs.add(getSlug(style));
+
+  const dateStripped = style.slug.replace(/^\d{4}-\d{2}-\d{2}-/, '');
+  if (dateStripped !== style.slug) {
+    slugs.add(dateStripped);
+  }
+
+  const nameSlug = slugifyName(style.data.name);
+  if (nameSlug) slugs.add(nameSlug);
+
+  return slugs;
+}
+
+/**
+ * Build a reverse lookup from every known slug → StyleEntry.
+ * Used by resolveStyles / resolveStyleNames so that any historical slug
+ * (old slugOverride, file slug, slugified name) still finds the right style.
+ */
+function buildStyleLookup(styles: StyleEntry[]): Map<string, StyleEntry> {
+  const lookup = new Map<string, StyleEntry>();
+  for (const style of styles) {
+    for (const slug of getStyleKnownSlugs(style)) {
+      lookup.set(slug, style);
+    }
+  }
+  return lookup;
+}
+
+/**
  * Resolve style slugs to their display names.
- * Returns an array of style names for the given slugs.
  * Handles both plain slugs and full paths from CMS.
  */
 export function resolveStyleNames(styleSlugs: string[], styles: StyleEntry[]): string[] {
-  const slugToName = new Map(styles.map((s) => [getSlug(s), s.data.name]));
+  const lookup = buildStyleLookup(styles);
   return normalizeStyleSlugs(styleSlugs)
-    .map((slug) => slugToName.get(slug))
+    .map((slug) => lookup.get(slug)?.data.name)
     .filter((name): name is string => name !== undefined);
 }
 
@@ -314,10 +361,10 @@ export function resolveStyleNames(styleSlugs: string[], styles: StyleEntry[]): s
  * Handles both plain slugs and full paths from CMS.
  */
 export function resolveStyles(styleSlugs: string[], styles: StyleEntry[]): Array<{ name: string; href: string }> {
-  const styleMap = new Map(styles.map((s) => [getSlug(s), s]));
+  const lookup = buildStyleLookup(styles);
   return normalizeStyleSlugs(styleSlugs)
     .map((slug) => {
-      const style = styleMap.get(slug);
+      const style = lookup.get(slug);
       if (!style) return null;
       return {
         name: style.data.name,
@@ -343,10 +390,7 @@ function getArtistKnownSlugs(artist: ArtistEntry): Set<string> {
     slugs.add(dateStripped);
   }
 
-  const nameSlug = artist.data.name
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '');
+  const nameSlug = slugifyName(artist.data.name);
   if (nameSlug) slugs.add(nameSlug);
 
   return slugs;
@@ -380,12 +424,20 @@ export function getWorksByArtist(artistSlug: string, works: WorkEntry[], artists
 
 /**
  * Filter works by style slug.
- * Handles both plain slugs and full paths from CMS stored in work.data.styles.
+ * Matches using every known identifier for the style (file slug, display slug,
+ * date-stripped slug, slugified name) against the work's styles references.
  */
-export function getWorksByStyle(styleSlug: string, works: WorkEntry[]): WorkEntry[] {
-  const filtered = works.filter((work) => 
-    normalizeStyleSlugs(work.data.styles).includes(styleSlug)
-  );
+export function getWorksByStyle(styleSlug: string, works: WorkEntry[], styles: StyleEntry[]): WorkEntry[] {
+  const style = styles.find((s) => getSlug(s) === styleSlug);
+  if (!style) return [];
+
+  const knownSlugs = getStyleKnownSlugs(style);
+
+  const filtered = works.filter((work) => {
+    const workStyleRefs = normalizeStyleSlugs(work.data.styles);
+    return workStyleRefs.some((ref) => knownSlugs.has(ref));
+  });
+
   return filtered.sort((a, b) => (a.data.order ?? 9999) - (b.data.order ?? 9999));
 }
 

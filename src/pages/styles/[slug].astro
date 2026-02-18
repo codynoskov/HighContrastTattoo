@@ -43,7 +43,7 @@ const { Content } = await style.render();
 
 // Get gallery images for this style
 const styleSlug = getSlug(style);
-const styleWorks = getWorksByStyle(styleSlug, works);
+const styleWorks = getWorksByStyle(styleSlug, works, styles);
 const galleryImages = worksToGalleryImages(styleWorks, {
   context: 'style',
   artists,

@@ -1,9 +1,9 @@
 ---
 image: /images/PXL_20230417_145951270 Kopie.jpg
 artists:
-  - luh-tattoo-berlin
+  - Luh
 styles:
-  - art-nouveau-tattoo-berlin
-  - neo-traditional-tattoo-berlin
+  - Art Nouveau
+  - Neo Traditional
 order: 9
 ---

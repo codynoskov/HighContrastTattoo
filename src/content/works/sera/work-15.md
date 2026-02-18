@@ -1,9 +1,9 @@
 ---
 image: /images/PXL_20250624_134742860~5.jpg
 artists:
-  - sera-tattoo-berlin
+  - Sera
 styles:
-  - illustrative-tattoo-berlin
-  - floral-and-botanic-tattoo-berlin
+  - Illustrative
+  - Floral & Botanic
 order: 15
 ---

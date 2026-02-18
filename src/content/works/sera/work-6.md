@@ -1,9 +1,9 @@
 ---
 image: /images/DSCF3728.jpg
 artists:
-  - sera-tattoo-berlin
+  - Sera
 styles:
-  - floral-and-botanic-tattoo-berlin
-  - linework-tattoo-berlin
+  - Floral & Botanic
+  - Linework
 order: 6
 ---

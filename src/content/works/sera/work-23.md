@@ -1,8 +1,8 @@
 ---
 image: /images/PXL_20250904_175741134~3.jpg
 artists:
-  - sera-tattoo-berlin
+  - Sera
 styles:
-  - linework-tattoo-berlin
+  - Linework
 order: 23
 ---

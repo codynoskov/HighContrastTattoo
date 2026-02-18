@@ -1,9 +1,9 @@
 ---
 image: /images/IMG_20250730_113049_872.jpg
 artists:
-  - luh-tattoo-berlin
+  - Luh
 styles:
-  - art-nouveau-tattoo-berlin
-  - neo-traditional-tattoo-berlin
+  - Art Nouveau
+  - Neo Traditional
 order: 8
 ---

@@ -1,9 +1,9 @@
 ---
 artists:
-  - arseniy-tattoo-berlin
+  - Arseniy
 order: 10
 image: /images/IMG_2299.jpeg
 styles:
-  - linework-tattoo-berlin
-  - script-calligraphy-tattoo-berlin
+  - Linework
+  - Script - Calligraphy
 ---

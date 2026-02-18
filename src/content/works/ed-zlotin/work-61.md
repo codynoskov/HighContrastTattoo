@@ -1,9 +1,9 @@
 ---
 artists:
-  - ed-zlotin-tattoo-berlin
+  - Ed Zlotin
 order: 61
 image: /images/ed-works-62.jpg
 styles:
-  - blackwork-tattoo-berlin
+  - Blackwork
   - mandala-and-geometric
 ---

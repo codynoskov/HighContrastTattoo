@@ -1,9 +1,9 @@
 ---
 artists:
-  - ed-zlotin-tattoo-berlin
+  - Ed Zlotin
 order: 10
 image: /images/ed-works-10.jpg
 styles:
-  - blackwork-tattoo-berlin
-  - surrealism-tattoo-berlin
+  - Blackwork
+  - Surrealism
 ---

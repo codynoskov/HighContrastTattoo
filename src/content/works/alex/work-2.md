@@ -1,9 +1,9 @@
 ---
 image: /images/alex-2.jpg
 artists:
-  - alex-tattoo-berlin
+  - Alex
 styles:
-  - traditional-and-old-school-tattoo-berlin
-  - cartoon-tattoo-berlin
+  - Traditional & Old School
+  - Cartoon
 order: 2
 ---

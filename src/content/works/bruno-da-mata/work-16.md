@@ -1,10 +1,10 @@
 ---
 image: /images/IMG_5192.jpeg
 artists:
-  - bruno-tattoo-berlin
+  - Bruno Da Mata
 styles:
-  - blackwork-tattoo-berlin
+  - Blackwork
   - graphic
-  - surrealism-tattoo-berlin
+  - Surrealism
 order: 16
 ---

@@ -1,9 +1,9 @@
 ---
 image: /images/Иллюстрация_без_названия (6).jpg
 artists:
-  - zohar-tattoo-berlin
+  - Zohar
 styles:
-  - illustrative-tattoo-berlin
-  - surrealism-tattoo-berlin
+  - Illustrative
+  - Surrealism
 order: 16
 ---

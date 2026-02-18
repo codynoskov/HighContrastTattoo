@@ -9,10 +9,10 @@ intro: >
   nature-driven designs.
 instagram: luh.tsuki
 styles:
-  - floral-and-botanic-tattoo-berlin
-  - anime-and-manga-tattoo-berlin
-  - neo-traditional-tattoo-berlin
-  - art-nouveau-tattoo-berlin
+  - Floral & Botanic
+  - Anime & Manga
+  - Neo Traditional
+  - Art Nouveau
 metaTitle: Luh | High Contrast Tattoo Berlin
 metaDescription: Colour tattoo artist in Berlin Friedrichshain. Neo-traditional,
   anime, floral and Art Nouveau designs. Whimsical, nature-inspired custom

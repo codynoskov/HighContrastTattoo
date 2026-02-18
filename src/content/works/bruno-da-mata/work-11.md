@@ -1,10 +1,10 @@
 ---
 image: /images/IMG_5187.jpeg
 artists:
-  - bruno-tattoo-berlin
+  - Bruno Da Mata
 styles:
-  - surrealism-tattoo-berlin
-  - blackwork-tattoo-berlin
-  - illustrative-tattoo-berlin
+  - Surrealism
+  - Blackwork
+  - Illustrative
 order: 11
 ---

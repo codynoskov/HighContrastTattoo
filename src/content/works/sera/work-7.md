@@ -1,9 +1,9 @@
 ---
 image: /images/DSCF3792~2.jpg
 artists:
-  - sera-tattoo-berlin
+  - Sera
 styles:
-  - neo-traditional-tattoo-berlin
-  - floral-and-botanic-tattoo-berlin
+  - Neo Traditional
+  - Floral & Botanic
 order: 7
 ---

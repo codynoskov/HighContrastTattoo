@@ -1,9 +1,9 @@
 ---
 image: /images/nastia-zlotin-1.jpeg
 artists:
-  - nastia-zlotin-tattoo-berlin
+  - Nastia Zlotin
 styles:
-  - neo-traditional-tattoo-berlin
-  - art-nouveau-tattoo-berlin
+  - Neo Traditional
+  - Art Nouveau
 order: 1
 ---

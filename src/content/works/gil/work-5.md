@@ -1,10 +1,10 @@
 ---
 image: /images/gil-5.jpg
 artists:
-  - gil-tattoo-berlin
+  - Gil
 styles:
-  - linework-tattoo-berlin
-  - floral-and-botanic-tattoo-berlin
-  - engraving-tattoo-berlin
+  - Linework
+  - Floral & Botanic
+  - Engraving
 order: 5
 ---

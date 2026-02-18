@@ -1,9 +1,9 @@
 ---
 image: /images/IMG_6850.jpeg
 artists:
-  - sarah-tattoo-berlin
+  - Sarah
 styles:
-  - blackwork-tattoo-berlin
-  - traditional-and-old-school-tattoo-berlin
+  - Blackwork
+  - Traditional & Old School
 order: 7
 ---

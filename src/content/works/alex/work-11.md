@@ -1,9 +1,9 @@
 ---
 image: /images/IMG_5160.jpeg
 artists:
-  - alex-tattoo-berlin
+  - Alex
 styles:
-  - cartoon-tattoo-berlin
-  - traditional-and-old-school-tattoo-berlin
+  - Cartoon
+  - Traditional & Old School
 order: 11
 ---

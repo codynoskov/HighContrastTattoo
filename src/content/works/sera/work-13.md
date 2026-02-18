@@ -1,9 +1,9 @@
 ---
 image: /images/PXL_20250530_172651304~3.jpg
 artists:
-  - sera-tattoo-berlin
+  - Sera
 styles:
-  - illustrative-tattoo-berlin
-  - neo-traditional-tattoo-berlin
+  - Illustrative
+  - Neo Traditional
 order: 13
 ---

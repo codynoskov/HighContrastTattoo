@@ -1,8 +1,8 @@
 ---
 image: /images/PXL_20250817_160138205~4.jpg
 artists:
-  - sera-tattoo-berlin
+  - Sera
 styles:
-  - illustrative-tattoo-berlin
+  - Illustrative
 order: 22
 ---

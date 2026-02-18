@@ -1,9 +1,9 @@
 ---
 artists:
-  - ed-zlotin-tattoo-berlin
+  - Ed Zlotin
 order: 12
 image: /images/ed-works-12.jpg
 styles:
-  - blackwork-tattoo-berlin
-  - dotwork-tattoo-berlin
+  - Blackwork
+  - Dotwork
 ---

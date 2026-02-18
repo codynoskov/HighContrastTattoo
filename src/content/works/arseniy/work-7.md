@@ -1,9 +1,9 @@
 ---
 image: /images/IMG_1478.jpeg
 artists:
-  - arseniy-tattoo-berlin
+  - Arseniy
 styles:
-  - traditional-and-old-school-tattoo-berlin
-  - fineline-tattoo-berlin
+  - Traditional & Old School
+  - Fineline
 order: 7
 ---

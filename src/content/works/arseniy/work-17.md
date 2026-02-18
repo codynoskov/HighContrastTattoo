@@ -1,8 +1,8 @@
 ---
 image: /images/IMG_8677.jpeg
 artists:
-  - arseniy-tattoo-berlin
+  - Arseniy
 styles:
-  - traditional-and-old-school-tattoo-berlin
+  - Traditional & Old School
 order: 17
 ---

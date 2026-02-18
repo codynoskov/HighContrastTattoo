@@ -1,10 +1,10 @@
 ---
 image: /images/PXL_20250712_151905494~2.jpg
 artists:
-  - sera-tattoo-berlin
+  - Sera
 styles:
-  - illustrative-tattoo-berlin
-  - fineline-tattoo-berlin
-  - linework-tattoo-berlin
+  - Illustrative
+  - Fineline
+  - Linework
 order: 18
 ---

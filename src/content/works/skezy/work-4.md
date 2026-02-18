@@ -1,8 +1,8 @@
 ---
 artists:
-  - skezy-tattoo-berlin
+  - Skezy
 order: 4
 image: /images/skezy-4.jpg
 styles:
-  - heavy-blackwork-tattoo-berlin
+  - Heavy Blackwork
 ---

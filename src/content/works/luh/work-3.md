@@ -1,9 +1,9 @@
 ---
 image: /images/luara-3.jpg
 artists:
-  - luh-tattoo-berlin
+  - Luh
 styles:
-  - floral-and-botanic-tattoo-berlin
-  - neo-traditional-tattoo-berlin
+  - Floral & Botanic
+  - Neo Traditional
 order: 3
 ---

@@ -1,9 +1,9 @@
 ---
 image: /images/for_mannheim5.jpg
 artists:
-  - zohar-tattoo-berlin
+  - Zohar
 styles:
-  - illustrative-tattoo-berlin
-  - surrealism-tattoo-berlin
+  - Illustrative
+  - Surrealism
 order: 8
 ---

@@ -1,9 +1,9 @@
 ---
 artists:
-  - ed-zlotin-tattoo-berlin
+  - Ed Zlotin
 order: 30
 image: /images/ed-works-31.jpg
 styles:
-  - blackwork-tattoo-berlin
-  - illustrative-tattoo-berlin
+  - Blackwork
+  - Illustrative
 ---

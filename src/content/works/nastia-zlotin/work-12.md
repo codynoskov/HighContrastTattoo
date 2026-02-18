@@ -1,9 +1,9 @@
 ---
 image: /images/IMG_2764.jpg
 artists:
-  - nastia-zlotin-tattoo-berlin
+  - Nastia Zlotin
 styles:
-  - art-nouveau-tattoo-berlin
-  - neo-traditional-tattoo-berlin
+  - Art Nouveau
+  - Neo Traditional
 order: 12
 ---

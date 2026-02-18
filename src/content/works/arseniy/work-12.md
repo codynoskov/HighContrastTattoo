@@ -1,10 +1,10 @@
 ---
 image: /images/IMG_3486.jpeg
 artists:
-  - arseniy-tattoo-berlin
+  - Arseniy
 styles:
-  - traditional-and-old-school-tattoo-berlin
-  - floral-and-botanic-tattoo-berlin
-  - fineline-tattoo-berlin
+  - Traditional & Old School
+  - Floral & Botanic
+  - Fineline
 order: 12
 ---

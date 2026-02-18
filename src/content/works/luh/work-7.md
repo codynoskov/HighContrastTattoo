@@ -1,10 +1,10 @@
 ---
 image: /images/IMG_20241116_102049_816.jpg
 artists:
-  - luh-tattoo-berlin
+  - Luh
 styles:
-  - art-nouveau-tattoo-berlin
-  - floral-and-botanic-tattoo-berlin
-  - neo-traditional-tattoo-berlin
+  - Art Nouveau
+  - Floral & Botanic
+  - Neo Traditional
 order: 7
 ---

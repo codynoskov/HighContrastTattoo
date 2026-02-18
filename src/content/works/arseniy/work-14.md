@@ -1,10 +1,10 @@
 ---
 image: /images/IMG_4105.jpeg
 artists:
-  - arseniy-tattoo-berlin
+  - Arseniy
 styles:
-  - traditional-and-old-school-tattoo-berlin
-  - fineline-tattoo-berlin
-  - dotwork-tattoo-berlin
+  - Traditional & Old School
+  - Fineline
+  - Dotwork
 order: 14
 ---

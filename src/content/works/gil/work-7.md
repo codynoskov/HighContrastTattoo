@@ -1,10 +1,10 @@
 ---
 image: /images/IMG_2641.jpeg
 artists:
-  - gil-tattoo-berlin
+  - Gil
 styles:
-  - engraving-tattoo-berlin
-  - illustrative-tattoo-berlin
-  - linework-tattoo-berlin
+  - Engraving
+  - Illustrative
+  - Linework
 order: 7
 ---

@@ -1,9 +1,9 @@
 ---
 image: /images/IMG_5202.jpeg
 artists:
-  - gil-tattoo-berlin
+  - Gil
 styles:
-  - engraving-tattoo-berlin
-  - linework-tattoo-berlin
+  - Engraving
+  - Linework
 order: 9
 ---

@@ -309,9 +309,9 @@ function slugifyName(name: string): string {
 }
 
 /**
- * Build the full set of slugs that could identify a given style.
- * Covers mismatches between file slugs, slugOverrides, date-prefixed filenames,
- * and CMS-entered style references derived from the display name.
+ * Build the full set of identifiers that could reference a given style.
+ * Covers file slugs, slugOverrides, date-stripped slugs, slugified names,
+ * and raw display names (Pages CMS stores the name field directly).
  */
 function getStyleKnownSlugs(style: StyleEntry): Set<string> {
   const slugs = new Set<string>();
@@ -326,6 +326,8 @@ function getStyleKnownSlugs(style: StyleEntry): Set<string> {
 
   const nameSlug = slugifyName(style.data.name);
   if (nameSlug) slugs.add(nameSlug);
+
+  slugs.add(style.data.name);
 
   return slugs;
 }
@@ -375,9 +377,9 @@ export function resolveStyles(styleSlugs: string[], styles: StyleEntry[]): Array
 }
 
 /**
- * Build the full set of slugs that could identify a given artist.
- * Covers mismatches between file slugs, slugOverrides, date-prefixed filenames,
- * and CMS-entered artist references derived from the display name.
+ * Build the full set of identifiers that could reference a given artist.
+ * Covers file slugs, slugOverrides, date-stripped slugs, slugified names,
+ * and raw display names (Pages CMS stores the name field directly).
  */
 function getArtistKnownSlugs(artist: ArtistEntry): Set<string> {
   const slugs = new Set<string>();
@@ -392,6 +394,8 @@ function getArtistKnownSlugs(artist: ArtistEntry): Set<string> {
 
   const nameSlug = slugifyName(artist.data.name);
   if (nameSlug) slugs.add(nameSlug);
+
+  slugs.add(artist.data.name);
 
   return slugs;
 }

@@ -9,15 +9,15 @@ intro: Ed is the owner of High Contrast Tattoo Berlin together with his wife
   and geometry.
 instagram: notedzlotin
 styles:
-  - fineline-tattoo-berlin
-  - blackwork-tattoo-berlin
+  - Fineline
+  - Blackwork
   - graphic
-  - linework-tattoo-berlin
-  - illustrative-tattoo-berlin
-  - surrealism-tattoo-berlin
+  - Linework
+  - Illustrative
+  - Surrealism
   - mandala-and-geometric
-  - dotwork-tattoo-berlin
-  - script-calligraphy-tattoo-berlin
+  - Dotwork
+  - Script - Calligraphy
 metaTitle: Ed Zlotin | High Contrast Tattoo Berlin
 metaDescription: Studio owner and tattoo artist in Berlin Friedrichshain since
   2009. Blackwork, dotwork, geometric and surreal designs. Book your custom

@@ -1,9 +1,9 @@
 ---
 image: /images/triceratops_tattoo1.jpg
 artists:
-  - zohar-tattoo-berlin
+  - Zohar
 styles:
-  - illustrative-tattoo-berlin
-  - surrealism-tattoo-berlin
+  - Illustrative
+  - Surrealism
 order: 15
 ---

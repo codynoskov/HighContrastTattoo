@@ -1,9 +1,9 @@
 ---
 artists:
-  - ed-zlotin-tattoo-berlin
+  - Ed Zlotin
 order: 78
 image: /images/ed-works-79.jpg
 styles:
-  - blackwork-tattoo-berlin
-  - floral-and-botanic-tattoo-berlin
+  - Blackwork
+  - Floral & Botanic
 ---

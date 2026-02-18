@@ -1,9 +1,9 @@
 ---
 image: /images/IMG_20251116_100630_762.jpg
 artists:
-  - luh-tattoo-berlin
+  - Luh
 styles:
-  - floral-and-botanic-tattoo-berlin
-  - neo-traditional-tattoo-berlin
+  - Floral & Botanic
+  - Neo Traditional
 order: 15
 ---

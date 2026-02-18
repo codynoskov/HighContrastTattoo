@@ -1,10 +1,10 @@
 ---
 image: /images/5.jpg
 artists:
-  - nastia-zlotin-tattoo-berlin
+  - Nastia Zlotin
 styles:
-  - cover-up-tattoo-berlin
-  - floral-and-botanic-tattoo-berlin
-  - neo-traditional-tattoo-berlin
+  - Cover-up
+  - Floral & Botanic
+  - Neo Traditional
 order: 9
 ---

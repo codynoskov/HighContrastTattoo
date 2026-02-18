@@ -9,11 +9,11 @@ intro: >
   art influences.
 instagram: useless_treasures_tattoo
 styles:
-  - floral-and-botanic-tattoo-berlin
+  - Floral & Botanic
   - graphic
-  - illustrative-tattoo-berlin
-  - neo-traditional-tattoo-berlin
-  - surrealism-tattoo-berlin
+  - Illustrative
+  - Neo Traditional
+  - Surrealism
 metaTitle: Zohar | High Contrast Tattoo Berlin
 metaDescription: Illustrative tattoo artist in Berlin Friedrichshain. Surreal,
   botanical and pop art designs. Bold custom tattoos with nature and underground

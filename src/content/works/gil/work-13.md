@@ -1,10 +1,10 @@
 ---
 image: /images/IMG_8704.jpeg
 artists:
-  - gil-tattoo-berlin
+  - Gil
 styles:
-  - engraving-tattoo-berlin
-  - illustrative-tattoo-berlin
-  - linework-tattoo-berlin
+  - Engraving
+  - Illustrative
+  - Linework
 order: 13
 ---

@@ -1,10 +1,10 @@
 ---
 image: /images/IMG_5190.jpeg
 artists:
-  - bruno-tattoo-berlin
+  - Bruno Da Mata
 styles:
-  - blackwork-tattoo-berlin
-  - floral-and-botanic-tattoo-berlin
-  - illustrative-tattoo-berlin
+  - Blackwork
+  - Floral & Botanic
+  - Illustrative
 order: 14
 ---

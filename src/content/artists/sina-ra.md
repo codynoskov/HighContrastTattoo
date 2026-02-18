@@ -8,13 +8,13 @@ intro: >
   geometric designs with a focus on symmetry and detail. 
 instagram: sinah_ra
 styles:
-  - blackwork-tattoo-berlin
-  - floral-and-botanic-tattoo-berlin
-  - ornamental-tattoo-berlin
-  - neo-traditional-tattoo-berlin
+  - Blackwork
+  - Floral & Botanic
+  - Ornamental
+  - Neo Traditional
   - mandala-and-geometric
-  - dotwork-tattoo-berlin
-  - cover-up-tattoo-berlin
+  - Dotwork
+  - Cover-up
 metaTitle: Sinah Ra | High Contrast Tattoo Berlin
 metaDescription: Blackwork tattoo artist in Berlin Friedrichshain. Ornamental,
   floral and geometric designs. Specializing in symmetrical pieces and

@@ -1,8 +1,8 @@
 ---
 image: /images/IMG_2790.jpg
 artists:
-  - nastia-zlotin-tattoo-berlin
+  - Nastia Zlotin
 styles:
-  - neo-traditional-tattoo-berlin
+  - Neo Traditional
 order: 14
 ---

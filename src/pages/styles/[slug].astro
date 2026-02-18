@@ -7,7 +7,7 @@ import StylePageHeroSection from '../../components/sections/StylePageHeroSection
 import StyleContentSection from '../../components/sections/StyleContentSection.astro';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import { getSlug, getWorksByStyle, worksToGalleryImages, getArtistSlugsFromWork } from '../../utils/contentHelpers';
+import { getSlug, getWorksByStyle, worksToGalleryImages, getArtistSlugsFromWork, resolveArtist } from '../../utils/contentHelpers';
 
 export async function getStaticPaths() {
   const styles = await getCollection('styles');
@@ -50,19 +50,16 @@ const galleryImages = worksToGalleryImages(styleWorks, {
   styles,
 });
 
-// Get unique artists who have works in this style
-const styleArtistSlugs = new Set<string>();
+// Get unique artists who have works in this style (resolve via known-slugs matching)
+const styleArtistRefs = new Set<string>();
 styleWorks.forEach(work => {
-  getArtistSlugsFromWork(work).forEach(slug => styleArtistSlugs.add(slug));
+  getArtistSlugsFromWork(work).forEach(ref => styleArtistRefs.add(ref));
 });
 
-// Map artist slugs to artist links
-const styleArtists = artists
-  .filter(artist => styleArtistSlugs.has(getSlug(artist)))
-  .map(artist => ({
-    name: artist.data.name,
-    href: `/artists/${getSlug(artist)}`
-  }));
+const styleArtists = [...styleArtistRefs]
+  .map(ref => resolveArtist(ref, artists))
+  .filter((a): a is { name: string; href: string } => a !== undefined)
+  .filter((a, i, arr) => arr.findIndex(b => b.href === a.href) === i);
 
 // Check if the style has body content (markdown after frontmatter)
 const hasBodyContent = style.body && style.body.trim().length > 0;

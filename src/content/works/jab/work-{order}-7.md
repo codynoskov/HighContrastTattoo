@@ -2,8 +2,8 @@
 order: 9
 image: /images/9.jpeg
 artists:
-  - jab-tattoo-berlin
+  - Jab
 styles:
-  - engraving-tattoo-berlin
-  - linework-tattoo-berlin
+  - Engraving
+  - Linework
 ---

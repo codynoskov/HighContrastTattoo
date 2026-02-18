@@ -1,9 +1,9 @@
 ---
 image: /images/IMG_2069.jpeg
 artists:
-  - gil-tattoo-berlin
+  - Gil
 styles:
-  - engraving-tattoo-berlin
-  - floral-and-botanic-tattoo-berlin
+  - Engraving
+  - Floral & Botanic
 order: 6
 ---

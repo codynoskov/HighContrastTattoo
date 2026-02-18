@@ -9,10 +9,10 @@ intro: Nastia Zlotina is a colour focused neo-traditional and illustrative
   tattoos into new designs.
 instagram: nastiazlotin
 styles:
-  - floral-and-botanic
-  - art-nouveau
-  - neo-traditional
-  - cover-up
+  - floral-and-botanic-tattoo-berlin
+  - art-nouveau-tattoo-berlin
+  - neo-traditional-tattoo-berlin
+  - cover-up-tattoo-berlin
 metaTitle: Nastia Zlotin | High Contrast Tattoo Berlin
 metaDescription: Studio owner and neo-traditional tattoo artist in Berlin
   Friedrichshain. Colour work, floral designs, cover-ups and Art Nouveau style.

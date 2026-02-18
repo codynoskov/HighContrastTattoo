@@ -4,6 +4,6 @@ image: /images/22.jpg
 artists:
   - liza-tattoo-berlin
 styles:
-  - blackwork
-  - bio-organic-tribal
+  - blackwork-tattoo-berlin
+  - bio-organic-tribal-tattoo-berlin
 ---

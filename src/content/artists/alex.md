@@ -8,9 +8,9 @@ intro: Alex is a traditional tattoo artist from the hardcore punk scene.
   direct, no-frills feel.
 instagram: hotstuffconan
 styles:
-  - traditional-and-old-school
-  - cartoon
-  - linework
+  - traditional-and-old-school-tattoo-berlin
+  - cartoon-tattoo-berlin
+  - linework-tattoo-berlin
 metaTitle: Alex | High Contrast Tattoo Berlin
 metaDescription: Traditional tattoo artist in Berlin Friedrichshain. Bold,
   cartoon-inspired designs and clean linework. Flash tattoos and patchwork

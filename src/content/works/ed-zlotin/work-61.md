@@ -4,6 +4,6 @@ artists:
 order: 61
 image: /images/ed-works-62.jpg
 styles:
-  - blackwork
+  - blackwork-tattoo-berlin
   - mandala-and-geometric
 ---

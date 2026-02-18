@@ -3,7 +3,7 @@ image: /images/IMG_5183.jpeg
 artists:
   - bruno-tattoo-berlin
 styles:
-  - blackwork
-  - floral-and-botanic
+  - blackwork-tattoo-berlin
+  - floral-and-botanic-tattoo-berlin
 order: 7
 ---

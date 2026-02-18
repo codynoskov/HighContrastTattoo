@@ -4,6 +4,6 @@ artists:
 order: 75
 image: /images/ed-works-76.jpg
 styles:
-  - dotwork
-  - illustrative
+  - dotwork-tattoo-berlin
+  - illustrative-tattoo-berlin
 ---

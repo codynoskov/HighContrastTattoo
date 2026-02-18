@@ -4,7 +4,7 @@ artists:
 order: 68
 image: /images/ed-works-69.jpg
 styles:
-  - blackwork
-  - illustrative
-  - dotwork
+  - blackwork-tattoo-berlin
+  - illustrative-tattoo-berlin
+  - dotwork-tattoo-berlin
 ---

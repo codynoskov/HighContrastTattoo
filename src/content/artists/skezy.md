@@ -7,9 +7,9 @@ intro: Skezy is a heavy blackwork and lettering artist creating abstract,
   freehand designs with a dark, obscure and aggressively graphic aesthetic.
 instagram: skezytattoo
 styles:
-  - heavy-blackwork
-  - blackwork
-  - calligraphy
+  - heavy-blackwork-tattoo-berlin
+  - blackwork-tattoo-berlin
+  - script-calligraphy-tattoo-berlin
 metaTitle: Skezy | High Contrast Tattoo Berlin
 metaDescription: Heavy blackwork and lettering artist in Berlin Friedrichshain.
   Abstract freehand designs with dark aesthetics. Book your session now.

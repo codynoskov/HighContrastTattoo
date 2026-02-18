@@ -4,6 +4,6 @@ artists:
 order: 5
 image: /images/skezy-5.jpg
 styles:
-  - heavy-blackwork
-  - cover-up
+  - heavy-blackwork-tattoo-berlin
+  - cover-up-tattoo-berlin
 ---

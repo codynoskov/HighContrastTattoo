@@ -4,6 +4,6 @@ artists:
 order: 3
 image: /images/ed-works-3.jpg
 styles:
-  - blackwork
-  - surrealism
+  - blackwork-tattoo-berlin
+  - surrealism-tattoo-berlin
 ---

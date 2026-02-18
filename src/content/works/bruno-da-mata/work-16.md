@@ -3,8 +3,8 @@ image: /images/IMG_5192.jpeg
 artists:
   - bruno-tattoo-berlin
 styles:
-  - blackwork
+  - blackwork-tattoo-berlin
   - graphic
-  - surrealism
+  - surrealism-tattoo-berlin
 order: 16
 ---

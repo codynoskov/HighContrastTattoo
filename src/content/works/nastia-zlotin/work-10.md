@@ -3,7 +3,7 @@ image: /images/7.jpg
 artists:
   - nastia-zlotin-tattoo-berlin
 styles:
-  - cover-up
-  - neo-traditional
+  - cover-up-tattoo-berlin
+  - neo-traditional-tattoo-berlin
 order: 10
 ---

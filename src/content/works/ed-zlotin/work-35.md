@@ -4,8 +4,8 @@ artists:
 order: 35
 image: /images/ed-works-36.jpg
 styles:
-  - blackwork
-  - dotwork
+  - blackwork-tattoo-berlin
+  - dotwork-tattoo-berlin
   - graphic
-  - floral-and-botanic
+  - floral-and-botanic-tattoo-berlin
 ---

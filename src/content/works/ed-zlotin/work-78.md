@@ -4,6 +4,6 @@ artists:
 order: 78
 image: /images/ed-works-79.jpg
 styles:
-  - blackwork
-  - floral-and-botanic
+  - blackwork-tattoo-berlin
+  - floral-and-botanic-tattoo-berlin
 ---

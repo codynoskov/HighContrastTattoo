@@ -4,6 +4,6 @@ artists:
 order: 59
 image: /images/ed-works-60.jpg
 styles:
-  - blackwork
-  - dotwork
+  - blackwork-tattoo-berlin
+  - dotwork-tattoo-berlin
 ---

@@ -3,7 +3,7 @@ image: /images/pin_tattoo2.jpg
 artists:
   - zohar-tattoo-berlin
 styles:
-  - illustrative
-  - surrealism
+  - illustrative-tattoo-berlin
+  - surrealism-tattoo-berlin
 order: 12
 ---

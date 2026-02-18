@@ -4,6 +4,6 @@ artists:
 order: 4
 image: /images/ed-works-4.jpg
 styles:
-  - blackwork
-  - illustrative
+  - blackwork-tattoo-berlin
+  - illustrative-tattoo-berlin
 ---

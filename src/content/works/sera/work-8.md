@@ -3,8 +3,8 @@ image: /images/DSCF5326~2.jpg
 artists:
   - sera-tattoo-berlin
 styles:
-  - illustrative
-  - floral-and-botanic
-  - neo-traditional
+  - illustrative-tattoo-berlin
+  - floral-and-botanic-tattoo-berlin
+  - neo-traditional-tattoo-berlin
 order: 8
 ---

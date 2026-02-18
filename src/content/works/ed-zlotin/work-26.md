@@ -4,7 +4,7 @@ artists:
 order: 26
 image: /images/ed-works-26.jpg
 styles:
-  - blackwork
-  - dotwork
-  - surrealism
+  - blackwork-tattoo-berlin
+  - dotwork-tattoo-berlin
+  - surrealism-tattoo-berlin
 ---

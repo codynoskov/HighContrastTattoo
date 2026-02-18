@@ -4,5 +4,5 @@ artists:
 order: 1
 image: /images/skezy-1.jpg
 styles:
-  - heavy-blackwork
+  - heavy-blackwork-tattoo-berlin
 ---

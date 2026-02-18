@@ -3,6 +3,6 @@ image: /images/IMG_8888.jpeg
 artists:
   - arseniy-tattoo-berlin
 styles:
-  - traditional-and-old-school
+  - traditional-and-old-school-tattoo-berlin
 order: 19
 ---

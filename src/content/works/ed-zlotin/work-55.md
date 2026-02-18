@@ -4,7 +4,7 @@ artists:
 order: 55
 image: /images/ed-works-56.jpg
 styles:
-  - blackwork
-  - dotwork
-  - script-calligraphy
+  - blackwork-tattoo-berlin
+  - dotwork-tattoo-berlin
+  - script-calligraphy-tattoo-berlin
 ---

@@ -8,9 +8,9 @@ intro: Arseniy is a traditional and old school tattoo artist with a hardcore
   in Traditional & Old School.
 instagram: arspunx
 styles:
-  - traditional-and-old-school
-  - fineline
-  - linework
+  - traditional-and-old-school-tattoo-berlin
+  - fineline-tattoo-berlin
+  - linework-tattoo-berlin
 metaTitle: Arseniy | High Contrast Tattoo Berlin
 metaDescription: Traditional and old school tattoo artist in Berlin
   Friedrichshain. Bold flash pieces and fineline work. Book your session today.

@@ -4,6 +4,6 @@ artists:
 order: 77
 image: /images/ed-works-78.jpg
 styles:
-  - dotwork
+  - dotwork-tattoo-berlin
   - mandala-and-geometric
 ---

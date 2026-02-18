@@ -4,6 +4,6 @@ artists:
 order: 72
 image: /images/ed-works-73.jpg
 styles:
-  - dotwork
-  - fineline
+  - dotwork-tattoo-berlin
+  - fineline-tattoo-berlin
 ---

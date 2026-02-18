@@ -1,6 +1,6 @@
 ---
 name: Traditional & Old School
-slugOverride: traditional-and-old-school
+slugOverride: traditional-and-old-school-tattoo-berlin
 order: 5
 intro: Classic tattoo imagery with bold lines and timeless character.
 cardImage: /images/traditional1.jpg

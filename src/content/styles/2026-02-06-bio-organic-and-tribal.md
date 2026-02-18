@@ -1,6 +1,6 @@
 ---
 name: Bio Organic & Tribal
-slugOverride: bio-organic-tribal
+slugOverride: bio-organic-tribal-tattoo-berlin
 order: 19
 intro: Fluid black tattoos that mix tribal patterns with organic, body following
   shapes.

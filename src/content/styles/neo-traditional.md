@@ -1,6 +1,6 @@
 ---
 name: Neo Traditional
-slugOverride: neo-traditional
+slugOverride: neo-traditional-tattoo-berlin
 order: 1
 intro: A modern, richly coloured evolution of classic tattooing.
 cardImage: /images/neu traditional.jpg

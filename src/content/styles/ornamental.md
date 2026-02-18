@@ -1,6 +1,6 @@
 ---
 name: Ornamental
-slugOverride: ornamental
+slugOverride: ornamental-tattoo-berlin
 order: 7
 intro: Decorative tattoos that feel like jewellery or architectural detail on
   the skin.

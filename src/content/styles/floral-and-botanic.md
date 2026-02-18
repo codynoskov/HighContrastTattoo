@@ -1,6 +1,6 @@
 ---
 name: Floral & Botanic
-slugOverride: floral-and-botanic
+slugOverride: floral-and-botanic-tattoo-berlin
 order: 12
 intro: Elegant tattoos inspired by flowers, plants and natural forms.
 cardImage: /images/sera-1.jpg

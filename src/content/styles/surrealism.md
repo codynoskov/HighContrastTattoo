@@ -1,6 +1,6 @@
 ---
 name: Surrealism
-slugOverride: surrealism
+slugOverride: surrealism-tattoo-berlin
 order: 4
 intro: Dreamlike tattoos that mix reality with the subconscious.
 cardImage: /images/26.jpg

@@ -1,6 +1,6 @@
 ---
 name: Linework
-slugOverride: linework
+slugOverride: linework-tattoo-berlin
 order: 11
 intro: Clean, graphic tattoos built purely from lines.
 cardImage: /images/sina-ra-4.jpeg

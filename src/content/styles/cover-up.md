@@ -1,6 +1,6 @@
 ---
 name: Cover-up
-slugOverride: cover-up
+slugOverride: cover-up-tattoo-berlin
 order: 8
 intro: Cover-up work focuses on hiding or reworking old tattoos and replacing
   them with a clear, fresh design.

@@ -1,6 +1,6 @@
 ---
 name: Script - Calligraphy
-slugOverride: script-calligraphy
+slugOverride: script-calligraphy-tattoo-berlin
 order: 9
 intro: Expressive lettering tattoos that focus on the shape, rhythm and flow of
   written words.

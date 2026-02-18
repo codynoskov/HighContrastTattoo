@@ -1,6 +1,6 @@
 ---
 name: Heavy Blackwork
-slugOverride: heavy-blackwork
+slugOverride: heavy-blackwork-tattoo-berlin
 order: 10
 intro: Extreme black tattoos with dense coverage and radical contrast.
 cardImage: /images/skezy-4.jpg

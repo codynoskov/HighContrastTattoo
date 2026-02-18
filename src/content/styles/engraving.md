@@ -1,6 +1,6 @@
 ---
 name: Engraving
-slugOverride: engraving
+slugOverride: engraving-tattoo-berlin
 order: 3
 intro: Vintage inspired tattoos that look like old prints and etchings.
 metaTitle: Engraving Tattoos | High Contrast Tattoo Berlin

@@ -1,6 +1,6 @@
 ---
 name: Cartoon
-slugOverride: cartoon
+slugOverride: cartoon-tattoo-berlin
 order: 17
 intro: Playful, humorous tattoos with a bold cartoony feel.
 cardImage: /images/IMG_5164.jpeg

@@ -1,6 +1,6 @@
 ---
 name: Fineline
-slugOverride: fineline
+slugOverride: fineline-tattoo-berlin
 order: 18
 intro: Ultra-delicate tattoos made with very fine needles and subtle detail.
 cardImage: /images/fineline.jpg

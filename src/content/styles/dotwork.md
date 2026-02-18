@@ -1,6 +1,6 @@
 ---
 name: Dotwork
-slugOverride: dotwork
+slugOverride: dotwork-tattoo-berlin
 order: 6
 intro: Tattoos built entirely from dots, with soft gradients and texture.
 metaTitle: Dotwork Tattoos | High Contrast Tattoo Berlin

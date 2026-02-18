@@ -1,6 +1,6 @@
 ---
 name: Illustrative
-slugOverride: illustrative
+slugOverride: illustrative-tattoo-berlin
 order: 13
 intro: Tattoos that feel like drawings from a sketchbook or art book.
 cardImage: /images/Useless_Treasures_HC3-1.jpg

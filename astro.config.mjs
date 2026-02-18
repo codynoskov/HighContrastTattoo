@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import autoRedirects from './src/integrations/auto-redirects';
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,6 +14,7 @@ export default defineConfig({
       filter: (page) =>
         !page.includes('/internal/') && !page.includes('/_design-system/'),
     }),
+    autoRedirects(),
   ],
   devToolbar: {
     enabled: false

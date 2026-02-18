@@ -1,10 +1,10 @@
 ---
 image: /images/PHOTO-2026-01-21-17-32-35 (1).jpg
 artists:
-  - Sinah Ra
+  - sinah-tattoo-berlin
 styles:
-  - Blackwork
-  - Floral & Botanic
-  - Linework
+  - blackwork-tattoo-berlin
+  - floral-and-botanic-tattoo-berlin
+  - linework-tattoo-berlin
 order: 6
 ---

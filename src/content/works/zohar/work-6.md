@@ -1,9 +1,9 @@
 ---
 image: /images/bugs8.jpg
 artists:
-  - Zohar
+  - zohar-tattoo-berlin
 styles:
-  - Surrealism
-  - Illustrative
+  - surrealism-tattoo-berlin
+  - illustrative-tattoo-berlin
 order: 6
 ---

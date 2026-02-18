@@ -1,9 +1,9 @@
 ---
 image: /images/IMG_5183.jpeg
 artists:
-  - Bruno Da Mata
+  - bruno-tattoo-berlin
 styles:
-  - Blackwork
-  - Floral & Botanic
+  - blackwork-tattoo-berlin
+  - floral-and-botanic-tattoo-berlin
 order: 7
 ---

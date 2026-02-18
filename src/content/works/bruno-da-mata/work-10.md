@@ -1,9 +1,9 @@
 ---
 image: /images/IMG_5185.jpeg
 artists:
-  - Bruno Da Mata
+  - bruno-tattoo-berlin
 styles:
-  - Illustrative
-  - Blackwork
+  - illustrative-tattoo-berlin
+  - blackwork-tattoo-berlin
 order: 10
 ---

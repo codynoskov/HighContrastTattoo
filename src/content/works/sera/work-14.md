@@ -1,9 +1,9 @@
 ---
 image: /images/PXL_20250510_123610728~6.jpg
 artists:
-  - Sera
+  - sera-tattoo-berlin
 styles:
-  - Dotwork
-  - Fineline
+  - dotwork-tattoo-berlin
+  - fineline-tattoo-berlin
 order: 14
 ---

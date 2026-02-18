@@ -1,10 +1,10 @@
 ---
 image: /images/IMG_4311.jpeg
 artists:
-  - Arseniy
+  - arseniy-tattoo-berlin
 styles:
-  - Traditional & Old School
-  - Fineline
-  - Script - Calligraphy
+  - traditional-and-old-school-tattoo-berlin
+  - fineline-tattoo-berlin
+  - script-calligraphy-tattoo-berlin
 order: 15
 ---

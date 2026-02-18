@@ -1,8 +1,8 @@
 ---
 image: /images/IMG_6852.jpeg
 artists:
-  - Sarah
+  - sarah-tattoo-berlin
 styles:
-  - Traditional & Old School
+  - traditional-and-old-school-tattoo-berlin
 order: 8
 ---

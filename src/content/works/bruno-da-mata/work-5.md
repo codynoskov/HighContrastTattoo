@@ -1,10 +1,10 @@
 ---
 image: /images/bruno-5.jpg
 artists:
-  - Bruno Da Mata
+  - bruno-tattoo-berlin
 styles:
-  - Blackwork
-  - Illustrative
+  - blackwork-tattoo-berlin
+  - illustrative-tattoo-berlin
   - graphic
 order: 5
 ---

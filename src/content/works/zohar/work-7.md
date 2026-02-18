@@ -1,9 +1,9 @@
 ---
 image: /images/dragonfly_tattoo2.jpg
 artists:
-  - Zohar
+  - zohar-tattoo-berlin
 styles:
-  - Illustrative
-  - Surrealism
+  - illustrative-tattoo-berlin
+  - surrealism-tattoo-berlin
 order: 7
 ---

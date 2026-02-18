@@ -1,8 +1,8 @@
 ---
 image: /images/PXL_20250813_132844269~2.jpg
 artists:
-  - Luh
+  - luh-tattoo-berlin
 styles:
-  - Neo Traditional
+  - neo-traditional-tattoo-berlin
 order: 26
 ---

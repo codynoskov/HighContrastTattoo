@@ -1,11 +1,11 @@
 ---
 image: /images/bruno-3.jpg
 artists:
-  - Bruno Da Mata
+  - bruno-tattoo-berlin
 styles:
-  - Blackwork
-  - Illustrative
+  - blackwork-tattoo-berlin
+  - illustrative-tattoo-berlin
   - graphic
-  - Surrealism
+  - surrealism-tattoo-berlin
 order: 3
 ---

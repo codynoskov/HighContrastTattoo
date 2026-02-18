@@ -1,9 +1,9 @@
 ---
 image: /images/IMG_2203.jpeg
 artists:
-  - Arseniy
+  - arseniy-tattoo-berlin
 styles:
-  - Traditional & Old School
-  - Fineline
+  - traditional-and-old-school-tattoo-berlin
+  - fineline-tattoo-berlin
 order: 8
 ---

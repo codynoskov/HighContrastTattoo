@@ -1,9 +1,9 @@
 ---
 image: /images/PXL_20240103_151652747~2.jpg
 artists:
-  - Luh
+  - luh-tattoo-berlin
 styles:
-  - Anime & Manga
-  - Neo Traditional
+  - anime-and-manga-tattoo-berlin
+  - neo-traditional-tattoo-berlin
 order: 19
 ---

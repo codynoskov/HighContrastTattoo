@@ -1,10 +1,10 @@
 ---
 image: /images/IMG_2788.jpg
 artists:
-  - Nastia Zlotin
+  - nastia-zlotin-tattoo-berlin
 styles:
-  - Floral & Botanic
-  - Neo Traditional
-  - Art Nouveau
+  - floral-and-botanic-tattoo-berlin
+  - neo-traditional-tattoo-berlin
+  - art-nouveau-tattoo-berlin
 order: 15
 ---

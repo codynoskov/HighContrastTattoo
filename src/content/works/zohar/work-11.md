@@ -1,8 +1,8 @@
 ---
 image: /images/moth_tamara1.jpg
 artists:
-  - Zohar
+  - zohar-tattoo-berlin
 styles:
-  - Surrealism
+  - surrealism-tattoo-berlin
 order: 11
 ---

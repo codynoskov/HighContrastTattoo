@@ -1,9 +1,9 @@
 ---
 image: /images/IMG_4691.jpeg
 artists:
-  - Sarah
+  - sarah-tattoo-berlin
 styles:
-  - Traditional & Old School
-  - Script - Calligraphy
+  - traditional-and-old-school-tattoo-berlin
+  - script-calligraphy-tattoo-berlin
 order: 6
 ---

@@ -1,8 +1,8 @@
 ---
 image: /images/IMG_3560.jpeg
 artists:
-  - Arseniy
+  - arseniy-tattoo-berlin
 styles:
-  - Linework
+  - linework-tattoo-berlin
 order: 13
 ---

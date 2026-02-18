@@ -1,10 +1,10 @@
 ---
 image: /images/IMG_5168.jpeg
 artists:
-  - Alex
+  - alex-tattoo-berlin
 styles:
-  - Anime & Manga
-  - Traditional & Old School
-  - Cartoon
+  - anime-and-manga-tattoo-berlin
+  - traditional-and-old-school-tattoo-berlin
+  - cartoon-tattoo-berlin
 order: 6
 ---

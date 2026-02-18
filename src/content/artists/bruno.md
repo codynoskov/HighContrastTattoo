@@ -8,11 +8,11 @@ intro: >
   strong graphic and illustrative approach.
 instagram: brunodamata.tattoo
 styles:
-  - Blackwork
+  - blackwork-tattoo-berlin
   - graphic
-  - Linework
-  - Illustrative
-  - Surrealism
+  - linework-tattoo-berlin
+  - illustrative-tattoo-berlin
+  - surrealism-tattoo-berlin
 metaTitle: Bruno Da Mata | High Contrast Tattoo Berlin
 metaDescription: Blackwork and graphic tattoo artist in Berlin Friedrichshain.
   Illustrative, surreal designs with nature and organic motifs. Book your custom

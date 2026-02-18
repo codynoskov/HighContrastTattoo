@@ -1,10 +1,10 @@
 ---
 image: /images/sina-ra-3.jpeg
 artists:
-  - Sinah Ra
+  - sinah-tattoo-berlin
 styles:
-  - Floral & Botanic
-  - Blackwork
-  - Neo Traditional
+  - floral-and-botanic-tattoo-berlin
+  - blackwork-tattoo-berlin
+  - neo-traditional-tattoo-berlin
 order: 3
 ---

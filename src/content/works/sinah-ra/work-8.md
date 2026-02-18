@@ -1,9 +1,9 @@
 ---
 image: /images/PHOTO-2026-01-21-17-32-35 (3).jpg
 artists:
-  - Sinah Ra
+  - sinah-tattoo-berlin
 styles:
-  - Illustrative
-  - Blackwork
+  - illustrative-tattoo-berlin
+  - blackwork-tattoo-berlin
 order: 8
 ---

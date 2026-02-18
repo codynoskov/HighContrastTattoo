@@ -1,10 +1,10 @@
 ---
 image: /images/IMG_6583.jpeg
 artists:
-  - Gil
+  - gil-tattoo-berlin
 styles:
-  - Engraving
-  - Surrealism
-  - Linework
+  - engraving-tattoo-berlin
+  - surrealism-tattoo-berlin
+  - linework-tattoo-berlin
 order: 12
 ---

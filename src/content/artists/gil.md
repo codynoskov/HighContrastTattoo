@@ -9,9 +9,9 @@ intro: >
   tattoos.
 instagram: sacredlamb.ttt
 styles:
-  - Linework
-  - Engraving
-  - Floral & Botanic
+  - linework-tattoo-berlin
+  - engraving-tattoo-berlin
+  - floral-and-botanic-tattoo-berlin
 metaTitle: Gil | High Contrast Tattoo Berlin
 metaDescription: Engraving style tattoo artist in Berlin Friedrichshain.
   Medieval woodcut aesthetics, detailed linework and botanical designs. Book

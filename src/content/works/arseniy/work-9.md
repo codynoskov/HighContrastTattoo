@@ -1,9 +1,9 @@
 ---
 image: /images/IMG_2764.jpeg
 artists:
-  - Arseniy
+  - arseniy-tattoo-berlin
 styles:
-  - Traditional & Old School
-  - Fineline
+  - traditional-and-old-school-tattoo-berlin
+  - fineline-tattoo-berlin
 order: 9
 ---

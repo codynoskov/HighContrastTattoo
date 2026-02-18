@@ -1,9 +1,9 @@
 ---
 image: /images/sera-5.jpg
 artists:
-  - Sera
+  - sera-tattoo-berlin
 styles:
-  - Floral & Botanic
-  - Neo Traditional
+  - floral-and-botanic-tattoo-berlin
+  - neo-traditional-tattoo-berlin
 order: 5
 ---

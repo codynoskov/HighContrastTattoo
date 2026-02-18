@@ -1,10 +1,10 @@
 ---
 image: /images/IMG_8508.jpeg
 artists:
-  - Gil
+  - gil-tattoo-berlin
 styles:
-  - Engraving
-  - Linework
-  - Illustrative
+  - engraving-tattoo-berlin
+  - linework-tattoo-berlin
+  - illustrative-tattoo-berlin
 order: 15
 ---

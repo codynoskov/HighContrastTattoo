@@ -1,10 +1,10 @@
 ---
 image: /images/zohar-4.jpg
 artists:
-  - Zohar
+  - zohar-tattoo-berlin
 styles:
-  - Floral & Botanic
-  - Illustrative
-  - Surrealism
+  - floral-and-botanic-tattoo-berlin
+  - illustrative-tattoo-berlin
+  - surrealism-tattoo-berlin
 order: 4
 ---

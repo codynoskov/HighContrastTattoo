@@ -1,9 +1,9 @@
 ---
 image: /images/IMG_8787.jpeg
 artists:
-  - Arseniy
+  - arseniy-tattoo-berlin
 styles:
-  - Traditional & Old School
-  - Blackwork
+  - traditional-and-old-school-tattoo-berlin
+  - blackwork-tattoo-berlin
 order: 18
 ---

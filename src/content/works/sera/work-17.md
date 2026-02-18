@@ -1,8 +1,8 @@
 ---
 image: /images/PXL_20250711_162736434~2.jpg
 artists:
-  - Sera
+  - sera-tattoo-berlin
 styles:
-  - Traditional & Old School
+  - traditional-and-old-school-tattoo-berlin
 order: 17
 ---

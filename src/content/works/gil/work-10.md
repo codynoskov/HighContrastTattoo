@@ -1,9 +1,9 @@
 ---
 image: /images/IMG_4742.jpeg
 artists:
-  - Gil
+  - gil-tattoo-berlin
 styles:
-  - Engraving
-  - Linework
+  - engraving-tattoo-berlin
+  - linework-tattoo-berlin
 order: 10
 ---

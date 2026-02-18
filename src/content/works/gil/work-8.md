@@ -1,10 +1,10 @@
 ---
 image: /images/IMG_3922.jpeg
 artists:
-  - Gil
+  - gil-tattoo-berlin
 styles:
-  - Engraving
-  - Floral & Botanic
-  - Linework
+  - engraving-tattoo-berlin
+  - floral-and-botanic-tattoo-berlin
+  - linework-tattoo-berlin
 order: 8
 ---

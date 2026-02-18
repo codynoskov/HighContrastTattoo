@@ -1,8 +1,8 @@
 ---
 image: /images/zohar-5.jpg
 artists:
-  - Zohar
+  - zohar-tattoo-berlin
 styles:
-  - Illustrative
+  - illustrative-tattoo-berlin
 order: 5
 ---

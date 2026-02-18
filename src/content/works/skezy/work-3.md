@@ -1,9 +1,9 @@
 ---
 image: /images/skezy-3.jpg
 artists:
-  - Skezy
+  - skezy-tattoo-berlin
 styles:
-  - Heavy Blackwork
-  - Cover-up
+  - heavy-blackwork-tattoo-berlin
+  - cover-up-tattoo-berlin
 order: 3
 ---

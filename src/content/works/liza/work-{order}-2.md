@@ -2,8 +2,8 @@
 order: 3
 image: /images/3.jpeg
 artists:
-  - Liza
+  - liza-tattoo-berlin
 styles:
-  - Bio Organic & Tribal
-  - Blackwork
+  - bio-organic-tribal-tattoo-berlin
+  - blackwork-tattoo-berlin
 ---

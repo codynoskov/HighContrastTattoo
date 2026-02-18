@@ -1,9 +1,9 @@
 ---
 image: /images/IMG_20241011_101004_565.jpg
 artists:
-  - Luh
+  - luh-tattoo-berlin
 styles:
-  - Anime & Manga
-  - Neo Traditional
+  - anime-and-manga-tattoo-berlin
+  - neo-traditional-tattoo-berlin
 order: 20
 ---

@@ -1,10 +1,10 @@
 ---
 image: /images/IMG_7800.jpeg
 artists:
-  - Gil
+  - gil-tattoo-berlin
 styles:
-  - Engraving
-  - Floral & Botanic
-  - Linework
+  - engraving-tattoo-berlin
+  - floral-and-botanic-tattoo-berlin
+  - linework-tattoo-berlin
 order: 14
 ---

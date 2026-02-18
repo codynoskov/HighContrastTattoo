@@ -1,12 +1,12 @@
 ---
 image: /images/PXL_20250118_161743339.jpg
 artists:
-  - Sera
+  - sera-tattoo-berlin
 styles:
-  - Illustrative
-  - Neo Traditional
-  - Floral & Botanic
-  - Art Nouveau
-  - Script - Calligraphy
+  - illustrative-tattoo-berlin
+  - neo-traditional-tattoo-berlin
+  - floral-and-botanic-tattoo-berlin
+  - art-nouveau-tattoo-berlin
+  - script-calligraphy-tattoo-berlin
 order: 9
 ---

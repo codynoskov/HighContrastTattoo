@@ -1,10 +1,10 @@
 ---
 image: /images/post_flower_tatArtboard 1 copy 2.jpg
 artists:
-  - Zohar
+  - zohar-tattoo-berlin
 styles:
-  - Illustrative
-  - Surrealism
-  - Floral & Botanic
+  - illustrative-tattoo-berlin
+  - surrealism-tattoo-berlin
+  - floral-and-botanic-tattoo-berlin
 order: 13
 ---

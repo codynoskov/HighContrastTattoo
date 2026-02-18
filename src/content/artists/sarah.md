@@ -8,9 +8,9 @@ intro: Sarah is a beginner tattoo artist who works in a blackwork-traditional
   clients.
 instagram: sarah_rawk
 styles:
-  - Blackwork
-  - Linework
-  - Traditional & Old School
+  - blackwork-tattoo-berlin
+  - linework-tattoo-berlin
+  - traditional-and-old-school-tattoo-berlin
 metaTitle: Sarah | High Contrast Tattoo Berlin
 metaDescription: Blackwork and traditional tattoo artist in Berlin
   Friedrichshain. Clean linework, bold shapes and a calm, supportive experience.

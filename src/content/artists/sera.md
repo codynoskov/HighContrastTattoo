@@ -8,11 +8,11 @@ intro: Sera is an illustrative tattoo artist whose work moves between Neo
   compositions inspired by wildlife and folklore.
 instagram: seraredwood
 styles:
-  - Floral & Botanic
-  - Linework
-  - Illustrative
-  - Neo Traditional
-  - Art Nouveau
+  - floral-and-botanic-tattoo-berlin
+  - linework-tattoo-berlin
+  - illustrative-tattoo-berlin
+  - neo-traditional-tattoo-berlin
+  - art-nouveau-tattoo-berlin
 metaTitle: Sera | High Contrast Tattoo Berlin
 metaDescription: Illustrative tattoo artist in Berlin Friedrichshain.
   Neo-traditional and Art Nouveau style with earthy colours. Wildlife and

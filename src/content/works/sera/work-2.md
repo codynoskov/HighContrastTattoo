@@ -1,10 +1,10 @@
 ---
 image: /images/sera-2.jpg
 artists:
-  - Sera
+  - sera-tattoo-berlin
 styles:
-  - Neo Traditional
-  - Illustrative
-  - Art Nouveau
+  - neo-traditional-tattoo-berlin
+  - illustrative-tattoo-berlin
+  - art-nouveau-tattoo-berlin
 order: 2
 ---

@@ -1,10 +1,10 @@
 ---
 image: /images/PXL_20251028_123530581.jpg
 artists:
-  - Sera
+  - sera-tattoo-berlin
 styles:
-  - Floral & Botanic
-  - Illustrative
-  - Neo Traditional
+  - floral-and-botanic-tattoo-berlin
+  - illustrative-tattoo-berlin
+  - neo-traditional-tattoo-berlin
 order: 25
 ---

@@ -1,8 +1,8 @@
 ---
 image: /images/alex-5.jpg
 artists:
-  - Alex
+  - alex-tattoo-berlin
 styles:
-  - Traditional & Old School
+  - traditional-and-old-school-tattoo-berlin
 order: 5
 ---

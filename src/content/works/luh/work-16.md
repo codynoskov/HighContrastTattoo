@@ -1,9 +1,9 @@
 ---
 image: /images/PXL_20240424_152032382.jpg
 artists:
-  - Luh
+  - luh-tattoo-berlin
 styles:
-  - Floral & Botanic
-  - Neo Traditional
+  - floral-and-botanic-tattoo-berlin
+  - neo-traditional-tattoo-berlin
 order: 16
 ---

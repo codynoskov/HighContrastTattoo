@@ -592,7 +592,7 @@ content:
         options:
           collection: styles
           label: "{name}"
-          value: "{name}"
+          value: "{slugOverride}"
           multiple: true
         description: Select the tattoo styles this artist specializes in. These styles will be displayed on the artist's profile page and listing. Multiple styles can be selected.
       
@@ -663,7 +663,7 @@ content:
         options:
           collection: artists
           label: "{name}"
-          value: "{name}"
+          value: "{slugOverride}"
           multiple: true
         description: Select the artist(s) who created this work. For collaborations, select multiple artists.
       
@@ -674,7 +674,7 @@ content:
         options:
           collection: styles
           label: "{name}"
-          value: "{name}"
+          value: "{slugOverride}"
           multiple: true
         description: Select all styles that apply to this work.
   

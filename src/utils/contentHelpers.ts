@@ -443,12 +443,12 @@ export function getWorksByStyle(styleSlug: string, works: WorkEntry[], styles: S
 
 /**
  * Resolve artist slug/reference to artist name.
- * Works with both file-based slugs (from work references) and display slugs (from URLs).
+ * Uses the full set of known slugs (file slug, display slug, date-stripped, slugified name)
+ * so that old references like "liza" still resolve even when slugOverride is "liza-tattoo-berlin".
  */
 export function resolveArtistName(artistRef: string, artists: ArtistEntry[]): string | undefined {
   const normalizedRef = normalizeArtistSlug(artistRef);
-  // Try to match by file slug first, then by display slug
-  const artist = artists.find((a) => a.slug === normalizedRef || getSlug(a) === normalizedRef);
+  const artist = artists.find((a) => getArtistKnownSlugs(a).has(normalizedRef));
   return artist?.data.name;
 }
 
@@ -466,12 +466,12 @@ export interface WorksToGalleryOptions {
 
 /**
  * Resolve artist slug/reference to artist object with name and href.
- * Works with both file-based slugs (from work references) and display slugs (from URLs).
+ * Uses the full set of known slugs (file slug, display slug, date-stripped, slugified name)
+ * so that old references like "liza" still resolve even when slugOverride is "liza-tattoo-berlin".
  */
 export function resolveArtist(artistRef: string, artists: ArtistEntry[]): { name: string; href: string } | undefined {
   const normalizedRef = normalizeArtistSlug(artistRef);
-  // Try to match by file slug first, then by display slug
-  const artist = artists.find((a) => a.slug === normalizedRef || getSlug(a) === normalizedRef);
+  const artist = artists.find((a) => getArtistKnownSlugs(a).has(normalizedRef));
   if (!artist) return undefined;
   return {
     name: artist.data.name,

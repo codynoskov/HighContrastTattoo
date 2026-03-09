@@ -18,6 +18,11 @@ interface ContentEntry {
   fileSlug: string;
   name: string;
   slugOverride?: string;
+  /**
+   * Optional extra slugs that should 301 to the canonical slug.
+   * Example: common typos like "skezzy" for artist "skezy".
+   */
+  aliasSlugs?: string[];
 }
 
 function slugifyName(name: string): string {
@@ -33,6 +38,16 @@ function extractField(frontmatter: string, field: string): string | undefined {
   return match[1].trim().replace(/^["']|["']$/g, '');
 }
 
+function extractArrayField(frontmatter: string, field: string): string[] | undefined {
+  const match = frontmatter.match(new RegExp(`^${field}:\\s*(.+)$`, 'm'));
+  if (!match) return undefined;
+
+  return match[1]
+    .split(',')
+    .map((value) => value.trim().replace(/^["']|["']$/g, ''))
+    .filter(Boolean);
+}
+
 function parseContentFile(filePath: string): ContentEntry | null {
   const content = readFileSync(filePath, 'utf-8');
   const fmMatch = content.match(/^---\s*\n([\s\S]*?)\n---/);
@@ -46,6 +61,7 @@ function parseContentFile(filePath: string): ContentEntry | null {
     fileSlug: filePath.split('/').pop()!.replace(/\.md$/, ''),
     name,
     slugOverride: extractField(fm, 'slugOverride'),
+      aliasSlugs: extractArrayField(fm, 'aliasSlugs'),
   };
 }
 
@@ -58,6 +74,12 @@ function getKnownSlugs(entry: ContentEntry): Set<string> {
 
   slugs.add(entry.fileSlug);
   if (entry.slugOverride) slugs.add(entry.slugOverride);
+
+  if (entry.aliasSlugs && entry.aliasSlugs.length > 0) {
+    for (const alias of entry.aliasSlugs) {
+      slugs.add(alias);
+    }
+  }
 
   const dateStripped = entry.fileSlug.replace(/^\d{4}-\d{2}-\d{2}-/, '');
   if (dateStripped !== entry.fileSlug) slugs.add(dateStripped);
@@ -97,7 +119,10 @@ export default function autoRedirects(): AstroIntegration {
           const displaySlug = getDisplaySlug(artist);
           for (const slug of getKnownSlugs(artist)) {
             if (slug !== displaySlug) {
-              redirectLines.push(`/artists/${slug} /artists/${displaySlug} 301`);
+              const from = `/artists/${slug}`;
+              const to = `/artists/${displaySlug}`;
+              redirectLines.push(`${from} ${to} 301`);
+              redirectLines.push(`${from}/ ${to} 301`);
             }
           }
         }
@@ -106,7 +131,10 @@ export default function autoRedirects(): AstroIntegration {
           const displaySlug = getDisplaySlug(style);
           for (const slug of getKnownSlugs(style)) {
             if (slug !== displaySlug) {
-              redirectLines.push(`/styles/${slug} /styles/${displaySlug} 301`);
+              const from = `/styles/${slug}`;
+              const to = `/styles/${displaySlug}`;
+              redirectLines.push(`${from} ${to} 301`);
+              redirectLines.push(`${from}/ ${to} 301`);
             }
           }
         }

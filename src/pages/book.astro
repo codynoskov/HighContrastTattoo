@@ -632,6 +632,22 @@ const seoDescription = 'Book a tattoo appointment at High Contrast Tattoo Berlin
               artist: data.artist || undefined,
             });
           }
+
+          // Google Ads conversion tracking
+          // See: Google Ads event snippet for conversion action AW-712648894/tBKSCLuPzoYcEL7R6NMC
+          try {
+            const sendTo = 'AW-712648894/tBKSCLuPzoYcEL7R6NMC';
+            if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
+              (window as any).gtag('event', 'conversion', {
+                send_to: sendTo,
+                value: 1.0,
+                currency: 'EUR',
+              });
+            }
+          } catch (e) {
+            // Tracking must not block the booking success UI
+          }
+
           // Success - show success state matching Figma design
           showSuccessState();
         } else {

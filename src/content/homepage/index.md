@@ -19,7 +19,9 @@ studioDescription: Step into our creative space in the heart of Friedrichshain.
   skin.
 walkInTitle: Walk-In Tattoos
 walkInDescription: Custom work is by appointment
-walkInSchedule: Walk-ins are available Monday–Saturday, 11:30–15:00
+walkInSchedule: If you feel like getting a tattoo spontaneously, just send us a
+  quick email at highcontrasttattoo@gmail.com. We usually reply very quickly,
+  and if one of our artists has time, we’ll let you know when you can come by.
 walkInBackgroundImage: /images/001A5570-Edit.jpg
 stylesTitle: Explore the Styles
 stylesDescription: An introduction to our signature tattoo styles, designed to

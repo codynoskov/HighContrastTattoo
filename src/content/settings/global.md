@@ -11,12 +11,8 @@ footerDescription: We are located in Samariterkiez in Friedrichshain, a
 footerMapImage: /images/map.png
 footerEmailLabel: Email
 footerEmailDescription: Reach out anytime with questions
-footerPhoneLabel: Phone
-footerPhoneDescription: Call us Mon–Sat, 11:30–15:00, or message us any time.
 footerStudioLabel: Studio
 footerEmail: highcontrasttattoo@gmail.com
-footerPhone: +49 176 72745645
-footerWhatsAppUrl: https://wa.me/4917672745645
 footerAddress: Schreinerstraße 6, 10247 Berlin, Germany
 footerPrivacyNote: We use cookies for analytics and advertising only when you
   consent. You can change your cookie settings anytime. Details in our Privacy

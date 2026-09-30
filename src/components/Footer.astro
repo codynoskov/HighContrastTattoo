@@ -36,12 +36,8 @@ const {
   mapImage = "/images/footer/map.png",
   emailLabel = "Email",
   emailDescription = "Reach out anytime with questions",
-  phoneLabel = "Phone",
-  phoneDescription = "Call or message us directly",
   studioLabel = "Studio",
   email = "highcontrasttattoo@gmail.com",
-  phone = "+49 176 72745645",
-  whatsAppUrl = "https://wa.me/4917672745645",
   address = "Schreinerstraße 6, 10247 Berlin, Germany",
   privacyNote = "We use cookies for analytics and advertising only when you consent. You can change your cookie settings anytime. Details in our Privacy Policy.",
   copyright = "© 2026 High Contrast Tattoo",
@@ -87,16 +83,6 @@ const isActive = (href: string) => {
             <h6>{emailLabel}</h6>
             <p>{emailDescription}</p>
             <a href={`mailto:${email}`} class="contact-link">{email}</a>
-          </div>
-          <div class="contact-item">
-            <Icon name="device-phone" size={24} class="icon" />
-            <h6>{phoneLabel}</h6>
-            <p>{phoneDescription}</p>
-            <div class="phone-links">
-              <a href={`tel:${phone.replace(/\s/g, '')}`} class="contact-link">{phone}</a>
-              <span class="separator">|</span>
-              <a href={whatsAppUrl} class="contact-link">WhatsApp</a>
-            </div>
           </div>
           <div class="contact-item">
             <Icon name="home" size={24} class="icon" />
@@ -251,17 +237,6 @@ const isActive = (href: string) => {
     font: var(--typography-body-md);
     color: var(--color-primary-900);
     text-decoration: underline;
-  }
-
-  .phone-links {
-    display: flex;
-    gap: 8px;
-    align-items: flex-start;
-  }
-
-  .separator {
-    font: var(--typography-body-md);
-    color: var(--color-primary-600);
   }
 
   .actions {

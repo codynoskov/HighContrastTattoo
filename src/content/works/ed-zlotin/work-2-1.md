@@ -5,4 +5,5 @@ artists:
   - ed-zlotin-tattoo-berlin
 styles:
   - illustrative-tattoo-berlin
+  - color-tattoo-berlin
 ---

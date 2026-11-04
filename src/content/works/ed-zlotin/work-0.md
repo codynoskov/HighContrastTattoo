@@ -7,4 +7,5 @@ styles:
   - illustrative-tattoo-berlin
   - dotwork-tattoo-berlin
   - linework-tattoo-berlin
+  - color-tattoo-berlin
 ---

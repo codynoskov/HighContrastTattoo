@@ -5,4 +5,6 @@ artists:
   - ed-zlotin-tattoo-berlin
 styles:
   - illustrative-tattoo-berlin
+  - dotwork-tattoo-berlin
+  - linework-tattoo-berlin
 ---

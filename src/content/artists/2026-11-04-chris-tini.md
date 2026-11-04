@@ -14,6 +14,7 @@ styles:
   - surrealism-tattoo-berlin
   - illustrative-tattoo-berlin
   - neo-traditional-tattoo-berlin
+  - color-tattoo-berlin
 metaTitle: Chris | Illustrative Blackwork Tattoo Artist Berlin
 metaDescription: Chris is an illustrative blackwork tattoo artist in Berlin
   creating Anime, Neo Traditional, animal, bird, botanical and surreal custom

@@ -3,10 +3,11 @@ name: Ed Zlotin
 slugOverride: ed-zlotin-tattoo-berlin
 order: 2
 photo: /images/001A3907-Edit.jpg
-intro: Ed is the owner of High Contrast Tattoo Berlin together with his wife
-  Nastia and has been tattooing since 2009, working in a personal mix of
-  blackwork, dotwork and abstract, surreal designs built from lines, patterns
-  and geometry.
+intro: Ed Zlotin is a color tattoo artist creating illustrative and graphic
+  tattoos with bold shapes, stylized characters, animals, plants and unexpected
+  compositions. After many years of working almost exclusively in black ink, he
+  recently shifted his focus to color while keeping the strong graphic
+  foundation that shaped his earlier work.
 instagram: notedzlotin
 styles:
   - fineline-tattoo-berlin
@@ -20,13 +21,13 @@ styles:
   - script-calligraphy-tattoo-berlin
 metaTitle: Ed Zlotin | High Contrast Tattoo Berlin
 metaDescription: Studio owner and tattoo artist in Berlin Friedrichshain since
-  2009. Blackwork, dotwork, geometric and surreal designs. Book your custom
-  abstract tattoo.
+  2009. After years of blackwork, now focused on custom color tattoos with
+  illustrative and graphic designs.
 ogImage: /images/001A3907-Edit.jpg
 noIndex: false
 ---
-I’m Ed, and I own High Contrast Tattoo Berlin together with my wife Nastia. I started tattooing in 2009, so I’ve been doing this for more than 17 years. Over time my style has grown into a mix of blackwork, dotwork, surrealism and graphic tattooing: clean lines, different line weights, patterns and geometry that turn simple ideas into more abstract designs.
+Hi, I’m Ed. I’m the owner of High Contrast Tattoo together with my wife Nastia, and I’ve been tattooing since 2009. For most of my career, I worked almost entirely in black ink. Blackwork, linework, dotwork and graphic compositions shaped the way I think about contrast, structure and how a tattoo should sit on the body. A few months ago, I decided to take my work in a new direction and started focusing on color tattoos.
 
-Most of my tattoos are about structure and rhythm, geometric elements, broken symmetry, open space and solid black areas. I like to start from something real, like plants, symbols, objects or architecture, and then change and push it away from realism so it becomes a more surreal, almost unreal composition instead of a literal picture. Depending on the project, I combine fineline and basic linework with heavier blackwork and dotwork textures to create depth and movement.
+I did not start using color to replace what I was doing before. I wanted to build on it. The graphic structure is still there, but now I work much more with blocks of colour, simplified shapes, geometry, negative space and contrast between different forms. I like starting with something recognizable, such as an animal, plant, person, object or everyday idea, and then changing its shapes and proportions until it becomes something more personal. My designs often combine flat colour, geometric elements, soft transitions, dotwork and small graphic details.
 
-I work best when there is a clear idea or mood rather than a fixed image. We talk about what you want the tattoo to feel like, and I translate that into an abstract or surreal design that fits your body, not just the drawing. The result is usually bold and graphic, a bit unusual, and not one of the same designs you keep seeing repeated everywhere.
+I especially enjoy custom tattoo projects. You do not need to come with a finished design. An object, character, animal, memory or simple idea is often enough for us to start. I like taking that starting point and rebuilding it in my own graphic and illustrative style while making sure the final tattoo fits the body and still feels connected to your original idea. My current work is about combining the visual foundation I built through years of black tattooing with a new focus on colour, illustration and finding unexpected ways to make familiar things look different.

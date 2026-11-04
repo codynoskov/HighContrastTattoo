@@ -1,6 +1,6 @@
 ---
 order: -1
-image: /images/Ed-Zlotin-coulor-tattoo-Berlin-1.jpg
+image: /images/IMG_3202 (1).jpeg
 artists:
   - ed-zlotin-tattoo-berlin
 styles:

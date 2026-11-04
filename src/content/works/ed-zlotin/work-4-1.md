@@ -6,4 +6,5 @@ artists:
 styles:
   - floral-and-botanic-tattoo-berlin
   - illustrative-tattoo-berlin
+  - color-tattoo-berlin
 ---

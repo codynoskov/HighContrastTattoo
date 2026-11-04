@@ -20,9 +20,9 @@ styles:
   - dotwork-tattoo-berlin
   - script-calligraphy-tattoo-berlin
 metaTitle: Ed Zlotin | High Contrast Tattoo Berlin
-metaDescription: Studio owner and tattoo artist in Berlin Friedrichshain since
-  2009. After years of blackwork, now focused on custom color tattoos with
-  illustrative and graphic designs.
+metaDescription: Ed Zlotin is a Berlin tattoo artist creating custom colorful,
+  graphic and illustrative tattoos. Explore his work and book a session at High
+  Contrast Tattoo.
 ogImage: /images/001A3907-Edit.jpg
 noIndex: false
 ---
